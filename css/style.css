@@ -344,7 +344,7 @@ html, body, #fullpage{
 }
 
 .avatar-name {
-  background: url(http://img.lanimg.com/tuku/yulantu/110329/292-11032911333716.jpg) -80px -80px;
+  background: url(../images/namebg.jpg) -80px -80px;
   color: red;
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
