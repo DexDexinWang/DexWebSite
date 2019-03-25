@@ -336,11 +336,11 @@ html, body, #fullpage{
   border-radius: 100%;
 }
 .avatar-name {
-  writing-mode: vertical-lr
+  width: 80px;
 }
 .avatar-slogan {
-  writing-mode: vertical-lr;
   max-height: 200px;
+  width: 80px;
 }
 .global-container {
   box-shadow: 1px 2px 3px #ddd;
