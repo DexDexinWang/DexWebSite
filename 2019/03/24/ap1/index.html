@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Algorithm Principle #1 | Dex Personal Website</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <meta name="description" content="Data structureWIKI:  It is a data organization, management and storage format that enables efficient access and modifications. GG: It is a particular way of organizing data in a computer so that it ca">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Algorithm Principle #1">
+<meta property="og:url" content="http://dexdexinwang.github.io/DexWebSite/2019/03/24/ap1/index.html">
+<meta property="og:site_name" content="Dex Personal Website">
+<meta property="og:description" content="Data structureWIKI:  It is a data organization, management and storage format that enables efficient access and modifications. GG: It is a particular way of organizing data in a computer so that it ca">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-03-26T09:49:26.908Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Algorithm Principle #1">
+<meta name="twitter:description" content="Data structureWIKI:  It is a data organization, management and storage format that enables efficient access and modifications. GG: It is a particular way of organizing data in a computer so that it ca">
+  
+    <link rel="alternate" href="/DexWebSite/atom.xml" title="Dex Personal Website" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/images/dexphoto.jpg">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/DexWebSite/css/style.css">
+  <link rel="stylesheet" href="/DexWebSite/css/highlight.css">
+</head>
+</html>
+<body>
+  <div id="fullpage" class="mobile-nav-left">
+    
+      <div id="wrapper" title="The background image is from Internet.">
+    
+    
+      <header id="header">
+  <div id="nav-toggle" class="nav-toggle"></div>
+  <div class="head-box global-width">
+    <nav class="nav-box nav-left">
+      
+        <a class="nav-item" href="/DexWebSite/" title>Home</a>
+      
+        <a class="nav-item" href="/DexWebSite/archives" title>Archives</a>
+      
+        <a class="nav-item" href="/DexWebSite/algorithm" title>Algorithm</a>
+      
+        <a class="nav-item" href="/DexWebSite/principle" title>Principle</a>
+      
+    </nav>
+  </div>
+</header>
+      <div id="middlecontent" title class="global-width sidebar-left">
+        <section id="main"><article id="post-ap1" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      Algorithm Principle #1
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/DexWebSite/2019/03/24/ap1/" class="article-date">
+  <time datetime="2019-03-25T05:44:24.000Z" itemprop="datePublished">2019-03-24</time>
+</a>
+    
+    
+  </div>
+  
+    <span id="busuanzi_container_page_pv">
+      Total Reading <span id="busuanzi_value_page_pv"></span> Times
+    </span>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-doorframe" itemprop="articleBody">
+      
+        <h3 id="Data-structure"><a href="#Data-structure" class="headerlink" title="Data structure"></a>Data structure</h3><p><a href="https://en.wikipedia.org/wiki/Data_structure" target="_blank" rel="noopener">WIKI</a>: </p>
+<p>It is a data organization, management and storage format that enables efficient access and modifications.</p>
+<p><a href="https://www.geeksforgeeks.org/overview-of-data-structures-set-1-linear-data-structures/" target="_blank" rel="noopener">GG</a>:</p>
+<p>It is a particular way of organizing data in a computer so that it can be used efficiently.</p>
+<p>Both of these definations refer two key keywords: origanizaiton and efficient. Programmers will use certain methods to originize dat to reduce time cost and space cost which are the most important meansures to judge algorithm solutions. </p>
+<h3 id="Time-Complexity"><a href="#Time-Complexity" class="headerlink" title="Time Complexity"></a>Time Complexity</h3><p><a href="https://en.wikipedia.org/wiki/Time_complexity" target="_blank" rel="noopener">WIKI</a><br>Time complexity describes the amount of time it takes to run an algorithm. Time complexity is commonly estimated by counts the number of elementary operations performed by the algorhm.</p>
+<p>E.g.<br><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVA"><figure class="iseeu highlight /java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">10</span>; i++) &#123; &lt;-- loop <span class="number">10</span> times</span><br><span class="line">	sum = sum + i;  &lt;-- one elementary operation</span><br><span class="line">&#125; &lt;-- total should time complexity is <span class="number">10</span>.</span><br></pre></td></tr></table></figure></div></p>
+<p>Normally, time compleixty is increased with increasing the number of input. All algorithm problems consider input as “n”.<br>Mostly, time compleixty of solving an algorithm problem could be random number in a range such as from n to n^2, programers commonly consider the worst-case time complity such O(n), O(nlogn), O(n^2) and so on.</p>
+<p>Theta(n): tight bound<br>Omega(n): lower bound</p>
+<h3 id="Space-Complexity"><a href="#Space-Complexity" class="headerlink" title="Space Complexity"></a>Space Complexity</h3><p><a href="https://en.wikipedia.org/wiki/Space_complexity" target="_blank" rel="noopener">WIKI</a></p>
+<p>The space compleixty of an algorithm or a computer program is the amount of momery space required to solve an instance of the computer problem as a function of the size of the input. </p>
+<p>In other words, how much memory does it need to run the problem. </p>
+<p>However, this defination is not used to answer algorithm questions during interviews. Because interviwers wants “Auxiliary Space Compleixty”. </p>
+<p>Auxiliary Space complexity: how much extra space or temporary space will be used by an algorithm. </p>
+<h3 id="Common-Data-Structures"><a href="#Common-Data-Structures" class="headerlink" title="Common Data Structures"></a>Common Data Structures</h3><ol>
+<li>Array</li>
+<li>Linked List</li>
+<li>Stack</li>
+<li>Queue</li>
+<li>Tree </li>
+<li>Heap</li>
+<li>Graph</li>
+<li>Hash Table</li>
+</ol>
+<p>Only “Array” is continuous physical strucutre in memory. Others are logical structure in </p>
+
+      
+    </div>
+    
+      <footer class="article-footer">
+        Done
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  <div class="article-nav-block">
+    
+  </div>
+  <div class="article-nav-block">
+    
+      <a href="/DexWebSite/2019/03/23/markdownExample/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">Hexo MarkDown Example</div>
+        <strong class="article-nav-caption"></strong>
+      </a>
+    
+  </div>
+</nav>
+
+    
+<div id="gitmentContainer"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  owner: '',
+  repo: '',
+  oauth: {
+    client_id: '',
+    client_secret: '',
+  },
+})
+gitment.render('gitmentContainer')
+</script>
+
+  
+  
+</article>
+</section>
+        <aside id="sidebar">
+  
+    <div class="widget-box">
+  <div class="avatar-box">
+    <img class="avatar" src="/DexWebSite/images/dexphoto.jpg" title="Description">
+    <h3 class="avatar-name">
+      
+        Dexin Wang
+      
+    </h3>
+    <p class="avatar-slogan">
+      
+    </p>
+  </div>
+</div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Basic/">Basic</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/03/">March 2019</a></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/DexWebSite/2019/03/24/ap1/">Algorithm Principle #1</a>
+          </li>
+        
+          <li>
+            <a href="/DexWebSite/2019/03/23/markdownExample/">Hexo MarkDown Example</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      </div>
+      <footer id="footer">
+  <div class="foot-box global-width">
+    &copy; 2019 Dexin Wang &nbsp;&nbsp;
+    <a href="https://github.com/DexDexinWang/DexWebSite">Hexo-Dex</a>
+    &nbsp;&nbsp;
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">You are the <span id="busuanzi_value_site_pv"></span>th visitor.</span>
+  </div>
+</footer>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+  <link rel="stylesheet" href="/DexWebSite/fancybox/jquery.fancybox.css">
+  <script src="/DexWebSite/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/DexWebSite/js/script.js"></script>
+
+
+
+    </div>
+    <nav id="mobile-nav" class="mobile-nav-box">
+  <div class="mobile-nav-img mobile-nav-top"></div>
+  
+    <a href="/DexWebSite/" class="mobile-nav-link">Home</a>
+  
+    <a href="/DexWebSite/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/DexWebSite/algorithm" class="mobile-nav-link">Algorithm</a>
+  
+    <a href="/DexWebSite/principle" class="mobile-nav-link">Principle</a>
+  
+  <div class="mobile-nav-img  mobile-nav-bottom"></div>
+</nav>    
+  </div>
+</body>
+</html>
