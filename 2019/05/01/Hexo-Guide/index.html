@@ -3,6 +3,19 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-113086304-2', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
 
   
   <title>Hexo Guide | Dex Personal Website</title>
@@ -25,19 +38,27 @@
     <link rel="alternate" href="/DexWebSite/atom.xml" title="Dex Personal Website" type="application/atom+xml">
   
   
-    <link rel="icon" href="/images/dexphoto.jpg">
+    <link rel="icon" href="../images/favicon.png">
   
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
   <link rel="stylesheet" href="/DexWebSite/css/style.css">
   <link rel="stylesheet" href="/DexWebSite/css/highlight.css">
+  <script>
+  let antiquityStorage = window.sessionStorage.getItem('antiquitySessionStorage');
+  if (antiquityStorage == '' || antiquityStorage == null) {
+    var antiquityLoader = '<div id="loaderbox"><div class="loader"><div class="load-roll"><div class="load-top"></div><div class="load-right"></div><div class="load-bottom"></div></div></div></div>';
+    document.write(antiquityLoader);
+    document.body.style.overflow = 'hidden'
+  }
+  </script>
 </head>
 </html>
 <body>
   <div id="fullpage" class="mobile-nav-left">
     
-      <div id="wrapper" title="The background image is from Internet.">
+      <div id="wrapper" style="background-image: url(../images/bg.jpg)" title="background">
     
     
       <header id="header">
@@ -47,7 +68,7 @@
       
         <a class="nav-item" href="/DexWebSite/" title>Home</a>
       
-        <a class="nav-item" href="/DexWebSite/../PersonalWebSite/" title>Dashboard</a>
+        <a class="nav-item" href="/DexWebSite/../PersonalWebSite/" title>Background</a>
       
     </nav>
   </div>
@@ -78,13 +99,13 @@
   </div>
   
     <span id="busuanzi_container_page_pv">
-      Total Reading <span id="busuanzi_value_page_pv"></span> Times
+      Total Read : <span id="busuanzi_value_page_pv"></span>
     </span>
   
 
   <div class="article-inner">
     
-    <div class="article-content article-content-doorframe" itemprop="articleBody">
+    <div class="article-content article-content-cloud" itemprop="articleBody">
       
         <h1 id="Hexo-Guide"><a href="#Hexo-Guide" class="headerlink" title="Hexo Guide"></a><a href="https://hexo.io/" target="_blank" rel="noopener">Hexo Guide</a></h1><blockquote>
 <p>Hexo is a fast, simple and powerful blog framework. You write posts in Markdown (or other languages) and Hexo generates static files with a beautiful theme in seconds.</p>
@@ -95,21 +116,21 @@
 <li>Git</li>
 </ul>
 <p><strong> WIndows Installation: </strong></p>
-<div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure></div>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
 <p><strong> Linxu Installation: </strong></p>
-<div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install git-core / sudo yum install git-core</span><br><span class="line">$ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash</span><br><span class="line">$ nvm install stable</span><br><span class="line">$ install -g hexo-cli</span><br></pre></td></tr></table></figure></div>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install git-core / sudo yum install git-core</span><br><span class="line">$ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash</span><br><span class="line">$ nvm install stable</span><br><span class="line">$ install -g hexo-cli</span><br></pre></td></tr></table></figure>
 <p><strong> Initlization: </strong></p>
-<div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ cd &lt;git folder&gt;   (optional)</span><br><span class="line">$ hexo init &lt;folder&gt;</span><br><span class="line">$ cd &lt;folder&gt;</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure></div>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ cd &lt;git folder&gt;   (optional)</span><br><span class="line">$ hexo init &lt;folder&gt;</span><br><span class="line">$ cd &lt;folder&gt;</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure>
 <h3 id="Configration"><a href="#Configration" class="headerlink" title="Configration"></a>Configration</h3><p>config file: _config.yml</p>
-<h3 id="Commands"><a href="#Commands" class="headerlink" title="Commands"></a>Commands</h3><p><strong> Init </strong><br><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init [folder]</span><br></pre></td></tr></table></figure></div></p>
-<p><strong> New </strong><br><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure></div></p>
-<p><strong> Generate </strong><br><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new &quot;post title with whitespace&quot;</span><br></pre></td></tr></table></figure></div></p>
-<p><strong> PUblish </strong><br><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate  </span><br><span class="line">OR</span><br><span class="line">$ hexo g</span><br></pre></td></tr></table></figure></div></p>
-<p><strong> Start Server </strong><br><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server  </span><br><span class="line">OR</span><br><span class="line">$ hexo s</span><br></pre></td></tr></table></figure></div></p>
-<p><strong> Deploy </strong><br><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy  </span><br><span class="line">OR</span><br><span class="line">$ hexo d</span><br></pre></td></tr></table></figure></div></p>
-<p><strong> Clean </strong><br><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br></pre></td></tr></table></figure></div></p>
-<p><strong> List </strong><br><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo list &lt;type&gt;</span><br></pre></td></tr></table></figure></div></p>
-<h3 id="Hexo-Admin"><a href="#Hexo-Admin" class="headerlink" title="Hexo Admin"></a><a href="https://github.com/jaredly/hexo-admin" target="_blank" rel="noopener">Hexo Admin</a></h3><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ npm install --save hexo-admin</span><br><span class="line">$ hexo server -d</span><br><span class="line">$ open http://localhost:4000/admin/</span><br></pre></td></tr></table></figure></div>
+<h3 id="Commands"><a href="#Commands" class="headerlink" title="Commands"></a>Commands</h3><p><strong> Init </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init [folder]</span><br></pre></td></tr></table></figure></p>
+<p><strong> New </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure></p>
+<p><strong> Generate </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new &quot;post title with whitespace&quot;</span><br></pre></td></tr></table></figure></p>
+<p><strong> PUblish </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate  </span><br><span class="line">OR</span><br><span class="line">$ hexo g</span><br></pre></td></tr></table></figure></p>
+<p><strong> Start Server </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server  </span><br><span class="line">OR</span><br><span class="line">$ hexo s</span><br></pre></td></tr></table></figure></p>
+<p><strong> Deploy </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy  </span><br><span class="line">OR</span><br><span class="line">$ hexo d</span><br></pre></td></tr></table></figure></p>
+<p><strong> Clean </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br></pre></td></tr></table></figure></p>
+<p><strong> List </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo list &lt;type&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Hexo-Admin"><a href="#Hexo-Admin" class="headerlink" title="Hexo Admin"></a><a href="https://github.com/jaredly/hexo-admin" target="_blank" rel="noopener">Hexo Admin</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ npm install --save hexo-admin</span><br><span class="line">$ hexo server -d</span><br><span class="line">$ open http://localhost:4000/admin/</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -141,11 +162,11 @@
 <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
 var gitment = new Gitment({
-  owner: '',
-  repo: '',
+  owner: 'DexDexinWang',
+  repo: 'DexWebSite',
   oauth: {
-    client_id: '',
-    client_secret: '',
+    client_id: '7c44fd11f8e0d609f5ba',
+    client_secret: 'ea91b14d1a2f4aa1ff3d610c266ff8280eb5caae',
   },
 })
 gitment.render('gitmentContainer')
@@ -159,18 +180,14 @@ gitment.render('gitmentContainer')
   
     <div class="widget-box">
   <div class="avatar-box">
-    <img class="avatar" src="/DexWebSite/images/dexphoto.jpg" title="Description">
+    <img class="avatar" src="../images/dexphoto.jpg" title="personal image">
     <h3 class="avatar-name">
       
         Dexin Wang
       
     </h3>
-    <p class="avatar-slogan">
-      
-    </p>
   </div>
 </div>
-
 
   
     
@@ -190,16 +207,6 @@ gitment.render('gitmentContainer')
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/03/">March 2019</a></li></ul>
     </div>
   </div>
-
-  
-    
-  <div class="widget-box">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/DexWebSite/tags/Principle/">Principle</a></li></ul>
-    </div>
-  </div>
-
 
   
     
@@ -234,15 +241,21 @@ gitment.render('gitmentContainer')
       <footer id="footer">
   <div class="foot-box global-width">
     &copy; 2019 Dexin Wang &nbsp;&nbsp;
-    <a href="https://github.com/DexDexinWang/DexWebSite">Hexo-Dex</a>
-    &nbsp;&nbsp;
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    &nbsp;|&nbsp;Theme <a href="https://github.com/DexDexinWang/hexo-dex">antiquity</a>
+    <br>
     <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span id="busuanzi_container_site_pv">You are the <span id="busuanzi_value_site_pv"></span>th visitor.</span>
+    <span id="busuanzi_container_site_pv">You are the <span id="busuanzi_value_site_pv"></span> visitor</span>
   </div>
 </footer>
-      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-<script src="/js/jquery-2.0.3.min.js"></script>
+      <script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script>
+if (!window.jQuery) {
+var script = document.createElement('script');
+script.src = "/js/jquery-2.0.3.min.js";
+document.body.write(script);
+}
+</script>
 
   <link rel="stylesheet" href="/DexWebSite/fancybox/jquery.fancybox.css">
   <script src="/DexWebSite/fancybox/jquery.fancybox.pack.js"></script>
@@ -258,7 +271,7 @@ gitment.render('gitmentContainer')
   
     <a href="/DexWebSite/" class="mobile-nav-link">Home</a>
   
-    <a href="/DexWebSite/../PersonalWebSite/" class="mobile-nav-link">Dashboard</a>
+    <a href="/DexWebSite/../PersonalWebSite/" class="mobile-nav-link">Background</a>
   
   <div class="mobile-nav-img  mobile-nav-bottom"></div>
 </nav>    

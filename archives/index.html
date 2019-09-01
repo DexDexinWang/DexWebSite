@@ -3,6 +3,19 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-113086304-2', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
 
   
   <title>Archives | Dex Personal Website</title>
@@ -24,19 +37,27 @@
     <link rel="alternate" href="/DexWebSite/atom.xml" title="Dex Personal Website" type="application/atom+xml">
   
   
-    <link rel="icon" href="/images/dexphoto.jpg">
+    <link rel="icon" href="../images/favicon.png">
   
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
   <link rel="stylesheet" href="/DexWebSite/css/style.css">
   <link rel="stylesheet" href="/DexWebSite/css/highlight.css">
+  <script>
+  let antiquityStorage = window.sessionStorage.getItem('antiquitySessionStorage');
+  if (antiquityStorage == '' || antiquityStorage == null) {
+    var antiquityLoader = '<div id="loaderbox"><div class="loader"><div class="load-roll"><div class="load-top"></div><div class="load-right"></div><div class="load-bottom"></div></div></div></div>';
+    document.write(antiquityLoader);
+    document.body.style.overflow = 'hidden'
+  }
+  </script>
 </head>
 </html>
 <body>
   <div id="fullpage" class="mobile-nav-left">
     
-      <div id="wrapper" title="The background image is from Internet.">
+      <div id="wrapper" style="background-image: url(../images/bg.jpg)" title="background">
     
     
       <header id="header">
@@ -46,7 +67,7 @@
       
         <a class="nav-item" href="/DexWebSite/" title>Home</a>
       
-        <a class="nav-item" href="/DexWebSite/../PersonalWebSite/" title>Dashboard</a>
+        <a class="nav-item" href="/DexWebSite/../PersonalWebSite/" title>Background</a>
       
     </nav>
   </div>
@@ -185,18 +206,14 @@
   
     <div class="widget-box">
   <div class="avatar-box">
-    <img class="avatar" src="/DexWebSite/images/dexphoto.jpg" title="Description">
+    <img class="avatar" src="../images/dexphoto.jpg" title="personal image">
     <h3 class="avatar-name">
       
         Dexin Wang
       
     </h3>
-    <p class="avatar-slogan">
-      
-    </p>
   </div>
 </div>
-
 
   
     
@@ -216,16 +233,6 @@
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/03/">March 2019</a></li></ul>
     </div>
   </div>
-
-  
-    
-  <div class="widget-box">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/DexWebSite/tags/Principle/">Principle</a></li></ul>
-    </div>
-  </div>
-
 
   
     
@@ -260,15 +267,21 @@
       <footer id="footer">
   <div class="foot-box global-width">
     &copy; 2019 Dexin Wang &nbsp;&nbsp;
-    <a href="https://github.com/DexDexinWang/DexWebSite">Hexo-Dex</a>
-    &nbsp;&nbsp;
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    &nbsp;|&nbsp;Theme <a href="https://github.com/DexDexinWang/hexo-dex">antiquity</a>
+    <br>
     <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span id="busuanzi_container_site_pv">You are the <span id="busuanzi_value_site_pv"></span>th visitor.</span>
+    <span id="busuanzi_container_site_pv">You are the <span id="busuanzi_value_site_pv"></span> visitor</span>
   </div>
 </footer>
-      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-<script src="/js/jquery-2.0.3.min.js"></script>
+      <script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script>
+if (!window.jQuery) {
+var script = document.createElement('script');
+script.src = "/js/jquery-2.0.3.min.js";
+document.body.write(script);
+}
+</script>
 
   <link rel="stylesheet" href="/DexWebSite/fancybox/jquery.fancybox.css">
   <script src="/DexWebSite/fancybox/jquery.fancybox.pack.js"></script>
@@ -284,7 +297,7 @@
   
     <a href="/DexWebSite/" class="mobile-nav-link">Home</a>
   
-    <a href="/DexWebSite/../PersonalWebSite/" class="mobile-nav-link">Dashboard</a>
+    <a href="/DexWebSite/../PersonalWebSite/" class="mobile-nav-link">Background</a>
   
   <div class="mobile-nav-img  mobile-nav-bottom"></div>
 </nav>    
