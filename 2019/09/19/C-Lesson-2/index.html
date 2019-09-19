@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-113086304-2', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <title>C # Lesson 2 | Dex Personal Website</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <meta name="description" content="Type ConversionIn C#, the value of variable could be converted in 2 ways.  Implicit Type Conversion, C# default some safety converstion from samll number type to bigger number type such as short to in">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C # Lesson 2">
+<meta property="og:url" content="http://dexdexinwang.github.io/DexWebSite/2019/09/19/C-Lesson-2/index.html">
+<meta property="og:site_name" content="Dex Personal Website">
+<meta property="og:description" content="Type ConversionIn C#, the value of variable could be converted in 2 ways.  Implicit Type Conversion, C# default some safety converstion from samll number type to bigger number type such as short to in">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-09-19T09:42:59.697Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C # Lesson 2">
+<meta name="twitter:description" content="Type ConversionIn C#, the value of variable could be converted in 2 ways.  Implicit Type Conversion, C# default some safety converstion from samll number type to bigger number type such as short to in">
+  
+    <link rel="alternate" href="/DexWebSite/atom.xml" title="Dex Personal Website" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/DexWebSite/images/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/DexWebSite/css/style.css">
+  <link rel="stylesheet" href="/DexWebSite/css/highlight.css">
+  <script>
+  let antiquityStorage = window.sessionStorage.getItem('antiquitySessionStorage');
+  if (antiquityStorage == '' || antiquityStorage == null) {
+    var antiquityLoader = '<div id="loaderbox"><div class="loader"><div class="load-roll"><div class="load-top"></div><div class="load-right"></div><div class="load-bottom"></div></div></div></div>';
+    document.write(antiquityLoader);
+    document.body.style.overflow = 'hidden'
+  }
+  </script>
+</head>
+</html>
+<body>
+  <div id="fullpage" class="mobile-nav-left">
+    
+      <div id="wrapper" style="background-image: url(/DexWebSite/images/bg.jpg)" title="background">
+    
+    
+      <header id="header">
+  <div id="nav-toggle" class="nav-toggle"></div>
+  <div class="head-box global-width">
+    <nav class="nav-box nav-left">
+      
+        <a class="nav-item" href="/DexWebSite/" title>Home</a>
+      
+        <a class="nav-item" href="/DexWebSite/../PersonalWebSite/" title>Background</a>
+      
+    </nav>
+  </div>
+</header>
+      <div id="middlecontent" title class="global-width sidebar-left">
+        <section id="main"><article id="post-C-Lesson-2" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      C # Lesson 2
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/DexWebSite/2019/09/19/C-Lesson-2/" class="article-date">
+  <time datetime="2019-09-19T08:56:00.000Z" itemprop="datePublished">2019-09-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/DexWebSite/categories/C-Programming-Language/">C# Programming Language</a>
+  </div>
+
+    
+  </div>
+  
+    <span id="busuanzi_container_page_pv">
+      Total Read : <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <h3 id="Type-Conversion"><a href="#Type-Conversion" class="headerlink" title="Type Conversion"></a>Type Conversion</h3><p>In C#, the value of variable could be converted in 2 ways.</p>
+<ul>
+<li>Implicit Type Conversion, C# default some safety converstion from samll number type to bigger number type such as short to int. </li>
+<li>Explicit Type Conversion, it is fored type conversion. It requires convertional operator. Also, it may lost data. </li>
+</ul>
+<p>E.g.</p>
+<figure class="highlight c"><figcaption><span># Type Conversion</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> TypeConversionApplication</span><br><span class="line">&#123;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">ExplicitConversion</span></span></span><br><span class="line"><span class="class">    &#123;</span></span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span><span class="params">(<span class="built_in">string</span>[] args)</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">double</span> d = <span class="number">5673.74</span>;</span><br><span class="line">            <span class="keyword">int</span> i;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// Explicit Type Conversion</span></span><br><span class="line">            i = (<span class="keyword">int</span>)d;</span><br><span class="line">            Console.WriteLine(i);</span><br><span class="line">            Console.ReadKey();</span><br><span class="line">            <span class="comment">// Final output will be 5673</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="Variable-Declaration-amp-Initialization"><a href="#Variable-Declaration-amp-Initialization" class="headerlink" title="Variable Declaration &amp; Initialization"></a>Variable Declaration &amp; Initialization</h3><figure class="highlight c"><figcaption><span># Declaration & Initialization</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;data_type&gt; &lt;variable_list&gt;;</span><br><span class="line">&lt;data_type&gt; &lt;variable_name&gt; = value;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="Lvalues-amp-Rvalues"><a href="#Lvalues-amp-Rvalues" class="headerlink" title="Lvalues &amp; Rvalues"></a>Lvalues &amp; Rvalues</h3><p>lValue indicates that express could be the left or the right side of value assignment. </p>
+<p>rValue shows the express could only be the right side of value assignment. </p>
+<figure class="highlight c"><figcaption><span># lvalue & rvalue</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">int</span> g = <span class="number">20</span> <span class="comment">//lvalue</span></span><br><span class="line"><span class="number">10</span> = <span class="number">20</span> <span class="comment">//rvalue, so it is an error.</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="constant"><a href="#constant" class="headerlink" title="constant"></a>constant</h3><p>A constant variable could not be changed after a value is assigned to this constant variable. Also, it should not be changed during program processing.</p>
+<figure class="highlight c"><figcaption><span># Constant</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> &lt;data_type&gt; &lt;constant_name&gt; = value;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Defined string variable is a constant variable.</p>
+</blockquote>
+<h3 id="Operators"><a href="#Operators" class="headerlink" title="Operators"></a>Operators</h3><p>Arithmetic operators: +, -, *, /, %, ++, –,</p>
+<p>Relation operators: ==, !=, &gt;, &lt;, &gt;=, &lt;=</p>
+<p>Logic operators: &amp;&amp;, ||, !</p>
+<p>Bit operators: &amp;, |, ^, ~ </p>
+<p>E.g. </p>
+<p>A = 0011 1100</p>
+<p>B = 0000 1101</p>
+<p>A&amp;B = 0000 1100</p>
+<p>A|B = 0011 1101</p>
+<p>A^B = 0011 0001</p>
+<p>~A  = 1100 0011</p>
+<p>A&lt;&lt;2 = 1111 0000</p>
+<p>A&gt;&gt;2 = 00001 111</p>
+<p>Assignment Operators: =, +=, -=, *=, /=, %=, &lt;&lt;=, &gt;&gt;=, &amp;=, ^=, !=</p>
+<h3 id="Other-Operators"><a href="#Other-Operators" class="headerlink" title="Other Operators"></a>Other Operators</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">Operator</th>
+<th style="text-align:left">Description</th>
+<th style="text-align:left">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">sizeof()</td>
+<td style="text-align:left">return size of type</td>
+<td style="text-align:left">sizeof(int)</td>
+</tr>
+<tr>
+<td style="text-align:left">typeof()</td>
+<td style="text-align:left">return class type</td>
+<td style="text-align:left">typeof(a)</td>
+</tr>
+<tr>
+<td style="text-align:left">&amp;</td>
+<td style="text-align:left">return the memory address of a variable</td>
+<td style="text-align:left">&amp;a</td>
+</tr>
+<tr>
+<td style="text-align:left">*</td>
+<td style="text-align:left">the pointer of a variable</td>
+<td style="text-align:left">*a</td>
+</tr>
+<tr>
+<td style="text-align:left">?:</td>
+<td style="text-align:left">condition express</td>
+<td style="text-align:left">express ? True : False</td>
+</tr>
+<tr>
+<td style="text-align:left">is</td>
+<td style="text-align:left">check objects are the same</td>
+<td style="text-align:left">if (Ford is Car)</td>
+</tr>
+<tr>
+<td style="text-align:left">as</td>
+<td style="text-align:left">convert object type without exception</td>
+<td style="text-align:left">Object obj = new StringReader(“Hello”); StringReader r = obj as StringReader</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+    
+      <footer class="article-footer">
+        Done
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  <div class="article-nav-block">
+    
+  </div>
+  <div class="article-nav-block">
+    
+      <a href="/DexWebSite/2019/09/19/C-Lesson-1/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">C# Lesson 1</div>
+        <strong class="article-nav-caption"></strong>
+      </a>
+    
+  </div>
+</nav>
+
+    
+<div id="gitmentContainer"></div>
+<link rel="stylesheet" href="https://wzxjayce.github.io/gitment.css">
+<script src="https://wzxjayce.github.io/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  owner: 'dexdexinwang',
+  repo: 'DexWebSite',
+  oauth: {
+    client_id: '7c44fd11f8e0d609f5ba',
+    client_secret: 'ea91b14d1a2f4aa1ff3d610c266ff8280eb5caae',
+  },
+})
+gitment.render('gitmentContainer')
+</script>
+
+  
+  
+</article>
+</section>
+        <aside id="sidebar">
+  
+    <div class="widget-box">
+  <div class="avatar-box">
+    <img class="avatar" src="/DexWebSite/images/dexphoto.jpg" title="personal image">
+    <h3 class="avatar-name">
+      
+        Dexin Wang
+      
+    </h3>
+  </div>
+</div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Algorithm/">Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Basic/">Basic</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/C-Programming-Language/">C# Programming Language</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Kits/">Kits</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/03/">March 2019</a></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/DexWebSite/2019/09/19/C-Lesson-2/">C # Lesson 2</a>
+          </li>
+        
+          <li>
+            <a href="/DexWebSite/2019/09/19/C-Lesson-1/">C# Lesson 1</a>
+          </li>
+        
+          <li>
+            <a href="/DexWebSite/2019/09/02/Algorithm-Binary-Search-Easy/">Algorithm Binary Search - Easy</a>
+          </li>
+        
+          <li>
+            <a href="/DexWebSite/2019/05/01/Hexo-Guide/">Hexo Guide</a>
+          </li>
+        
+          <li>
+            <a href="/DexWebSite/2019/05/01/How-to-answer-algorithm-Questions/">What is Coding Interviews </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      </div>
+      <footer id="footer">
+  <div class="foot-box global-width">
+    &copy; 2019 Dexin Wang &nbsp;&nbsp;
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    &nbsp;|&nbsp;Theme <a href="https://github.com/DexDexinWang/hexo-dex">antiquity</a>
+    <br>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">You are the <span id="busuanzi_value_site_pv"></span> visitor</span>
+  </div>
+</footer>
+      <script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script>
+if (!window.jQuery) {
+var script = document.createElement('script');
+script.src = "/js/jquery-2.0.3.min.js";
+document.body.write(script);
+}
+</script>
+
+  <link rel="stylesheet" href="/DexWebSite/fancybox/jquery.fancybox.css">
+  <script src="/DexWebSite/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/DexWebSite/js/script.js"></script>
+
+
+
+    </div>
+    <nav id="mobile-nav" class="mobile-nav-box">
+  <div class="mobile-nav-img mobile-nav-top"></div>
+  
+    <a href="/DexWebSite/" class="mobile-nav-link">Home</a>
+  
+    <a href="/DexWebSite/../PersonalWebSite/" class="mobile-nav-link">Background</a>
+  
+  <div class="mobile-nav-img  mobile-nav-bottom"></div>
+</nav>    
+  </div>
+</body>
+</html>
