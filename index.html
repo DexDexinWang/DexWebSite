@@ -75,13 +75,183 @@ ga('send', 'pageview');
       <div id="middlecontent" title class="global-width sidebar-left">
         <section id="main">
   
+    <article id="post-C-Lesson-5-Nullable" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/DexWebSite/2019/09/21/C-Lesson-5-Nullable/">C# Lesson 5 - Nullable</a>
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/DexWebSite/2019/09/21/C-Lesson-5-Nullable/" class="article-date">
+  <time datetime="2019-09-21T18:44:41.000Z" itemprop="datePublished">2019-09-21</time>
+</a>
+    
+    
+  </div>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <h3 id="Nullable"><a href="#Nullable" class="headerlink" title="Nullable"></a>Nullable</h3><p>In Java, the primitive types (int, double, boolean) could not be ‘null’. </p>
+<p>In C#, these primitive types could be assigned as null. </p>
+<p>E.g.</p>
+<figure class="highlight c"><figcaption><span># Nullable</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Nullable&lt;<span class="keyword">int</span>&gt; i = <span class="keyword">new</span> Nullable&lt;<span class="keyword">int</span>&gt;(<span class="number">3</span>);</span><br><span class="line">  </span><br><span class="line"><span class="comment">//&lt; data_type&gt; ? &lt;variable_name&gt; = null; define nullable.</span></span><br><span class="line"><span class="keyword">int</span>? i = <span class="number">3</span>  <span class="comment">//they are same.</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> i; <span class="comment">//default value is 0</span></span><br><span class="line"><span class="keyword">int</span>? j; <span class="comment">//default value is null</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="Operator"><a href="#Operator" class="headerlink" title="?? Operator"></a>?? Operator</h3><p>?? operator is used to check a variable is null. </p>
+<p>E.g. Both are the same.</p>
+<p>a ?? b;</p>
+<p>a != null ? a : b;</p>
+<figure class="highlight c"><figcaption><span># Nullable</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">double</span>? num1 = null;</span><br><span class="line"><span class="keyword">double</span>? num2 = <span class="number">3.14157</span>;</span><br><span class="line"><span class="keyword">double</span> num3;</span><br><span class="line"><span class="keyword">double</span> num4;</span><br><span class="line">num3 = num1 ?? <span class="number">5.34</span>; <span class="comment">// num3 = 5.34   </span></span><br><span class="line">num4 = num2 ?? <span class="number">5.34</span>; <span class="comment">// num4 = 3.14157</span></span><br><span class="line">Console.ReadLine();</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+  </div>
+  
+  
+</article>
+
+  
+    <article id="post-C-Lesson-4-Function-1" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/DexWebSite/2019/09/21/C-Lesson-4-Function-1/">C# Lesson 4 - Function</a>
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/DexWebSite/2019/09/21/C-Lesson-4-Function-1/" class="article-date">
+  <time datetime="2019-09-21T18:17:47.000Z" itemprop="datePublished">2019-09-21</time>
+</a>
+    
+    
+  </div>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <h3 id="Function"><a href="#Function" class="headerlink" title="Function"></a>Function</h3><p>Funtion is also named as “Method”.</p>
+<p>E.g.</p>
+<figure class="highlight c"><figcaption><span># Function Defination</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;Access Specifier&gt; &lt;Return Type&gt; &lt;Method Name&gt;(Parameter List)</span><br><span class="line">&#123;</span><br><span class="line">   Method Body</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li>Access sepcifier: It defines accessibiliy from others.</li>
+<li>Return type: It defines return type. If there is no value to return, it should be <strong>void</strong>.</li>
+<li>Method name: A method Identifier</li>
+<li>Parameter list: It defines variables from outside. It is optional.</li>
+<li>Method body: It defines logic for method.</li>
+</ul>
+<h3 id="Passing-Parameters"><a href="#Passing-Parameters" class="headerlink" title="Passing Parameters"></a>Passing Parameters</h3><p>In C#, it defines 3 ways to pass parameters to a function.</p>
+<ul>
+<li>Pass by Value: It is a <strong>default</strong> way to pass parameters. When a method recieve parameters as “Pass by Value”, it will create new memory to copy and save these parameters. When the copid value is changed, it will not affect the value from outside.</li>
+</ul>
+<p>E.g. </p>
+<figure class="highlight c"><figcaption><span># Pass by Value</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">namespace</span> CalculatorApplication</span><br><span class="line">&#123;</span><br><span class="line">   <span class="class"><span class="keyword">class</span> <span class="title">NumberManipulator</span></span></span><br><span class="line"><span class="class">   &#123;</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function">      </span>&#123;</span><br><span class="line">         <span class="keyword">int</span> temp;</span><br><span class="line">         </span><br><span class="line">         temp = x; </span><br><span class="line">         x = y;    </span><br><span class="line">         y = temp; </span><br><span class="line">      &#125;</span><br><span class="line">      </span><br><span class="line">      <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span><span class="params">(<span class="built_in">string</span>[] args)</span></span></span><br><span class="line"><span class="function">      </span>&#123;</span><br><span class="line">         NumberManipulator n = <span class="keyword">new</span> NumberManipulator();</span><br><span class="line">         <span class="comment">/* local varaible */</span></span><br><span class="line">         <span class="keyword">int</span> a = <span class="number">100</span>;</span><br><span class="line">         <span class="keyword">int</span> b = <span class="number">200</span>;</span><br><span class="line">         </span><br><span class="line">         Console.WriteLine(<span class="string">"Before sawp，a： &#123;0&#125;"</span>, a);</span><br><span class="line">         Console.WriteLine(<span class="string">"Before sawp，b： &#123;0&#125;"</span>, b);</span><br><span class="line">         </span><br><span class="line">         <span class="comment">/* call swap method */</span></span><br><span class="line">         n.swap(a, b);</span><br><span class="line">         </span><br><span class="line">         Console.WriteLine(<span class="string">"After sawp，a： &#123;0&#125;"</span>, a);</span><br><span class="line">         Console.WriteLine(<span class="string">"After sawp，b： &#123;0&#125;"</span>, b);</span><br><span class="line">         </span><br><span class="line">         Console.ReadLine();</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li>Pass by Refence: The method will get the memory address of the passed parameters. All changes in this method will be directly affected in memory. </li>
+</ul>
+<figure class="highlight c"><figcaption><span># Pass by Reference</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">namespace</span> CalculatorApplication</span><br><span class="line">&#123;</span><br><span class="line">   <span class="class"><span class="keyword">class</span> <span class="title">NumberManipulator</span></span></span><br><span class="line"><span class="class">   &#123;</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(ref <span class="keyword">int</span> x, ref <span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function">      </span>&#123;</span><br><span class="line">         <span class="keyword">int</span> temp;</span><br><span class="line">         </span><br><span class="line">         temp = x; </span><br><span class="line">         x = y;    </span><br><span class="line">         y = temp; </span><br><span class="line">      &#125;</span><br><span class="line">      </span><br><span class="line">      <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span><span class="params">(<span class="built_in">string</span>[] args)</span></span></span><br><span class="line"><span class="function">      </span>&#123;</span><br><span class="line">         NumberManipulator n = <span class="keyword">new</span> NumberManipulator();</span><br><span class="line">         <span class="comment">/* local varaible */</span></span><br><span class="line">         <span class="keyword">int</span> a = <span class="number">100</span>;</span><br><span class="line">         <span class="keyword">int</span> b = <span class="number">200</span>;</span><br><span class="line">         </span><br><span class="line">         Console.WriteLine(<span class="string">"Before sawp，a： &#123;0&#125;"</span>, a);</span><br><span class="line">         Console.WriteLine(<span class="string">"Before sawp，b： &#123;0&#125;"</span>, b);</span><br><span class="line">         </span><br><span class="line">         <span class="comment">/* call swap method */</span></span><br><span class="line">         n.swap(ref a, ref b);</span><br><span class="line">         </span><br><span class="line">         Console.WriteLine(<span class="string">"After sawp，a： &#123;0&#125;"</span>, a);</span><br><span class="line">         Console.WriteLine(<span class="string">"After sawp，b： &#123;0&#125;"</span>, b);</span><br><span class="line">         </span><br><span class="line">         Console.ReadLine();</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li>Pass Out: It allows method to receive parameters that are not defined and returns parameters back. </li>
+</ul>
+<figure class="highlight c"><figcaption><span># Pass Out</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">namespace</span> CalculatorApplication</span><br><span class="line">&#123;</span><br><span class="line">   <span class="class"><span class="keyword">class</span> <span class="title">NumberManipulator</span></span></span><br><span class="line"><span class="class">   &#123;</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getValue</span><span class="params">(ref <span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function">      </span>&#123;</span><br><span class="line">         <span class="keyword">int</span> temp = <span class="number">5</span>;</span><br><span class="line">         x = temp</span><br><span class="line">      &#125;</span><br><span class="line">      </span><br><span class="line">      <span class="keyword">static</span> <span class="keyword">void</span> Main(<span class="built_in">string</span>[] args)</span><br><span class="line">      &#123;</span><br><span class="line">         NumberManipulator n = <span class="keyword">new</span> NumberManipulator();</span><br><span class="line">         <span class="comment">/* local varaible */</span></span><br><span class="line">         <span class="keyword">int</span> a = <span class="number">100</span>;</span><br><span class="line">         </span><br><span class="line">         Console.WriteLine(<span class="string">"Before，a： &#123;0&#125;"</span>, a);</span><br><span class="line">      </span><br><span class="line">         <span class="comment">/* call swap method */</span></span><br><span class="line">         n.getValue(out a);</span><br><span class="line">         </span><br><span class="line">         Console.WriteLine(<span class="string">"After，a： &#123;0&#125;"</span>, a);</span><br><span class="line">         </span><br><span class="line">         </span><br><span class="line">         Console.ReadLine();</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="Comapare-to-JAVA"><a href="#Comapare-to-JAVA" class="headerlink" title="Comapare to JAVA"></a>Comapare to JAVA</h3><p>JAVA has no principle for “Pass by Value” and “Pass by Referance” and “Pass Out”. </p>
+<p>If a method receive parameters, it will do “Pass by Value” for primitive parameters. Also, it will do “Pass by Value” for non-primitive parameters. </p>
+
+      
+    </div>
+    
+  </div>
+  
+  
+</article>
+
+  
+    <article id="post-C-Lesson-3" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/DexWebSite/2019/09/21/C-Lesson-3/">C# Lesson 3 - Encapsulation</a>
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/DexWebSite/2019/09/21/C-Lesson-3/" class="article-date">
+  <time datetime="2019-09-21T17:28:00.000Z" itemprop="datePublished">2019-09-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/DexWebSite/categories/C-Programming-Language/">C# Programming Language</a>
+  </div>
+
+    
+  </div>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <h3 id="Encapsulation-amp-Inheritance-amp-Polymorphism"><a href="#Encapsulation-amp-Inheritance-amp-Polymorphism" class="headerlink" title="Encapsulation &amp; Inheritance &amp; Polymorphism"></a>Encapsulation &amp; Inheritance &amp; Polymorphism</h3><p><strong><a href="https://www.geeksforgeeks.org/encapsulation-in-java/" target="_blank" rel="noopener">Encapsulation</a>:</strong><br>It is defined as the wrapping up of data under a single unit. It is the meachansim that binds together code and data it  manipulates. Other way to think about encapsulation is that is a protective shield that prevents the data from being accessed by the code outside this shield.</p>
+<ul>
+<li>Technically in encapsulation, the variables or data of a class is <strong>hidden from any other class</strong> and can be accessed through &amp;<strong>any member function of own class in which they are declared</strong>. </li>
+<li>As in encapsulation, the data in a class is hidden from other classes, so it is also known as <strong>data-hiding</strong>.</li>
+<li>Encapsulation can be achieved by: Declaring all the variables in the class as private and writing public methods in the class to set and get the values of variables.</li>
+</ul>
+<p><strong> Advantage of Encapsulation </strong></p>
+<ul>
+<li><p>Data Hiding: The user will have no idea about the inner impelmentation of the class. It will not be visible to the user that how the class is storing values in the varaibles. He only knows that we are passing the values to a setter method or variables are getting initialized with that value. </p>
+</li>
+<li><p>Increased Flexibility: WE can make the variables of the class as read-only or write-only depending on our requriement. if we wish to make the variables as read-only then we have to moit the setter methods. For write-only, the program should omit get methods. </p>
+</li>
+<li><p>Reusability: Encapsulation also improves the re-useability and easy to change with new requiements. </p>
+</li>
+<li>Testing code is eassy: It is easy to test for unit testing.</li>
+</ul>
+<p><strong> Access modifier </strong> </p>
+<p><a href="docs.microsoft.com">Access modifier</a> defines different way to access a method or a varaible.</p>
+<ul>
+<li>public: The type of member can be accessed by any other code in the smae assembly or other assembly that references it. </li>
+<li>private: The type or member can be accessed only by code in the same class or struct</li>
+<li>protected: The type or memeber can be accessed only by code in the same class, or in a aclass that is drived from that class.</li>
+<li>internal: the type or member can be accessed by any code in the same assembly, but not from another assemly.</li>
+<li>protected internal: The type or member can be accessed by any code in the assebmly in which it is declared, or from within a derived class in another assmblely. </li>
+<li>private protected: The type or memeber can be accessed only within its declaring assemly, by code in the same class or in a type that is derived from that class.</li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+  
+</article>
+
+  
     <article id="post-C-Lesson-2" class="article global-container article-type-post" itemscope itemprop="blogPost">
   
     <header class="article-header">
       
   
     <h1 itemprop="name">
-      <a class="article-title" href="/DexWebSite/2019/09/19/C-Lesson-2/">C # Lesson 2</a>
+      <a class="article-title" href="/DexWebSite/2019/09/19/C-Lesson-2/">C# Lesson 2 - Base 2</a>
     </h1>
   
 
@@ -180,6 +350,16 @@ ga('send', 'pageview');
 </tr>
 </tbody>
 </table>
+<h3 id="C-Condition-amp-Loop"><a href="#C-Condition-amp-Loop" class="headerlink" title="C# Condition &amp; Loop"></a>C# Condition &amp; Loop</h3><ul>
+<li>If(condition){} Else{}</li>
+<li>condition ? True : Fasle</li>
+<li>Switch (condition) {case’’: ; case’’:}</li>
+<li>While(condition){}</li>
+<li>do{} while(condition)</li>
+<li>for(::)</li>
+<li>foreach({Type} var in {Array vairable})</li>
+</ul>
+<p><strong>‘break’ stops loop or while. ‘continue’ will ignore next logic in the loop and goes back to the head of loop or while</strong></p>
 
       
     </div>
@@ -196,7 +376,7 @@ ga('send', 'pageview');
       
   
     <h1 itemprop="name">
-      <a class="article-title" href="/DexWebSite/2019/09/19/C-Lesson-1/">C# Lesson 1</a>
+      <a class="article-title" href="/DexWebSite/2019/09/19/C-Lesson-1/">C# Lesson 1 - Base 1</a>
     </h1>
   
 
@@ -267,13 +447,9 @@ ga('send', 'pageview');
 <figure class="highlight c"><figcaption><span># Hello Word</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">using</span> System;  <span class="comment">/*imports System namespace*/</span></span><br><span class="line"><span class="keyword">namespace</span> HelloWorldApplication <span class="comment">/*declare the current class in HelloWorldApplication namespace*/</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="class"><span class="keyword">class</span> <span class="title">HelloWorld</span></span></span><br><span class="line"><span class="class">   &#123;</span></span><br><span class="line">      <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span><span class="params">(<span class="built_in">string</span>[] args)</span></span></span><br><span class="line"><span class="function">      </span>&#123;</span><br><span class="line">         <span class="comment">/* Comments */</span></span><br><span class="line">         Console.WriteLine(<span class="string">"Hello World"</span>);</span><br><span class="line">         Console.ReadKey();</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h3 id="Setup-CSC-Command"><a href="#Setup-CSC-Command" class="headerlink" title="Setup CSC Command"></a>Setup CSC Command</h3><p>CSC command is used to compile .cs files. </p>
 <p>E.g. </p>
-<blockquote>
-<p>>csc helloword.cs</p>
-</blockquote>
+<p><strong> >csc helloword.cs</strong></p>
 <p>If the Command Prompt shows {‘csc’ is not recognized as an internal or external command}, you have to setup Environment Variable with “Path”.</p>
-<blockquote>
-<p>>C:\Windows\Microsoft.NET\Framework\<version>\</version></p>
-</blockquote>
+<p><strong>&gt;C:\Windows\Microsoft.NET\Framework{version}\</strong></p>
 <h3 id="Identifier"><a href="#Identifier" class="headerlink" title="Identifier"></a>Identifier</h3><p>Identifiers are used to identify classes, variables, functions, and other user defined projects. It should be following below rules:</p>
 <ul>
 <li>Identifier starts at letter, underline, or @ sign, following by letters, numbers, underline, or @</li>
@@ -487,7 +663,6 @@ ga('send', 'pageview');
 <figure class="highlight c"><figcaption><span># String Assignment</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// Assign String Value as "C:\Windows" in 2 ways.</span></span><br><span class="line"><span class="built_in">string</span> str = <span class="string">"C:\\Windows"</span>;</span><br><span class="line"><span class="built_in">string</span> str = @<span class="string">"C:\Windows"</span>; </span><br><span class="line"></span><br><span class="line"><span class="comment">// @"" could save values in mutilple lines.</span></span><br><span class="line"><span class="built_in">string</span> str = @<span class="string">"&lt;script type="</span><span class="string">"text/javascript"</span><span class="string">"&gt;</span></span><br><span class="line"><span class="string">    &lt;!--</span></span><br><span class="line"><span class="string">    --&gt;</span></span><br><span class="line"><span class="string">&lt;/script&gt;"</span>;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h3 id="Pointer-Type"><a href="#Pointer-Type" class="headerlink" title="Pointer Type"></a>Pointer Type</h3><p>The pointer will point to the memory address which is used as the same as C or C++. </p>
 <figure class="highlight c"><figcaption><span># Pointer Assignment</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// type* identifier;</span></span><br><span class="line"><span class="keyword">char</span>* cptr;</span><br><span class="line"><span class="keyword">int</span>* iptr</span><br><span class="line">&lt;/script&gt;";</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
       
     </div>
     
@@ -881,7 +1056,7 @@ ga('send', 'pageview');
 <h2 id="Credits"><a href="#Credits" class="headerlink" title="Credits"></a>Credits</h2><p><strong>Marxico</strong> was first built upon <a href="http://dillinger.io" target="_blank" rel="noopener">Dillinger</a>, and the newest version is almost based on the awesome <a href="http://stackedit.io" target="_blank" rel="noopener">StackEdit</a>. Acknowledgments to them and other incredible open source projects!</p>
 <h2 id="Feedback-amp-Bug-Report"><a href="#Feedback-amp-Bug-Report" class="headerlink" title="Feedback &amp; Bug Report"></a>Feedback &amp; Bug Report</h2><ul>
 <li>Twitter: <a href="https://twitter.com/gock2" target="_blank" rel="noopener">@gock2</a></li>
-<li>Email: <a href="mailto:&#104;&#x75;&#115;&#x74;&#103;&#111;&#x63;&#107;&#x40;&#103;&#x6d;&#x61;&#x69;&#108;&#46;&#99;&#x6f;&#109;" target="_blank" rel="noopener">&#104;&#x75;&#115;&#x74;&#103;&#111;&#x63;&#107;&#x40;&#103;&#x6d;&#x61;&#x69;&#108;&#46;&#99;&#x6f;&#109;</a></li>
+<li>Email: <a href="mailto:&#x68;&#x75;&#x73;&#x74;&#x67;&#111;&#99;&#x6b;&#64;&#x67;&#109;&#97;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#109;" target="_blank" rel="noopener">&#x68;&#x75;&#x73;&#x74;&#x67;&#111;&#99;&#x6b;&#64;&#x67;&#109;&#97;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#109;</a></li>
 </ul>
 <hr>
 <p>Thank you for reading this manual. Now please press <code>Ctrl + M</code> and click <code>Link with Evernote</code>. Enjoy your <strong>Marxico</strong> journey!</p>
@@ -940,23 +1115,23 @@ ga('send', 'pageview');
       <ul>
         
           <li>
-            <a href="/DexWebSite/2019/09/19/C-Lesson-2/">C # Lesson 2</a>
+            <a href="/DexWebSite/2019/09/21/C-Lesson-5-Nullable/">C# Lesson 5 - Nullable</a>
           </li>
         
           <li>
-            <a href="/DexWebSite/2019/09/19/C-Lesson-1/">C# Lesson 1</a>
+            <a href="/DexWebSite/2019/09/21/C-Lesson-4-Function-1/">C# Lesson 4 - Function</a>
           </li>
         
           <li>
-            <a href="/DexWebSite/2019/09/02/Algorithm-Binary-Search-Easy/">Algorithm Binary Search - Easy</a>
+            <a href="/DexWebSite/2019/09/21/C-Lesson-3/">C# Lesson 3 - Encapsulation</a>
           </li>
         
           <li>
-            <a href="/DexWebSite/2019/05/01/Hexo-Guide/">Hexo Guide</a>
+            <a href="/DexWebSite/2019/09/19/C-Lesson-2/">C# Lesson 2 - Base 2</a>
           </li>
         
           <li>
-            <a href="/DexWebSite/2019/05/01/How-to-answer-algorithm-Questions/">What is Coding Interviews </a>
+            <a href="/DexWebSite/2019/09/19/C-Lesson-1/">C# Lesson 1 - Base 1</a>
           </li>
         
       </ul>

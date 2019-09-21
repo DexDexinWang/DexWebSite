@@ -18,22 +18,22 @@ ga('send', 'pageview');
 
 
   
-  <title>algorithm | Dex Personal Website</title>
+  <title>C# Lesson 5 - Nullable | Dex Personal Website</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
   
-  <meta name="description" content="Programming, Technology, Algorithm">
-<meta property="og:type" content="website">
-<meta property="og:title" content="algorithm">
-<meta property="og:url" content="http://dexdexinwang.github.io/DexWebSite/algorithm/index.html">
+  <meta name="description" content="NullableIn Java, the primitive types (int, double, boolean) could not be ‘null’.  In C#, these primitive types could be assigned as null.  E.g. # Nullable12345678910Nullable&amp;lt;int&amp;gt; i = new Nullabl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C# Lesson 5 - Nullable">
+<meta property="og:url" content="http://dexdexinwang.github.io/DexWebSite/2019/09/21/C-Lesson-5-Nullable/index.html">
 <meta property="og:site_name" content="Dex Personal Website">
-<meta property="og:description" content="Programming, Technology, Algorithm">
+<meta property="og:description" content="NullableIn Java, the primitive types (int, double, boolean) could not be ‘null’.  In C#, these primitive types could be assigned as null.  E.g. # Nullable12345678910Nullable&amp;lt;int&amp;gt; i = new Nullabl">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-25T06:12:51.537Z">
+<meta property="og:updated_time" content="2019-09-21T18:52:42.074Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="algorithm">
-<meta name="twitter:description" content="Programming, Technology, Algorithm">
+<meta name="twitter:title" content="C# Lesson 5 - Nullable">
+<meta name="twitter:description" content="NullableIn Java, the primitive types (int, double, boolean) could not be ‘null’.  In C#, these primitive types could be assigned as null.  E.g. # Nullable12345678910Nullable&amp;lt;int&amp;gt; i = new Nullabl">
   
     <link rel="alternate" href="/DexWebSite/atom.xml" title="Dex Personal Website" type="application/atom+xml">
   
@@ -74,21 +74,21 @@ ga('send', 'pageview');
   </div>
 </header>
       <div id="middlecontent" title class="global-width sidebar-left">
-        <section id="main"><article id="page-" class="article global-container article-type-page" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-C-Lesson-5-Nullable" class="article global-container article-type-post" itemscope itemprop="blogPost">
   
     <header class="article-header">
       
   
     <h1 class="article-title" itemprop="name">
-      algorithm
+      C# Lesson 5 - Nullable
     </h1>
   
 
     </header>
   
   <div class="article-meta">
-    <a href="/DexWebSite/algorithm/index.html" class="article-date">
-  <time datetime="2019-03-25T06:12:51.000Z" itemprop="datePublished">2019-03-24</time>
+    <a href="/DexWebSite/2019/09/21/C-Lesson-5-Nullable/" class="article-date">
+  <time datetime="2019-09-21T18:44:41.000Z" itemprop="datePublished">2019-09-21</time>
 </a>
     
     
@@ -103,7 +103,16 @@ ga('send', 'pageview');
     
     <div class="article-content article-content-cloud" itemprop="articleBody">
       
-        
+        <h3 id="Nullable"><a href="#Nullable" class="headerlink" title="Nullable"></a>Nullable</h3><p>In Java, the primitive types (int, double, boolean) could not be ‘null’. </p>
+<p>In C#, these primitive types could be assigned as null. </p>
+<p>E.g.</p>
+<figure class="highlight c"><figcaption><span># Nullable</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Nullable&lt;<span class="keyword">int</span>&gt; i = <span class="keyword">new</span> Nullable&lt;<span class="keyword">int</span>&gt;(<span class="number">3</span>);</span><br><span class="line">  </span><br><span class="line"><span class="comment">//&lt; data_type&gt; ? &lt;variable_name&gt; = null; define nullable.</span></span><br><span class="line"><span class="keyword">int</span>? i = <span class="number">3</span>  <span class="comment">//they are same.</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> i; <span class="comment">//default value is 0</span></span><br><span class="line"><span class="keyword">int</span>? j; <span class="comment">//default value is null</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="Operator"><a href="#Operator" class="headerlink" title="?? Operator"></a>?? Operator</h3><p>?? operator is used to check a variable is null. </p>
+<p>E.g. Both are the same.</p>
+<p>a ?? b;</p>
+<p>a != null ? a : b;</p>
+<figure class="highlight c"><figcaption><span># Nullable</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">double</span>? num1 = null;</span><br><span class="line"><span class="keyword">double</span>? num2 = <span class="number">3.14157</span>;</span><br><span class="line"><span class="keyword">double</span> num3;</span><br><span class="line"><span class="keyword">double</span> num4;</span><br><span class="line">num3 = num1 ?? <span class="number">5.34</span>; <span class="comment">// num3 = 5.34   </span></span><br><span class="line">num4 = num2 ?? <span class="number">5.34</span>; <span class="comment">// num4 = 3.14157</span></span><br><span class="line">Console.ReadLine();</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -114,6 +123,20 @@ ga('send', 'pageview');
   </div>
   
     
+<nav id="article-nav">
+  <div class="article-nav-block">
+    
+  </div>
+  <div class="article-nav-block">
+    
+      <a href="/DexWebSite/2019/09/21/C-Lesson-4-Function-1/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">C# Lesson 4 - Function</div>
+        <strong class="article-nav-caption"></strong>
+      </a>
+    
+  </div>
+</nav>
+
     
 <div id="gitmentContainer"></div>
 <link rel="stylesheet" href="https://wzxjayce.github.io/gitment.css">

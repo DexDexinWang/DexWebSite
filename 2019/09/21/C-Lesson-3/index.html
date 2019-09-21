@@ -18,22 +18,22 @@ ga('send', 'pageview');
 
 
   
-  <title>algorithm | Dex Personal Website</title>
+  <title>C# Lesson 3 - Encapsulation | Dex Personal Website</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
   
-  <meta name="description" content="Programming, Technology, Algorithm">
-<meta property="og:type" content="website">
-<meta property="og:title" content="algorithm">
-<meta property="og:url" content="http://dexdexinwang.github.io/DexWebSite/algorithm/index.html">
+  <meta name="description" content="Encapsulation &amp;amp; Inheritance &amp;amp; PolymorphismEncapsulation:It is defined as the wrapping up of data under a single unit. It is the meachansim that binds together code and data it  manipulates. Ot">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C# Lesson 3 - Encapsulation">
+<meta property="og:url" content="http://dexdexinwang.github.io/DexWebSite/2019/09/21/C-Lesson-3/index.html">
 <meta property="og:site_name" content="Dex Personal Website">
-<meta property="og:description" content="Programming, Technology, Algorithm">
+<meta property="og:description" content="Encapsulation &amp;amp; Inheritance &amp;amp; PolymorphismEncapsulation:It is defined as the wrapping up of data under a single unit. It is the meachansim that binds together code and data it  manipulates. Ot">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-25T06:12:51.537Z">
+<meta property="og:updated_time" content="2019-09-21T18:16:11.114Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="algorithm">
-<meta name="twitter:description" content="Programming, Technology, Algorithm">
+<meta name="twitter:title" content="C# Lesson 3 - Encapsulation">
+<meta name="twitter:description" content="Encapsulation &amp;amp; Inheritance &amp;amp; PolymorphismEncapsulation:It is defined as the wrapping up of data under a single unit. It is the meachansim that binds together code and data it  manipulates. Ot">
   
     <link rel="alternate" href="/DexWebSite/atom.xml" title="Dex Personal Website" type="application/atom+xml">
   
@@ -74,23 +74,27 @@ ga('send', 'pageview');
   </div>
 </header>
       <div id="middlecontent" title class="global-width sidebar-left">
-        <section id="main"><article id="page-" class="article global-container article-type-page" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-C-Lesson-3" class="article global-container article-type-post" itemscope itemprop="blogPost">
   
     <header class="article-header">
       
   
     <h1 class="article-title" itemprop="name">
-      algorithm
+      C# Lesson 3 - Encapsulation
     </h1>
   
 
     </header>
   
   <div class="article-meta">
-    <a href="/DexWebSite/algorithm/index.html" class="article-date">
-  <time datetime="2019-03-25T06:12:51.000Z" itemprop="datePublished">2019-03-24</time>
+    <a href="/DexWebSite/2019/09/21/C-Lesson-3/" class="article-date">
+  <time datetime="2019-09-21T17:28:00.000Z" itemprop="datePublished">2019-09-21</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/DexWebSite/categories/C-Programming-Language/">C# Programming Language</a>
+  </div>
+
     
   </div>
   
@@ -103,7 +107,33 @@ ga('send', 'pageview');
     
     <div class="article-content article-content-cloud" itemprop="articleBody">
       
-        
+        <h3 id="Encapsulation-amp-Inheritance-amp-Polymorphism"><a href="#Encapsulation-amp-Inheritance-amp-Polymorphism" class="headerlink" title="Encapsulation &amp; Inheritance &amp; Polymorphism"></a>Encapsulation &amp; Inheritance &amp; Polymorphism</h3><p><strong><a href="https://www.geeksforgeeks.org/encapsulation-in-java/" target="_blank" rel="noopener">Encapsulation</a>:</strong><br>It is defined as the wrapping up of data under a single unit. It is the meachansim that binds together code and data it  manipulates. Other way to think about encapsulation is that is a protective shield that prevents the data from being accessed by the code outside this shield.</p>
+<ul>
+<li>Technically in encapsulation, the variables or data of a class is <strong>hidden from any other class</strong> and can be accessed through &amp;<strong>any member function of own class in which they are declared</strong>. </li>
+<li>As in encapsulation, the data in a class is hidden from other classes, so it is also known as <strong>data-hiding</strong>.</li>
+<li>Encapsulation can be achieved by: Declaring all the variables in the class as private and writing public methods in the class to set and get the values of variables.</li>
+</ul>
+<p><strong> Advantage of Encapsulation </strong></p>
+<ul>
+<li><p>Data Hiding: The user will have no idea about the inner impelmentation of the class. It will not be visible to the user that how the class is storing values in the varaibles. He only knows that we are passing the values to a setter method or variables are getting initialized with that value. </p>
+</li>
+<li><p>Increased Flexibility: WE can make the variables of the class as read-only or write-only depending on our requriement. if we wish to make the variables as read-only then we have to moit the setter methods. For write-only, the program should omit get methods. </p>
+</li>
+<li><p>Reusability: Encapsulation also improves the re-useability and easy to change with new requiements. </p>
+</li>
+<li>Testing code is eassy: It is easy to test for unit testing.</li>
+</ul>
+<p><strong> Access modifier </strong> </p>
+<p><a href="docs.microsoft.com">Access modifier</a> defines different way to access a method or a varaible.</p>
+<ul>
+<li>public: The type of member can be accessed by any other code in the smae assembly or other assembly that references it. </li>
+<li>private: The type or member can be accessed only by code in the same class or struct</li>
+<li>protected: The type or memeber can be accessed only by code in the same class, or in a aclass that is drived from that class.</li>
+<li>internal: the type or member can be accessed by any code in the same assembly, but not from another assemly.</li>
+<li>protected internal: The type or member can be accessed by any code in the assebmly in which it is declared, or from within a derived class in another assmblely. </li>
+<li>private protected: The type or memeber can be accessed only within its declaring assemly, by code in the same class or in a type that is derived from that class.</li>
+</ul>
+
       
     </div>
     
@@ -114,6 +144,29 @@ ga('send', 'pageview');
   </div>
   
     
+<nav id="article-nav">
+  <div class="article-nav-block">
+    
+      <a href="/DexWebSite/2019/09/21/C-Lesson-4-Function-1/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption"></strong>
+        <div class="article-nav-title">
+          
+            C# Lesson 4 - Function
+          
+        </div>
+      </a>
+    
+  </div>
+  <div class="article-nav-block">
+    
+      <a href="/DexWebSite/2019/09/19/C-Lesson-2/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">C# Lesson 2 - Base 2</div>
+        <strong class="article-nav-caption"></strong>
+      </a>
+    
+  </div>
+</nav>
+
     
 <div id="gitmentContainer"></div>
 <link rel="stylesheet" href="https://wzxjayce.github.io/gitment.css">
