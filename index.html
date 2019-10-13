@@ -75,6 +75,115 @@ ga('send', 'pageview');
       <div id="middlecontent" title class="global-width sidebar-left">
         <section id="main">
   
+    <article id="post-Java-Base-Principle-II" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/DexWebSite/2019/10/13/Java-Base-Principle-II/">Java Base Principle II</a>
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/DexWebSite/2019/10/13/Java-Base-Principle-II/" class="article-date">
+  <time datetime="2019-10-13T08:09:12.000Z" itemprop="datePublished">2019-10-13</time>
+</a>
+    
+    
+  </div>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <h3 id="Java-Base-Principle-II"><a href="#Java-Base-Principle-II" class="headerlink" title="Java Base Principle II"></a>Java Base Principle II</h3><h5 id="Conceptions"><a href="#Conceptions" class="headerlink" title="Conceptions"></a>Conceptions</h5><p><strong>JVM:</strong> The Java Virtual Machine is an abstract computing machine. The JVM is a program that looks like a machine to the programs written to execute in it. <br></p>
+<p><strong>JRE:(Java Runtime Environment):</strong>  It contains JVM program, Java application need to run on JRE.</p>
+<p><strong>JDK:(Java Developer Kits):</strong> It contains the tools for developing Java programs running on JRE, for example, it provides the compiler “javac” <br></p>
+<p><strong>Java:</strong> The source code just need to compiled once and it can run on any machine with JRE installed. (JRE, not the machine need to recognize the compiled code).</p>
+<p><strong>C++:</strong> The source code need to be compiled to directly the machine instructions on which machine program is running on. The compiled byte code is different on different machines. <br></p>
+<h5 id="By-Checking-characters"><a href="#By-Checking-characters" class="headerlink" title="By Checking characters:"></a>By Checking characters:</h5><ol>
+<li>Platform compatible, write once, compile once, run everywhere on JVM. <br><br>C++: write once, compile everywhere. <br></li>
+<li>Compiles to Java byte code can be recognized by JVM, independent to underline OS.</li>
+<li>Interpreter to routines on systems with different machine codes.</li>
+<li>Strongly encourage Object-Oriented Programming Paradigm, everything in Java is class/object.</li>
+<li>All types (reference types, primitive types) are always pass by value.</li>
+<li>Java does not support unsigned integers</li>
+<li>Reference (Java) vs Pointers (C++) No pointer arithmetics</li>
+<li>No operator overloading. “+”, “-”…..</li>
+<li>Classes/Objects are always allocated on the Heap, there is no way to allocate objects on stack.</li>
+<li>Single inheritance, multiple inheritance only be done by implementing multiple interfaces.</li>
+<li>Garbage Collection. So we do not need to care about memory management. No memory leak.But the momory use is more than necessary.</li>
+</ol>
+<p><strong>Compile and Interpreter</strong></p>
+<ol>
+<li>Run compile command “javac” to convert Java source code as JVM readable byte code(.java -&gt; .class)</li>
+<li>JVM interprets the Java bytecode to pre-compiled routine on machine doce.</li>
+<li>Just-in-time(JIT) compilation to compile the bytecode to native instructions. <br></li>
+</ol>
+<p>The current version of Sun HotSpot JVM uses a technique called Just-in-time(JIT) compilation to compile the bytecode to the native instructions understood by the CPU on the fly at run time.<br>Some implementations of JVM might interpret the bytecode instead of JIT compiling it to machine code and running it directly. While this is still considered an “interpreter”. It is significantly different from interpreters that read and execute the high level source code.</p>
+<p><strong>Single Reference:</strong> <br></p>
+<p>In Java, References are strongly types. E.g. String s = “abc”; // It is reference of type “String”. Hence, there is no pointer arithmetic on references. <br><br>Pointers in C++ are much more powerful than JAVA, also dangerous.</p>
+<p><strong>Single Inheritance:</strong> <br></p>
+<p>One class can extends from only one class, but can implements multiple interfaces in JAVA to avoid ambiguous and achieve <em>Global Root</em>. <br><br>Java enforce signle inheritance to eliminate this kind of problems and to make the class hierarchy much cleaner and easier to maintain. <br><br>Allowing multiple implementation of different interfaces to provide similar support of “multiple inheritance” <br></p>
+<p><strong>Stack VS. Heap:</strong> <br></p>
+<p>Stack: local variable, tracking method call flow, return address etc. – one per thread <br><br>Heap: dynamic memory allocation. – only one per JVM</p>
+<p>The keyword,“new”, means allocate memory on Heap for the created object, and return the reference of the object.</p>
+<p>The JAVA does not allow to relocate memory in stack. </p>
+<p><strong>Garbage Collection:</strong> <br></p>
+<p>Why do we need it? What exactly the problem it tries to solve?<br><br>More efficiently manage dynamic memory allocation. In program, it has to create some “Objects” to solve the problems, and these things are dynamically created and need some memory to store them.</p>
+<p>C++: </p>
+<ul>
+<li>“new” to crate object on heap</li>
+<li>“delete” to reclaim the allocated memory, and this is needed to be done by developer themselves! (imaging how hard it is..) <br></li>
+</ul>
+<p>Java:</p>
+<ul>
+<li>Garbage Collection is mechanism to automatically detect/delete the unused objects, so that developers do not need to care too much about each individual object life cycle.</li>
+</ul>
+<p>The heap stores object data, and this area is also managed by the garbage collector at startup.</p>
+<p>How does GC work:</p>
+<ol>
+<li>Marking </li>
+<li>Normal Deletion</li>
+<li>Deletion with Compacting<br>Other: When GC works, the whole program will not work even threats</li>
+</ol>
+<p><strong>JVM Generations:</strong> <br><br>The information learned from object allocation behavior can be used to enhance the performance of the JVM. Therefore, the heap is broken up into smaller parts or generations.<br><br>The heap parts are: </p>
+<ul>
+<li>Young Generation </li>
+<li>Old or Tenured Generation</li>
+<li>Permanent Generation. <br></li>
+</ul>
+<p>If GC is moving the objects in heap, that means the main java program should be stopped, this is called <em>“stop the world”</em> event. This happens each time if the GC needs to run, the running time of GC is related to the heap size, if we have a very large heap (heap size can be vary large, for example, 100G is normal case for some application), delay of response will be a big problem here. Hence, the Generations idea is used for the application.</p>
+<p><strong> The reason of generations</strong><br>a.    Do not stop the world very long every time.<br>b.    The pattern of the object life cycles could be utilized.</p>
+<p>Design Principle: <br><br>Most of the objects used in application/program has short life cycle. Having hierarchical generation will make GC more efficient to avoid long stop when doing on the full heap. The generation is defined by the length of life cycle of the objects, and the GC is only running on the generations with longer cycle when needed.</p>
+<p>Old Generation: <br><br>Typically, a threshold is set for young generation object and when that age is met, the object gets moved to the old generation (the basic escalation rule). <br></p>
+<p>Permanent generation: <br> metadata required by the JVM to describe the classes and methods used in the application, and the String intern.<br>Classes may get collected if the JVM finds they are no longer needed and space may be needed for other classes.  The permanent generation is included in a full GC.</p>
+<p>How to know if an object can be GCed or not?</p>
+<ul>
+<li>Graph of dependency of refence and objects</li>
+<li>From a set of root references/objects, find all the objects reachable through the paths on the dependency graph, other ones are not needed and can be GCed.</li>
+</ul>
+<p>4 kind variables:</p>
+<ol>
+<li>Local Variable are kept alive by the stack of a thread.</li>
+<li>Active Java threads</li>
+<li>Static variables</li>
+<li>Java Native Interface References.</li>
+</ol>
+
+      
+    </div>
+    
+  </div>
+  
+  
+</article>
+
+  
     <article id="post-Java-String-Class" class="article global-container article-type-post" itemscope itemprop="blogPost">
   
     <header class="article-header">
@@ -112,7 +221,14 @@ ga('send', 'pageview');
 <figure class="highlight java"><figcaption><span>Literal String Creation (Assumption)</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String s1 = “Dex is Nice.”;</span><br><span class="line">String s2 = “Dex is Nice.”;</span><br><span class="line">System.out.println(s1 == s2); <span class="comment">// true, because it just compare whether s1 and s2 point to the same object.</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <figure class="highlight java"><figcaption><span>Literal String Creation 2 (Assumption)</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String s1 = “Dex is Nice.”;</span><br><span class="line">String s2 = <span class="keyword">new</span> String (“Dex is Nice.”);</span><br><span class="line">System.out.println(s1 == s2); <span class="comment">// false, because s1 and s2 point to the different object.</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p><em>Conclution:</em> <br><br>There is no need for maintaining several copies of String objects with the same iteral, since String objects are immutable. <br><br>Usually compiler and JVM will optimize for the number of String objects created, it will maintain an intern area in Heap, for the same String literal it will only has one String object associated. <br></p>
-<p><strong> String Concatenation </strong></p>
+<p><strong> String Concatenation: </strong> <br></p>
+<figure class="highlight java"><figcaption><span>String Concatenation</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">String s1 = “Dex”;</span><br><span class="line">String s2 = <span class="keyword">new</span> String (“ is Nice.”);</span><br><span class="line">S1.concat(s2) <span class="comment">// This will create a new String object rather than change the value of s1 or s2.</span></span><br><span class="line">S3 = “ab” + “cd” <span class="comment">// s3 = “abcd”, compile time concatenation</span></span><br><span class="line">S4 = s3 + <span class="string">"def"</span>; <span class="comment">// s3.concat(“def”);</span></span><br><span class="line">S5 = <span class="number">1</span> + “def” <span class="comment">// String.valueOf(1), (1 -&gt; Integer(1) -&gt; Integer(1).toString()) -&gt; 1</span></span><br><span class="line">S6 = “Test ” + <span class="number">2</span> + “ Cool ” + <span class="keyword">true</span> + ‘y’;</span><br><span class="line"><span class="comment">//Could be further optimized to new StringBuilder().append(“Test”).append(2).append(“ Cool ”)….. .toString() at compiler time.</span></span><br><span class="line"><span class="comment">//Time complexity O(n * m);</span></span><br><span class="line"><span class="comment">//Space complexity O(n * m);   </span></span><br><span class="line"><span class="comment">//Where n is the number of append and m is the maximum length of string in array.</span></span><br></pre></td></tr></table></figure>
+<p><strong> String Comparation </strong> <br><br>Comparing two strings lexicographically. If tow strings are different, then either they have different characters at some index that is a valid index for both strings, or their lengths are different, or both.</p>
+<figure class="highlight java"><figcaption><span>String Comparation</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">system.out.println(<span class="string">"abc"</span>.compareTo(<span class="string">"abc"</span>)); <span class="comment">//0</span></span><br><span class="line">system.out.println(<span class="string">"abc"</span>.compareTo(<span class="string">"abd"</span>)); <span class="comment">//-1</span></span><br><span class="line">system.out.println(<span class="string">"abc"</span>.compareTo(<span class="string">"abcd"</span>)); <span class="comment">//-2</span></span><br></pre></td></tr></table></figure>
+<p><strong> String Method </strong> <br><br>Any method provied by String class will always returns a new string without modifiying string objects.</p>
+<figure class="highlight java"><figcaption><span>String Comparation</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String a = <span class="string">"test-1-2"</span>; <span class="comment">//total length </span></span><br><span class="line"><span class="keyword">int</span> b = a.indexOf(<span class="string">"1"</span>); <span class="comment">// 5</span></span><br><span class="line"><span class="keyword">int</span> c = a.length(); <span class="comment">// 8</span></span><br><span class="line">String d = a.substring(b,c); <span class="comment">// 1-2  (start index is included, end index is excluded);</span></span><br></pre></td></tr></table></figure>
+<p><strong> StringBuilder and StringBUffer:</strong></p>
+<p>They are intermediate classes that are modifiable since String is Immutable.<br>Different between StringBuilder and StringBuffer<br>•    They are doing exactly the same thing<br>•    StringBuffer is “thread-safe”, each of the methods are synchronized.<br>•    StringBuilder is not thread-safe, it is intended to be used in single thread environment.</p>
 
       
     </div>
@@ -159,15 +275,13 @@ ga('send', 'pageview');
 <li>Inheritance </li>
 </ul>
 <p><strong>JAVA Object-Oriented Paradigm:</strong> Everything in the world is an object <br> </p>
-<ul>
+<ol>
 <li>Each object has a type</li>
-<li>Each object is defined by two kinds of information</li>
-<li>Status: the “field”s – what things it maintains</li>
-<li>Behavior: the “method”s (functions) – what it can do</li>
-</ul>
-<p><strong> JAVA Main Method: </strong> Main Method is the entry point of Java programs. Each project has only one Public Main Class. The name is fixed as “main” which is called by the JVM as entry point for an application.<br><br>e.g. public static void main(String[] args)]</p>
+<li>Each object is defined by two kinds of information <br><br>2.1.    Status: the “field”s – what things it maintains<br><br>2.2.  Behavior: the “method”s (functions) – what it can do <br></li>
+</ol>
+<p><strong> JAVA Main Method: </strong> Main Method is the entry point of Java programs. Each project has only one <em>Public Main Class</em>. The name is fixed as “main” which is called by the JVM as entry point for an application.<br><br>e.g. public static void main(String[] args)]</p>
 <p><strong> JAVA Method: </strong><br></p>
-<p>E..g public static Integer methodName (int a, String b)</p>
+<p>E.g.  public static Integer methodName(int a, String b)</p>
 <ul>
 <li>Modifier  (public static)</li>
 <li>Return type (Integer)</li>
@@ -175,7 +289,7 @@ ga('send', 'pageview');
 <li>List of parameters (int a, String g) <br></li>
 </ul>
 <p><strong> JAVA Method (Function) Operation: </strong> If you run a method, the method will evaluate all parameters. For the method Evaluation, it requires all parameters should be certain values.<br><br><br>E.g. Return methodA(array, methodB(array)).  <br><br>It should operate methodB(array) first because it should be calculated before running methodA. </p>
-<p><em>JAVA evalation orders is from lift to right.</em></p>
+<p><em>JAVA evalation orders is from left to right.</em></p>
 <p><strong> Reference &amp; Dereference: </strong> <br><br>E.g.<br>{List<integer>} {list} {=} {new LinkedList<integer>();}<br>{Declaration} {Reference} {Instantiation} {Instantiation}</integer></integer></p>
 <ul>
 <li>Declaration: associate a variable name with an object type</li>
@@ -186,8 +300,8 @@ ga('send', 'pageview');
 <p>E.g.list.get(1) = 1314521 </p>
 <p>Dereference: the number ‘1314521’ will be assign to data which list points to. </p>
 <p><strong> Java-JVM Memory: Stack and Heap:</strong> <br></p>
-<p><strong>Stack:</strong> LIFO, a call stack is a stack data structure that stores information about the active subroutines of a computer program. This kind of stack is also known as <font color="#0099ff"><em>an execution stack, program stack, control stack, run-time stack, or machine stack, and is often shortened to just “the stack”</em></font>.<br>Tracking the instructions.  <br></p>
-<p><strong>Heap:</strong> Java objects reside in an area called the heap. The heap is created when the JVM starts up and may increase or decrease in size while the application runs. <br><br>E.g.</p>
+<p><strong>Stack:</strong> LIFO, a call stack is a stack data structure that stores information about the active subroutines of a computer program. This kind of stack is also known as <font color="#0099ff"><em>an execution stack, program stack, control stack, run-time stack, or machine stack, and is often shortened to just “the stack”</em></font>. It is used to track the instructions.  <br></p>
+<p><strong>Heap:</strong> Java objects reside in an area called the heap. The heap is created when the JVM (Java Virtual Machine) starts up and may increase or decrease in size while the application runs. <br><br>E.g.</p>
 <table><br><tr><th clospan="2"><center><strong>Java Memory</strong></center></th><th></th></tr><br><tr><td>Stack Frame (level 5)</td><td rowspan="5"> <center><font size="10">Heap</font></center></td><td></td></tr><br><tr><td>Stack Frame (level 4)</td></tr><br><tr><td>Stack Frame (level 3)</td></tr><br><tr><td>Stack Frame (level 2)</td></tr><br><tr><td>Stack Frame (level 1)</td></tr><br></table>
 
 <p><br></p>
@@ -996,75 +1110,6 @@ ga('send', 'pageview');
 </article>
 
   
-    <article id="post-How-to-answer-algorithm-Questions" class="article global-container article-type-post" itemscope itemprop="blogPost">
-  
-    <header class="article-header">
-      
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/DexWebSite/2019/05/01/How-to-answer-algorithm-Questions/">What is Coding Interviews </a>
-    </h1>
-  
-
-    </header>
-  
-  <div class="article-meta">
-    <a href="/DexWebSite/2019/05/01/How-to-answer-algorithm-Questions/" class="article-date">
-  <time datetime="2019-05-02T05:26:00.000Z" itemprop="datePublished">2019-05-01</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/DexWebSite/categories/Algorithm/">Algorithm</a>
-  </div>
-
-    
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/DexWebSite/tags/Principle/">Principle</a></li></ul>
-
-  </div>
-  
-
-  <div class="article-inner">
-    
-    <div class="article-content article-content-cloud" itemprop="articleBody">
-      
-        <h3 id="Interviewer-Conditions"><a href="#Interviewer-Conditions" class="headerlink" title="Interviewer Conditions"></a>Interviewer Conditions</h3><p>Coding Interview is going to select a perfect matched programer to work together. Hence, interviwers will assume that interviewees have already has coding experience and focus on communication skill and working style.</p>
-<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>Normally, interviewers will ask project related questions such as Binary Search Serialization or Deserilization, mutiple threads, timing LRU, and so on. If interviewees are not familier with these questions, interviewers will try to find advatages of these interviewees by asking open questions or hard coding questions. </p>
-<h3 id="Communication"><a href="#Communication" class="headerlink" title="Communication"></a>Communication</h3><p>Interviewers will check communication skill by ask coding questions. They want interviewees ask some questions before typing code because real tasks are not the same as coding questions. It is easier to cause mistakes by ignoring inconspicuous changes. </p>
-<p>You can follow below steps to answer algorithm questions:</p>
-<p><strong>Before</strong> </p>
-<ul>
-<li>Ask Questions to document your assumptions. (Limitation, Value Type, Focus on Space or Time)</li>
-<li>Briefly Explain your approach or solution to show how you intend to solve the problem. (2 or 3 sentences)</li>
-</ul>
-<blockquote>
-<p>When you make some assutions, the interviewers may ask you change your assumptions. They want to see your reaction to meet unknow questions.For example, if you assume time cost is higher priority, they may ask you to assume sapce cost is hither priorty. </p>
-</blockquote>
-<p><strong>Coding</strong></p>
-<ul>
-<li>Provide code comments where applicable. (the # of parameters of a method are over 3, that should write comment);</li>
-</ul>
-<blockquote>
-<p>Bug Free and complete on time.</p>
-</blockquote>
-<p><strong>After</strong></p>
-<ul>
-<li>Explain the big-O run time complexity of your solution. Justify your answer.</li>
-<li>Identify and additional data structures you used and justify why you used them. (Why do you use this structure? Is that necessary?).</li>
-<li>Only provide your best answer to each part of the question.</li>
-</ul>
-<blockquote>
-<p>Then, you could run some corner cases to check code logic. Next, interviwers will ask follow-up questions in order to check your knowledge and patience. </p>
-</blockquote>
-
-      
-    </div>
-    
-  </div>
-  
-  
-</article>
-
-  
 
 
   <nav id="page-nav">
@@ -1114,6 +1159,10 @@ ga('send', 'pageview');
       <ul>
         
           <li>
+            <a href="/DexWebSite/2019/10/13/Java-Base-Principle-II/">Java Base Principle II</a>
+          </li>
+        
+          <li>
             <a href="/DexWebSite/2019/10/12/Java-String-Class/">Java String Class</a>
           </li>
         
@@ -1127,10 +1176,6 @@ ga('send', 'pageview');
         
           <li>
             <a href="/DexWebSite/2019/09/21/C-Lesson-4-Function-1/">C# Lesson 4 - Function</a>
-          </li>
-        
-          <li>
-            <a href="/DexWebSite/2019/09/21/C-Lesson-3/">C# Lesson 3 - Encapsulation</a>
           </li>
         
       </ul>

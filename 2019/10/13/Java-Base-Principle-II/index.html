@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-113086304-2', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <title>Java Base Principle II | Dex Personal Website</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <meta name="description" content="Java Base Principle IIConceptionsJVM: The Java Virtual Machine is an abstract computing machine. The JVM is a program that looks like a machine to the programs written to execute in it.  JRE:(Java Run">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java Base Principle II">
+<meta property="og:url" content="http://dexdexinwang.github.io/DexWebSite/2019/10/13/Java-Base-Principle-II/index.html">
+<meta property="og:site_name" content="Dex Personal Website">
+<meta property="og:description" content="Java Base Principle IIConceptionsJVM: The Java Virtual Machine is an abstract computing machine. The JVM is a program that looks like a machine to the programs written to execute in it.  JRE:(Java Run">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-10-13T08:56:53.385Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java Base Principle II">
+<meta name="twitter:description" content="Java Base Principle IIConceptionsJVM: The Java Virtual Machine is an abstract computing machine. The JVM is a program that looks like a machine to the programs written to execute in it.  JRE:(Java Run">
+  
+    <link rel="alternate" href="/DexWebSite/atom.xml" title="Dex Personal Website" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/DexWebSite/images/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/DexWebSite/css/style.css">
+  <link rel="stylesheet" href="/DexWebSite/css/highlight.css">
+  <script>
+  let antiquityStorage = window.sessionStorage.getItem('antiquitySessionStorage');
+  if (antiquityStorage == '' || antiquityStorage == null) {
+    var antiquityLoader = '<div id="loaderbox"><div class="loader"><div class="load-roll"><div class="load-top"></div><div class="load-right"></div><div class="load-bottom"></div></div></div></div>';
+    document.write(antiquityLoader);
+    document.body.style.overflow = 'hidden'
+  }
+  </script>
+</head>
+</html>
+<body>
+  <div id="fullpage" class="mobile-nav-left">
+    
+      <div id="wrapper" style="background-image: url(/DexWebSite/images/bg.jpg)" title="background">
+    
+    
+      <header id="header">
+  <div id="nav-toggle" class="nav-toggle"></div>
+  <div class="head-box global-width">
+    <nav class="nav-box nav-left">
+      
+        <a class="nav-item" href="/DexWebSite/" title>Home</a>
+      
+        <a class="nav-item" href="/DexWebSite/../PersonalWebSite/" title>Background</a>
+      
+    </nav>
+  </div>
+</header>
+      <div id="middlecontent" title class="global-width sidebar-left">
+        <section id="main"><article id="post-Java-Base-Principle-II" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      Java Base Principle II
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/DexWebSite/2019/10/13/Java-Base-Principle-II/" class="article-date">
+  <time datetime="2019-10-13T08:09:12.000Z" itemprop="datePublished">2019-10-13</time>
+</a>
+    
+    
+  </div>
+  
+    <span id="busuanzi_container_page_pv">
+      Total Read : <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <h3 id="Java-Base-Principle-II"><a href="#Java-Base-Principle-II" class="headerlink" title="Java Base Principle II"></a>Java Base Principle II</h3><h5 id="Conceptions"><a href="#Conceptions" class="headerlink" title="Conceptions"></a>Conceptions</h5><p><strong>JVM:</strong> The Java Virtual Machine is an abstract computing machine. The JVM is a program that looks like a machine to the programs written to execute in it. <br></p>
+<p><strong>JRE:(Java Runtime Environment):</strong>  It contains JVM program, Java application need to run on JRE.</p>
+<p><strong>JDK:(Java Developer Kits):</strong> It contains the tools for developing Java programs running on JRE, for example, it provides the compiler “javac” <br></p>
+<p><strong>Java:</strong> The source code just need to compiled once and it can run on any machine with JRE installed. (JRE, not the machine need to recognize the compiled code).</p>
+<p><strong>C++:</strong> The source code need to be compiled to directly the machine instructions on which machine program is running on. The compiled byte code is different on different machines. <br></p>
+<h5 id="By-Checking-characters"><a href="#By-Checking-characters" class="headerlink" title="By Checking characters:"></a>By Checking characters:</h5><ol>
+<li>Platform compatible, write once, compile once, run everywhere on JVM. <br><br>C++: write once, compile everywhere. <br></li>
+<li>Compiles to Java byte code can be recognized by JVM, independent to underline OS.</li>
+<li>Interpreter to routines on systems with different machine codes.</li>
+<li>Strongly encourage Object-Oriented Programming Paradigm, everything in Java is class/object.</li>
+<li>All types (reference types, primitive types) are always pass by value.</li>
+<li>Java does not support unsigned integers</li>
+<li>Reference (Java) vs Pointers (C++) No pointer arithmetics</li>
+<li>No operator overloading. “+”, “-”…..</li>
+<li>Classes/Objects are always allocated on the Heap, there is no way to allocate objects on stack.</li>
+<li>Single inheritance, multiple inheritance only be done by implementing multiple interfaces.</li>
+<li>Garbage Collection. So we do not need to care about memory management. No memory leak.But the momory use is more than necessary.</li>
+</ol>
+<p><strong>Compile and Interpreter</strong></p>
+<ol>
+<li>Run compile command “javac” to convert Java source code as JVM readable byte code(.java -&gt; .class)</li>
+<li>JVM interprets the Java bytecode to pre-compiled routine on machine doce.</li>
+<li>Just-in-time(JIT) compilation to compile the bytecode to native instructions. <br></li>
+</ol>
+<p>The current version of Sun HotSpot JVM uses a technique called Just-in-time(JIT) compilation to compile the bytecode to the native instructions understood by the CPU on the fly at run time.<br>Some implementations of JVM might interpret the bytecode instead of JIT compiling it to machine code and running it directly. While this is still considered an “interpreter”. It is significantly different from interpreters that read and execute the high level source code.</p>
+<p><strong>Single Reference:</strong> <br></p>
+<p>In Java, References are strongly types. E.g. String s = “abc”; // It is reference of type “String”. Hence, there is no pointer arithmetic on references. <br><br>Pointers in C++ are much more powerful than JAVA, also dangerous.</p>
+<p><strong>Single Inheritance:</strong> <br></p>
+<p>One class can extends from only one class, but can implements multiple interfaces in JAVA to avoid ambiguous and achieve <em>Global Root</em>. <br><br>Java enforce signle inheritance to eliminate this kind of problems and to make the class hierarchy much cleaner and easier to maintain. <br><br>Allowing multiple implementation of different interfaces to provide similar support of “multiple inheritance” <br></p>
+<p><strong>Stack VS. Heap:</strong> <br></p>
+<p>Stack: local variable, tracking method call flow, return address etc. – one per thread <br><br>Heap: dynamic memory allocation. – only one per JVM</p>
+<p>The keyword,“new”, means allocate memory on Heap for the created object, and return the reference of the object.</p>
+<p>The JAVA does not allow to relocate memory in stack. </p>
+<p><strong>Garbage Collection:</strong> <br></p>
+<p>Why do we need it? What exactly the problem it tries to solve?<br><br>More efficiently manage dynamic memory allocation. In program, it has to create some “Objects” to solve the problems, and these things are dynamically created and need some memory to store them.</p>
+<p>C++: </p>
+<ul>
+<li>“new” to crate object on heap</li>
+<li>“delete” to reclaim the allocated memory, and this is needed to be done by developer themselves! (imaging how hard it is..) <br></li>
+</ul>
+<p>Java:</p>
+<ul>
+<li>Garbage Collection is mechanism to automatically detect/delete the unused objects, so that developers do not need to care too much about each individual object life cycle.</li>
+</ul>
+<p>The heap stores object data, and this area is also managed by the garbage collector at startup.</p>
+<p>How does GC work:</p>
+<ol>
+<li>Marking </li>
+<li>Normal Deletion</li>
+<li>Deletion with Compacting<br>Other: When GC works, the whole program will not work even threats</li>
+</ol>
+<p><strong>JVM Generations:</strong> <br><br>The information learned from object allocation behavior can be used to enhance the performance of the JVM. Therefore, the heap is broken up into smaller parts or generations.<br><br>The heap parts are: </p>
+<ul>
+<li>Young Generation </li>
+<li>Old or Tenured Generation</li>
+<li>Permanent Generation. <br></li>
+</ul>
+<p>If GC is moving the objects in heap, that means the main java program should be stopped, this is called <em>“stop the world”</em> event. This happens each time if the GC needs to run, the running time of GC is related to the heap size, if we have a very large heap (heap size can be vary large, for example, 100G is normal case for some application), delay of response will be a big problem here. Hence, the Generations idea is used for the application.</p>
+<p><strong> The reason of generations</strong><br>a.    Do not stop the world very long every time.<br>b.    The pattern of the object life cycles could be utilized.</p>
+<p>Design Principle: <br><br>Most of the objects used in application/program has short life cycle. Having hierarchical generation will make GC more efficient to avoid long stop when doing on the full heap. The generation is defined by the length of life cycle of the objects, and the GC is only running on the generations with longer cycle when needed.</p>
+<p>Old Generation: <br><br>Typically, a threshold is set for young generation object and when that age is met, the object gets moved to the old generation (the basic escalation rule). <br></p>
+<p>Permanent generation: <br> metadata required by the JVM to describe the classes and methods used in the application, and the String intern.<br>Classes may get collected if the JVM finds they are no longer needed and space may be needed for other classes.  The permanent generation is included in a full GC.</p>
+<p>How to know if an object can be GCed or not?</p>
+<ul>
+<li>Graph of dependency of refence and objects</li>
+<li>From a set of root references/objects, find all the objects reachable through the paths on the dependency graph, other ones are not needed and can be GCed.</li>
+</ul>
+<p>4 kind variables:</p>
+<ol>
+<li>Local Variable are kept alive by the stack of a thread.</li>
+<li>Active Java threads</li>
+<li>Static variables</li>
+<li>Java Native Interface References.</li>
+</ol>
+
+      
+    </div>
+    
+      <footer class="article-footer">
+        Done
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  <div class="article-nav-block">
+    
+  </div>
+  <div class="article-nav-block">
+    
+      <a href="/DexWebSite/2019/10/12/Java-String-Class/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">Java String Class</div>
+        <strong class="article-nav-caption"></strong>
+      </a>
+    
+  </div>
+</nav>
+
+    
+<div id="gitmentContainer"></div>
+<link rel="stylesheet" href="https://wzxjayce.github.io/gitment.css">
+<script src="https://wzxjayce.github.io/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  owner: 'dexdexinwang',
+  repo: 'DexWebSite',
+  oauth: {
+    client_id: '7c44fd11f8e0d609f5ba',
+    client_secret: 'ea91b14d1a2f4aa1ff3d610c266ff8280eb5caae',
+  },
+})
+gitment.render('gitmentContainer')
+</script>
+
+  
+  
+</article>
+</section>
+        <aside id="sidebar">
+  
+    <div class="widget-box">
+  <div class="avatar-box">
+    <img class="avatar" src="/DexWebSite/images/dexphoto.jpg" title="personal image">
+    <h3 class="avatar-name">
+      
+        Dexin Wang
+      
+    </h3>
+  </div>
+</div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Algorithm/">Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Basic/">Basic</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/C-Programming-Language/">C# Programming Language</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Java-Programming-Language/">Java Programming Language</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Kits/">Kits</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/03/">March 2019</a></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/DexWebSite/2019/10/13/Java-Base-Principle-II/">Java Base Principle II</a>
+          </li>
+        
+          <li>
+            <a href="/DexWebSite/2019/10/12/Java-String-Class/">Java String Class</a>
+          </li>
+        
+          <li>
+            <a href="/DexWebSite/2019/10/12/Algorithm-Principle-2/">Java Base Principle</a>
+          </li>
+        
+          <li>
+            <a href="/DexWebSite/2019/09/21/C-Lesson-5-Nullable/">C# Lesson 5 - Nullable</a>
+          </li>
+        
+          <li>
+            <a href="/DexWebSite/2019/09/21/C-Lesson-4-Function-1/">C# Lesson 4 - Function</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      </div>
+      <footer id="footer">
+  <div class="foot-box global-width">
+    &copy; 2019 Dexin Wang &nbsp;&nbsp;
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    &nbsp;|&nbsp;Theme <a href="https://github.com/DexDexinWang/hexo-dex">antiquity</a>
+    <br>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">You are the <span id="busuanzi_value_site_pv"></span> visitor</span>
+  </div>
+</footer>
+      <script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script>
+if (!window.jQuery) {
+var script = document.createElement('script');
+script.src = "/js/jquery-2.0.3.min.js";
+document.body.write(script);
+}
+</script>
+
+  <link rel="stylesheet" href="/DexWebSite/fancybox/jquery.fancybox.css">
+  <script src="/DexWebSite/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/DexWebSite/js/script.js"></script>
+
+
+
+    </div>
+    <nav id="mobile-nav" class="mobile-nav-box">
+  <div class="mobile-nav-img mobile-nav-top"></div>
+  
+    <a href="/DexWebSite/" class="mobile-nav-link">Home</a>
+  
+    <a href="/DexWebSite/../PersonalWebSite/" class="mobile-nav-link">Background</a>
+  
+  <div class="mobile-nav-img  mobile-nav-bottom"></div>
+</nav>    
+  </div>
+</body>
+</html>

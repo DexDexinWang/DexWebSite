@@ -30,7 +30,7 @@ ga('send', 'pageview');
 <meta property="og:site_name" content="Dex Personal Website">
 <meta property="og:description" content="JAVA STRING CLASSSting is a very special class in Java Programming language. String and all the wrapper class objects are immutable class that means if an string is created, it cannot be chagned.  Str">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-10-13T00:27:12.432Z">
+<meta property="og:updated_time" content="2019-10-13T08:05:38.585Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java String Class">
 <meta name="twitter:description" content="JAVA STRING CLASSSting is a very special class in Java Programming language. String and all the wrapper class objects are immutable class that means if an string is created, it cannot be chagned.  Str">
@@ -115,7 +115,14 @@ ga('send', 'pageview');
 <figure class="highlight java"><figcaption><span>Literal String Creation (Assumption)</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String s1 = “Dex is Nice.”;</span><br><span class="line">String s2 = “Dex is Nice.”;</span><br><span class="line">System.out.println(s1 == s2); <span class="comment">// true, because it just compare whether s1 and s2 point to the same object.</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <figure class="highlight java"><figcaption><span>Literal String Creation 2 (Assumption)</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String s1 = “Dex is Nice.”;</span><br><span class="line">String s2 = <span class="keyword">new</span> String (“Dex is Nice.”);</span><br><span class="line">System.out.println(s1 == s2); <span class="comment">// false, because s1 and s2 point to the different object.</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p><em>Conclution:</em> <br><br>There is no need for maintaining several copies of String objects with the same iteral, since String objects are immutable. <br><br>Usually compiler and JVM will optimize for the number of String objects created, it will maintain an intern area in Heap, for the same String literal it will only has one String object associated. <br></p>
-<p><strong> String Concatenation </strong></p>
+<p><strong> String Concatenation: </strong> <br></p>
+<figure class="highlight java"><figcaption><span>String Concatenation</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">String s1 = “Dex”;</span><br><span class="line">String s2 = <span class="keyword">new</span> String (“ is Nice.”);</span><br><span class="line">S1.concat(s2) <span class="comment">// This will create a new String object rather than change the value of s1 or s2.</span></span><br><span class="line">S3 = “ab” + “cd” <span class="comment">// s3 = “abcd”, compile time concatenation</span></span><br><span class="line">S4 = s3 + <span class="string">"def"</span>; <span class="comment">// s3.concat(“def”);</span></span><br><span class="line">S5 = <span class="number">1</span> + “def” <span class="comment">// String.valueOf(1), (1 -&gt; Integer(1) -&gt; Integer(1).toString()) -&gt; 1</span></span><br><span class="line">S6 = “Test ” + <span class="number">2</span> + “ Cool ” + <span class="keyword">true</span> + ‘y’;</span><br><span class="line"><span class="comment">//Could be further optimized to new StringBuilder().append(“Test”).append(2).append(“ Cool ”)….. .toString() at compiler time.</span></span><br><span class="line"><span class="comment">//Time complexity O(n * m);</span></span><br><span class="line"><span class="comment">//Space complexity O(n * m);   </span></span><br><span class="line"><span class="comment">//Where n is the number of append and m is the maximum length of string in array.</span></span><br></pre></td></tr></table></figure>
+<p><strong> String Comparation </strong> <br><br>Comparing two strings lexicographically. If tow strings are different, then either they have different characters at some index that is a valid index for both strings, or their lengths are different, or both.</p>
+<figure class="highlight java"><figcaption><span>String Comparation</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">system.out.println(<span class="string">"abc"</span>.compareTo(<span class="string">"abc"</span>)); <span class="comment">//0</span></span><br><span class="line">system.out.println(<span class="string">"abc"</span>.compareTo(<span class="string">"abd"</span>)); <span class="comment">//-1</span></span><br><span class="line">system.out.println(<span class="string">"abc"</span>.compareTo(<span class="string">"abcd"</span>)); <span class="comment">//-2</span></span><br></pre></td></tr></table></figure>
+<p><strong> String Method </strong> <br><br>Any method provied by String class will always returns a new string without modifiying string objects.</p>
+<figure class="highlight java"><figcaption><span>String Comparation</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String a = <span class="string">"test-1-2"</span>; <span class="comment">//total length </span></span><br><span class="line"><span class="keyword">int</span> b = a.indexOf(<span class="string">"1"</span>); <span class="comment">// 5</span></span><br><span class="line"><span class="keyword">int</span> c = a.length(); <span class="comment">// 8</span></span><br><span class="line">String d = a.substring(b,c); <span class="comment">// 1-2  (start index is included, end index is excluded);</span></span><br></pre></td></tr></table></figure>
+<p><strong> StringBuilder and StringBUffer:</strong></p>
+<p>They are intermediate classes that are modifiable since String is Immutable.<br>Different between StringBuilder and StringBuffer<br>•    They are doing exactly the same thing<br>•    StringBuffer is “thread-safe”, each of the methods are synchronized.<br>•    StringBuilder is not thread-safe, it is intended to be used in single thread environment.</p>
 
       
     </div>
@@ -129,6 +136,15 @@ ga('send', 'pageview');
     
 <nav id="article-nav">
   <div class="article-nav-block">
+    
+      <a href="/DexWebSite/2019/10/13/Java-Base-Principle-II/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption"></strong>
+        <div class="article-nav-title">
+          
+            Java Base Principle II
+          
+        </div>
+      </a>
     
   </div>
   <div class="article-nav-block">
@@ -201,6 +217,10 @@ gitment.render('gitmentContainer')
       <ul>
         
           <li>
+            <a href="/DexWebSite/2019/10/13/Java-Base-Principle-II/">Java Base Principle II</a>
+          </li>
+        
+          <li>
             <a href="/DexWebSite/2019/10/12/Java-String-Class/">Java String Class</a>
           </li>
         
@@ -214,10 +234,6 @@ gitment.render('gitmentContainer')
         
           <li>
             <a href="/DexWebSite/2019/09/21/C-Lesson-4-Function-1/">C# Lesson 4 - Function</a>
-          </li>
-        
-          <li>
-            <a href="/DexWebSite/2019/09/21/C-Lesson-3/">C# Lesson 3 - Encapsulation</a>
           </li>
         
       </ul>
