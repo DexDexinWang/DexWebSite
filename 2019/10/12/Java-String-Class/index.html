@@ -18,22 +18,22 @@ ga('send', 'pageview');
 
 
   
-  <title>principle | Dex Personal Website</title>
+  <title>Java String Class | Dex Personal Website</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
   
-  <meta name="description" content="Programming, Technology, Algorithm">
-<meta property="og:type" content="website">
-<meta property="og:title" content="principle">
-<meta property="og:url" content="http://dexdexinwang.github.io/DexWebSite/principle/index.html">
+  <meta name="description" content="JAVA STRING CLASSSting is a very special class in Java Programming language. String and all the wrapper class objects are immutable class that means if an string is created, it cannot be chagned.  Str">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java String Class">
+<meta property="og:url" content="http://dexdexinwang.github.io/DexWebSite/2019/10/12/Java-String-Class/index.html">
 <meta property="og:site_name" content="Dex Personal Website">
-<meta property="og:description" content="Programming, Technology, Algorithm">
+<meta property="og:description" content="JAVA STRING CLASSSting is a very special class in Java Programming language. String and all the wrapper class objects are immutable class that means if an string is created, it cannot be chagned.  Str">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-25T06:13:05.706Z">
+<meta property="og:updated_time" content="2019-10-13T00:27:12.432Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="principle">
-<meta name="twitter:description" content="Programming, Technology, Algorithm">
+<meta name="twitter:title" content="Java String Class">
+<meta name="twitter:description" content="JAVA STRING CLASSSting is a very special class in Java Programming language. String and all the wrapper class objects are immutable class that means if an string is created, it cannot be chagned.  Str">
   
     <link rel="alternate" href="/DexWebSite/atom.xml" title="Dex Personal Website" type="application/atom+xml">
   
@@ -74,23 +74,27 @@ ga('send', 'pageview');
   </div>
 </header>
       <div id="middlecontent" title class="global-width sidebar-left">
-        <section id="main"><article id="page-" class="article global-container article-type-page" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Java-String-Class" class="article global-container article-type-post" itemscope itemprop="blogPost">
   
     <header class="article-header">
       
   
     <h1 class="article-title" itemprop="name">
-      principle
+      Java String Class
     </h1>
   
 
     </header>
   
   <div class="article-meta">
-    <a href="/DexWebSite/principle/index.html" class="article-date">
-  <time datetime="2019-03-25T06:13:05.000Z" itemprop="datePublished">2019-03-24</time>
+    <a href="/DexWebSite/2019/10/12/Java-String-Class/" class="article-date">
+  <time datetime="2019-10-12T23:49:00.000Z" itemprop="datePublished">2019-10-12</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/DexWebSite/categories/Java-Programming-Language/">Java Programming Language</a>
+  </div>
+
     
   </div>
   
@@ -103,7 +107,16 @@ ga('send', 'pageview');
     
     <div class="article-content article-content-cloud" itemprop="articleBody">
       
-        
+        <h3 id="JAVA-STRING-CLASS"><a href="#JAVA-STRING-CLASS" class="headerlink" title="JAVA STRING CLASS"></a>JAVA STRING CLASS</h3><p>Sting is a very special class in Java Programming language. String and all the wrapper class objects are immutable class that means if an string is created, it cannot be chagned. </p>
+<p><strong>String</strong> is not Primitive Type. String is extended from Object which has many methods such as “indexOf”</p>
+<figure class="highlight java"><figcaption><span>String Class in JAVA (Assumption)</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">String</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">char</span>[] value;</span><br><span class="line">	<span class="comment">//different String objects can reuse the same char array,</span></span><br><span class="line">	<span class="comment">//but can start with different offset index.</span></span><br><span class="line">	Private <span class="keyword">int</span> offset;</span><br><span class="line">	<span class="comment">//maintains the length of the part in the char array</span></span><br><span class="line">	<span class="comment">// represented by this String object.</span></span><br><span class="line">	Private <span class="keyword">int</span> count;</span><br><span class="line">	<span class="function">Public <span class="title">String</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		Value = <span class="keyword">new</span> <span class="keyword">char</span>[<span class="number">0</span>];</span><br><span class="line">		Offset = <span class="number">0</span>;</span><br><span class="line">		Count = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong> String Creation </strong></p>
+<p>Whenever Java encounters a string literal in your code, the compiler creates a String Object with its value. If there are mutiple string objects with the same value. It means these string objects refer to the same object that Java Created.</p>
+<figure class="highlight java"><figcaption><span>Literal String Creation (Assumption)</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String s1 = “Dex is Nice.”;</span><br><span class="line">String s2 = “Dex is Nice.”;</span><br><span class="line">System.out.println(s1 == s2); <span class="comment">// true, because it just compare whether s1 and s2 point to the same object.</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><figcaption><span>Literal String Creation 2 (Assumption)</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String s1 = “Dex is Nice.”;</span><br><span class="line">String s2 = <span class="keyword">new</span> String (“Dex is Nice.”);</span><br><span class="line">System.out.println(s1 == s2); <span class="comment">// false, because s1 and s2 point to the different object.</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><em>Conclution:</em> <br><br>There is no need for maintaining several copies of String objects with the same iteral, since String objects are immutable. <br><br>Usually compiler and JVM will optimize for the number of String objects created, it will maintain an intern area in Heap, for the same String literal it will only has one String object associated. <br></p>
+<p><strong> String Concatenation </strong></p>
+
       
     </div>
     
@@ -114,6 +127,20 @@ ga('send', 'pageview');
   </div>
   
     
+<nav id="article-nav">
+  <div class="article-nav-block">
+    
+  </div>
+  <div class="article-nav-block">
+    
+      <a href="/DexWebSite/2019/10/12/Algorithm-Principle-2/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">Java Base Principle</div>
+        <strong class="article-nav-caption"></strong>
+      </a>
+    
+  </div>
+</nav>
+
     
 <div id="gitmentContainer"></div>
 <link rel="stylesheet" href="https://wzxjayce.github.io/gitment.css">

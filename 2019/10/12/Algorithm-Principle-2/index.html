@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-113086304-2', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <title>Java Base Principle | Dex Personal Website</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <meta name="description" content="Java Java 3 Main Characters:   Encapsulation  Polymorphism Inheritance   JAVA Object-Oriented Paradigm: Everything in the world is an object    Each object has a type Each object is defined by two kin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java Base Principle">
+<meta property="og:url" content="http://dexdexinwang.github.io/DexWebSite/2019/10/12/Algorithm-Principle-2/index.html">
+<meta property="og:site_name" content="Dex Personal Website">
+<meta property="og:description" content="Java Java 3 Main Characters:   Encapsulation  Polymorphism Inheritance   JAVA Object-Oriented Paradigm: Everything in the world is an object    Each object has a type Each object is defined by two kin">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-10-13T00:00:19.343Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java Base Principle">
+<meta name="twitter:description" content="Java Java 3 Main Characters:   Encapsulation  Polymorphism Inheritance   JAVA Object-Oriented Paradigm: Everything in the world is an object    Each object has a type Each object is defined by two kin">
+  
+    <link rel="alternate" href="/DexWebSite/atom.xml" title="Dex Personal Website" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/DexWebSite/images/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/DexWebSite/css/style.css">
+  <link rel="stylesheet" href="/DexWebSite/css/highlight.css">
+  <script>
+  let antiquityStorage = window.sessionStorage.getItem('antiquitySessionStorage');
+  if (antiquityStorage == '' || antiquityStorage == null) {
+    var antiquityLoader = '<div id="loaderbox"><div class="loader"><div class="load-roll"><div class="load-top"></div><div class="load-right"></div><div class="load-bottom"></div></div></div></div>';
+    document.write(antiquityLoader);
+    document.body.style.overflow = 'hidden'
+  }
+  </script>
+</head>
+</html>
+<body>
+  <div id="fullpage" class="mobile-nav-left">
+    
+      <div id="wrapper" style="background-image: url(/DexWebSite/images/bg.jpg)" title="background">
+    
+    
+      <header id="header">
+  <div id="nav-toggle" class="nav-toggle"></div>
+  <div class="head-box global-width">
+    <nav class="nav-box nav-left">
+      
+        <a class="nav-item" href="/DexWebSite/" title>Home</a>
+      
+        <a class="nav-item" href="/DexWebSite/../PersonalWebSite/" title>Background</a>
+      
+    </nav>
+  </div>
+</header>
+      <div id="middlecontent" title class="global-width sidebar-left">
+        <section id="main"><article id="post-Algorithm-Principle-2" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      Java Base Principle
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/DexWebSite/2019/10/12/Algorithm-Principle-2/" class="article-date">
+  <time datetime="2019-10-12T21:48:00.000Z" itemprop="datePublished">2019-10-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/DexWebSite/categories/Java-Programming-Language/">Java Programming Language</a>
+  </div>
+
+    
+  </div>
+  
+    <span id="busuanzi_container_page_pv">
+      Total Read : <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <h3 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h3><p><strong> Java 3 Main Characters: </strong></p>
+<ul>
+<li>Encapsulation </li>
+<li>Polymorphism</li>
+<li>Inheritance </li>
+</ul>
+<p><strong>JAVA Object-Oriented Paradigm:</strong> Everything in the world is an object <br> </p>
+<ul>
+<li>Each object has a type</li>
+<li>Each object is defined by two kinds of information</li>
+<li>Status: the “field”s – what things it maintains</li>
+<li>Behavior: the “method”s (functions) – what it can do</li>
+</ul>
+<p><strong> JAVA Main Method: </strong> Main Method is the entry point of Java programs. Each project has only one Public Main Class. The name is fixed as “main” which is called by the JVM as entry point for an application.<br><br>e.g. public static void main(String[] args)]</p>
+<p><strong> JAVA Method: </strong><br></p>
+<p>E..g public static Integer methodName (int a, String b)</p>
+<ul>
+<li>Modifier  (public static)</li>
+<li>Return type (Integer)</li>
+<li>Name of the method (methodName)</li>
+<li>List of parameters (int a, String g) <br></li>
+</ul>
+<p><strong> JAVA Method (Function) Operation: </strong> If you run a method, the method will evaluate all parameters. For the method Evaluation, it requires all parameters should be certain values.<br><br><br>E.g. Return methodA(array, methodB(array)).  <br><br>It should operate methodB(array) first because it should be calculated before running methodA. </p>
+<p><em>JAVA evalation orders is from lift to right.</em></p>
+<p><strong> Reference &amp; Dereference: </strong> <br><br>E.g.<br>{List<integer>} {list} {=} {new LinkedList<integer>();}<br>{Declaration} {Reference} {Instantiation} {Instantiation}</integer></integer></p>
+<ul>
+<li>Declaration: associate a variable name with an object type</li>
+<li>Reference: list is a reference which is a kind pointer to point data.</li>
+<li>Instantiation: After “new” an object, the “=” will return its <strong> <em>reference</em></strong> back to a “variable” (reference).</li>
+<li>Initialization: The new operator is followed by a call to a constructor, which initializes the new object.<br><br></li>
+</ul>
+<p>E.g.list.get(1) = 1314521 </p>
+<p>Dereference: the number ‘1314521’ will be assign to data which list points to. </p>
+<p><strong> Java-JVM Memory: Stack and Heap:</strong> <br></p>
+<p><strong>Stack:</strong> LIFO, a call stack is a stack data structure that stores information about the active subroutines of a computer program. This kind of stack is also known as <font color="#0099ff"><em>an execution stack, program stack, control stack, run-time stack, or machine stack, and is often shortened to just “the stack”</em></font>.<br>Tracking the instructions.  <br></p>
+<p><strong>Heap:</strong> Java objects reside in an area called the heap. The heap is created when the JVM starts up and may increase or decrease in size while the application runs. <br><br>E.g.</p>
+<table><br><tr><th clospan="2"><center><strong>Java Memory</strong></center></th><th></th></tr><br><tr><td>Stack Frame (level 5)</td><td rowspan="5"> <center><font size="10">Heap</font></center></td><td></td></tr><br><tr><td>Stack Frame (level 4)</td></tr><br><tr><td>Stack Frame (level 3)</td></tr><br><tr><td>Stack Frame (level 2)</td></tr><br><tr><td>Stack Frame (level 1)</td></tr><br></table>
+
+<p><br></p>
+<p><strong> Heap &amp; Stack Comparison: </strong> </p>
+<ul>
+<li>Local primitive type variables are always on stack</li>
+<li>Whenever an object is created, its always stored in the Heap space and stack memory contains the reference to it.</li>
+<li>Memory management in stack is done in LIFO manner; memory management in heap is more complex and requires complex algorithm</li>
+<li>Stack is like the data structure “stack” because both are LIFO, heap has little to do with the data structure “heap”.</li>
+<li>Stack variable is destroyed after out of scope. Heap variable is destroyed by the garbage collector.</li>
+<li>(advanced &amp; optional) Each thread has its own stack; multiple threads share the same heap.</li>
+<li>(advanced &amp; optional) When stack memory is full, Java runtime throws java.lang.StackOverFlowError<br>Whereas if heap memory is full, it throws java.lang.OutOfMemoryError: Java Heap Space error.</li>
+<li>(Advanced &amp; optional) Stack is smaller than heap; storing data to stack is faster than heap.</li>
+<li>Frequently, Stack is far smaller than Heap. It is easier to have OVER FLOW ERROR.</li>
+</ul>
+<p>Not all variables saved in Stack, but all objects are saved in Heap.</p>
+<p>Primitive Types (save it in stack):  Defined with small capital letter in name.  <br></p>
+<p>Wrapper class (save object in heap): Defined with big captial letter in name.  is just a wrapper of the corresponding primitive type, the Object representation of primitive type values. <br> </p>
+<ul>
+<li>boolean <-> Boolean</-></li>
+<li>byte <-> Byte</-></li>
+<li>char <-> Char</-></li>
+<li>short <-> Short</-></li>
+<li>int <-> Int</-></li>
+<li>long <-> Long</-></li>
+<li>float <-> Float</-></li>
+<li>double <-> Double<br><br></-></li>
+</ul>
+<figure class="highlight java"><figcaption><span>Literal Example</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String str = “This is string literal”;</span><br></pre></td></tr></table></figure>
+ <font color="#0099ff">This is string literal. When you declare string like this, you are actually calling <strong>intern()</strong> method on St ring. This method references inernal pool of string objects. If there already exists a string value “This is string literal”, then str will reference of that string and no new String object will be created. </font>
+
+<figure class="highlight java"><figcaption><span>Object Example</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String str = <span class="keyword">new</span> String (“<span class="keyword">this</span> is string created by <span class="keyword">new</span> operator”);</span><br></pre></td></tr></table></figure>
+ <font color="#0099ff">This is string object. In this method JVM is forced to create a new string reference, even if “this is string created by new operator” is in the reference pool.</font>
+
+<figure class="highlight java"><figcaption><span>String Immutable Example</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">String a = “A”;</span><br><span class="line">String b = a;</span><br><span class="line">String b = “B”; <span class="comment">//"B" is created as a new object and be assigned to b, the A value is not changed.</span></span><br><span class="line">System.out.println(a); <span class="comment">//”A”</span></span><br><span class="line">System.out.println(b); <span class="comment">//”B”</span></span><br></pre></td></tr></table></figure>
+<p><strong>Wrap object is similar to String, all the wrapper class objects are IMMUTABLE – internal values can not be changed after initialization.</strong></p>
+<p><strong> Hints:</strong> </p>
+<ul>
+<li>Generic type can not be primitive type, List<integer>, there can not be List<int>.</int></integer></li>
+<li>It can help provide useful functionalities and contracts (json serializer: obj -&gt; json)</li>
+<li>How do you represent a “not existed” int value? “null” –&gt; Using Wrapper class object.</li>
+</ul>
+<p><strong> Autoboxing &amp;&amp; Unboxing </strong></p>
+<p>Autoboxing is the automatic conversion that the Java compiler makes between the primitive types and their corresponding object wrapper classes.<br><figure class="highlight java"><figcaption><span>AotuoBoxing</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Integer&gt; intergerList = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">integerList.add(<span class="number">0</span>); <span class="comment">// integerList.add(Integer.valueOf(i));</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight java"><figcaption><span>UnBoxing</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Unboxing is reverse operation of autoboxing.</span><br><span class="line">Integer a = <span class="number">4</span> <span class="comment">//autoboxing //Integer a = Integer.valueOf(4);</span></span><br><span class="line">a += <span class="number">4</span>; <span class="comment">//a = a + 4;</span></span><br><span class="line">a++;  <span class="comment">//unboxing   // int temp = a.intValue();  temp++; a = Integer.valueOf(temp);// a is point to another Integer object.</span></span><br></pre></td></tr></table></figure>
+<p><strong> JAVA Parameter Passing:</strong><br>When a method is called, how does it actually pass parameters?<br>Java only has no conception about Pass-By-Reference, so Java aways use Pass-By-Value (copy).</p>
+<ul>
+<li>Primitive type: <strong> copy the value itself</strong></li>
+<li>Objects: <strong>copy of the object reference</strong></li>
+</ul>
+<p><strong> Static Keyword </strong></p>
+<p>Any Static members (fields, methods, classes) belong to class, not object. The member could be accessed by [ClassName].[Static field].  <br> </p>
+<p>Java does not know how to create an instance, so it is using Main function, “public static void main(String[] args)”.  <br></p>
+<p><em>Advantage, Nested Static Class:</em>  </p>
+<ul>
+<li>The nested static class could be instantiated before the instantiated outer class.</li>
+<li>To solve dynamic constructor problem, the nested static class, “XXBuilder” could invoke the private outer class constructor.</li>
+</ul>
+<p><strong> Final Keyword </strong></p>
+<p>Constant. “Once assigned, cannot be changed.” <br></p>
+<ul>
+<li>Final Class: A class that cannot be derived. It has no child (no inheritance).</li>
+<li>Final method: A method has cannot be overridden. It could not be override.</li>
+<li>Final field: A variable that once assigned, it cannot be assign again even in constructor. It could not be changed;<br><br></li>
+</ul>
+<p><strong> Other Keywords: </strong> <br><br><strong> Classic Types (objects): </strong> stored in heap, operated by references (reference object). <br><br><strong> ‘this’ Keyword: </strong> The current(self) instance. Mandatory if argument name is the same as field name.<br><br><strong> ‘null’ keyword: </strong> is special value for the reference. It means that reference is empty. <br><br><strong> NullPointerException: </strong> It means it makes JAVA dereferences the reference (NULL). <br></p>
+
+      
+    </div>
+    
+      <footer class="article-footer">
+        Done
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  <div class="article-nav-block">
+    
+      <a href="/DexWebSite/2019/10/12/Java-String-Class/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption"></strong>
+        <div class="article-nav-title">
+          
+            Java String Class
+          
+        </div>
+      </a>
+    
+  </div>
+  <div class="article-nav-block">
+    
+      <a href="/DexWebSite/2019/09/21/C-Lesson-5-Nullable/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">C# Lesson 5 - Nullable</div>
+        <strong class="article-nav-caption"></strong>
+      </a>
+    
+  </div>
+</nav>
+
+    
+<div id="gitmentContainer"></div>
+<link rel="stylesheet" href="https://wzxjayce.github.io/gitment.css">
+<script src="https://wzxjayce.github.io/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  owner: 'dexdexinwang',
+  repo: 'DexWebSite',
+  oauth: {
+    client_id: '7c44fd11f8e0d609f5ba',
+    client_secret: 'ea91b14d1a2f4aa1ff3d610c266ff8280eb5caae',
+  },
+})
+gitment.render('gitmentContainer')
+</script>
+
+  
+  
+</article>
+</section>
+        <aside id="sidebar">
+  
+    <div class="widget-box">
+  <div class="avatar-box">
+    <img class="avatar" src="/DexWebSite/images/dexphoto.jpg" title="personal image">
+    <h3 class="avatar-name">
+      
+        Dexin Wang
+      
+    </h3>
+  </div>
+</div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Algorithm/">Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Basic/">Basic</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/C-Programming-Language/">C# Programming Language</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Java-Programming-Language/">Java Programming Language</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Kits/">Kits</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/03/">March 2019</a></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/DexWebSite/2019/10/12/Java-String-Class/">Java String Class</a>
+          </li>
+        
+          <li>
+            <a href="/DexWebSite/2019/10/12/Algorithm-Principle-2/">Java Base Principle</a>
+          </li>
+        
+          <li>
+            <a href="/DexWebSite/2019/09/21/C-Lesson-5-Nullable/">C# Lesson 5 - Nullable</a>
+          </li>
+        
+          <li>
+            <a href="/DexWebSite/2019/09/21/C-Lesson-4-Function-1/">C# Lesson 4 - Function</a>
+          </li>
+        
+          <li>
+            <a href="/DexWebSite/2019/09/21/C-Lesson-3/">C# Lesson 3 - Encapsulation</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      </div>
+      <footer id="footer">
+  <div class="foot-box global-width">
+    &copy; 2019 Dexin Wang &nbsp;&nbsp;
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    &nbsp;|&nbsp;Theme <a href="https://github.com/DexDexinWang/hexo-dex">antiquity</a>
+    <br>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">You are the <span id="busuanzi_value_site_pv"></span> visitor</span>
+  </div>
+</footer>
+      <script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script>
+if (!window.jQuery) {
+var script = document.createElement('script');
+script.src = "/js/jquery-2.0.3.min.js";
+document.body.write(script);
+}
+</script>
+
+  <link rel="stylesheet" href="/DexWebSite/fancybox/jquery.fancybox.css">
+  <script src="/DexWebSite/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/DexWebSite/js/script.js"></script>
+
+
+
+    </div>
+    <nav id="mobile-nav" class="mobile-nav-box">
+  <div class="mobile-nav-img mobile-nav-top"></div>
+  
+    <a href="/DexWebSite/" class="mobile-nav-link">Home</a>
+  
+    <a href="/DexWebSite/../PersonalWebSite/" class="mobile-nav-link">Background</a>
+  
+  <div class="mobile-nav-img  mobile-nav-bottom"></div>
+</nav>    
+  </div>
+</body>
+</html>
