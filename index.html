@@ -75,6 +75,251 @@ ga('send', 'pageview');
       <div id="middlecontent" title class="global-width sidebar-left">
         <section id="main">
   
+    <article id="post-Object-Oriented-Design-2-4" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/DexWebSite/2019/10/18/Object-Oriented-Design-2-4/">Object-Oriented Design #2</a>
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/DexWebSite/2019/10/18/Object-Oriented-Design-2-4/" class="article-date">
+  <time datetime="2019-10-18T09:24:00.000Z" itemprop="datePublished">2019-10-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/DexWebSite/categories/Object-Oriented-Design/">Object-Oriented Design</a>
+  </div>
+
+    
+  </div>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <h3 id="Object-Oriented-Design"><a href="#Object-Oriented-Design" class="headerlink" title="Object-Oriented Design"></a>Object-Oriented Design</h3><p><strong> Paking System Design Steps: </strong></p>
+<p><strong> Step 1 </strong> <br><br>Understand/Analyze the USE CASE. </p>
+<p>Use case: Describe the parking lot building? Vehicle monitoring? What kind of parking lot?<br>Some other questions that may affect your design:</p>
+<ul>
+<li>One level or multiple levels?</li>
+<li>Parking – Spot / Vehicle sizes? </li>
+<li>Track the location of each vehicle?</li>
+</ul>
+<p><strong> Step 2 </strong> <br><br>Design Models (class) and relationships between Models or class <br><br>Single responsibility Principle: each class should have only one job but (mutiple APIs) <br></p>
+<ul>
+<li>Vehicle</li>
+<li>Parking Spot</li>
+<li>Level</li>
+<li>ParkingLot - Time, Price attribute. </li>
+</ul>
+<p>Class relationships: <br><br>Association: a general binary relationship that describes an activity between two classes. 1-1 <br></p>
+<p>Aggregation/Composition: a special form of association, which represents an ownership relationship between two classes. (has-a). <br></p>
+<p>Inheritance: <br><br>Vehicle – Parking spot, Association <br><br>Level – Parking Spot, Composition <br><br>Vehicle – Car, Truck <br></p>
+<p><strong> Step 3 </strong> <br><br>For complicated designs, first focus on public methods (APIs): how to revoke your APIs?<br>Functionality: </p>
+<ul>
+<li>Base functionality: for a given vehicle, tell whether there is available spot in the parking lot.</li>
+<li>Possible extensions: provide available spot locations, assign spot to the vehicle.<br>……  Generate Classes and APIs with comments ……</li>
+</ul>
+<figure class="highlight java"><figcaption><span>Init Classes in JAVA (Assumption)</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PrkingLots</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> List&lt;ParktingLevel&gt; levels;</span><br><span class="line">  	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasSpot</span><span class="params">(Vehicle vehicle)</span></span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ParkingLevel</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> List&lt;ParkingSpot&gt; spots;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasSpot</span><span class="params">(Vehicle vehicle)</span></span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ParkingSpot</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> Vehicle vehicle;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">fit</span><span class="params">(Vechicle vehicle)</span> </span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Vehicle</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> String plateNumber;</span><br><span class="line">    <span class="keyword">private</span> size;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>Step 4</strong> <br><br>Complete all implementation.<br></p>
+<p>Assumption: multiple levels and check vehicle size. <br></p>
+<ol>
+<li><p>APIs:<br><br>Boolean hasSpot (Vehicle v); <br><br>Boolean park (Vehicle v); <br><br>Boolean leave (Vehicle v); <br></p>
+</li>
+<li><p>Classes:<br>ParkingLog, Level, Vehicle, ParkingSpot, Car, Truck</p>
+</li>
+</ol>
+<p>OOD: Performance/Efficiency is still important! This is where you use data structures and algorithms!</p>
+<h5 id="ENUM"><a href="#ENUM" class="headerlink" title="ENUM"></a>ENUM</h5><p><strong>It is a special data type that enables for a variable to be a set of predefined constants.</strong></p>
+<ol>
+<li>The enum declaration defines a class. The enum class body can include methods and other fields. </li>
+<li>The compiler automatically adds some special methods when it creates an enum. Such as values() method.  ( for(Day day : Day.values()) {} );</li>
+<li>The constructor for an enum type must be package-private or private access. It automatically creates the constants that are defined at the beginning of the enum body. You cannot invoke an enum constructor yourself.</li>
+</ol>
+<h5 id="Design-Pattern"><a href="#Design-Pattern" class="headerlink" title="Design Pattern"></a>Design Pattern</h5><ol>
+<li>Builder</li>
+<li>Factory</li>
+<li>Singleton</li>
+</ol>
+
+      
+    </div>
+    
+  </div>
+  
+  
+</article>
+
+  
+    <article id="post-OOD-1" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/DexWebSite/2019/10/18/OOD-1/">Object-Oriented Design #1</a>
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/DexWebSite/2019/10/18/OOD-1/" class="article-date">
+  <time datetime="2019-10-18T08:31:00.000Z" itemprop="datePublished">2019-10-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/DexWebSite/categories/Object-Oriented-Design/">Object-Oriented Design</a>
+  </div>
+
+    
+  </div>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <h3 id="Object-Oriented-Design"><a href="#Object-Oriented-Design" class="headerlink" title="Object-Oriented Design"></a>Object-Oriented Design</h3><p>In the real world, we solve the problem unlike solving algortihm problem. It will be an OOD problem. <br></p>
+<p>Practical problems -&gt; Model -&gt; APIs -&gt; Methods -&gt; Algorithms.</p>
+<p><strong> Good Design </strong></p>
+<ol>
+<li>Complete functionality</li>
+<li>Easy to use: <br><br>2.2. Clear, elegant, easy to understand, no ambiguity<br><br>2.3. Prevent users from making mistakes</li>
+<li>Easy to evolve and extendable.</li>
+</ol>
+<p><strong> Basic Concepts </strong></p>
+<ol>
+<li><p>Class and Object <br><br>Class: a blueprint for a data type, scheme <br><br>Object: a specific realization of any class, instance.</p>
+</li>
+<li><p>Encapsulation: public, private, protected</p>
+</li>
+</ol>
+<p><strong> Access Label </strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Access</th>
+<th style="text-align:left">public</th>
+<th style="text-align:left">protected</th>
+<th style="text-align:left">private</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Same class</td>
+<td style="text-align:left">yes</td>
+<td style="text-align:left">yes</td>
+<td style="text-align:left">yes</td>
+</tr>
+<tr>
+<td style="text-align:left">Derived classes</td>
+<td style="text-align:left">yes</td>
+<td style="text-align:left">yes</td>
+<td style="text-align:left">no</td>
+</tr>
+<tr>
+<td style="text-align:left">outside classes</td>
+<td style="text-align:left">yes</td>
+<td style="text-align:left">no</td>
+<td style="text-align:left">no</td>
+</tr>
+</tbody>
+</table>
+<p><strong> Access Level </strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Modifier</th>
+<th style="text-align:left">Class</th>
+<th style="text-align:left">Package</th>
+<th style="text-align:left">Subclass</th>
+<th style="text-align:left">World</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">public</td>
+<td style="text-align:left">yes</td>
+<td style="text-align:left">yes</td>
+<td style="text-align:left">yes</td>
+<td style="text-align:left">yes</td>
+</tr>
+<tr>
+<td style="text-align:left">protected</td>
+<td style="text-align:left">yes</td>
+<td style="text-align:left">yes</td>
+<td style="text-align:left">yes</td>
+<td style="text-align:left">no</td>
+</tr>
+<tr>
+<td style="text-align:left">no modifier</td>
+<td style="text-align:left">yes</td>
+<td style="text-align:left">yes</td>
+<td style="text-align:left">no</td>
+<td style="text-align:left">no</td>
+</tr>
+<tr>
+<td style="text-align:left">private</td>
+<td style="text-align:left">yes</td>
+<td style="text-align:left">no</td>
+<td style="text-align:left">no</td>
+<td style="text-align:left">no</td>
+</tr>
+</tbody>
+</table>
+<p>Advantages:<br>Class Internals are protected from inadvertent user-level errors, which might corrupt the state of the object. <br><br>The class implementation may <strong><em>evolve</em></strong> over time in response to changing requirements or bug reports without requiring change in user-level code. (easier to maintain the compatibility)</p>
+<p><strong> How to select appropriate labels? </strong> </p>
+<ol>
+<li><p>API: public</p>
+</li>
+<li><p>Internal implementation: private</p>
+</li>
+<li><p>Class inheritance: do we need to use protected for methods/attributes <br><br>3.1. Protected methods: sometimes useful when we want to override an implementation in subclasses <br><br>3.2.Protected attributes: be careful, try to use private first</p>
+</li>
+<li><p>“default” in java (package-private): declare a class as public only when we define public API in it, otherwise package-private is good enough.</p>
+</li>
+</ol>
+<p><strong> Inheritance, Interface, Abstract Class: </strong> <br><br>Inheritance: <br><br>Definitions: A class that is derived from another class is called a subclass (also a derived class, extended class, or child class). The class from which subclass is derived is called a superclass (also a base class or parent class). <br></p>
+<p>Abstract: <br><br>Definitions: A class must be declared abstract when it has one or more abstract methods. A method is declared abstract when it has a method heading, but no body – which means that an abstract method has no implementation code inside like normal methods do.<br></p>
+<p>Interface: <br><br>An interface differs from an abstract class has only abstract methods.<br></p>
+<p><strong>Difference between Abstract and Interface in Java: </strong> <br></p>
+<ol>
+<li><p>Java does not allow multiple inheritance. In Java, a class can only derive from one class, whether its abstract or not. However, a class can implement multiple interfaces. </p>
+</li>
+<li><p>An abstract class may provide some methods with definitions – so an abstract class can have non-abstract methods with actual implementation details. An abstract class can also have constructors and instance variables as well. An interface, however, can not provide any method definitions – it can only provide method headings. Any class that implements the interface is responsible for providing the method definition/ implementation.</p>
+</li>
+<li><p>Abstract: is a something. Interface: has a function.</p>
+</li>
+</ol>
+<p><strong> Inheritance: </strong><br>Base class to Derived class <br><br>Interface and Abstract: Cannot instantiate abstract class and interface. <br></p>
+<p>Q: in Java, for your base class, Interface v.s. Abstract Class v.s. Concrete Class? </p>
+<ol>
+<li>An abstract class provides a common base class implementation to derived classes. Use abstract class( or even concrete class) for base class if the derived classes share common implementation. </li>
+<li>Interface helps you (or enforces you) to focus on the API signature definition.</li>
+<li>Multiple inheritance: implement multiple interfaces.</li>
+<li>The relationship between the interface itself and the class implementing the interface is not necessarily strong (capability)</li>
+</ol>
+<p><strong> Polymorphism and Overriding:</strong> <br><br>Override: a subclass o child class to provide a specific implementation of a method that is already provided by one of its superclasses or parent classes.  <br></p>
+<p>Polymorphism: A call to a member function will cause a different function to be executed depending on the type of object that invokes the function. <br></p>
+<p><strong> Override VS. Overload </strong><br>    Override is used when you redefine a method that has been defined in a parent class (using the same signature). Resolved at running time.<br>    Overload is used when you define two methods with the same name, in the same class, distinguished by their signatures (different), Resolved at compile time.</p>
+
+      
+    </div>
+    
+  </div>
+  
+  
+</article>
+
+  
     <article id="post-Amazon-Behavior-Questions" class="article global-container article-type-post" itemscope itemprop="blogPost">
   
     <header class="article-header">
@@ -782,380 +1027,6 @@ ga('send', 'pageview');
 </article>
 
   
-    <article id="post-C-Lesson-1" class="article global-container article-type-post" itemscope itemprop="blogPost">
-  
-    <header class="article-header">
-      
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/DexWebSite/2019/09/19/C-Lesson-1/">C# Lesson 1 - Base 1</a>
-    </h1>
-  
-
-    </header>
-  
-  <div class="article-meta">
-    <a href="/DexWebSite/2019/09/19/C-Lesson-1/" class="article-date">
-  <time datetime="2019-09-19T07:15:00.000Z" itemprop="datePublished">2019-09-19</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/DexWebSite/categories/C-Programming-Language/">C# Programming Language</a>
-  </div>
-
-    
-  </div>
-  
-
-  <div class="article-inner">
-    
-    <div class="article-content article-content-cloud" itemprop="articleBody">
-      
-        <h3 id="Powerful-Programming-Features"><a href="#Powerful-Programming-Features" class="headerlink" title="Powerful Programming Features"></a>Powerful Programming Features</h3><ul>
-<li>Boolean Condiitons</li>
-<li>Automatic Garbage Collection</li>
-<li>Standard Library</li>
-<li>Assembly Versioning</li>
-<li>Properties and Events</li>
-<li>Delegates and Events Management</li>
-<li>Generics</li>
-<li>Indexers</li>
-<li>Conditional Compilation</li>
-<li>Multi-threading</li>
-<li>LINQ and Lambda</li>
-</ul>
-<h3 id="Net-Framework"><a href="#Net-Framework" class="headerlink" title=".Net Framework"></a>.Net Framework</h3><blockquote>
-<p>.Net Framework supplies a platform to create Windows applications, Web applications, and Web Services.</p>
-</blockquote>
-<p> <strong> Components </strong></p>
-<ul>
-<li>Common Language Runtime - CRL</li>
-<li>.Net Freamwork Class Library</li>
-<li>Comment Lnaguage Specification</li>
-<li>Common Type System</li>
-<li>Metadata and Assembilies</li>
-<li>Windows Forms</li>
-<li>ASP.Net and ASP.Net AJAX</li>
-<li>ADO.NET</li>
-<li>Windows Workflow Fundation</li>
-<li>Windows Presentation Fundtion</li>
-<li>Windows COmmunication Fundation </li>
-<li>LINQ</li>
-</ul>
-<h3 id="Integrated-Development-Environment-IDE"><a href="#Integrated-Development-Environment-IDE" class="headerlink" title="Integrated Development Environment - IDE"></a>Integrated Development Environment - IDE</h3><ul>
-<li>Visual Studio, Windows</li>
-<li>Mono, Android, BSD, iOS, Linux, OS X, WIndows, Solaris, UNIX</li>
-</ul>
-<h3 id="Program-Structure"><a href="#Program-Structure" class="headerlink" title="Program Structure"></a>Program Structure</h3><p>A C# program contains below parts:</p>
-<ul>
-<li>Namespace declaration (Package Name in JAVA)</li>
-<li>A class</li>
-<li>Class methods</li>
-<li>Class Attributes</li>
-<li>A Main method </li>
-<li>Statements and Expressions</li>
-<li>Comments</li>
-</ul>
-<figure class="highlight c"><figcaption><span># Hello Word</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">using</span> System;  <span class="comment">/*imports System namespace*/</span></span><br><span class="line"><span class="keyword">namespace</span> HelloWorldApplication <span class="comment">/*declare the current class in HelloWorldApplication namespace*/</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="class"><span class="keyword">class</span> <span class="title">HelloWorld</span></span></span><br><span class="line"><span class="class">   &#123;</span></span><br><span class="line">      <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span><span class="params">(<span class="built_in">string</span>[] args)</span></span></span><br><span class="line"><span class="function">      </span>&#123;</span><br><span class="line">         <span class="comment">/* Comments */</span></span><br><span class="line">         Console.WriteLine(<span class="string">"Hello World"</span>);</span><br><span class="line">         Console.ReadKey();</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="Setup-CSC-Command"><a href="#Setup-CSC-Command" class="headerlink" title="Setup CSC Command"></a>Setup CSC Command</h3><p>CSC command is used to compile .cs files. </p>
-<p>E.g. </p>
-<p><strong> >csc helloword.cs</strong></p>
-<p>If the Command Prompt shows {‘csc’ is not recognized as an internal or external command}, you have to setup Environment Variable with “Path”.</p>
-<p><strong>&gt;C:\Windows\Microsoft.NET\Framework{version}\</strong></p>
-<h3 id="Identifier"><a href="#Identifier" class="headerlink" title="Identifier"></a>Identifier</h3><p>Identifiers are used to identify classes, variables, functions, and other user defined projects. It should be following below rules:</p>
-<ul>
-<li>Identifier starts at letter, underline, or @ sign, following by letters, numbers, underline, or @</li>
-<li>The first character should not be a number</li>
-<li>It should <strong>not</strong> contains any space and other special characters such as ?, +, #, %,^.</li>
-<li>Indentifier should be different from Keywords</li>
-<li>Indentifier is case sensitive</li>
-<li>Indentifier should not be the same as libary class names.</li>
-</ul>
-<h3 id="C-Keywords"><a href="#C-Keywords" class="headerlink" title="C# Keywords"></a>C# Keywords</h3><p><strong>Reserved Keywords:</strong></p>
-<ul>
-<li>abstract</li>
-<li>as</li>
-<li>base</li>
-<li>bool</li>
-<li>break</li>
-<li>byte</li>
-<li>case</li>
-<li>catch</li>
-<li>char</li>
-<li>checked</li>
-<li>class</li>
-<li>const</li>
-<li>continue</li>
-<li>decimal</li>
-<li>default</li>
-<li>delegate</li>
-<li>do</li>
-<li>double</li>
-<li>else</li>
-<li>enum</li>
-<li>event</li>
-<li>explicit</li>
-<li>extern</li>
-<li>false</li>
-<li>finally</li>
-<li>fixed</li>
-<li>float</li>
-<li>for</li>
-<li>foreach</li>
-<li>goto</li>
-<li>if</li>
-<li>implicit</li>
-<li>in (generic modifier)</li>
-<li>int</li>
-<li>interface</li>
-<li>internal</li>
-<li>is</li>
-<li>lock</li>
-<li>long</li>
-<li>namespace</li>
-<li>new</li>
-<li>null</li>
-<li>object</li>
-<li>operator</li>
-<li>out</li>
-<li>out(generic modifier)</li>
-<li>override</li>
-<li>params</li>
-<li>private</li>
-<li>protected</li>
-<li>public</li>
-<li>readonly</li>
-<li>ref</li>
-<li>return</li>
-<li>sbyte</li>
-<li>sealed</li>
-<li>short</li>
-<li>sizeof</li>
-<li>stackalloc</li>
-<li>static</li>
-<li>string</li>
-<li>struct</li>
-<li>switch</li>
-<li>this</li>
-<li>throw</li>
-<li>true</li>
-<li>try</li>
-<li>typeof</li>
-<li>uint</li>
-<li>ulong</li>
-<li>unchecked</li>
-<li>unsafe</li>
-<li>ushort</li>
-<li>using</li>
-<li>virtual</li>
-<li>void</li>
-<li>volatile</li>
-<li>while</li>
-</ul>
-<p><strong>Contextual Keywords:</strong></p>
-<ul>
-<li>add</li>
-<li>alias</li>
-<li>ascending</li>
-<li>descending</li>
-<li>dynamic</li>
-<li>from</li>
-<li>get</li>
-<li>global</li>
-<li>group</li>
-<li>into</li>
-<li>join</li>
-<li>let</li>
-<li>orderby</li>
-<li>partial(type)</li>
-<li>partial(method)</li>
-<li>remove</li>
-<li>select</li>
-<li>set</li>
-</ul>
-<h3 id="Value-Types"><a href="#Value-Types" class="headerlink" title="Value Types"></a>Value Types</h3><table>
-<thead>
-<tr>
-<th style="text-align:left">Types</th>
-<th style="text-align:left">Description</th>
-<th style="text-align:left">Range</th>
-<th>Deault Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">bool</td>
-<td style="text-align:left">boolean value</td>
-<td style="text-align:left">True or False</td>
-<td>False</td>
-</tr>
-<tr>
-<td style="text-align:left">byte</td>
-<td style="text-align:left">unsign 8 bits integer</td>
-<td style="text-align:left">0 to 255</td>
-<td>0</td>
-</tr>
-<tr>
-<td style="text-align:left">sbyte</td>
-<td style="text-align:left">sign 8 bits integer</td>
-<td style="text-align:left">-128 to 127</td>
-<td>0</td>
-</tr>
-<tr>
-<td style="text-align:left">char</td>
-<td style="text-align:left">16 bits Unicode</td>
-<td style="text-align:left">U +0000 to U +ffff</td>
-<td>‘\0’</td>
-</tr>
-<tr>
-<td style="text-align:left">short</td>
-<td style="text-align:left">sign 16 bits integer</td>
-<td style="text-align:left">-32,768 to 32,767</td>
-<td>0</td>
-</tr>
-<tr>
-<td style="text-align:left">ushort</td>
-<td style="text-align:left">unsign 16 bits integer</td>
-<td style="text-align:left">0 to 65,535</td>
-<td>0</td>
-</tr>
-<tr>
-<td style="text-align:left">int</td>
-<td style="text-align:left">sign 32 bits integer</td>
-<td style="text-align:left">-2,147,483,648 to 2,147,483,647</td>
-<td>0</td>
-</tr>
-<tr>
-<td style="text-align:left">uint</td>
-<td style="text-align:left">unsign 32 bits integer</td>
-<td style="text-align:left">0 to 4,294,967,295</td>
-<td>0</td>
-</tr>
-<tr>
-<td style="text-align:left">long</td>
-<td style="text-align:left">sign 64 bits integer</td>
-<td style="text-align:left">0 to 255</td>
-<td>0</td>
-</tr>
-<tr>
-<td style="text-align:left">ulong</td>
-<td style="text-align:left">unsign 64 bits integer</td>
-<td style="text-align:left">-128 to 127</td>
-<td>0</td>
-</tr>
-<tr>
-<td style="text-align:left">float</td>
-<td style="text-align:left">32 bits numbers</td>
-<td style="text-align:left">-3.4 <em> 10 ^38 to 7.9 </em> 10 ^38</td>
-<td>0.0F</td>
-</tr>
-<tr>
-<td style="text-align:left">double</td>
-<td style="text-align:left">64 bits numbers</td>
-<td style="text-align:left">-5 <em> 10 ^-324 to 1.7 </em> 10 ^308</td>
-<td>0.0D</td>
-</tr>
-<tr>
-<td style="text-align:left">decimal</td>
-<td style="text-align:left">128 bits numbers</td>
-<td style="text-align:left">-7.9 <em> 10 ^-28 to 7.9 </em> 10 ^28 / 10 ^ 0-28</td>
-<td>0.0M</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>sizeof(type) will shows the size of type with bytes.</p>
-</blockquote>
-<h3 id="Object-Type"><a href="#Object-Type" class="headerlink" title="Object Type"></a>Object Type</h3><p>Object type is the lowest basic class in Common Type SYstem. Object is alias of SYstem.Object. The Object variable could be used to save all other classes.<br>However, when a value is asigned to an object variable, it should do <strong>Boxing</strong>. Also, when an object variable is used transfered as another object, we call it <strong>Unboxing</strong>.</p>
-<figure class="highlight c"><figcaption><span># Boxing</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">object obj;</span><br><span class="line">obj = <span class="number">100</span>; <span class="comment">//boxing</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="Dynamic-Type"><a href="#Dynamic-Type" class="headerlink" title="Dynamic Type"></a>Dynamic Type</h3><p>Dynamic Type also supplies the similar method to define a variable that could save a value in all types.</p>
-<figure class="highlight c"><figcaption><span># Dynamic Type</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//dynamic &lt;variable = value; </span></span><br><span class="line">dynamic d = <span class="number">20</span>; </span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p><strong>Object Type will be checked when the program is  compling. Dynamic Type will be checked when the program is running. </strong></p>
-<h3 id="String-Type"><a href="#String-Type" class="headerlink" title="String Type"></a>String Type</h3><p>In C#, users could assign value to string in 2 ways such as “” or @””.</p>
-<figure class="highlight c"><figcaption><span># String Assignment</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// Assign String Value as "C:\Windows" in 2 ways.</span></span><br><span class="line"><span class="built_in">string</span> str = <span class="string">"C:\\Windows"</span>;</span><br><span class="line"><span class="built_in">string</span> str = @<span class="string">"C:\Windows"</span>; </span><br><span class="line"></span><br><span class="line"><span class="comment">// @"" could save values in mutilple lines.</span></span><br><span class="line"><span class="built_in">string</span> str = @<span class="string">"&lt;script type="</span><span class="string">"text/javascript"</span><span class="string">"&gt;</span></span><br><span class="line"><span class="string">    &lt;!--</span></span><br><span class="line"><span class="string">    --&gt;</span></span><br><span class="line"><span class="string">&lt;/script&gt;"</span>;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="Pointer-Type"><a href="#Pointer-Type" class="headerlink" title="Pointer Type"></a>Pointer Type</h3><p>The pointer will point to the memory address which is used as the same as C or C++. </p>
-<figure class="highlight c"><figcaption><span># Pointer Assignment</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// type* identifier;</span></span><br><span class="line"><span class="keyword">char</span>* cptr;</span><br><span class="line"><span class="keyword">int</span>* iptr</span><br><span class="line">&lt;/script&gt;";</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-      
-    </div>
-    
-  </div>
-  
-  
-</article>
-
-  
-    <article id="post-Algorithm-Binary-Search-Easy" class="article global-container article-type-post" itemscope itemprop="blogPost">
-  
-    <header class="article-header">
-      
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/DexWebSite/2019/09/02/Algorithm-Binary-Search-Easy/">Algorithm Binary Search - Easy</a>
-    </h1>
-  
-
-    </header>
-  
-  <div class="article-meta">
-    <a href="/DexWebSite/2019/09/02/Algorithm-Binary-Search-Easy/" class="article-date">
-  <time datetime="2019-09-02T23:41:00.000Z" itemprop="datePublished">2019-09-02</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/DexWebSite/categories/Algorithm/">Algorithm</a>
-  </div>
-
-    
-  </div>
-  
-
-  <div class="article-inner">
-    
-    <div class="article-content article-content-cloud" itemprop="articleBody">
-      
-        <h3 id="Binary-Search"><a href="#Binary-Search" class="headerlink" title="Binary Search"></a>Binary Search</h3><p><a href="https://en.wikipedia.org/wiki/Binary_search_algorithm" target="_blank" rel="noopener">WIKI</a>: </p>
-<p>Binary Search is a search algorithm to find a position of a target in a <strong>sorted array</strong>. </p>
-<figure class="highlight java"><figcaption><span>Classic Binary Search - Find a target in an sorted array</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//Binary Search will define 2 pointers: left or right;</span></span><br><span class="line"><span class="comment">//i means left, it indicated that all elements in left side of i are smaller than target (excluded i) </span></span><br><span class="line"><span class="comment">//j means right, it shows that all elements in right side of j are bigger than target (excluded j)</span></span><br><span class="line"><span class="comment">//All elements between i and j will be checked. </span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">binarySearch</span><span class="params">(<span class="keyword">int</span>[] array, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">	<span class="comment">//corner cases</span></span><br><span class="line">	<span class="keyword">if</span> (array == <span class="keyword">null</span> || array.length == <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> j = array.length - <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span> (i &lt;= j) &#123;</span><br><span class="line">		<span class="keyword">int</span> mid = i + (j - i) / <span class="number">2</span>; <span class="comment">// Avoid overflow.</span></span><br><span class="line">		<span class="keyword">if</span> (array[mid] == target) &#123;</span><br><span class="line">			<span class="keyword">return</span> mid;</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span> (array[mid] &gt; target) &#123;</span><br><span class="line">			j = mid - <span class="number">1</span>;  <span class="comment">//move next to avoid dead lock. </span></span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			i = mid + <span class="number">1</span>;  <span class="comment">//move next to avoid dead lock. </span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>Hints</strong>:</p>
-<ul>
-<li><p>Applicable</p>
-<p>  It is for question that ask <strong>array contains target or not</strong>.</p>
-</li>
-<li><p>Overflow </p>
-<p>  int mid = i + (j - i) / 2;  -&gt; avoid overflow</p>
-<p>  int mid = (j + i) / 2; -&gt; i + j may be greated then Integer.MAX_VALUE;</p>
-</li>
-<li><p>Dead Lock</p>
-<p>  While (i &lt;= j) will check the element even i == j. When i = j - 1, the mid value will be the same as i. Then, i = mid will cause dead lock.</p>
-</li>
-</ul>
-<p><strong>Enhancement Binary Search</strong>:</p>
-<p>Sometimes, the array may contains mutiple targets, and requirement wants to consider another condition to get the target such as first appearance or last appearance or the most closest value.</p>
-<figure class="highlight java"><figcaption><span>Find the clsoest element of the input target in a sorted array</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Binary Search will define 2 pointers: left or right;</span></span><br><span class="line"><span class="comment">//i means left, it indicated that all elements in left side of i are smaller than target (excluded i) </span></span><br><span class="line"><span class="comment">//j means right, it shows that all elements in right side of j are bigger than target (excluded j)</span></span><br><span class="line"><span class="comment">//All elements between i and j will be checked. </span></span><br><span class="line">   </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">binarySearch</span><span class="params">(<span class="keyword">int</span>[] array, <span class="keyword">int</span> target)</span> </span>&#123;	</span><br><span class="line">    <span class="comment">//corner cases</span></span><br><span class="line">    <span class="keyword">if</span> (array == <span class="keyword">null</span> || array.length == <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>; </span><br><span class="line">    <span class="keyword">int</span> j = array.length - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (i &lt; j - <span class="number">1</span>) &#123;   <span class="comment">//left at least 2 elements.</span></span><br><span class="line">      <span class="keyword">int</span> mid = i + (j - i) / <span class="number">2</span>;</span><br><span class="line">      <span class="keyword">if</span> (array[mid] == target) &#123;</span><br><span class="line">        <span class="keyword">return</span> mid;</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (array[mid] &gt; target) &#123;</span><br><span class="line">        j = mid;  <span class="comment">//array[mid] could be the final result.</span></span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        i = mid;  <span class="comment">//array[mid] could be the final result.</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> Math.abs(array[i] - target) &lt; Math.abs(array[j] - target) ? i : j ; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><figcaption><span>Find the clsoest element of the input target in a sorted array</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Binary Search will define 2 pointers: left or right;</span></span><br><span class="line"><span class="comment">//i means left, it indicated that all elements in left side of i are smaller than target (excluded i) </span></span><br><span class="line"><span class="comment">//j means right, it shows that all elements in right side of j are bigger than target (excluded j)</span></span><br><span class="line"><span class="comment">//All elements between i and j will be checked. </span></span><br><span class="line">   </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">binarySearch</span><span class="params">(<span class="keyword">int</span>[] array, <span class="keyword">int</span> target)</span> </span>&#123;	</span><br><span class="line">    <span class="comment">//corner cases</span></span><br><span class="line">	 <span class="keyword">if</span> (array == <span class="keyword">null</span> || array.length == <span class="number">0</span>) &#123;</span><br><span class="line">		 <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">	 &#125;</span><br><span class="line">	 <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">	 <span class="keyword">int</span> j = array.length - <span class="number">1</span>;</span><br><span class="line">	 <span class="keyword">while</span> (i &lt; j - <span class="number">1</span>) &#123; </span><br><span class="line">		 <span class="keyword">int</span> mid = i +  (j - i) / <span class="number">2</span>;</span><br><span class="line">		 <span class="keyword">if</span> (array[mid] &gt; target) &#123;</span><br><span class="line">			 j = mid - <span class="number">1</span>; <span class="comment">//mid will never be the final result.</span></span><br><span class="line">		 &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			 i = mid; <span class="comment">//mid could be the final result if array[mid] == target.</span></span><br><span class="line">		 &#125;</span><br><span class="line">	 &#125;</span><br><span class="line">	 <span class="keyword">if</span> (array[j] == target) &#123;</span><br><span class="line">		 <span class="keyword">return</span> j;</span><br><span class="line">	 &#125; <span class="keyword">else</span> <span class="keyword">if</span> (array[i] == target) &#123;</span><br><span class="line">		 <span class="keyword">return</span> i;</span><br><span class="line">	 &#125;</span><br><span class="line">	 <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>Hints</strong>:</p>
-<ul>
-<li><p>Applicable</p>
-<p>  It is applicable for an array that contains mutiple available elements for the input target in a sorted array, and finally the mothod will get at least one element from available elements.</p>
-</li>
-<li><p>Loop Termination</p>
-<p>  For these questions, the loop should be stopped if the range only contains 2 elements (It also covers special case that array only contains 1 element). According to different, the loop could be stopped if the range contains n elements. </p>
-<p>  Why should loop stop with at least 2 elements? There is no variable to record all available elements durding the loop processing. </p>
-</li>
-</ul>
-<p><strong>Some Linked Examples</strong>:</p>
-<p><a href="https://leetcode.com/problems/find-smallest-letter-greater-than-target/" target="_blank" rel="noopener">744 - Find Smallest Letter Greater Than Target</a></p>
-<p><a href="https://leetcode.com/problems/check-if-a-number-is-majority-element-in-a-sorted-array/" target="_blank" rel="noopener">1150 - Check If a Number Is Majority Element in a Sorted Array</a></p>
-
-      
-    </div>
-    
-  </div>
-  
-  
-</article>
-
-  
 
 
   <nav id="page-nav">
@@ -1183,7 +1054,7 @@ ga('send', 'pageview');
   <div class="widget-box">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Algorithm/">Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Basic/">Basic</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/C-Programming-Language/">C# Programming Language</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Interview/">Interview</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Java-Programming-Language/">Java Programming Language</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Kits/">Kits</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Algorithm/">Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Basic/">Basic</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/C-Programming-Language/">C# Programming Language</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Interview/">Interview</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Java-Programming-Language/">Java Programming Language</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Kits/">Kits</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Object-Oriented-Design/">Object-Oriented Design</a></li></ul>
     </div>
   </div>
 
@@ -1205,6 +1076,14 @@ ga('send', 'pageview');
       <ul>
         
           <li>
+            <a href="/DexWebSite/2019/10/18/Object-Oriented-Design-2-4/">Object-Oriented Design #2</a>
+          </li>
+        
+          <li>
+            <a href="/DexWebSite/2019/10/18/OOD-1/">Object-Oriented Design #1</a>
+          </li>
+        
+          <li>
             <a href="/DexWebSite/2019/10/14/Amazon-Behavior-Questions/">Amazon Interview Preparation - SDE</a>
           </li>
         
@@ -1214,14 +1093,6 @@ ga('send', 'pageview');
         
           <li>
             <a href="/DexWebSite/2019/10/12/Java-String-Class/">Java String Class</a>
-          </li>
-        
-          <li>
-            <a href="/DexWebSite/2019/10/12/Algorithm-Principle-2/">Java Base Principle</a>
-          </li>
-        
-          <li>
-            <a href="/DexWebSite/2019/09/21/C-Lesson-5-Nullable/">C# Lesson 5 - Nullable</a>
           </li>
         
       </ul>

@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-113086304-2', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <title>Object-Oriented Design #1 | Dex Personal Website</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <meta name="description" content="Object-Oriented DesignIn the real world, we solve the problem unlike solving algortihm problem. It will be an OOD problem.  Practical problems -&amp;gt; Model -&amp;gt; APIs -&amp;gt; Methods -&amp;gt; Algorithms.  G">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Object-Oriented Design #1">
+<meta property="og:url" content="http://dexdexinwang.github.io/DexWebSite/2019/10/18/OOD-1/index.html">
+<meta property="og:site_name" content="Dex Personal Website">
+<meta property="og:description" content="Object-Oriented DesignIn the real world, we solve the problem unlike solving algortihm problem. It will be an OOD problem.  Practical problems -&amp;gt; Model -&amp;gt; APIs -&amp;gt; Methods -&amp;gt; Algorithms.  G">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-10-18T09:24:19.655Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Object-Oriented Design #1">
+<meta name="twitter:description" content="Object-Oriented DesignIn the real world, we solve the problem unlike solving algortihm problem. It will be an OOD problem.  Practical problems -&amp;gt; Model -&amp;gt; APIs -&amp;gt; Methods -&amp;gt; Algorithms.  G">
+  
+    <link rel="alternate" href="/DexWebSite/atom.xml" title="Dex Personal Website" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/DexWebSite/images/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/DexWebSite/css/style.css">
+  <link rel="stylesheet" href="/DexWebSite/css/highlight.css">
+  <script>
+  let antiquityStorage = window.sessionStorage.getItem('antiquitySessionStorage');
+  if (antiquityStorage == '' || antiquityStorage == null) {
+    var antiquityLoader = '<div id="loaderbox"><div class="loader"><div class="load-roll"><div class="load-top"></div><div class="load-right"></div><div class="load-bottom"></div></div></div></div>';
+    document.write(antiquityLoader);
+    document.body.style.overflow = 'hidden'
+  }
+  </script>
+</head>
+</html>
+<body>
+  <div id="fullpage" class="mobile-nav-left">
+    
+      <div id="wrapper" style="background-image: url(/DexWebSite/images/bg.jpg)" title="background">
+    
+    
+      <header id="header">
+  <div id="nav-toggle" class="nav-toggle"></div>
+  <div class="head-box global-width">
+    <nav class="nav-box nav-left">
+      
+        <a class="nav-item" href="/DexWebSite/" title>Home</a>
+      
+        <a class="nav-item" href="/DexWebSite/../PersonalWebSite/" title>Background</a>
+      
+    </nav>
+  </div>
+</header>
+      <div id="middlecontent" title class="global-width sidebar-left">
+        <section id="main"><article id="post-OOD-1" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      Object-Oriented Design #1
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/DexWebSite/2019/10/18/OOD-1/" class="article-date">
+  <time datetime="2019-10-18T08:31:00.000Z" itemprop="datePublished">2019-10-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/DexWebSite/categories/Object-Oriented-Design/">Object-Oriented Design</a>
+  </div>
+
+    
+  </div>
+  
+    <span id="busuanzi_container_page_pv">
+      Total Read : <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <h3 id="Object-Oriented-Design"><a href="#Object-Oriented-Design" class="headerlink" title="Object-Oriented Design"></a>Object-Oriented Design</h3><p>In the real world, we solve the problem unlike solving algortihm problem. It will be an OOD problem. <br></p>
+<p>Practical problems -&gt; Model -&gt; APIs -&gt; Methods -&gt; Algorithms.</p>
+<p><strong> Good Design </strong></p>
+<ol>
+<li>Complete functionality</li>
+<li>Easy to use: <br><br>2.2. Clear, elegant, easy to understand, no ambiguity<br><br>2.3. Prevent users from making mistakes</li>
+<li>Easy to evolve and extendable.</li>
+</ol>
+<p><strong> Basic Concepts </strong></p>
+<ol>
+<li><p>Class and Object <br><br>Class: a blueprint for a data type, scheme <br><br>Object: a specific realization of any class, instance.</p>
+</li>
+<li><p>Encapsulation: public, private, protected</p>
+</li>
+</ol>
+<p><strong> Access Label </strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Access</th>
+<th style="text-align:left">public</th>
+<th style="text-align:left">protected</th>
+<th style="text-align:left">private</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Same class</td>
+<td style="text-align:left">yes</td>
+<td style="text-align:left">yes</td>
+<td style="text-align:left">yes</td>
+</tr>
+<tr>
+<td style="text-align:left">Derived classes</td>
+<td style="text-align:left">yes</td>
+<td style="text-align:left">yes</td>
+<td style="text-align:left">no</td>
+</tr>
+<tr>
+<td style="text-align:left">outside classes</td>
+<td style="text-align:left">yes</td>
+<td style="text-align:left">no</td>
+<td style="text-align:left">no</td>
+</tr>
+</tbody>
+</table>
+<p><strong> Access Level </strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Modifier</th>
+<th style="text-align:left">Class</th>
+<th style="text-align:left">Package</th>
+<th style="text-align:left">Subclass</th>
+<th style="text-align:left">World</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">public</td>
+<td style="text-align:left">yes</td>
+<td style="text-align:left">yes</td>
+<td style="text-align:left">yes</td>
+<td style="text-align:left">yes</td>
+</tr>
+<tr>
+<td style="text-align:left">protected</td>
+<td style="text-align:left">yes</td>
+<td style="text-align:left">yes</td>
+<td style="text-align:left">yes</td>
+<td style="text-align:left">no</td>
+</tr>
+<tr>
+<td style="text-align:left">no modifier</td>
+<td style="text-align:left">yes</td>
+<td style="text-align:left">yes</td>
+<td style="text-align:left">no</td>
+<td style="text-align:left">no</td>
+</tr>
+<tr>
+<td style="text-align:left">private</td>
+<td style="text-align:left">yes</td>
+<td style="text-align:left">no</td>
+<td style="text-align:left">no</td>
+<td style="text-align:left">no</td>
+</tr>
+</tbody>
+</table>
+<p>Advantages:<br>Class Internals are protected from inadvertent user-level errors, which might corrupt the state of the object. <br><br>The class implementation may <strong><em>evolve</em></strong> over time in response to changing requirements or bug reports without requiring change in user-level code. (easier to maintain the compatibility)</p>
+<p><strong> How to select appropriate labels? </strong> </p>
+<ol>
+<li><p>API: public</p>
+</li>
+<li><p>Internal implementation: private</p>
+</li>
+<li><p>Class inheritance: do we need to use protected for methods/attributes <br><br>3.1. Protected methods: sometimes useful when we want to override an implementation in subclasses <br><br>3.2.Protected attributes: be careful, try to use private first</p>
+</li>
+<li><p>“default” in java (package-private): declare a class as public only when we define public API in it, otherwise package-private is good enough.</p>
+</li>
+</ol>
+<p><strong> Inheritance, Interface, Abstract Class: </strong> <br><br>Inheritance: <br><br>Definitions: A class that is derived from another class is called a subclass (also a derived class, extended class, or child class). The class from which subclass is derived is called a superclass (also a base class or parent class). <br></p>
+<p>Abstract: <br><br>Definitions: A class must be declared abstract when it has one or more abstract methods. A method is declared abstract when it has a method heading, but no body – which means that an abstract method has no implementation code inside like normal methods do.<br></p>
+<p>Interface: <br><br>An interface differs from an abstract class has only abstract methods.<br></p>
+<p><strong>Difference between Abstract and Interface in Java: </strong> <br></p>
+<ol>
+<li><p>Java does not allow multiple inheritance. In Java, a class can only derive from one class, whether its abstract or not. However, a class can implement multiple interfaces. </p>
+</li>
+<li><p>An abstract class may provide some methods with definitions – so an abstract class can have non-abstract methods with actual implementation details. An abstract class can also have constructors and instance variables as well. An interface, however, can not provide any method definitions – it can only provide method headings. Any class that implements the interface is responsible for providing the method definition/ implementation.</p>
+</li>
+<li><p>Abstract: is a something. Interface: has a function.</p>
+</li>
+</ol>
+<p><strong> Inheritance: </strong><br>Base class to Derived class <br><br>Interface and Abstract: Cannot instantiate abstract class and interface. <br></p>
+<p>Q: in Java, for your base class, Interface v.s. Abstract Class v.s. Concrete Class? </p>
+<ol>
+<li>An abstract class provides a common base class implementation to derived classes. Use abstract class( or even concrete class) for base class if the derived classes share common implementation. </li>
+<li>Interface helps you (or enforces you) to focus on the API signature definition.</li>
+<li>Multiple inheritance: implement multiple interfaces.</li>
+<li>The relationship between the interface itself and the class implementing the interface is not necessarily strong (capability)</li>
+</ol>
+<p><strong> Polymorphism and Overriding:</strong> <br><br>Override: a subclass o child class to provide a specific implementation of a method that is already provided by one of its superclasses or parent classes.  <br></p>
+<p>Polymorphism: A call to a member function will cause a different function to be executed depending on the type of object that invokes the function. <br></p>
+<p><strong> Override VS. Overload </strong><br>    Override is used when you redefine a method that has been defined in a parent class (using the same signature). Resolved at running time.<br>    Overload is used when you define two methods with the same name, in the same class, distinguished by their signatures (different), Resolved at compile time.</p>
+
+      
+    </div>
+    
+      <footer class="article-footer">
+        Done
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  <div class="article-nav-block">
+    
+      <a href="/DexWebSite/2019/10/18/Object-Oriented-Design-2-4/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption"></strong>
+        <div class="article-nav-title">
+          
+            Object-Oriented Design #2
+          
+        </div>
+      </a>
+    
+  </div>
+  <div class="article-nav-block">
+    
+      <a href="/DexWebSite/2019/10/14/Amazon-Behavior-Questions/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">Amazon Interview Preparation - SDE</div>
+        <strong class="article-nav-caption"></strong>
+      </a>
+    
+  </div>
+</nav>
+
+    
+<div id="gitmentContainer"></div>
+<link rel="stylesheet" href="https://wzxjayce.github.io/gitment.css">
+<script src="https://wzxjayce.github.io/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  owner: 'dexdexinwang',
+  repo: 'DexWebSite',
+  oauth: {
+    client_id: '7c44fd11f8e0d609f5ba',
+    client_secret: 'ea91b14d1a2f4aa1ff3d610c266ff8280eb5caae',
+  },
+})
+gitment.render('gitmentContainer')
+</script>
+
+  
+  
+</article>
+</section>
+        <aside id="sidebar">
+  
+    <div class="widget-box">
+  <div class="avatar-box">
+    <img class="avatar" src="/DexWebSite/images/dexphoto.jpg" title="personal image">
+    <h3 class="avatar-name">
+      
+        Dexin Wang
+      
+    </h3>
+  </div>
+</div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Algorithm/">Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Basic/">Basic</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/C-Programming-Language/">C# Programming Language</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Interview/">Interview</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Java-Programming-Language/">Java Programming Language</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Kits/">Kits</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Object-Oriented-Design/">Object-Oriented Design</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/03/">March 2019</a></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/DexWebSite/2019/10/18/Object-Oriented-Design-2-4/">Object-Oriented Design #2</a>
+          </li>
+        
+          <li>
+            <a href="/DexWebSite/2019/10/18/OOD-1/">Object-Oriented Design #1</a>
+          </li>
+        
+          <li>
+            <a href="/DexWebSite/2019/10/14/Amazon-Behavior-Questions/">Amazon Interview Preparation - SDE</a>
+          </li>
+        
+          <li>
+            <a href="/DexWebSite/2019/10/13/Java-Base-Principle-II/">Java Base Principle II</a>
+          </li>
+        
+          <li>
+            <a href="/DexWebSite/2019/10/12/Java-String-Class/">Java String Class</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      </div>
+      <footer id="footer">
+  <div class="foot-box global-width">
+    &copy; 2019 Dexin Wang &nbsp;&nbsp;
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    &nbsp;|&nbsp;Theme <a href="https://github.com/DexDexinWang/hexo-dex">antiquity</a>
+    <br>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">You are the <span id="busuanzi_value_site_pv"></span> visitor</span>
+  </div>
+</footer>
+      <script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script>
+if (!window.jQuery) {
+var script = document.createElement('script');
+script.src = "/js/jquery-2.0.3.min.js";
+document.body.write(script);
+}
+</script>
+
+  <link rel="stylesheet" href="/DexWebSite/fancybox/jquery.fancybox.css">
+  <script src="/DexWebSite/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/DexWebSite/js/script.js"></script>
+
+
+
+    </div>
+    <nav id="mobile-nav" class="mobile-nav-box">
+  <div class="mobile-nav-img mobile-nav-top"></div>
+  
+    <a href="/DexWebSite/" class="mobile-nav-link">Home</a>
+  
+    <a href="/DexWebSite/../PersonalWebSite/" class="mobile-nav-link">Background</a>
+  
+  <div class="mobile-nav-img  mobile-nav-bottom"></div>
+</nav>    
+  </div>
+</body>
+</html>
