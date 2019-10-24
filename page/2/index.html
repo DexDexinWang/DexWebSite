@@ -75,6 +75,131 @@ ga('send', 'pageview');
       <div id="middlecontent" title class="global-width sidebar-left">
         <section id="main">
   
+    <article id="post-C-Lesson-2" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/DexWebSite/2019/09/19/C-Lesson-2/">C# Lesson 2 - Base 2</a>
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/DexWebSite/2019/09/19/C-Lesson-2/" class="article-date">
+  <time datetime="2019-09-19T08:56:00.000Z" itemprop="datePublished">2019-09-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/DexWebSite/categories/C-Programming-Language/">C# Programming Language</a>
+  </div>
+
+    
+  </div>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <h3 id="Type-Conversion"><a href="#Type-Conversion" class="headerlink" title="Type Conversion"></a>Type Conversion</h3><p>In C#, the value of variable could be converted in 2 ways.</p>
+<ul>
+<li>Implicit Type Conversion, C# default some safety converstion from samll number type to bigger number type such as short to int. </li>
+<li>Explicit Type Conversion, it is fored type conversion. It requires convertional operator. Also, it may lost data. </li>
+</ul>
+<p>E.g.</p>
+<figure class="highlight c"><figcaption><span># Type Conversion</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> TypeConversionApplication</span><br><span class="line">&#123;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">ExplicitConversion</span></span></span><br><span class="line"><span class="class">    &#123;</span></span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span><span class="params">(<span class="built_in">string</span>[] args)</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">double</span> d = <span class="number">5673.74</span>;</span><br><span class="line">            <span class="keyword">int</span> i;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// Explicit Type Conversion</span></span><br><span class="line">            i = (<span class="keyword">int</span>)d;</span><br><span class="line">            Console.WriteLine(i);</span><br><span class="line">            Console.ReadKey();</span><br><span class="line">            <span class="comment">// Final output will be 5673</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="Variable-Declaration-amp-Initialization"><a href="#Variable-Declaration-amp-Initialization" class="headerlink" title="Variable Declaration &amp; Initialization"></a>Variable Declaration &amp; Initialization</h3><figure class="highlight c"><figcaption><span># Declaration & Initialization</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;data_type&gt; &lt;variable_list&gt;;</span><br><span class="line">&lt;data_type&gt; &lt;variable_name&gt; = value;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="Lvalues-amp-Rvalues"><a href="#Lvalues-amp-Rvalues" class="headerlink" title="Lvalues &amp; Rvalues"></a>Lvalues &amp; Rvalues</h3><p>lValue indicates that express could be the left or the right side of value assignment. </p>
+<p>rValue shows the express could only be the right side of value assignment. </p>
+<figure class="highlight c"><figcaption><span># lvalue & rvalue</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">int</span> g = <span class="number">20</span> <span class="comment">//lvalue</span></span><br><span class="line"><span class="number">10</span> = <span class="number">20</span> <span class="comment">//rvalue, so it is an error.</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="constant"><a href="#constant" class="headerlink" title="constant"></a>constant</h3><p>A constant variable could not be changed after a value is assigned to this constant variable. Also, it should not be changed during program processing.</p>
+<figure class="highlight c"><figcaption><span># Constant</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> &lt;data_type&gt; &lt;constant_name&gt; = value;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Defined string variable is a constant variable.</p>
+</blockquote>
+<h3 id="Operators"><a href="#Operators" class="headerlink" title="Operators"></a>Operators</h3><p>Arithmetic operators: +, -, *, /, %, ++, –,</p>
+<p>Relation operators: ==, !=, &gt;, &lt;, &gt;=, &lt;=</p>
+<p>Logic operators: &amp;&amp;, ||, !</p>
+<p>Bit operators: &amp;, |, ^, ~ </p>
+<p>E.g. </p>
+<p>A = 0011 1100</p>
+<p>B = 0000 1101</p>
+<p>A&amp;B = 0000 1100</p>
+<p>A|B = 0011 1101</p>
+<p>A^B = 0011 0001</p>
+<p>~A  = 1100 0011</p>
+<p>A&lt;&lt;2 = 1111 0000</p>
+<p>A&gt;&gt;2 = 00001 111</p>
+<p>Assignment Operators: =, +=, -=, *=, /=, %=, &lt;&lt;=, &gt;&gt;=, &amp;=, ^=, !=</p>
+<h3 id="Other-Operators"><a href="#Other-Operators" class="headerlink" title="Other Operators"></a>Other Operators</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">Operator</th>
+<th style="text-align:left">Description</th>
+<th style="text-align:left">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">sizeof()</td>
+<td style="text-align:left">return size of type</td>
+<td style="text-align:left">sizeof(int)</td>
+</tr>
+<tr>
+<td style="text-align:left">typeof()</td>
+<td style="text-align:left">return class type</td>
+<td style="text-align:left">typeof(a)</td>
+</tr>
+<tr>
+<td style="text-align:left">&amp;</td>
+<td style="text-align:left">return the memory address of a variable</td>
+<td style="text-align:left">&amp;a</td>
+</tr>
+<tr>
+<td style="text-align:left">*</td>
+<td style="text-align:left">the pointer of a variable</td>
+<td style="text-align:left">*a</td>
+</tr>
+<tr>
+<td style="text-align:left">?:</td>
+<td style="text-align:left">condition express</td>
+<td style="text-align:left">express ? True : False</td>
+</tr>
+<tr>
+<td style="text-align:left">is</td>
+<td style="text-align:left">check objects are the same</td>
+<td style="text-align:left">if (Ford is Car)</td>
+</tr>
+<tr>
+<td style="text-align:left">as</td>
+<td style="text-align:left">convert object type without exception</td>
+<td style="text-align:left">Object obj = new StringReader(“Hello”); StringReader r = obj as StringReader</td>
+</tr>
+</tbody>
+</table>
+<h3 id="C-Condition-amp-Loop"><a href="#C-Condition-amp-Loop" class="headerlink" title="C# Condition &amp; Loop"></a>C# Condition &amp; Loop</h3><ul>
+<li>If(condition){} Else{}</li>
+<li>condition ? True : Fasle</li>
+<li>Switch (condition) {case’’: ; case’’:}</li>
+<li>While(condition){}</li>
+<li>do{} while(condition)</li>
+<li>for(::)</li>
+<li>foreach({Type} var in {Array vairable})</li>
+</ul>
+<p><strong>‘break’ stops loop or while. ‘continue’ will ignore next logic in the loop and goes back to the head of loop or while</strong></p>
+
+      
+    </div>
+    
+  </div>
+  
+  
+</article>
+
+  
     <article id="post-C-Lesson-1" class="article global-container article-type-post" itemscope itemprop="blogPost">
   
     <header class="article-header">
@@ -761,7 +886,7 @@ ga('send', 'pageview');
 <h2 id="Credits"><a href="#Credits" class="headerlink" title="Credits"></a>Credits</h2><p><strong>Marxico</strong> was first built upon <a href="http://dillinger.io" target="_blank" rel="noopener">Dillinger</a>, and the newest version is almost based on the awesome <a href="http://stackedit.io" target="_blank" rel="noopener">StackEdit</a>. Acknowledgments to them and other incredible open source projects!</p>
 <h2 id="Feedback-amp-Bug-Report"><a href="#Feedback-amp-Bug-Report" class="headerlink" title="Feedback &amp; Bug Report"></a>Feedback &amp; Bug Report</h2><ul>
 <li>Twitter: <a href="https://twitter.com/gock2" target="_blank" rel="noopener">@gock2</a></li>
-<li>Email: <a href="mailto:&#104;&#117;&#x73;&#x74;&#x67;&#111;&#99;&#x6b;&#x40;&#103;&#109;&#97;&#105;&#x6c;&#46;&#99;&#x6f;&#x6d;" target="_blank" rel="noopener">&#104;&#117;&#x73;&#x74;&#x67;&#111;&#99;&#x6b;&#x40;&#103;&#109;&#97;&#105;&#x6c;&#46;&#99;&#x6f;&#x6d;</a></li>
+<li>Email: <a href="mailto:&#104;&#x75;&#x73;&#x74;&#x67;&#x6f;&#99;&#107;&#x40;&#103;&#109;&#x61;&#105;&#108;&#x2e;&#99;&#111;&#x6d;" target="_blank" rel="noopener">&#104;&#x75;&#x73;&#x74;&#x67;&#x6f;&#99;&#107;&#x40;&#103;&#109;&#x61;&#105;&#108;&#x2e;&#99;&#111;&#x6d;</a></li>
 </ul>
 <hr>
 <p>Thank you for reading this manual. Now please press <code>Ctrl + M</code> and click <code>Link with Evernote</code>. Enjoy your <strong>Marxico</strong> journey!</p>
@@ -825,6 +950,10 @@ ga('send', 'pageview');
       <ul>
         
           <li>
+            <a href="/DexWebSite/2019/10/24/Algorithm-Linked-List/">Algorithm Linked List </a>
+          </li>
+        
+          <li>
             <a href="/DexWebSite/2019/10/18/Object-Oriented-Design-2-4/">Object-Oriented Design #2</a>
           </li>
         
@@ -838,10 +967,6 @@ ga('send', 'pageview');
         
           <li>
             <a href="/DexWebSite/2019/10/13/Java-Base-Principle-II/">Java Base Principle II</a>
-          </li>
-        
-          <li>
-            <a href="/DexWebSite/2019/10/12/Java-String-Class/">Java String Class</a>
           </li>
         
       </ul>
