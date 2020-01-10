@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-113086304-2', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <title>React Base Principle | Dex Personal Website</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <meta name="description" content="ReactReact is a Javascript library for building user interfaces. It defines a new idea(Reactive Programming) to create UI, UI = render (data).  HTML DOM Tree (Document Object Model) is constructed as">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React Base Principle">
+<meta property="og:url" content="http://dexdexinwang.github.io/DexWebSite/2020/01/09/React-Base-Principle/index.html">
+<meta property="og:site_name" content="Dex Personal Website">
+<meta property="og:description" content="ReactReact is a Javascript library for building user interfaces. It defines a new idea(Reactive Programming) to create UI, UI = render (data).  HTML DOM Tree (Document Object Model) is constructed as">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-01-10T00:43:13.409Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React Base Principle">
+<meta name="twitter:description" content="ReactReact is a Javascript library for building user interfaces. It defines a new idea(Reactive Programming) to create UI, UI = render (data).  HTML DOM Tree (Document Object Model) is constructed as">
+  
+    <link rel="alternate" href="/DexWebSite/atom.xml" title="Dex Personal Website" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/DexWebSite/images/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/DexWebSite/css/style.css">
+  <link rel="stylesheet" href="/DexWebSite/css/highlight.css">
+  <script>
+  let antiquityStorage = window.sessionStorage.getItem('antiquitySessionStorage');
+  if (antiquityStorage == '' || antiquityStorage == null) {
+    var antiquityLoader = '<div id="loaderbox"><div class="loader"><div class="load-roll"><div class="load-top"></div><div class="load-right"></div><div class="load-bottom"></div></div></div></div>';
+    document.write(antiquityLoader);
+    document.body.style.overflow = 'hidden'
+  }
+  </script>
+</head>
+</html>
+<body>
+  <div id="fullpage" class="mobile-nav-left">
+    
+      <div id="wrapper" style="background-image: url(/DexWebSite/images/bg.jpg)" title="background">
+    
+    
+      <header id="header">
+  <div id="nav-toggle" class="nav-toggle"></div>
+  <div class="head-box global-width">
+    <nav class="nav-box nav-left">
+      
+        <a class="nav-item" href="/DexWebSite/" title>Home</a>
+      
+        <a class="nav-item" href="/DexWebSite/../PersonalWebSite/" title>Background</a>
+      
+    </nav>
+  </div>
+</header>
+      <div id="middlecontent" title class="global-width sidebar-left">
+        <section id="main"><article id="post-React-Base-Principle" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      React Base Principle
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/DexWebSite/2020/01/09/React-Base-Principle/" class="article-date">
+  <time datetime="2020-01-09T19:17:00.000Z" itemprop="datePublished">2020-01-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/DexWebSite/categories/React-Development/">React Development</a>
+  </div>
+
+    
+  </div>
+  
+    <span id="busuanzi_container_page_pv">
+      Total Read : <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <h3 id="React"><a href="#React" class="headerlink" title="React"></a>React</h3><p><a href="https://reactjs.org/" target="_blank" rel="noopener">React</a> is a Javascript library for building user interfaces. It defines a new idea(Reactive Programming) to create UI, UI = render (data). </p>
+<p><a href="https://www.w3schools.com/whatis/whatis_htmldom.asp" target="_blank" rel="noopener">HTML DOM Tree</a> (Document Object Model) is constructed as a tree of Objects for HTML. Brower will refresh whole DOM tree if there is any change. Hence, Web developers prefer reducing DOM manipulation to save cost.</p>
+<p><a href="https://reactjs.org/docs/faq-internals.html" target="_blank" rel="noopener">Virtual DOM</a> is a representation of a UI is kept in memory and synced with real HTML DOM tree. It will notify which DOM is changed to reduce cost for page change.</p>
+<p>High Cohesion: React allows css, js, and html are in the same js file.</p>
+<p>Low Coupling: React define components in a easy way with standard interface. </p>
+<p>React Refresh Rule: Any change in “prop” and “state” will cause Virtual DOM Refresh.</p>
+<p>Component Lifcycle: Mounting (first render in DOM tree), Updating (refresh), Unmounting(Delete from DOM tree).</p>
+<p><a href="https://reactjs.org/docs/react-component.html" target="_blank" rel="noopener"><em>Lifecycle</em> Updated on 01/09/2020</a> <br></p>
+<p>Mounting: constructor() –&gt; static getDerivedStateFromProps() –&gt; render() –&gt; componentDidMount() <br></p>
+<p>Updating: static getDerivedStateFromProps() –&gt; shouldComponentUpdate() –&gt; render() –&gt; getSnapshotBeforeUpdate() –&gt; componentDidUpdate() <br></p>
+<p>unmounting: componentWillUnmount() <br></p>
+<h5 id="Quick-Procss"><a href="#Quick-Procss" class="headerlink" title="Quick Procss:"></a>Quick Procss:</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm install --global create-react-app</span><br><span class="line">create-react-app dex_react_app</span><br><span class="line">cd dex_react_app</span><br><span class="line">npm start</span><br></pre></td></tr></table></figure>
+<p>Then a initial page will appear in <a href="http://localhost:3000/" target="_blank" rel="noopener">http://localhost:3000/</a>.</p>
+<h5 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h5><ul>
+<li><p>JSX (JavaScript eXtension) allows developers use defined components as the same as using HTML element in .js files. The different between React component and HTML element is checking whether the first character is capitalized or not.  Also, JSX will define render scope to improve efficency.<br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ReactDOM.render(&lt;App /&gt;, document.getElementById(&apos;root&apos;));</span><br><span class="line">//Different example</span><br><span class="line">React: &lt;App onClick = ...&gt;</span><br><span class="line">HTML: &lt;div onclick = ...&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>pckage.json defines some packages that will be used in current project. Runing “npm start” means running “react-scripts start” in npm package which is added by “create-react-app”. </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;start&quot;: &quot;react-scripts start&quot;,</span><br><span class="line">    &quot;build&quot;: &quot;react-scripts build&quot;,</span><br><span class="line">    &quot;test&quot;: &quot;react-scripts test --env=jsdom&quot;,</span><br><span class="line">    &quot;eject&quot;: &quot;react-scripts eject&quot; </span><br><span class="line">    //The &quot;eject&quot; command will add &quot;scripts&quot; and &quot;config&quot;. </span><br><span class="line">    //When running &quot;npm start&quot;, it will run &quot;react-scripts start&quot;</span><br><span class="line">    //with defined configuration in config\webpack.config.dev.js.</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Every react page, class, or component should import React because JSX will translate content as React expressions. <br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import React from &apos;react&apos;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>prop is used to pass parameters from outside to inside. It looks like setup attributes to HTML element. However, it only pass string valuse for each attribute. In React, it could pass any JavaScript data type.<br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;SampleButton </span><br><span class="line"> id = &apos;sample&apos;</span><br><span class="line"> borderWidth = &#123;2&#125; </span><br><span class="line"> onClick = &#123;onButtonClick&#125;</span><br><span class="line"> style=&#123;&#123;color:&apos;red&apos;&#125;&#125; // &#123;color:&apos;red&apos;&#125; is an object.</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Render() should only return one element<br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">reder() &#123;</span><br><span class="line">	&lt;div&gt;</span><br><span class="line">    	....</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>If any component want to define the constructor(props), it should write super(props) in the first line. Otherwise, the instances of this component could not get props. <br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Test extends Component&#123;</span><br><span class="line">	constructor(props) &#123;</span><br><span class="line">    	super(props);</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>propTypes is used to define prop standards. However, this feature will cause more cost and it is useful only for developers. Suggestion, it could be used in test period. Use auto process to delete it before deploy the process. <br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">test.propTypes = &#123;</span><br><span class="line">	key: PropTypes.string.isRequired,</span><br><span class="line">    value: PropTypes.number</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>defaultProps makes better program. <br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">constructor(props) &#123;</span><br><span class="line">    this.state= &#123;</span><br><span class="line">    	value: props.initValue || 0,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">constructor(props) &#123;</span><br><span class="line">    this.state= &#123;</span><br><span class="line">    	value: props.initValue </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">test.defaultProps = &#123;</span><br><span class="line">    initValue:0</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>access state in correct way to refresh page.<br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">constructor(props) &#123;</span><br><span class="line">    this.state= &#123;</span><br><span class="line">    	value: props.initValue ,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">\\read</span><br><span class="line">const &#123;value&#125; = this.state,</span><br><span class="line">\\write</span><br><span class="line">this.state.value = value; // it will change value, but not refresh page </span><br><span class="line">this.setState((state) =&gt; &#123; // it will change value and refresh code</span><br><span class="line">	var: var,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Showing Component priority with ‘caption’ parameter in props. <br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">componentWillMount()&#123;</span><br><span class="line">	console.log(&apos;entry componentWillMount &apos; + this.props.caption).</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight plain"><figcaption><span>Creation</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm install --global create-react-app</span><br><span class="line">create-react-app dex_react</span><br><span class="line">cd first_react_app</span><br><span class="line">npm start</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+      <footer class="article-footer">
+        Done
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  <div class="article-nav-block">
+    
+      <a href="/DexWebSite/2020/01/09/Redux-Base-Principle/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption"></strong>
+        <div class="article-nav-title">
+          
+            Redux Base Principle
+          
+        </div>
+      </a>
+    
+  </div>
+  <div class="article-nav-block">
+    
+      <a href="/DexWebSite/2019/10/24/Algorithm-Linked-List/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">Algorithm Linked List </div>
+        <strong class="article-nav-caption"></strong>
+      </a>
+    
+  </div>
+</nav>
+
+    
+<div id="gitmentContainer"></div>
+<link rel="stylesheet" href="https://wzxjayce.github.io/gitment.css">
+<script src="https://wzxjayce.github.io/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  owner: 'dexdexinwang',
+  repo: 'DexWebSite',
+  oauth: {
+    client_id: '7c44fd11f8e0d609f5ba',
+    client_secret: 'ea91b14d1a2f4aa1ff3d610c266ff8280eb5caae',
+  },
+})
+gitment.render('gitmentContainer')
+</script>
+
+  
+  
+</article>
+</section>
+        <aside id="sidebar">
+  
+    <div class="widget-box">
+  <div class="avatar-box">
+    <img class="avatar" src="/DexWebSite/images/dexphoto.jpg" title="personal image">
+    <h3 class="avatar-name">
+      
+        Dexin Wang
+      
+    </h3>
+  </div>
+</div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Algorithm/">Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Basic/">Basic</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/C-Programming-Language/">C# Programming Language</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Interview/">Interview</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Java-Programming-Language/">Java Programming Language</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Kits/">Kits</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Object-Oriented-Design/">Object-Oriented Design</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/React-Development/">React Development</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/03/">March 2019</a></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/DexWebSite/2020/01/09/Redux-Base-Principle/">Redux Base Principle</a>
+          </li>
+        
+          <li>
+            <a href="/DexWebSite/2020/01/09/React-Base-Principle/">React Base Principle</a>
+          </li>
+        
+          <li>
+            <a href="/DexWebSite/2019/10/24/Algorithm-Linked-List/">Algorithm Linked List </a>
+          </li>
+        
+          <li>
+            <a href="/DexWebSite/2019/10/18/Object-Oriented-Design-3/">Object-Oriented Design #3</a>
+          </li>
+        
+          <li>
+            <a href="/DexWebSite/2019/10/18/Object-Oriented-Design-2-4/">Object-Oriented Design #2</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      </div>
+      <footer id="footer">
+  <div class="foot-box global-width">
+    &copy; 2020 Dexin Wang &nbsp;&nbsp;
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    &nbsp;|&nbsp;Theme <a href="https://github.com/DexDexinWang/hexo-dex">antiquity</a>
+    <br>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">You are the <span id="busuanzi_value_site_pv"></span> visitor</span>
+  </div>
+</footer>
+      <script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script>
+if (!window.jQuery) {
+var script = document.createElement('script');
+script.src = "/js/jquery-2.0.3.min.js";
+document.body.write(script);
+}
+</script>
+
+  <link rel="stylesheet" href="/DexWebSite/fancybox/jquery.fancybox.css">
+  <script src="/DexWebSite/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/DexWebSite/js/script.js"></script>
+
+
+
+    </div>
+    <nav id="mobile-nav" class="mobile-nav-box">
+  <div class="mobile-nav-img mobile-nav-top"></div>
+  
+    <a href="/DexWebSite/" class="mobile-nav-link">Home</a>
+  
+    <a href="/DexWebSite/../PersonalWebSite/" class="mobile-nav-link">Background</a>
+  
+  <div class="mobile-nav-img  mobile-nav-bottom"></div>
+</nav>    
+  </div>
+</body>
+</html>

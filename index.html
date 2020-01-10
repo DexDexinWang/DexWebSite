@@ -75,6 +75,138 @@ ga('send', 'pageview');
       <div id="middlecontent" title class="global-width sidebar-left">
         <section id="main">
   
+    <article id="post-Redux-Base-Principle" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/DexWebSite/2020/01/09/Redux-Base-Principle/">Redux Base Principle</a>
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/DexWebSite/2020/01/09/Redux-Base-Principle/" class="article-date">
+  <time datetime="2020-01-10T00:42:00.000Z" itemprop="datePublished">2020-01-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/DexWebSite/categories/React-Development/">React Development</a>
+  </div>
+
+    
+  </div>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <h3 id="Redux"><a href="#Redux" class="headerlink" title="Redux"></a>Redux</h3><p><strong>Redux Development History : </strong></p>
+<p><a href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller" target="_blank" rel="noopener">MVC (Model, View, Controller)</a>:  Request -&gt; Controller -&gt; Model -&gt; View (One Direction). However, in some real projects, it always allows View accesses Model. Finally, the whole projects become more and more complexity.</p>
+<p><a href="https://facebook.github.io/flux/" target="_blank" rel="noopener">Flux</a>: Action -&gt; Dispatcher -&gt; Store -&gt; View - Action -&gt; Dispatcher (Cycle).</p>
+<p><strong>Compare MVC and Flux</strong></p>
+<ol>
+<li>MVC shows Controller to requester. Flux shows Dispatcher to requester.</li>
+<li>For adding a new feature, MVC need to create a new controller, and Flux will only add one Action.</li>
+</ol>
+
+      
+    </div>
+    
+  </div>
+  
+  
+</article>
+
+  
+    <article id="post-React-Base-Principle" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/DexWebSite/2020/01/09/React-Base-Principle/">React Base Principle</a>
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/DexWebSite/2020/01/09/React-Base-Principle/" class="article-date">
+  <time datetime="2020-01-09T19:17:00.000Z" itemprop="datePublished">2020-01-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/DexWebSite/categories/React-Development/">React Development</a>
+  </div>
+
+    
+  </div>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <h3 id="React"><a href="#React" class="headerlink" title="React"></a>React</h3><p><a href="https://reactjs.org/" target="_blank" rel="noopener">React</a> is a Javascript library for building user interfaces. It defines a new idea(Reactive Programming) to create UI, UI = render (data). </p>
+<p><a href="https://www.w3schools.com/whatis/whatis_htmldom.asp" target="_blank" rel="noopener">HTML DOM Tree</a> (Document Object Model) is constructed as a tree of Objects for HTML. Brower will refresh whole DOM tree if there is any change. Hence, Web developers prefer reducing DOM manipulation to save cost.</p>
+<p><a href="https://reactjs.org/docs/faq-internals.html" target="_blank" rel="noopener">Virtual DOM</a> is a representation of a UI is kept in memory and synced with real HTML DOM tree. It will notify which DOM is changed to reduce cost for page change.</p>
+<p>High Cohesion: React allows css, js, and html are in the same js file.</p>
+<p>Low Coupling: React define components in a easy way with standard interface. </p>
+<p>React Refresh Rule: Any change in “prop” and “state” will cause Virtual DOM Refresh.</p>
+<p>Component Lifcycle: Mounting (first render in DOM tree), Updating (refresh), Unmounting(Delete from DOM tree).</p>
+<p><a href="https://reactjs.org/docs/react-component.html" target="_blank" rel="noopener"><em>Lifecycle</em> Updated on 01/09/2020</a> <br></p>
+<p>Mounting: constructor() –&gt; static getDerivedStateFromProps() –&gt; render() –&gt; componentDidMount() <br></p>
+<p>Updating: static getDerivedStateFromProps() –&gt; shouldComponentUpdate() –&gt; render() –&gt; getSnapshotBeforeUpdate() –&gt; componentDidUpdate() <br></p>
+<p>unmounting: componentWillUnmount() <br></p>
+<h5 id="Quick-Procss"><a href="#Quick-Procss" class="headerlink" title="Quick Procss:"></a>Quick Procss:</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm install --global create-react-app</span><br><span class="line">create-react-app dex_react_app</span><br><span class="line">cd dex_react_app</span><br><span class="line">npm start</span><br></pre></td></tr></table></figure>
+<p>Then a initial page will appear in <a href="http://localhost:3000/" target="_blank" rel="noopener">http://localhost:3000/</a>.</p>
+<h5 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h5><ul>
+<li><p>JSX (JavaScript eXtension) allows developers use defined components as the same as using HTML element in .js files. The different between React component and HTML element is checking whether the first character is capitalized or not.  Also, JSX will define render scope to improve efficency.<br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ReactDOM.render(&lt;App /&gt;, document.getElementById(&apos;root&apos;));</span><br><span class="line">//Different example</span><br><span class="line">React: &lt;App onClick = ...&gt;</span><br><span class="line">HTML: &lt;div onclick = ...&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>pckage.json defines some packages that will be used in current project. Runing “npm start” means running “react-scripts start” in npm package which is added by “create-react-app”. </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;start&quot;: &quot;react-scripts start&quot;,</span><br><span class="line">    &quot;build&quot;: &quot;react-scripts build&quot;,</span><br><span class="line">    &quot;test&quot;: &quot;react-scripts test --env=jsdom&quot;,</span><br><span class="line">    &quot;eject&quot;: &quot;react-scripts eject&quot; </span><br><span class="line">    //The &quot;eject&quot; command will add &quot;scripts&quot; and &quot;config&quot;. </span><br><span class="line">    //When running &quot;npm start&quot;, it will run &quot;react-scripts start&quot;</span><br><span class="line">    //with defined configuration in config\webpack.config.dev.js.</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Every react page, class, or component should import React because JSX will translate content as React expressions. <br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import React from &apos;react&apos;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>prop is used to pass parameters from outside to inside. It looks like setup attributes to HTML element. However, it only pass string valuse for each attribute. In React, it could pass any JavaScript data type.<br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;SampleButton </span><br><span class="line"> id = &apos;sample&apos;</span><br><span class="line"> borderWidth = &#123;2&#125; </span><br><span class="line"> onClick = &#123;onButtonClick&#125;</span><br><span class="line"> style=&#123;&#123;color:&apos;red&apos;&#125;&#125; // &#123;color:&apos;red&apos;&#125; is an object.</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Render() should only return one element<br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">reder() &#123;</span><br><span class="line">	&lt;div&gt;</span><br><span class="line">    	....</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>If any component want to define the constructor(props), it should write super(props) in the first line. Otherwise, the instances of this component could not get props. <br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Test extends Component&#123;</span><br><span class="line">	constructor(props) &#123;</span><br><span class="line">    	super(props);</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>propTypes is used to define prop standards. However, this feature will cause more cost and it is useful only for developers. Suggestion, it could be used in test period. Use auto process to delete it before deploy the process. <br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">test.propTypes = &#123;</span><br><span class="line">	key: PropTypes.string.isRequired,</span><br><span class="line">    value: PropTypes.number</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>defaultProps makes better program. <br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">constructor(props) &#123;</span><br><span class="line">    this.state= &#123;</span><br><span class="line">    	value: props.initValue || 0,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">constructor(props) &#123;</span><br><span class="line">    this.state= &#123;</span><br><span class="line">    	value: props.initValue </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">test.defaultProps = &#123;</span><br><span class="line">    initValue:0</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>access state in correct way to refresh page.<br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">constructor(props) &#123;</span><br><span class="line">    this.state= &#123;</span><br><span class="line">    	value: props.initValue ,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">\\read</span><br><span class="line">const &#123;value&#125; = this.state,</span><br><span class="line">\\write</span><br><span class="line">this.state.value = value; // it will change value, but not refresh page </span><br><span class="line">this.setState((state) =&gt; &#123; // it will change value and refresh code</span><br><span class="line">	var: var,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Showing Component priority with ‘caption’ parameter in props. <br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">componentWillMount()&#123;</span><br><span class="line">	console.log(&apos;entry componentWillMount &apos; + this.props.caption).</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight plain"><figcaption><span>Creation</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm install --global create-react-app</span><br><span class="line">create-react-app dex_react</span><br><span class="line">cd first_react_app</span><br><span class="line">npm start</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+  </div>
+  
+  
+</article>
+
+  
     <article id="post-Algorithm-Linked-List" class="article global-container article-type-post" itemscope itemprop="blogPost">
   
     <header class="article-header">
@@ -224,6 +356,78 @@ ga('send', 'pageview');
 </tr>
 </tbody>
 </table>
+
+      
+    </div>
+    
+  </div>
+  
+  
+</article>
+
+  
+    <article id="post-Object-Oriented-Design-3" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/DexWebSite/2019/10/18/Object-Oriented-Design-3/">Object-Oriented Design #3</a>
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/DexWebSite/2019/10/18/Object-Oriented-Design-3/" class="article-date">
+  <time datetime="2019-10-18T10:38:00.000Z" itemprop="datePublished">2019-10-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/DexWebSite/categories/Object-Oriented-Design/">Object-Oriented Design</a>
+  </div>
+
+    
+  </div>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <h3 id="Object-Oriented-Design"><a href="#Object-Oriented-Design" class="headerlink" title="Object-Oriented Design"></a>Object-Oriented Design</h3><p><strong> BlackJack </strong></p>
+<p><strong> Step 1 </strong> <br><br>Understand/Analyze the USE CASE. </p>
+<p>Use case: Describe the parking lot building? Vehicle monitoring? What kind of parking lot?<br>Some other questions that may affect your design:</p>
+<ul>
+<li>One level or multiple levels?</li>
+<li>Parking – Spot / Vehicle sizes? </li>
+<li>Track the location of each vehicle?</li>
+</ul>
+<p><strong> Step 2 </strong> <br><br>Design Models (class) and relationships between Models or class <br><br>Single responsibility Principle: each class should have only one job but (mutiple APIs) <br></p>
+<ul>
+<li>Vehicle</li>
+<li>Parking Spot</li>
+<li>Level</li>
+<li>ParkingLot - Time, Price attribute. </li>
+</ul>
+<p>Class relationships: <br><br>Association: a general binary relationship that describes an activity between two classes. 1-1 <br></p>
+<p>Aggregation/Composition: a special form of association, which represents an ownership relationship between two classes. (has-a). <br></p>
+<p>Inheritance: <br><br>Vehicle – Parking spot, Association <br><br>Level – Parking Spot, Composition <br><br>Vehicle – Car, Truck <br></p>
+<p><strong> Step 3 </strong> <br><br>For complicated designs, first focus on public methods (APIs): how to revoke your APIs?<br>Functionality: </p>
+<ul>
+<li>Base functionality: for a given vehicle, tell whether there is available spot in the parking lot.</li>
+<li>Possible extensions: provide available spot locations, assign spot to the vehicle.<br>……  Generate Classes and APIs with comments ……</li>
+</ul>
+<figure class="highlight java"><figcaption><span>Init Classes in JAVA (Assumption)</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PrkingLots</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> List&lt;ParktingLevel&gt; levels;</span><br><span class="line">  	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasSpot</span><span class="params">(Vehicle vehicle)</span></span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ParkingLevel</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> List&lt;ParkingSpot&gt; spots;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasSpot</span><span class="params">(Vehicle vehicle)</span></span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ParkingSpot</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> Vehicle vehicle;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">fit</span><span class="params">(Vechicle vehicle)</span> </span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Vehicle</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> String plateNumber;</span><br><span class="line">    <span class="keyword">private</span> size;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>Step 4</strong> <br><br>Complete all implementation.<br></p>
+<p>Assumption: multiple levels and check vehicle size. <br></p>
+<ol>
+<li><p>APIs:<br><br>Boolean hasSpot (Vehicle v); <br><br>Boolean park (Vehicle v); <br><br>Boolean leave (Vehicle v); <br></p>
+</li>
+<li><p>Classes:<br>ParkingLog, Level, Vehicle, ParkingSpot, Car, Truck</p>
+</li>
+</ol>
+<p>OOD: Performance/Efficiency is still important! This is where you use data structures and algorithms!</p>
 
       
     </div>
@@ -883,184 +1087,6 @@ ga('send', 'pageview');
 </article>
 
   
-    <article id="post-C-Lesson-5-Nullable" class="article global-container article-type-post" itemscope itemprop="blogPost">
-  
-    <header class="article-header">
-      
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/DexWebSite/2019/09/21/C-Lesson-5-Nullable/">C# Lesson 5 - Nullable</a>
-    </h1>
-  
-
-    </header>
-  
-  <div class="article-meta">
-    <a href="/DexWebSite/2019/09/21/C-Lesson-5-Nullable/" class="article-date">
-  <time datetime="2019-09-21T18:44:00.000Z" itemprop="datePublished">2019-09-21</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/DexWebSite/categories/C-Programming-Language/">C# Programming Language</a>
-  </div>
-
-    
-  </div>
-  
-
-  <div class="article-inner">
-    
-    <div class="article-content article-content-cloud" itemprop="articleBody">
-      
-        <h3 id="Nullable"><a href="#Nullable" class="headerlink" title="Nullable"></a>Nullable</h3><p>In Java, the primitive types (int, double, boolean) could not be ‘null’. </p>
-<p>In C#, these primitive types could be assigned as null. </p>
-<p>E.g.</p>
-<figure class="highlight c"><figcaption><span># Nullable</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Nullable&lt;<span class="keyword">int</span>&gt; i = <span class="keyword">new</span> Nullable&lt;<span class="keyword">int</span>&gt;(<span class="number">3</span>);</span><br><span class="line">  </span><br><span class="line"><span class="comment">//&lt; data_type&gt; ? &lt;variable_name&gt; = null; define nullable.</span></span><br><span class="line"><span class="keyword">int</span>? i = <span class="number">3</span>  <span class="comment">//they are same.</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> i; <span class="comment">//default value is 0</span></span><br><span class="line"><span class="keyword">int</span>? j; <span class="comment">//default value is null</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="Operator"><a href="#Operator" class="headerlink" title="?? Operator"></a>?? Operator</h3><p>?? operator is used to check a variable is null. </p>
-<p>E.g. Both are the same.</p>
-<p>a ?? b;</p>
-<p>a != null ? a : b;</p>
-<figure class="highlight c"><figcaption><span># Nullable</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">double</span>? num1 = null;</span><br><span class="line"><span class="keyword">double</span>? num2 = <span class="number">3.14157</span>;</span><br><span class="line"><span class="keyword">double</span> num3;</span><br><span class="line"><span class="keyword">double</span> num4;</span><br><span class="line">num3 = num1 ?? <span class="number">5.34</span>; <span class="comment">// num3 = 5.34   </span></span><br><span class="line">num4 = num2 ?? <span class="number">5.34</span>; <span class="comment">// num4 = 3.14157</span></span><br><span class="line">Console.ReadLine();</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    
-  </div>
-  
-  
-</article>
-
-  
-    <article id="post-C-Lesson-4-Function-1" class="article global-container article-type-post" itemscope itemprop="blogPost">
-  
-    <header class="article-header">
-      
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/DexWebSite/2019/09/21/C-Lesson-4-Function-1/">C# Lesson 4 - Function</a>
-    </h1>
-  
-
-    </header>
-  
-  <div class="article-meta">
-    <a href="/DexWebSite/2019/09/21/C-Lesson-4-Function-1/" class="article-date">
-  <time datetime="2019-09-21T18:17:00.000Z" itemprop="datePublished">2019-09-21</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/DexWebSite/categories/C-Programming-Language/">C# Programming Language</a>
-  </div>
-
-    
-  </div>
-  
-
-  <div class="article-inner">
-    
-    <div class="article-content article-content-cloud" itemprop="articleBody">
-      
-        <h3 id="Function"><a href="#Function" class="headerlink" title="Function"></a>Function</h3><p>Funtion is also named as “Method”.</p>
-<p>E.g.</p>
-<figure class="highlight c"><figcaption><span># Function Defination</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;Access Specifier&gt; &lt;Return Type&gt; &lt;Method Name&gt;(Parameter List)</span><br><span class="line">&#123;</span><br><span class="line">   Method Body</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<ul>
-<li>Access sepcifier: It defines accessibiliy from others.</li>
-<li>Return type: It defines return type. If there is no value to return, it should be <strong>void</strong>.</li>
-<li>Method name: A method Identifier</li>
-<li>Parameter list: It defines variables from outside. It is optional.</li>
-<li>Method body: It defines logic for method.</li>
-</ul>
-<h3 id="Passing-Parameters"><a href="#Passing-Parameters" class="headerlink" title="Passing Parameters"></a>Passing Parameters</h3><p>In C#, it defines 3 ways to pass parameters to a function.</p>
-<ul>
-<li>Pass by Value: It is a <strong>default</strong> way to pass parameters. When a method recieve parameters as “Pass by Value”, it will create new memory to copy and save these parameters. When the copid value is changed, it will not affect the value from outside.</li>
-</ul>
-<p>E.g. </p>
-<figure class="highlight c"><figcaption><span># Pass by Value</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">namespace</span> CalculatorApplication</span><br><span class="line">&#123;</span><br><span class="line">   <span class="class"><span class="keyword">class</span> <span class="title">NumberManipulator</span></span></span><br><span class="line"><span class="class">   &#123;</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function">      </span>&#123;</span><br><span class="line">         <span class="keyword">int</span> temp;</span><br><span class="line">         </span><br><span class="line">         temp = x; </span><br><span class="line">         x = y;    </span><br><span class="line">         y = temp; </span><br><span class="line">      &#125;</span><br><span class="line">      </span><br><span class="line">      <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span><span class="params">(<span class="built_in">string</span>[] args)</span></span></span><br><span class="line"><span class="function">      </span>&#123;</span><br><span class="line">         NumberManipulator n = <span class="keyword">new</span> NumberManipulator();</span><br><span class="line">         <span class="comment">/* local varaible */</span></span><br><span class="line">         <span class="keyword">int</span> a = <span class="number">100</span>;</span><br><span class="line">         <span class="keyword">int</span> b = <span class="number">200</span>;</span><br><span class="line">         </span><br><span class="line">         Console.WriteLine(<span class="string">"Before sawp，a： &#123;0&#125;"</span>, a);</span><br><span class="line">         Console.WriteLine(<span class="string">"Before sawp，b： &#123;0&#125;"</span>, b);</span><br><span class="line">         </span><br><span class="line">         <span class="comment">/* call swap method */</span></span><br><span class="line">         n.swap(a, b);</span><br><span class="line">         </span><br><span class="line">         Console.WriteLine(<span class="string">"After sawp，a： &#123;0&#125;"</span>, a);</span><br><span class="line">         Console.WriteLine(<span class="string">"After sawp，b： &#123;0&#125;"</span>, b);</span><br><span class="line">         </span><br><span class="line">         Console.ReadLine();</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<ul>
-<li>Pass by Refence: The method will get the memory address of the passed parameters. All changes in this method will be directly affected in memory. </li>
-</ul>
-<figure class="highlight c"><figcaption><span># Pass by Reference</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">namespace</span> CalculatorApplication</span><br><span class="line">&#123;</span><br><span class="line">   <span class="class"><span class="keyword">class</span> <span class="title">NumberManipulator</span></span></span><br><span class="line"><span class="class">   &#123;</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(ref <span class="keyword">int</span> x, ref <span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function">      </span>&#123;</span><br><span class="line">         <span class="keyword">int</span> temp;</span><br><span class="line">         </span><br><span class="line">         temp = x; </span><br><span class="line">         x = y;    </span><br><span class="line">         y = temp; </span><br><span class="line">      &#125;</span><br><span class="line">      </span><br><span class="line">      <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span><span class="params">(<span class="built_in">string</span>[] args)</span></span></span><br><span class="line"><span class="function">      </span>&#123;</span><br><span class="line">         NumberManipulator n = <span class="keyword">new</span> NumberManipulator();</span><br><span class="line">         <span class="comment">/* local varaible */</span></span><br><span class="line">         <span class="keyword">int</span> a = <span class="number">100</span>;</span><br><span class="line">         <span class="keyword">int</span> b = <span class="number">200</span>;</span><br><span class="line">         </span><br><span class="line">         Console.WriteLine(<span class="string">"Before sawp，a： &#123;0&#125;"</span>, a);</span><br><span class="line">         Console.WriteLine(<span class="string">"Before sawp，b： &#123;0&#125;"</span>, b);</span><br><span class="line">         </span><br><span class="line">         <span class="comment">/* call swap method */</span></span><br><span class="line">         n.swap(ref a, ref b);</span><br><span class="line">         </span><br><span class="line">         Console.WriteLine(<span class="string">"After sawp，a： &#123;0&#125;"</span>, a);</span><br><span class="line">         Console.WriteLine(<span class="string">"After sawp，b： &#123;0&#125;"</span>, b);</span><br><span class="line">         </span><br><span class="line">         Console.ReadLine();</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<ul>
-<li>Pass Out: It allows method to receive parameters that are not defined and returns parameters back. </li>
-</ul>
-<figure class="highlight c"><figcaption><span># Pass Out</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">namespace</span> CalculatorApplication</span><br><span class="line">&#123;</span><br><span class="line">   <span class="class"><span class="keyword">class</span> <span class="title">NumberManipulator</span></span></span><br><span class="line"><span class="class">   &#123;</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getValue</span><span class="params">(ref <span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function">      </span>&#123;</span><br><span class="line">         <span class="keyword">int</span> temp = <span class="number">5</span>;</span><br><span class="line">         x = temp</span><br><span class="line">      &#125;</span><br><span class="line">      </span><br><span class="line">      <span class="keyword">static</span> <span class="keyword">void</span> Main(<span class="built_in">string</span>[] args)</span><br><span class="line">      &#123;</span><br><span class="line">         NumberManipulator n = <span class="keyword">new</span> NumberManipulator();</span><br><span class="line">         <span class="comment">/* local varaible */</span></span><br><span class="line">         <span class="keyword">int</span> a = <span class="number">100</span>;</span><br><span class="line">         </span><br><span class="line">         Console.WriteLine(<span class="string">"Before，a： &#123;0&#125;"</span>, a);</span><br><span class="line">      </span><br><span class="line">         <span class="comment">/* call swap method */</span></span><br><span class="line">         n.getValue(out a);</span><br><span class="line">         </span><br><span class="line">         Console.WriteLine(<span class="string">"After，a： &#123;0&#125;"</span>, a);</span><br><span class="line">         </span><br><span class="line">         </span><br><span class="line">         Console.ReadLine();</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="Comapare-to-JAVA"><a href="#Comapare-to-JAVA" class="headerlink" title="Comapare to JAVA"></a>Comapare to JAVA</h3><p>JAVA has no principle for “Pass by Value” and “Pass by Referance” and “Pass Out”. </p>
-<p>If a method receive parameters, it will do “Pass by Value” for primitive parameters. Also, it will do “Pass by Value” for non-primitive parameters. </p>
-
-      
-    </div>
-    
-  </div>
-  
-  
-</article>
-
-  
-    <article id="post-C-Lesson-3" class="article global-container article-type-post" itemscope itemprop="blogPost">
-  
-    <header class="article-header">
-      
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/DexWebSite/2019/09/21/C-Lesson-3/">C# Lesson 3 - Encapsulation</a>
-    </h1>
-  
-
-    </header>
-  
-  <div class="article-meta">
-    <a href="/DexWebSite/2019/09/21/C-Lesson-3/" class="article-date">
-  <time datetime="2019-09-21T17:28:00.000Z" itemprop="datePublished">2019-09-21</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/DexWebSite/categories/C-Programming-Language/">C# Programming Language</a>
-  </div>
-
-    
-  </div>
-  
-
-  <div class="article-inner">
-    
-    <div class="article-content article-content-cloud" itemprop="articleBody">
-      
-        <h3 id="Encapsulation-amp-Inheritance-amp-Polymorphism"><a href="#Encapsulation-amp-Inheritance-amp-Polymorphism" class="headerlink" title="Encapsulation &amp; Inheritance &amp; Polymorphism"></a>Encapsulation &amp; Inheritance &amp; Polymorphism</h3><p><strong><a href="https://www.geeksforgeeks.org/encapsulation-in-java/" target="_blank" rel="noopener">Encapsulation</a>:</strong><br>It is defined as the wrapping up of data under a single unit. It is the meachansim that binds together code and data it  manipulates. Other way to think about encapsulation is that is a protective shield that prevents the data from being accessed by the code outside this shield.</p>
-<ul>
-<li>Technically in encapsulation, the variables or data of a class is <strong>hidden from any other class</strong> and can be accessed through &amp;<strong>any member function of own class in which they are declared</strong>. </li>
-<li>As in encapsulation, the data in a class is hidden from other classes, so it is also known as <strong>data-hiding</strong>.</li>
-<li>Encapsulation can be achieved by: Declaring all the variables in the class as private and writing public methods in the class to set and get the values of variables.</li>
-</ul>
-<p><strong> Advantage of Encapsulation </strong></p>
-<ul>
-<li><p>Data Hiding: The user will have no idea about the inner impelmentation of the class. It will not be visible to the user that how the class is storing values in the varaibles. He only knows that we are passing the values to a setter method or variables are getting initialized with that value. </p>
-</li>
-<li><p>Increased Flexibility: WE can make the variables of the class as read-only or write-only depending on our requriement. if we wish to make the variables as read-only then we have to moit the setter methods. For write-only, the program should omit get methods. </p>
-</li>
-<li><p>Reusability: Encapsulation also improves the re-useability and easy to change with new requiements. </p>
-</li>
-<li>Testing code is eassy: It is easy to test for unit testing.</li>
-</ul>
-<p><strong> Access modifier </strong> </p>
-<p><a href="docs.microsoft.com">Access modifier</a> defines different way to access a method or a varaible.</p>
-<ul>
-<li>public: The type of member can be accessed by any other code in the smae assembly or other assembly that references it. </li>
-<li>private: The type or member can be accessed only by code in the same class or struct</li>
-<li>protected: The type or memeber can be accessed only by code in the same class, or in a aclass that is drived from that class.</li>
-<li>internal: the type or member can be accessed by any code in the same assembly, but not from another assemly.</li>
-<li>protected internal: The type or member can be accessed by any code in the assebmly in which it is declared, or from within a derived class in another assmblely. </li>
-<li>private protected: The type or memeber can be accessed only within its declaring assemly, by code in the same class or in a type that is derived from that class.</li>
-</ul>
-
-      
-    </div>
-    
-  </div>
-  
-  
-</article>
-
-  
 
 
   <nav id="page-nav">
@@ -1088,7 +1114,7 @@ ga('send', 'pageview');
   <div class="widget-box">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Algorithm/">Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Basic/">Basic</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/C-Programming-Language/">C# Programming Language</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Interview/">Interview</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Java-Programming-Language/">Java Programming Language</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Kits/">Kits</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Object-Oriented-Design/">Object-Oriented Design</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Algorithm/">Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Basic/">Basic</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/C-Programming-Language/">C# Programming Language</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Interview/">Interview</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Java-Programming-Language/">Java Programming Language</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Kits/">Kits</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Object-Oriented-Design/">Object-Oriented Design</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/React-Development/">React Development</a></li></ul>
     </div>
   </div>
 
@@ -1098,7 +1124,7 @@ ga('send', 'pageview');
   <div class="widget-box">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/03/">March 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/03/">March 2019</a></li></ul>
     </div>
   </div>
 
@@ -1110,23 +1136,23 @@ ga('send', 'pageview');
       <ul>
         
           <li>
+            <a href="/DexWebSite/2020/01/09/Redux-Base-Principle/">Redux Base Principle</a>
+          </li>
+        
+          <li>
+            <a href="/DexWebSite/2020/01/09/React-Base-Principle/">React Base Principle</a>
+          </li>
+        
+          <li>
             <a href="/DexWebSite/2019/10/24/Algorithm-Linked-List/">Algorithm Linked List </a>
           </li>
         
           <li>
+            <a href="/DexWebSite/2019/10/18/Object-Oriented-Design-3/">Object-Oriented Design #3</a>
+          </li>
+        
+          <li>
             <a href="/DexWebSite/2019/10/18/Object-Oriented-Design-2-4/">Object-Oriented Design #2</a>
-          </li>
-        
-          <li>
-            <a href="/DexWebSite/2019/10/18/OOD-1/">Object-Oriented Design #1</a>
-          </li>
-        
-          <li>
-            <a href="/DexWebSite/2019/10/14/Amazon-Behavior-Questions/">Amazon Interview Preparation - SDE</a>
-          </li>
-        
-          <li>
-            <a href="/DexWebSite/2019/10/13/Java-Base-Principle-II/">Java Base Principle II</a>
           </li>
         
       </ul>
@@ -1138,7 +1164,7 @@ ga('send', 'pageview');
       </div>
       <footer id="footer">
   <div class="foot-box global-width">
-    &copy; 2019 Dexin Wang &nbsp;&nbsp;
+    &copy; 2020 Dexin Wang &nbsp;&nbsp;
     Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     &nbsp;|&nbsp;Theme <a href="https://github.com/DexDexinWang/hexo-dex">antiquity</a>
     <br>
