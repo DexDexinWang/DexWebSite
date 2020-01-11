@@ -104,14 +104,25 @@ ga('send', 'pageview');
     
     <div class="article-content article-content-cloud" itemprop="articleBody">
       
-        <h3 id="Redux"><a href="#Redux" class="headerlink" title="Redux"></a>Redux</h3><p><strong>Redux Development History : </strong></p>
+        <h3 id="Redux"><a href="#Redux" class="headerlink" title="Redux"></a>Redux</h3><p><strong>MVC, Flux, Redux, Reat-Redux Development History : </strong></p>
 <p><a href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller" target="_blank" rel="noopener">MVC (Model, View, Controller)</a>:  Request -&gt; Controller -&gt; Model -&gt; View (One Direction). However, in some real projects, it always allows View accesses Model. Finally, the whole projects become more and more complexity.</p>
-<p><a href="https://facebook.github.io/flux/" target="_blank" rel="noopener">Flux</a>: Action -&gt; Dispatcher -&gt; Store -&gt; View - Action -&gt; Dispatcher (Cycle).</p>
+<p><a href="https://facebook.github.io/flux" target="_blank" rel="noopener">Flux</a>: Action -&gt; Dispatcher -&gt; Store -&gt; View - Action -&gt; Dispatcher (Cycle). It may have 3 bottlenecks: store dependency, server render, and store debug.</p>
 <p><strong>Compare MVC and Flux</strong></p>
 <ol>
 <li>MVC shows Controller to requester. Flux shows Dispatcher to requester.</li>
 <li>For adding a new feature, MVC need to create a new controller, and Flux will only add one Action.</li>
 </ol>
+<p><strong>Redux</strong></p>
+<p>It is an open source JavaScript library for managing application state. It has 3 characters.</p>
+<ol>
+<li>Single Scource of Truth. (Tha application could have one store to save all data).</li>
+<li>State is read-only. (State Change is to create new state and return it to Redux).</li>
+<li>Changes are made with pure functions. (Reducer is used to handle state and action to update state).</li>
+</ol>
+<p>Normmly, “Store” is defined as context that could be accessed in whole DOM Tree. Also, each component should add container to subscript event and use pure function to update value in store. Then React-React lib is created to solve this kind problem.</p>
+<p><strong>React-Redux</strong></p>
+<p>React-Redux libary defined “Provider” component that could be for passing store as context in whole DOM Tree.  Also, it reduced the code to define container for each components</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function mapStateToProps(state, ownProps) &#123;</span><br><span class="line">	return &#123;</span><br><span class="line">    	value: state[ownProps.caption]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function mapDispatchToProps(dispatch, ownProps) &#123;</span><br><span class="line">	return &#123;</span><br><span class="line">    	onAction1: () =&gt; &#123;dispatch(Actions.action1(ownProps.caption));&#125;,</span><br><span class="line">        onAction2: () =&gt; &#123;dispatch(Actions.action2(ownProps.caption));&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default connect (mapStateToProps, mapDispatchToProps)(test);</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -174,16 +185,16 @@ ga('send', 'pageview');
 <li><p>Every react page, class, or component should import React because JSX will translate content as React expressions. <br></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import React from &apos;react&apos;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>prop is used to pass parameters from outside to inside. It looks like setup attributes to HTML element. However, it only pass string valuse for each attribute. In React, it could pass any JavaScript data type.<br></p>
+<li><p>prop is used to pass parameters from outside to inside. It looks like setup attributes to HTML element. However, HTML only passes string value for each attribute. In React, it could pass any JavaScript data type.<br></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;SampleButton </span><br><span class="line"> id = &apos;sample&apos;</span><br><span class="line"> borderWidth = &#123;2&#125; </span><br><span class="line"> onClick = &#123;onButtonClick&#125;</span><br><span class="line"> style=&#123;&#123;color:&apos;red&apos;&#125;&#125; // &#123;color:&apos;red&apos;&#125; is an object.</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>Render() should only return one element<br></p>
+<li><p>Render() should only return one element. For more return components, it could be covered by div.<br></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">reder() &#123;</span><br><span class="line">	&lt;div&gt;</span><br><span class="line">    	....</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>If any component want to define the constructor(props), it should write super(props) in the first line. Otherwise, the instances of this component could not get props. <br></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Test extends Component&#123;</span><br><span class="line">	constructor(props) &#123;</span><br><span class="line">    	super(props);</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>propTypes is used to define prop standards. However, this feature will cause more cost and it is useful only for developers. Suggestion, it could be used in test period. Use auto process to delete it before deploy the process. <br></p>
+<li><p>propTypes is used to define prop standards. However, this feature will cause more cost and it is useful only for developers. Suggestion, it could be used in testing period. Then, this part could be deleted it before deploying the program. <br></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">test.propTypes = &#123;</span><br><span class="line">	key: PropTypes.string.isRequired,</span><br><span class="line">    value: PropTypes.number</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>defaultProps makes better program. <br></p>
@@ -195,8 +206,10 @@ ga('send', 'pageview');
 <li><p>Showing Component priority with ‘caption’ parameter in props. <br></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">componentWillMount()&#123;</span><br><span class="line">	console.log(&apos;entry componentWillMount &apos; + this.props.caption).</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
+<li><p>Context feature is supplied by React for accessing content in whole DOM tree. It means every node in DOM Tree could access the some context without passing props. Normally, it is used for accessing store in Redux.  <br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;Provider store = &#123;store&#125;&gt;  // store passes to provider component.</span><br><span class="line">	&lt;Child /&gt;</span><br><span class="line">&lt;/Provider&gt;</span><br><span class="line"></span><br><span class="line">import &#123;Component&#125; from &apos;react&apos;;</span><br><span class="line">class Provider extends Component &#123;</span><br><span class="line">	getChildContext() &#123;  // define it as context that every children could access this context.</span><br><span class="line">    	return &#123;</span><br><span class="line">        	store: this.props.store,</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    render() &#123;</span><br><span class="line">    	this.props.children;   // current component will only render childresn</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Child extends Component &#123;</span><br><span class="line">	constructor(props, context) &#123; </span><br><span class="line">    	super(props, context);  // Could be replace as super(...arguments);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<figure class="highlight plain"><figcaption><span>Creation</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm install --global create-react-app</span><br><span class="line">create-react-app dex_react</span><br><span class="line">cd first_react_app</span><br><span class="line">npm start</span><br></pre></td></tr></table></figure>
 
       
     </div>
