@@ -23,17 +23,17 @@ ga('send', 'pageview');
   
   
   
-  <meta name="description" content="Powerful Programming Features Boolean Condiitons Automatic Garbage Collection Standard Library Assembly Versioning Properties and Events Delegates and Events Management Generics Indexers Conditional C">
+  <meta name="description" content="All C# Lessons are note from TutorialspointPowerful Programming Features Boolean Condiitons Automatic Garbage Collection Standard Library Assembly Versioning Properties and Events Delegates and Events">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C# Lesson 1 - Base 1">
 <meta property="og:url" content="http://dexdexinwang.github.io/DexWebSite/2019/09/19/C-Lesson-1/index.html">
 <meta property="og:site_name" content="Dex Personal Website">
-<meta property="og:description" content="Powerful Programming Features Boolean Condiitons Automatic Garbage Collection Standard Library Assembly Versioning Properties and Events Delegates and Events Management Generics Indexers Conditional C">
+<meta property="og:description" content="All C# Lessons are note from TutorialspointPowerful Programming Features Boolean Condiitons Automatic Garbage Collection Standard Library Assembly Versioning Properties and Events Delegates and Events">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-21T18:16:35.799Z">
+<meta property="og:updated_time" content="2020-03-11T18:29:41.174Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C# Lesson 1 - Base 1">
-<meta name="twitter:description" content="Powerful Programming Features Boolean Condiitons Automatic Garbage Collection Standard Library Assembly Versioning Properties and Events Delegates and Events Management Generics Indexers Conditional C">
+<meta name="twitter:description" content="All C# Lessons are note from TutorialspointPowerful Programming Features Boolean Condiitons Automatic Garbage Collection Standard Library Assembly Versioning Properties and Events Delegates and Events">
   
     <link rel="alternate" href="/DexWebSite/atom.xml" title="Dex Personal Website" type="application/atom+xml">
   
@@ -107,7 +107,7 @@ ga('send', 'pageview');
     
     <div class="article-content article-content-cloud" itemprop="articleBody">
       
-        <h3 id="Powerful-Programming-Features"><a href="#Powerful-Programming-Features" class="headerlink" title="Powerful Programming Features"></a>Powerful Programming Features</h3><ul>
+        <h3 id="All-C-Lessons-are-note-from-Tutorialspoint"><a href="#All-C-Lessons-are-note-from-Tutorialspoint" class="headerlink" title="All C# Lessons are note from Tutorialspoint"></a>All C# Lessons are note from <a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/access-modifiers" target="_blank" rel="noopener">Tutorialspoint</a></h3><h3 id="Powerful-Programming-Features"><a href="#Powerful-Programming-Features" class="headerlink" title="Powerful Programming Features"></a>Powerful Programming Features</h3><ul>
 <li>Boolean Condiitons</li>
 <li>Automatic Garbage Collection</li>
 <li>Standard Library</li>
@@ -362,7 +362,7 @@ ga('send', 'pageview');
 <blockquote>
 <p>sizeof(type) will shows the size of type with bytes.</p>
 </blockquote>
-<h3 id="Object-Type"><a href="#Object-Type" class="headerlink" title="Object Type"></a>Object Type</h3><p>Object type is the lowest basic class in Common Type SYstem. Object is alias of SYstem.Object. The Object variable could be used to save all other classes.<br>However, when a value is asigned to an object variable, it should do <strong>Boxing</strong>. Also, when an object variable is used transfered as another object, we call it <strong>Unboxing</strong>.</p>
+<h3 id="Object-Type"><a href="#Object-Type" class="headerlink" title="Object Type"></a>Object Type</h3><p>Object type is the lowest basic class in Common Type System. Object is alias of System.Object. The Object variable could be used to save all other classes.<br>However, when a value is asigned to an object variable, it should do <strong>Boxing</strong>. Also, when an object variable is used transfered as another object, we call it <strong>Unboxing</strong>.</p>
 <figure class="highlight c"><figcaption><span># Boxing</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">object obj;</span><br><span class="line">obj = <span class="number">100</span>; <span class="comment">//boxing</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h3 id="Dynamic-Type"><a href="#Dynamic-Type" class="headerlink" title="Dynamic Type"></a>Dynamic Type</h3><p>Dynamic Type also supplies the similar method to define a variable that could save a value in all types.</p>
 <figure class="highlight c"><figcaption><span># Dynamic Type</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//dynamic &lt;variable = value; </span></span><br><span class="line">dynamic d = <span class="number">20</span>; </span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -370,7 +370,10 @@ ga('send', 'pageview');
 <h3 id="String-Type"><a href="#String-Type" class="headerlink" title="String Type"></a>String Type</h3><p>In C#, users could assign value to string in 2 ways such as “” or @””.</p>
 <figure class="highlight c"><figcaption><span># String Assignment</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// Assign String Value as "C:\Windows" in 2 ways.</span></span><br><span class="line"><span class="built_in">string</span> str = <span class="string">"C:\\Windows"</span>;</span><br><span class="line"><span class="built_in">string</span> str = @<span class="string">"C:\Windows"</span>; </span><br><span class="line"></span><br><span class="line"><span class="comment">// @"" could save values in mutilple lines.</span></span><br><span class="line"><span class="built_in">string</span> str = @<span class="string">"&lt;script type="</span><span class="string">"text/javascript"</span><span class="string">"&gt;</span></span><br><span class="line"><span class="string">    &lt;!--</span></span><br><span class="line"><span class="string">    --&gt;</span></span><br><span class="line"><span class="string">&lt;/script&gt;"</span>;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h3 id="Pointer-Type"><a href="#Pointer-Type" class="headerlink" title="Pointer Type"></a>Pointer Type</h3><p>The pointer will point to the memory address which is used as the same as C or C++. </p>
-<figure class="highlight c"><figcaption><span># Pointer Assignment</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// type* identifier;</span></span><br><span class="line"><span class="keyword">char</span>* cptr;</span><br><span class="line"><span class="keyword">int</span>* iptr</span><br><span class="line">&lt;/script&gt;";</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><figcaption><span># Pointer Assignment</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// type* identifier;</span></span><br><span class="line"><span class="keyword">char</span>* cptr;</span><br><span class="line"><span class="keyword">int</span>* iptr;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="Arrays"><a href="#Arrays" class="headerlink" title="Arrays"></a>Arrays</h3><p>An array stores a fixed-size sequeential collection of elemetns of the same type. An array is used to store a collection of data, but it is often more useful to think of an array as <strong>a collection of variables of the same type stored at contiguous memory locations</strong>.</p>
+<figure class="highlight c"><figcaption><span># Array Declaration</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// datatype\[\] arrayName;</span></span><br><span class="line"><span class="keyword">double</span>[] balance = <span class="keyword">new</span> <span class="keyword">double</span>\[<span class="number">10</span>\];</span><br><span class="line"><span class="keyword">int</span>[] marks = <span class="keyword">new</span> <span class="keyword">int</span>\[<span class="number">5</span>\] &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
       
     </div>
     
