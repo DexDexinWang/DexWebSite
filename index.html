@@ -75,6 +75,124 @@ ga('send', 'pageview');
       <div id="middlecontent" title class="global-width sidebar-left">
         <section id="main">
   
+    <article id="post-Java-Queue-Stack-Deque" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/DexWebSite/2020/04/18/Java-Queue-Stack-Deque/">Java Queue Stack Deque </a>
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/DexWebSite/2020/04/18/Java-Queue-Stack-Deque/" class="article-date">
+  <time datetime="2020-04-19T02:59:00.000Z" itemprop="datePublished">2020-04-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/DexWebSite/categories/Java-Programming-Language/">Java Programming Language</a>
+  </div>
+
+    
+  </div>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <h3 id="Stack"><a href="#Stack" class="headerlink" title="Stack"></a><a href="https://docs.oracle.com/javase/7/docs/api/java/util/Stack.html" target="_blank" rel="noopener">Stack</a></h3><p>Stack is a coolection or structure to hold multiple elements prior to <strong>LIFO</strong> processing. <br></p>
+<ul>
+<li>Push() - push at the top </li>
+<li>Pop() - pop at the top</li>
+<li>Peek() - look at the top without poping it out</li>
+</ul>
+<figure class="highlight java"><figcaption><span>Legacy Stack</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Stack&lt;T&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;() </span><br></pre></td></tr></table></figure> 
+<p>Stack is defined as legacy class because it has performance problem by extendeing Victor class. It is replaced as Deque Interface which extends Queue Interface. </p>
+<figure class="highlight java"><figcaption><span>New Stack</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Deque&lt;T&gt; stack = <span class="keyword">new</span> LinkedList&lt;&gt;()</span><br><span class="line">   <span class="comment">//Do not support null element. The performance is better than LinkedList</span></span><br><span class="line">   Deque&lt;T&gt; stack = <span class="keyword">new</span> ArrayDeque&lt;&gt;()</span><br></pre></td></tr></table></figure> 
+<p><strong>Methods</strong></p>
+<p>Queue and Deque supply 4 pairs of methods to manipulate elements.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left">Throws exception</th>
+<th style="text-align:left">Return Sepcial Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Insert</strong></td>
+<td style="text-align:left">addFirst(e) ; addLast(e)</td>
+<td style="text-align:left">offerFirst(e) ; offerLast(e)</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Remove</strong></td>
+<td style="text-align:left">removeFirst() ; removeLast()</td>
+<td style="text-align:left">pollFirst() ; pollLast()</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Examine</strong></td>
+<td style="text-align:left">getFirst() ; getLast()</td>
+<td style="text-align:left">peekFirst() ; peekLast()</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Implementation with 2 Queues</strong> </p>
+<figure class="highlight java"><figcaption><span>2 Queues</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyStack</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> Queue&lt;Integer&gt; q1 = <span class="keyword">new</span> LinkedList&lt;Integer&gt;();</span><br><span class="line">	<span class="keyword">private</span> Queue&lt;Integer&gt; q2 = <span class="keyword">new</span> LinkedList&lt;Integer&gt;();</span><br><span class="line">    <span class="comment">/** Initialize your data structure here. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyStack</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Push element x onto stack. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> x)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">    	<span class="keyword">if</span>(!q1.isEmpty()) </span><br><span class="line">    	&#123;</span><br><span class="line">    		q1.add(x);</span><br><span class="line">    	&#125;</span><br><span class="line">    	<span class="keyword">else</span> </span><br><span class="line">    	&#123;</span><br><span class="line">    		q2.add(x);</span><br><span class="line">    	&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Removes the element on top of the stack and returns that element. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">pop</span><span class="params">()</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">    	<span class="keyword">if</span>(q1.isEmpty())</span><br><span class="line">    	&#123;</span><br><span class="line">    		<span class="keyword">int</span> size = q2.size();</span><br><span class="line">    		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;size; i++)</span><br><span class="line">    		&#123;</span><br><span class="line">    			q1.add(q2.poll());</span><br><span class="line">    		&#125;</span><br><span class="line">    		<span class="keyword">return</span> q2.poll();</span><br><span class="line">    	&#125;</span><br><span class="line">    	<span class="keyword">else</span></span><br><span class="line">    	&#123;</span><br><span class="line">    		<span class="keyword">int</span> size = q1.size();</span><br><span class="line">    		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;size; i++)</span><br><span class="line">    		&#123;</span><br><span class="line">    			q2.add(q1.poll());</span><br><span class="line">    		&#125;</span><br><span class="line">    		<span class="keyword">return</span> q1.poll();</span><br><span class="line">    	&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Get the top element. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">top</span><span class="params">()</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> res;</span><br><span class="line">        <span class="keyword">if</span>(q1.isEmpty())</span><br><span class="line">    	&#123;</span><br><span class="line">    		<span class="keyword">int</span> size = q2.size();</span><br><span class="line">    		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;size; i++)</span><br><span class="line">    		&#123;</span><br><span class="line">    			q1.add(q2.poll());</span><br><span class="line">    		&#125;</span><br><span class="line">    		res =q2.poll();</span><br><span class="line">    		q1.add(res);</span><br><span class="line">    	&#125;</span><br><span class="line">    	<span class="keyword">else</span></span><br><span class="line">    	&#123;</span><br><span class="line">    		<span class="keyword">int</span> size = q1.size();</span><br><span class="line">    		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;size; i++)</span><br><span class="line">    		&#123;</span><br><span class="line">    			q2.add(q1.poll());</span><br><span class="line">    		&#125;</span><br><span class="line">    		res =q1.poll();</span><br><span class="line">    		q2.add(res); </span><br><span class="line">    	&#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Returns whether the stack is empty. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">empty</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> q1.isEmpty() &amp;&amp; q2.isEmpty();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 
+<p><strong>Implementation with 1 LinkedList</strong></p>
+<figure class="highlight java"><figcaption><span>LinkedList</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyStack1</span> </span>&#123;</span><br><span class="line">	<span class="keyword">public</span> ListNode head; </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">MyStack1</span><span class="params">()</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">		head = <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Push element x to the back of queue. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> x)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">    	ListNode newNode = <span class="keyword">new</span> ListNode(x);</span><br><span class="line">    	<span class="keyword">if</span>(head == <span class="keyword">null</span>) &#123;</span><br><span class="line">    		head = newNode;</span><br><span class="line">    	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    		newNode.next = head;</span><br><span class="line">    		head = newNode;</span><br><span class="line">    	&#125;</span><br><span class="line">    	</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Removes the element from in front of queue and returns that element. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">pop</span><span class="params">()</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(head == <span class="keyword">null</span>) &#123;</span><br><span class="line">        	<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        	ListNode temp = head;</span><br><span class="line">        	head = head.next;</span><br><span class="line">        	temp.next = <span class="keyword">null</span>;</span><br><span class="line">        	<span class="keyword">return</span> temp.val;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Get the front element. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">peek</span><span class="params">()</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (head == <span class="keyword">null</span>) &#123;</span><br><span class="line">        	<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        	<span class="keyword">return</span> head.val;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Returns whether the queue is empty. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">empty</span><span class="params">()</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> head == <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Queue"><a href="#Queue" class="headerlink" title="Queue"></a><a href="https://docs.oracle.com/javase/7/docs/api/java/util/Queue.html" target="_blank" rel="noopener">Queue</a></h3><p>Queue is a collection or structure to hold multiple elements prior to <strong>FIFO</strong> processing. <br></p>
+<ul>
+<li>Offer() - offer at the tail</li>
+<li>Poll() - poll at the head</li>
+<li>Peek() - look at the head without polling it out</li>
+</ul>
+<p><strong>Methods</strong></p>
+<p>Queue and Deque supply 2 pairs of methods to manipulate elements.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left">Throws exception</th>
+<th style="text-align:left">Return Sepcial Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Insert</strong></td>
+<td style="text-align:left">add(e)</td>
+<td style="text-align:left">offer(e)</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Remove</strong></td>
+<td style="text-align:left">remove()</td>
+<td style="text-align:left">poll()</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Examine</strong></td>
+<td style="text-align:left">element()</td>
+<td style="text-align:left">peek()</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Implementation with 2 Stacks</strong></p>
+<figure class="highlight java"><figcaption><span>2 Stacks</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyQueue</span> </span>&#123;</span><br><span class="line">	Stack&lt;Integer&gt; pushStack = <span class="keyword">new</span> Stack&lt;Integer&gt;();</span><br><span class="line">	Stack&lt;Integer&gt; popStack = <span class="keyword">new</span> Stack&lt;Integer&gt;();</span><br><span class="line">    <span class="comment">/** Initialize your data structure here. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyQueue</span><span class="params">()</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Push element x to the back of queue. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">offer</span><span class="params">(<span class="keyword">int</span> x)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        pushStack.push(x);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Removes the element from in front of queue and returns that element. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">poll</span><span class="params">()</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (popStack.isEmpty())</span><br><span class="line">        &#123;</span><br><span class="line">        	<span class="keyword">while</span>(!pushStack.isEmpty())</span><br><span class="line">        	&#123;</span><br><span class="line">        		popStack.push(pushStack.pop());</span><br><span class="line">        	&#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> popStack.pop();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Get the front element. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">peek</span><span class="params">()</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (popStack.isEmpty())</span><br><span class="line">        &#123;</span><br><span class="line">        	<span class="keyword">while</span>(!pushStack.isEmpty())</span><br><span class="line">        	&#123;</span><br><span class="line">        		popStack.push(pushStack.pop());</span><br><span class="line">        	&#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> popStack.peek();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Returns whether the queue is empty. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">empty</span><span class="params">()</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> pushStack.isEmpty() &amp;&amp; popStack.isEmpty();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>Implementation with 1 LinkedList</strong></p>
+<figure class="highlight java"><figcaption><span>Doule Linked List</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyQueue1</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		ListNode head = <span class="keyword">null</span>;</span><br><span class="line">		ListNode tail = <span class="keyword">null</span>;</span><br><span class="line">		</span><br><span class="line">	    <span class="comment">/** Initialize your data structure here. */</span></span><br><span class="line">	    <span class="function"><span class="keyword">public</span> <span class="title">MyQueue1</span><span class="params">()</span> </span></span><br><span class="line"><span class="function">	    </span>&#123;</span><br><span class="line">	    	</span><br><span class="line">	    &#125;</span><br><span class="line">	    </span><br><span class="line">	    <span class="comment">/** Push element x to the back of queue. */</span></span><br><span class="line">	    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">offer</span><span class="params">(<span class="keyword">int</span> x)</span> </span></span><br><span class="line"><span class="function">	    </span>&#123;</span><br><span class="line">	    	ListNode newNode = <span class="keyword">new</span> ListNode();</span><br><span class="line">	        <span class="keyword">if</span> (head == <span class="keyword">null</span>) &#123;</span><br><span class="line">	        	head = newNode;</span><br><span class="line">	        	tail = newNode;</span><br><span class="line">	        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	        	tail.next = newNode;</span><br><span class="line">	        	tail = tail.next;</span><br><span class="line">	        &#125;</span><br><span class="line">	    &#125;</span><br><span class="line">	    </span><br><span class="line">	    <span class="comment">/** Removes the element from in front of queue and returns that element. */</span></span><br><span class="line">	    <span class="function"><span class="keyword">public</span> Integer <span class="title">poll</span><span class="params">()</span> </span></span><br><span class="line"><span class="function">	    </span>&#123;</span><br><span class="line">	        <span class="keyword">if</span> (head == <span class="keyword">null</span>) &#123;</span><br><span class="line">	        	<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">	        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	        	ListNode temp = head;</span><br><span class="line">	        	head = head.next;</span><br><span class="line">	        	temp.next = <span class="keyword">null</span>;</span><br><span class="line">	        	<span class="keyword">if</span> (temp == tail) &#123;</span><br><span class="line">	        		tail = <span class="keyword">null</span>;</span><br><span class="line">	        	&#125;</span><br><span class="line">	        	<span class="keyword">return</span> temp.val;</span><br><span class="line">	        &#125;</span><br><span class="line">	    &#125;</span><br><span class="line">	    </span><br><span class="line">	    <span class="comment">/** Get the front element. */</span></span><br><span class="line">	    <span class="function"><span class="keyword">public</span> Integer <span class="title">peek</span><span class="params">()</span> </span></span><br><span class="line"><span class="function">	    </span>&#123;</span><br><span class="line">	        <span class="keyword">if</span> (head == <span class="keyword">null</span>) &#123;</span><br><span class="line">	        	<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">	        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	        	<span class="keyword">return</span> head.val;</span><br><span class="line">	        &#125;</span><br><span class="line">	    &#125;</span><br><span class="line">	    </span><br><span class="line">	    <span class="comment">/** Returns whether the queue is empty. */</span></span><br><span class="line">	    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">empty</span><span class="params">()</span> </span></span><br><span class="line"><span class="function">	    </span>&#123;</span><br><span class="line">	        <span class="keyword">return</span> head == <span class="keyword">null</span>;</span><br><span class="line">	    &#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+  </div>
+  
+  
+</article>
+
+  
     <article id="post-Redux-Base-Principle" class="article global-container article-type-post" itemscope itemprop="blogPost">
   
     <header class="article-header">
@@ -339,7 +457,7 @@ ga('send', 'pageview');
 </tr>
 <tr>
 <td style="text-align:left">Add (E, e) at tail</td>
-<td style="text-align:left">Expand: O(n) No Expand: O(1)</td>
+<td style="text-align:left">O(1)</td>
 <td style="text-align:left">O(1)</td>
 </tr>
 <tr>
@@ -369,6 +487,7 @@ ga('send', 'pageview');
 </tr>
 </tbody>
 </table>
+<p>However, the ArrayList may be extended if there is no enough space to save new insersted value, the time complexity is still O(1) as amortized time complexity. New extended space will be (1+n) * 2 in Java. </p>
 
       
     </div>
@@ -945,7 +1064,7 @@ ga('send', 'pageview');
 <p><em>Conclution:</em> <br><br>There is no need for maintaining several copies of String objects with the same iteral, since String objects are immutable. <br><br>Usually compiler and JVM will optimize for the number of String objects created, it will maintain an intern area in Heap, for the same String literal it will only has one String object associated. <br></p>
 <p><strong> String Concatenation: </strong> <br></p>
 <figure class="highlight java"><figcaption><span>String Concatenation</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">String s1 = “Dex”;</span><br><span class="line">String s2 = <span class="keyword">new</span> String (“ is Nice.”);</span><br><span class="line">S1.concat(s2) <span class="comment">// This will create a new String object rather than change the value of s1 or s2.</span></span><br><span class="line">S3 = “ab” + “cd” <span class="comment">// s3 = “abcd”, compile time concatenation</span></span><br><span class="line">S4 = s3 + <span class="string">"def"</span>; <span class="comment">// s3.concat(“def”);</span></span><br><span class="line">S5 = <span class="number">1</span> + “def” <span class="comment">// String.valueOf(1), (1 -&gt; Integer(1) -&gt; Integer(1).toString()) -&gt; 1</span></span><br><span class="line">S6 = “Test ” + <span class="number">2</span> + “ Cool ” + <span class="keyword">true</span> + ‘y’;</span><br><span class="line"><span class="comment">//Could be further optimized to new StringBuilder().append(“Test”).append(2).append(“ Cool ”)….. .toString() at compiler time.</span></span><br><span class="line"><span class="comment">//Time complexity O(n * m);</span></span><br><span class="line"><span class="comment">//Space complexity O(n * m);   </span></span><br><span class="line"><span class="comment">//Where n is the number of append and m is the maximum length of string in array.</span></span><br></pre></td></tr></table></figure>
-<p><strong> String Comparation </strong> <br><br>Comparing two strings lexicographically. If tow strings are different, then either they have different characters at some index that is a valid index for both strings, or their lengths are different, or both.</p>
+<p><strong> String Comparation </strong> <br><br>Comparing two strings lexicographically. If two strings are different, then either they have different characters at some index that is a valid index for both strings, or their lengths are different, or both.</p>
 <figure class="highlight java"><figcaption><span>String Comparation</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">system.out.println(<span class="string">"abc"</span>.compareTo(<span class="string">"abc"</span>)); <span class="comment">//0</span></span><br><span class="line">system.out.println(<span class="string">"abc"</span>.compareTo(<span class="string">"abd"</span>)); <span class="comment">//-1</span></span><br><span class="line">system.out.println(<span class="string">"abc"</span>.compareTo(<span class="string">"abcd"</span>)); <span class="comment">//-2</span></span><br></pre></td></tr></table></figure>
 <p><strong> String Method </strong> <br><br>Any method provied by String class will always returns a new string without modifiying string objects.</p>
 <figure class="highlight java"><figcaption><span>String Comparation</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String a = <span class="string">"test-1-2"</span>; <span class="comment">//total length </span></span><br><span class="line"><span class="keyword">int</span> b = a.indexOf(<span class="string">"1"</span>); <span class="comment">// 5</span></span><br><span class="line"><span class="keyword">int</span> c = a.length(); <span class="comment">// 8</span></span><br><span class="line">String d = a.substring(b,c); <span class="comment">// 1-2  (start index is included, end index is excluded);</span></span><br></pre></td></tr></table></figure>
@@ -961,150 +1080,11 @@ ga('send', 'pageview');
 </article>
 
   
-    <article id="post-Algorithm-Principle-2" class="article global-container article-type-post" itemscope itemprop="blogPost">
-  
-    <header class="article-header">
-      
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/DexWebSite/2019/10/12/Algorithm-Principle-2/">Java Base Principle</a>
-    </h1>
-  
-
-    </header>
-  
-  <div class="article-meta">
-    <a href="/DexWebSite/2019/10/12/Algorithm-Principle-2/" class="article-date">
-  <time datetime="2019-10-12T21:48:00.000Z" itemprop="datePublished">2019-10-12</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/DexWebSite/categories/Java-Programming-Language/">Java Programming Language</a>
-  </div>
-
-    
-  </div>
-  
-
-  <div class="article-inner">
-    
-    <div class="article-content article-content-cloud" itemprop="articleBody">
-      
-        <h3 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h3><p><strong> Java 3 Main Characters: </strong></p>
-<ul>
-<li>Encapsulation </li>
-<li>Polymorphism</li>
-<li>Inheritance </li>
-</ul>
-<p><strong>JAVA Object-Oriented Paradigm:</strong> Everything in the world is an object <br> </p>
-<ol>
-<li>Each object has a type</li>
-<li>Each object is defined by two kinds of information <br><br>2.1.    Status: the “field”s – what things it maintains<br><br>2.2.  Behavior: the “method”s (functions) – what it can do <br></li>
-</ol>
-<p><strong> JAVA Main Method: </strong> Main Method is the entry point of Java programs. Each project has only one <em>Public Main Class</em>. The name is fixed as “main” which is called by the JVM as entry point for an application.<br><br>e.g. public static void main(String[] args)]</p>
-<p><strong> JAVA Method: </strong><br></p>
-<p>E.g.  public static Integer methodName(int a, String b)</p>
-<ul>
-<li>Modifier  (public static)</li>
-<li>Return type (Integer)</li>
-<li>Name of the method (methodName)</li>
-<li>List of parameters (int a, String g) <br></li>
-</ul>
-<p><strong> JAVA Method (Function) Operation: </strong> If you run a method, the method will evaluate all parameters. For the method Evaluation, it requires all parameters should be certain values.<br><br><br>E.g. Return methodA(array, methodB(array)).  <br><br>It should operate methodB(array) first because it should be calculated before running methodA. </p>
-<p><em>JAVA evalation orders is from left to right.</em></p>
-<p><strong> Reference &amp; Dereference: </strong> <br><br>E.g.<br>{List<integer>} {list} {=} {new LinkedList<integer>();}<br>{Declaration} {Reference} {Instantiation} {Instantiation}</integer></integer></p>
-<ul>
-<li>Declaration: associate a variable name with an object type</li>
-<li>Reference: list is a reference which is a kind pointer to point data.</li>
-<li>Instantiation: After “new” an object, the “=” will return its <strong> <em>reference</em></strong> back to a “variable” (reference).</li>
-<li>Initialization: The new operator is followed by a call to a constructor, which initializes the new object.<br><br></li>
-</ul>
-<p>E.g.list.get(1) = 1314521 </p>
-<p>Dereference: the number ‘1314521’ will be assign to data which list points to. </p>
-<p><strong> Java-JVM Memory: Stack and Heap:</strong> <br></p>
-<p><strong>Stack:</strong> LIFO, a call stack is a stack data structure that stores information about the active subroutines of a computer program. This kind of stack is also known as <font color="#0099ff"><em>an execution stack, program stack, control stack, run-time stack, or machine stack, and is often shortened to just “the stack”</em></font>. It is used to track the instructions.  <br></p>
-<p><strong>Heap:</strong> Java objects reside in an area called the heap. The heap is created when the JVM (Java Virtual Machine) starts up and may increase or decrease in size while the application runs. <br><br>E.g.</p>
-<table><br><tr><th clospan="2"><center><strong>Java Memory</strong></center></th><th></th></tr><br><tr><td>Stack Frame (level 5)</td><td rowspan="5"> <center><font size="10">Heap</font></center></td><td></td></tr><br><tr><td>Stack Frame (level 4)</td></tr><br><tr><td>Stack Frame (level 3)</td></tr><br><tr><td>Stack Frame (level 2)</td></tr><br><tr><td>Stack Frame (level 1)</td></tr><br></table>
-
-<p><br></p>
-<p><strong> Heap &amp; Stack Comparison: </strong> </p>
-<ul>
-<li>Local primitive type variables are always on stack</li>
-<li>Whenever an object is created, its always stored in the Heap space and stack memory contains the reference to it.</li>
-<li>Memory management in stack is done in LIFO manner; memory management in heap is more complex and requires complex algorithm</li>
-<li>Stack is like the data structure “stack” because both are LIFO, heap has little to do with the data structure “heap”.</li>
-<li>Stack variable is destroyed after out of scope. Heap variable is destroyed by the garbage collector.</li>
-<li>(advanced &amp; optional) Each thread has its own stack; multiple threads share the same heap.</li>
-<li>(advanced &amp; optional) When stack memory is full, Java runtime throws java.lang.StackOverFlowError<br>Whereas if heap memory is full, it throws java.lang.OutOfMemoryError: Java Heap Space error.</li>
-<li>(Advanced &amp; optional) Stack is smaller than heap; storing data to stack is faster than heap.</li>
-<li>Frequently, Stack is far smaller than Heap. It is easier to have OVER FLOW ERROR.</li>
-</ul>
-<p>Not all variables saved in Stack, but all objects are saved in Heap.</p>
-<p>Primitive Types (save it in stack):  Defined with small capital letter in name.  <br></p>
-<p>Wrapper class (save object in heap): Defined with big captial letter in name.  is just a wrapper of the corresponding primitive type, the Object representation of primitive type values. <br> </p>
-<ul>
-<li>boolean <-> Boolean</-></li>
-<li>byte <-> Byte</-></li>
-<li>char <-> Char</-></li>
-<li>short <-> Short</-></li>
-<li>int <-> Int</-></li>
-<li>long <-> Long</-></li>
-<li>float <-> Float</-></li>
-<li>double <-> Double<br><br></-></li>
-</ul>
-<figure class="highlight java"><figcaption><span>Literal Example</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String str = “This is string literal”;</span><br></pre></td></tr></table></figure>
- <font color="#0099ff">This is string literal. When you declare string like this, you are actually calling <strong>intern()</strong> method on St ring. This method references inernal pool of string objects. If there already exists a string value “This is string literal”, then str will reference of that string and no new String object will be created. </font>
-
-<figure class="highlight java"><figcaption><span>Object Example</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String str = <span class="keyword">new</span> String (“<span class="keyword">this</span> is string created by <span class="keyword">new</span> operator”);</span><br></pre></td></tr></table></figure>
- <font color="#0099ff">This is string object. In this method JVM is forced to create a new string reference, even if “this is string created by new operator” is in the reference pool.</font>
-
-<figure class="highlight java"><figcaption><span>String Immutable Example</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">String a = “A”;</span><br><span class="line">String b = a;</span><br><span class="line">String b = “B”; <span class="comment">//"B" is created as a new object and be assigned to b, the A value is not changed.</span></span><br><span class="line">System.out.println(a); <span class="comment">//”A”</span></span><br><span class="line">System.out.println(b); <span class="comment">//”B”</span></span><br></pre></td></tr></table></figure>
-<p><strong>Wrap object is similar to String, all the wrapper class objects are IMMUTABLE – internal values can not be changed after initialization.</strong></p>
-<p><strong> Hints:</strong> </p>
-<ul>
-<li>Generic type can not be primitive type, List<integer>, there can not be List<int>.</int></integer></li>
-<li>It can help provide useful functionalities and contracts (json serializer: obj -&gt; json)</li>
-<li>How do you represent a “not existed” int value? “null” –&gt; Using Wrapper class object.</li>
-</ul>
-<p><strong> Autoboxing &amp;&amp; Unboxing </strong></p>
-<p>Autoboxing is the automatic conversion that the Java compiler makes between the primitive types and their corresponding object wrapper classes.<br><figure class="highlight java"><figcaption><span>AotuoBoxing</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Integer&gt; intergerList = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">integerList.add(<span class="number">0</span>); <span class="comment">// integerList.add(Integer.valueOf(i));</span></span><br></pre></td></tr></table></figure></p>
-<figure class="highlight java"><figcaption><span>UnBoxing</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Unboxing is reverse operation of autoboxing.</span><br><span class="line">Integer a = <span class="number">4</span> <span class="comment">//autoboxing //Integer a = Integer.valueOf(4);</span></span><br><span class="line">a += <span class="number">4</span>; <span class="comment">//a = a + 4;</span></span><br><span class="line">a++;  <span class="comment">//unboxing   // int temp = a.intValue();  temp++; a = Integer.valueOf(temp);// a is point to another Integer object.</span></span><br></pre></td></tr></table></figure>
-<p><strong> JAVA Parameter Passing:</strong><br>When a method is called, how does it actually pass parameters?<br>Java only has no conception about Pass-By-Reference, so Java aways use Pass-By-Value (copy).</p>
-<ul>
-<li>Primitive type: <strong> copy the value itself</strong></li>
-<li>Objects: <strong>copy of the object reference</strong></li>
-</ul>
-<p><strong> Static Keyword </strong></p>
-<p>Any Static members (fields, methods, classes) belong to class, not object. The member could be accessed by [ClassName].[Static field].  <br> </p>
-<p>Java does not know how to create an instance, so it is using Main function, “public static void main(String[] args)”.  <br></p>
-<p><em>Advantage, Nested Static Class:</em>  </p>
-<ul>
-<li>The nested static class could be instantiated before the instantiated outer class.</li>
-<li>To solve dynamic constructor problem, the nested static class, “XXBuilder” could invoke the private outer class constructor.</li>
-</ul>
-<p><strong> Final Keyword </strong></p>
-<p>Constant. “Once assigned, cannot be changed.” <br></p>
-<ul>
-<li>Final Class: A class that cannot be derived. It has no child (no inheritance).</li>
-<li>Final method: A method has cannot be overridden. It could not be override.</li>
-<li>Final field: A variable that once assigned, it cannot be assign again even in constructor. It could not be changed;<br><br></li>
-</ul>
-<p><strong> Other Keywords: </strong> <br><br><strong> Classic Types (objects): </strong> stored in heap, operated by references (reference object). <br><br><strong> ‘this’ Keyword: </strong> The current(self) instance. Mandatory if argument name is the same as field name.<br><br><strong> ‘null’ keyword: </strong> is special value for the reference. It means that reference is empty. <br><br><strong> NullPointerException: </strong> It means it makes JAVA dereferences the reference (NULL). <br></p>
-
-      
-    </div>
-    
-  </div>
-  
-  
-</article>
-
-  
 
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/DexWebSite/page/2/">2</a><a class="extend next" rel="next" href="/DexWebSite/page/2/">Next &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/DexWebSite/page/2/">2</a><a class="page-number" href="/DexWebSite/page/3/">3</a><a class="extend next" rel="next" href="/DexWebSite/page/2/">Next &raquo;</a>
   </nav>
 
 
@@ -1137,7 +1117,7 @@ ga('send', 'pageview');
   <div class="widget-box">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/03/">March 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/03/">March 2019</a></li></ul>
     </div>
   </div>
 
@@ -1147,6 +1127,10 @@ ga('send', 'pageview');
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/DexWebSite/2020/04/18/Java-Queue-Stack-Deque/">Java Queue Stack Deque </a>
+          </li>
         
           <li>
             <a href="/DexWebSite/2020/01/09/Redux-Base-Principle/">Redux Base Principle</a>
@@ -1162,10 +1146,6 @@ ga('send', 'pageview');
         
           <li>
             <a href="/DexWebSite/2019/10/18/Object-Oriented-Design-3/">Object-Oriented Design #3</a>
-          </li>
-        
-          <li>
-            <a href="/DexWebSite/2019/10/18/Object-Oriented-Design-2-4/">Object-Oriented Design #2</a>
           </li>
         
       </ul>

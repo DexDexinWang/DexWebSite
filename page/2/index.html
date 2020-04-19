@@ -75,6 +75,145 @@ ga('send', 'pageview');
       <div id="middlecontent" title class="global-width sidebar-left">
         <section id="main">
   
+    <article id="post-Algorithm-Principle-2" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/DexWebSite/2019/10/12/Algorithm-Principle-2/">Java Base Principle</a>
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/DexWebSite/2019/10/12/Algorithm-Principle-2/" class="article-date">
+  <time datetime="2019-10-12T21:48:00.000Z" itemprop="datePublished">2019-10-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/DexWebSite/categories/Java-Programming-Language/">Java Programming Language</a>
+  </div>
+
+    
+  </div>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <h3 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h3><p><strong> Java 3 Main Characters: </strong></p>
+<ul>
+<li>Encapsulation </li>
+<li>Polymorphism</li>
+<li>Inheritance </li>
+</ul>
+<p><strong>JAVA Object-Oriented Paradigm:</strong> Everything in the world is an object <br> </p>
+<ol>
+<li>Each object has a type</li>
+<li>Each object is defined by two kinds of information <br><br>2.1.    Status: the “field”s – what things it maintains<br><br>2.2.  Behavior: the “method”s (functions) – what it can do <br></li>
+</ol>
+<p><strong> JAVA Main Method: </strong> Main Method is the entry point of Java programs. Each project has only one <em>Public Main Class</em>. The name is fixed as “main” which is called by the JVM as entry point for an application.<br><br>e.g. public static void main(String[] args)]</p>
+<p><strong> JAVA Method: </strong><br></p>
+<p>E.g.  public static Integer methodName(int a, String b)</p>
+<ul>
+<li>Modifier  (public static)</li>
+<li>Return type (Integer)</li>
+<li>Name of the method (methodName)</li>
+<li>List of parameters (int a, String g) <br></li>
+</ul>
+<p><strong> JAVA Method (Function) Operation: </strong> If you run a method, the method will evaluate all parameters. For the method Evaluation, it requires all parameters should be certain values.<br><br><br>E.g. Return methodA(array, methodB(array)).  <br><br>It should operate methodB(array) first because it should be calculated before running methodA. </p>
+<p><em>JAVA evalation orders is from left to right.</em></p>
+<p><strong> Reference &amp; Dereference: </strong> <br><br>E.g.<br>{List<integer>} {list} {=} {new LinkedList<integer>();}<br>{Declaration} {Reference} {Instantiation} {Instantiation}</integer></integer></p>
+<ul>
+<li>Declaration: associate a variable name with an object type</li>
+<li>Reference: list is a reference which is a kind pointer to point data.</li>
+<li>Instantiation: After “new” an object, the “=” will return its <strong> <em>reference</em></strong> back to a “variable” (reference).</li>
+<li>Initialization: The new operator is followed by a call to a constructor, which initializes the new object.<br><br></li>
+</ul>
+<p>E.g.list.get(1) = 1314521 </p>
+<p>Dereference: the number ‘1314521’ will be assign to data which list points to. </p>
+<p><strong> Java-JVM Memory: Stack and Heap:</strong> <br></p>
+<p><strong>Stack:</strong> LIFO, a call stack is a stack data structure that stores information about the active subroutines of a computer program. This kind of stack is also known as <font color="#0099ff"><em>an execution stack, program stack, control stack, run-time stack, or machine stack, and is often shortened to just “the stack”</em></font>. It is used to track the instructions.  <br></p>
+<p><strong>Heap:</strong> Java objects reside in an area called the heap. The heap is created when the JVM (Java Virtual Machine) starts up and may increase or decrease in size while the application runs. <br><br>E.g.</p>
+<table><br><tr><th clospan="2"><center><strong>Java Memory</strong></center></th><th></th></tr><br><tr><td>Stack Frame (level 5)</td><td rowspan="5"> <center><font size="10">Heap</font></center></td><td></td></tr><br><tr><td>Stack Frame (level 4)</td></tr><br><tr><td>Stack Frame (level 3)</td></tr><br><tr><td>Stack Frame (level 2)</td></tr><br><tr><td>Stack Frame (level 1)</td></tr><br></table>
+
+<p><br></p>
+<p><strong> Heap &amp; Stack Comparison: </strong> </p>
+<ul>
+<li>Local primitive type variables are always on stack</li>
+<li>Whenever an object is created, its always stored in the Heap space and stack memory contains the reference to it.</li>
+<li>Memory management in stack is done in LIFO manner; memory management in heap is more complex and requires complex algorithm</li>
+<li>Stack is like the data structure “stack” because both are LIFO, heap has little to do with the data structure “heap”.</li>
+<li>Stack variable is destroyed after out of scope. Heap variable is destroyed by the garbage collector.</li>
+<li>(advanced &amp; optional) Each thread has its own stack; multiple threads share the same heap.</li>
+<li>(advanced &amp; optional) When stack memory is full, Java runtime throws java.lang.StackOverFlowError<br>Whereas if heap memory is full, it throws java.lang.OutOfMemoryError: Java Heap Space error.</li>
+<li>(Advanced &amp; optional) Stack is smaller than heap; storing data to stack is faster than heap.</li>
+<li>Frequently, Stack is far smaller than Heap. It is easier to have OVER FLOW ERROR.</li>
+</ul>
+<p>Not all variables saved in Stack, but all objects are saved in Heap.</p>
+<p>Primitive Types (save it in stack):  Defined with small capital letter in name.  <br></p>
+<p>Wrapper class (save object in heap): Defined with big captial letter in name.  is just a wrapper of the corresponding primitive type, the Object representation of primitive type values. <br> </p>
+<ul>
+<li>boolean <-> Boolean</-></li>
+<li>byte <-> Byte</-></li>
+<li>char <-> Char</-></li>
+<li>short <-> Short</-></li>
+<li>int <-> Int</-></li>
+<li>long <-> Long</-></li>
+<li>float <-> Float</-></li>
+<li>double <-> Double<br><br></-></li>
+</ul>
+<figure class="highlight java"><figcaption><span>Literal Example</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String str = “This is string literal”;</span><br></pre></td></tr></table></figure>
+ <font color="#0099ff">This is string literal. When you declare string like this, you are actually calling <strong>intern()</strong> method on St ring. This method references inernal pool of string objects. If there already exists a string value “This is string literal”, then str will reference of that string and no new String object will be created. </font>
+
+<figure class="highlight java"><figcaption><span>Object Example</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String str = <span class="keyword">new</span> String (“<span class="keyword">this</span> is string created by <span class="keyword">new</span> operator”);</span><br></pre></td></tr></table></figure>
+ <font color="#0099ff">This is string object. In this method JVM is forced to create a new string reference, even if “this is string created by new operator” is in the reference pool.</font>
+
+<figure class="highlight java"><figcaption><span>String Immutable Example</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">String a = “A”;</span><br><span class="line">String b = a;</span><br><span class="line">String b = “B”; <span class="comment">//"B" is created as a new object and be assigned to b, the A value is not changed.</span></span><br><span class="line">System.out.println(a); <span class="comment">//”A”</span></span><br><span class="line">System.out.println(b); <span class="comment">//”B”</span></span><br></pre></td></tr></table></figure>
+<p><strong>Wrap object is similar to String, all the wrapper class objects are IMMUTABLE – internal values can not be changed after initialization.</strong></p>
+<p><strong> Hints:</strong> </p>
+<ul>
+<li>Generic type can not be primitive type, List<integer>, there can not be List<int>.</int></integer></li>
+<li>It can help provide useful functionalities and contracts (json serializer: obj -&gt; json)</li>
+<li>How do you represent a “not existed” int value? “null” –&gt; Using Wrapper class object.</li>
+</ul>
+<p><strong> Autoboxing &amp;&amp; Unboxing </strong></p>
+<p>Autoboxing is the automatic conversion that the Java compiler makes between the primitive types and their corresponding object wrapper classes.<br><figure class="highlight java"><figcaption><span>AotuoBoxing</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Integer&gt; intergerList = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">integerList.add(<span class="number">0</span>); <span class="comment">// integerList.add(Integer.valueOf(i));</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight java"><figcaption><span>UnBoxing</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Unboxing is reverse operation of autoboxing.</span><br><span class="line">Integer a = <span class="number">4</span> <span class="comment">//autoboxing //Integer a = Integer.valueOf(4);</span></span><br><span class="line">a += <span class="number">4</span>; <span class="comment">//a = a + 4;</span></span><br><span class="line">a++;  <span class="comment">//unboxing   // int temp = a.intValue();  temp++; a = Integer.valueOf(temp);// a is point to another Integer object.</span></span><br></pre></td></tr></table></figure>
+<p><strong> JAVA Parameter Passing:</strong><br>When a method is called, how does it actually pass parameters?<br>Java only has no conception about Pass-By-Reference, so Java aways use Pass-By-Value (copy).</p>
+<ul>
+<li>Primitive type: <strong> copy the value itself</strong></li>
+<li>Objects: <strong>copy of the object reference</strong></li>
+</ul>
+<p><strong> Static Keyword </strong></p>
+<p>Any Static members (fields, methods, classes) belong to class, not object. The member could be accessed by [ClassName].[Static field].  <br> </p>
+<p>Java does not know how to create an instance, so it is using Main function, “public static void main(String[] args)”.  <br></p>
+<p><em>Advantage, Nested Static Class:</em>  </p>
+<ul>
+<li>The nested static class could be instantiated before the instantiated outer class.</li>
+<li>To solve dynamic constructor problem, the nested static class, “XXBuilder” could invoke the private outer class constructor.</li>
+</ul>
+<p><strong> Final Keyword </strong></p>
+<p>Constant. “Once assigned, cannot be changed.” <br></p>
+<ul>
+<li>Final Class: A class that cannot be derived. It has no child (no inheritance).</li>
+<li>Final method: A method has cannot be overridden. It could not be override.</li>
+<li>Final field: A variable that once assigned, it cannot be assign again even in constructor. It could not be changed;<br><br></li>
+</ul>
+<p><strong> Other Keywords: </strong> <br><br><strong> Classic Types (objects): </strong> stored in heap, operated by references (reference object). <br><br><strong> ‘this’ Keyword: </strong> The current(self) instance. Mandatory if argument name is the same as field name.<br><br><strong> ‘null’ keyword: </strong> is special value for the reference. It means that reference is empty. <br><br><strong> NullPointerException: </strong> It means it makes JAVA dereferences the reference (NULL). <br></p>
+
+      
+    </div>
+    
+  </div>
+  
+  
+</article>
+
+  
     <article id="post-C-Lesson-5-Nullable" class="article global-container article-type-post" itemscope itemprop="blogPost">
   
     <header class="article-header">
@@ -671,8 +810,6 @@ ga('send', 'pageview');
 <figure class="highlight c"><figcaption><span># String Assignment</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// Assign String Value as "C:\Windows" in 2 ways.</span></span><br><span class="line"><span class="built_in">string</span> str = <span class="string">"C:\\Windows"</span>;</span><br><span class="line"><span class="built_in">string</span> str = @<span class="string">"C:\Windows"</span>; </span><br><span class="line"></span><br><span class="line"><span class="comment">// @"" could save values in mutilple lines.</span></span><br><span class="line"><span class="built_in">string</span> str = @<span class="string">"&lt;script type="</span><span class="string">"text/javascript"</span><span class="string">"&gt;</span></span><br><span class="line"><span class="string">    &lt;!--</span></span><br><span class="line"><span class="string">    --&gt;</span></span><br><span class="line"><span class="string">&lt;/script&gt;"</span>;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h3 id="Pointer-Type"><a href="#Pointer-Type" class="headerlink" title="Pointer Type"></a>Pointer Type</h3><p>The pointer will point to the memory address which is used as the same as C or C++. </p>
 <figure class="highlight c"><figcaption><span># Pointer Assignment</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// type* identifier;</span></span><br><span class="line"><span class="keyword">char</span>* cptr;</span><br><span class="line"><span class="keyword">int</span>* iptr;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="Arrays"><a href="#Arrays" class="headerlink" title="Arrays"></a>Arrays</h3><p>An array stores a fixed-size sequeential collection of elemetns of the same type. An array is used to store a collection of data, but it is often more useful to think of an array as <strong>a collection of variables of the same type stored at contiguous memory locations</strong>.</p>
-<figure class="highlight c"><figcaption><span># Array Declaration</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// datatype\[\] arrayName;</span></span><br><span class="line"><span class="keyword">double</span>[] balance = <span class="keyword">new</span> <span class="keyword">double</span>\[<span class="number">10</span>\];</span><br><span class="line"><span class="keyword">int</span>[] marks = <span class="keyword">new</span> <span class="keyword">int</span>\[<span class="number">5</span>\] &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -953,140 +1090,11 @@ ga('send', 'pageview');
 </article>
 
   
-    <article id="post-markdownExample" class="article global-container article-type-post" itemscope itemprop="blogPost">
-  
-    <header class="article-header">
-      
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/DexWebSite/2019/03/23/markdownExample/">Hexo MarkDown Example</a>
-    </h1>
-  
-
-    </header>
-  
-  <div class="article-meta">
-    <a href="/DexWebSite/2019/03/23/markdownExample/" class="article-date">
-  <time datetime="2019-03-23T11:54:00.000Z" itemprop="datePublished">2019-03-23</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/DexWebSite/categories/Basic/">Basic</a>
-  </div>
-
-    
-  </div>
-  
-
-  <div class="article-inner">
-    
-    <div class="article-content article-content-cloud" itemprop="articleBody">
-      
-        <h1 id="Welcome-to-Marxico"><a href="#Welcome-to-Marxico" class="headerlink" title="Welcome to Marxico"></a>Welcome to Marxico</h1><p>@(Sample notebook)[Marxico|Manual|Markdown]</p>
-<p><strong>Marxico</strong> is a delicate Markdown editor for Evernote. With reliable storage and sync powered by Evernote, <strong>Marxico</strong> offers greate writing experience. </p>
-<ul>
-<li><strong>Versatile</strong> - supporting code highlight, <em>LaTeX</em> &amp; flow charts,  inserting images &amp; attachments by all means.</li>
-<li><strong>Exquisite</strong> -  neat but powerful editor, featuring offline docs, live preview, and offering the <a href="http://marxi.co/client_en" target="_blank" rel="noopener">desktop client</a> and offline <a href="https://chrome.google.com/webstore/detail/kidnkfckhbdkfgbicccmdggmpgogehop" target="_blank" rel="noopener">Chrome App</a>.</li>
-<li><strong>Sophisticated</strong> - deeply integrated with Evernote, supporting notebook &amp; tags, two-way bind editing.   </li>
-</ul>
-<hr>
-<p>[TOC]</p>
-<h2 id="Introducing-Markdown"><a href="#Introducing-Markdown" class="headerlink" title="Introducing Markdown"></a>Introducing Markdown</h2><blockquote>
-<p>Markdown is a plain text formatting syntax designed to be converted to HTML. Markdown is popularly used as format for readme files, … or in text editors for the quick creation of rich text documents.  - <a href="http://en.wikipedia.org/wiki/Markdown" target="_blank" rel="noopener">Wikipedia</a></p>
-</blockquote>
-<p>As showed in this manual, it uses hash(#) to identify headings, emphasizes some text to be <strong>bold</strong> or <em>italic</em>. You can insert a <a href="http://www.example.com" target="_blank" rel="noopener">link</a> , or a footnote[^demo]. Serveral advanced syntax are listed below, please press <code>Ctrl + /</code> to view Markdown cheatsheet.</p>
-<h3 id="Code-block"><a href="#Code-block" class="headerlink" title="Code block"></a>Code block</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@requires_authorization</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">somefunc</span><span class="params">(param1=<span class="string">''</span>, param2=<span class="number">0</span>)</span>:</span></span><br><span class="line">    <span class="string">'''A docstring'''</span></span><br><span class="line">    <span class="keyword">if</span> param1 &gt; param2: <span class="comment"># interesting</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">'Greater'</span></span><br><span class="line">    <span class="keyword">return</span> (param2 - param1 + <span class="number">1</span>) <span class="keyword">or</span> <span class="literal">None</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SomeClass</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>message = <span class="string">'''interpreter</span></span><br><span class="line"><span class="string"><span class="meta">... </span>prompt'''</span></span><br></pre></td></tr></table></figure>
-<h3 id="LaTeX-expression"><a href="#LaTeX-expression" class="headerlink" title="LaTeX expression"></a>LaTeX expression</h3><p>$$    x = \dfrac{-b \pm \sqrt{b^2 - 4ac}}{2a} $$</p>
-<h3 id="Table"><a href="#Table" class="headerlink" title="Table"></a>Table</h3><table>
-<thead>
-<tr>
-<th style="text-align:left">Item</th>
-<th style="text-align:right">Value</th>
-<th style="text-align:center">Qty</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">Computer</td>
-<td style="text-align:right">1600 USD</td>
-<td style="text-align:center">5</td>
-</tr>
-<tr>
-<td style="text-align:left">Phone</td>
-<td style="text-align:right">12 USD</td>
-<td style="text-align:center">12</td>
-</tr>
-<tr>
-<td style="text-align:left">Pipe</td>
-<td style="text-align:right">1 USD</td>
-<td style="text-align:center">234</td>
-</tr>
-</tbody>
-</table>
-<h3 id="Diagrams"><a href="#Diagrams" class="headerlink" title="Diagrams"></a>Diagrams</h3><h4 id="Flow-charts"><a href="#Flow-charts" class="headerlink" title="Flow charts"></a>Flow charts</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">st=&gt;start: Start</span><br><span class="line">e=&gt;end</span><br><span class="line">op=&gt;operation: My Operation</span><br><span class="line">cond=&gt;condition: Yes or No?</span><br><span class="line"></span><br><span class="line">st-&gt;op-&gt;cond</span><br><span class="line">cond(yes)-&gt;e</span><br><span class="line">cond(no)-&gt;op</span><br></pre></td></tr></table></figure>
-<h4 id="Sequence-diagrams"><a href="#Sequence-diagrams" class="headerlink" title="Sequence diagrams"></a>Sequence diagrams</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Alice-&gt;Bob: Hello Bob, how are you?</span><br><span class="line">Note right of Bob: Bob thinks</span><br><span class="line">Bob--&gt;Alice: I am good thanks!</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p><strong>Note:</strong> You can find more information:</p>
-</blockquote>
-<blockquote>
-<ul>
-<li>about <strong>Sequence diagrams</strong> syntax <a href="http://bramp.github.io/js-sequence-diagrams/" target="_blank" rel="noopener">here</a>,</li>
-<li>about <strong>Flow charts</strong> syntax <a href="http://adrai.github.io/flowchart.js/" target="_blank" rel="noopener">here</a>.</li>
-</ul>
-</blockquote>
-<h3 id="Checkbox"><a href="#Checkbox" class="headerlink" title="Checkbox"></a>Checkbox</h3><p>You can use <code>- [ ]</code> and <code>- [x]</code> to create checkboxes, for example:</p>
-<ul>
-<li style="list-style: none"><input type="checkbox" checked> Item1</li>
-<li style="list-style: none"><input type="checkbox"> Item2</li>
-<li style="list-style: none"><input type="checkbox"> Item3</li>
-</ul>
-<blockquote>
-<p><strong>Note:</strong> Currently it is only partially supported. You can’t toggle checkboxes in Evernote. You can only modify the Markdown in Marxico to do that. Next version will fix this.  </p>
-</blockquote>
-<h3 id="Dancing-with-Evernote"><a href="#Dancing-with-Evernote" class="headerlink" title="Dancing with Evernote"></a>Dancing with Evernote</h3><h4 id="Notebook-amp-Tags"><a href="#Notebook-amp-Tags" class="headerlink" title="Notebook &amp; Tags"></a>Notebook &amp; Tags</h4><p><strong>Marxico</strong> add <code>@(Notebook)[tag1|tag2|tag3]</code> syntax to select notebook and set tags for the note. After typing <code>@(</code>, the notebook list would appear, please select one from it.  </p>
-<h4 id="Title"><a href="#Title" class="headerlink" title="Title"></a>Title</h4><p><strong>Marxico</strong> would adopt the first heading encountered as the note title. For example, in this manual the first line <code>Welcome to Marxico</code> is the title.</p>
-<h4 id="Quick-Editing"><a href="#Quick-Editing" class="headerlink" title="Quick Editing"></a>Quick Editing</h4><p>Note saved by <strong>Marxico</strong> in Evernote would have a red ribbon button on the top-right corner. Click it and it would bring you back to <strong>Marxico</strong> to edit the note. </p>
-<blockquote>
-<p><strong>Note:</strong> Currently <strong>Marxico</strong> is unable to detect and merge any modifications in Evernote by user. Please go back to <strong>Marxico</strong> to edit.</p>
-</blockquote>
-<h4 id="Data-Synchronization"><a href="#Data-Synchronization" class="headerlink" title="Data Synchronization"></a>Data Synchronization</h4><p>While saving rich HTML content in Evernote, <strong>Marxico</strong> puts the Markdown text in a hidden area of the note, which makes it possible to get the original text in <strong>Marxico</strong> and edit it again. This is a really brilliant design because:</p>
-<ul>
-<li>it is beyond just one-way exporting HTML which other services do;</li>
-<li>and it avoids privacy and security problems caused by storing content in a intermediate server. </li>
-</ul>
-<blockquote>
-<p><strong>Privacy Statement: All of your notes data are saved in Evernote. Marxico doesn’t save any of them.</strong> </p>
-</blockquote>
-<h4 id="Offline-Storage"><a href="#Offline-Storage" class="headerlink" title="Offline Storage"></a>Offline Storage</h4><p><strong>Marxico</strong> stores your unsynchronized content locally in browser storage, so no worries about network and broswer crash. It also keeps the recent file list you’ve edited in <code>Document Management(Ctrl + O)</code>.</p>
-<blockquote>
-<p><strong>Note:</strong> Although browser storage is reliable in the most time, Evernote is born to do that. So please sync the document regularly while writing.</p>
-</blockquote>
-<h2 id="Shortcuts"><a href="#Shortcuts" class="headerlink" title="Shortcuts"></a>Shortcuts</h2><p>Help    <code>Ctrl + /</code><br>Sync Doc    <code>Ctrl + S</code><br>Create Doc    <code>Ctrl + Alt + N</code><br>Maximize Editor    <code>Ctrl + Enter</code><br>Preview Doc <code>Ctrl + Alt + Enter</code><br>Doc Management    <code>Ctrl + O</code><br>Menu    <code>Ctrl + M</code></p>
-<p>Bold    <code>Ctrl + B</code><br>Insert Image    <code>Ctrl + G</code><br>Insert Link    <code>Ctrl + L</code><br>Convert Heading    <code>Ctrl + H</code></p>
-<h2 id="About-Pro"><a href="#About-Pro" class="headerlink" title="About Pro"></a>About Pro</h2><p><strong>Marixo</strong> offers a free trial of 10 days. After that, you need to <a href="http://marxi.co/purchase.html" target="_blank" rel="noopener">purchase</a> the Pro service. Otherwise, you would not be able to sync new notes. Previous notes can be edited and synced all the time.</p>
-<h2 id="Credits"><a href="#Credits" class="headerlink" title="Credits"></a>Credits</h2><p><strong>Marxico</strong> was first built upon <a href="http://dillinger.io" target="_blank" rel="noopener">Dillinger</a>, and the newest version is almost based on the awesome <a href="http://stackedit.io" target="_blank" rel="noopener">StackEdit</a>. Acknowledgments to them and other incredible open source projects!</p>
-<h2 id="Feedback-amp-Bug-Report"><a href="#Feedback-amp-Bug-Report" class="headerlink" title="Feedback &amp; Bug Report"></a>Feedback &amp; Bug Report</h2><ul>
-<li>Twitter: <a href="https://twitter.com/gock2" target="_blank" rel="noopener">@gock2</a></li>
-<li>Email: <a href="mailto:&#104;&#117;&#115;&#116;&#103;&#111;&#x63;&#107;&#x40;&#x67;&#109;&#x61;&#x69;&#x6c;&#46;&#99;&#x6f;&#x6d;" target="_blank" rel="noopener">&#104;&#117;&#115;&#116;&#103;&#111;&#x63;&#107;&#x40;&#x67;&#109;&#x61;&#x69;&#x6c;&#46;&#99;&#x6f;&#x6d;</a></li>
-</ul>
-<hr>
-<p>Thank you for reading this manual. Now please press <code>Ctrl + M</code> and click <code>Link with Evernote</code>. Enjoy your <strong>Marxico</strong> journey!</p>
-<p>[^demo]: This is a demo footnote. Read the <a href="https://github.com/fletcher/MultiMarkdown/wiki/MultiMarkdown-Syntax-Guide#footnotes" target="_blank" rel="noopener">MultiMarkdown Syntax Guide</a> to learn more. Note that Evernote disables ID attributes in its notes , so <code>footnote</code> and <code>TOC</code> are not actually working. </p>
-
-      
-    </div>
-    
-  </div>
-  
-  
-</article>
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/DexWebSite/">&laquo; Prev</a><a class="page-number" href="/DexWebSite/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/DexWebSite/">&laquo; Prev</a><a class="page-number" href="/DexWebSite/">1</a><span class="page-number current">2</span><a class="page-number" href="/DexWebSite/page/3/">3</a><a class="extend next" rel="next" href="/DexWebSite/page/3/">Next &raquo;</a>
   </nav>
 
 
@@ -1119,7 +1127,7 @@ ga('send', 'pageview');
   <div class="widget-box">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/03/">March 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/03/">March 2019</a></li></ul>
     </div>
   </div>
 
@@ -1129,6 +1137,10 @@ ga('send', 'pageview');
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/DexWebSite/2020/04/18/Java-Queue-Stack-Deque/">Java Queue Stack Deque </a>
+          </li>
         
           <li>
             <a href="/DexWebSite/2020/01/09/Redux-Base-Principle/">Redux Base Principle</a>
@@ -1144,10 +1156,6 @@ ga('send', 'pageview');
         
           <li>
             <a href="/DexWebSite/2019/10/18/Object-Oriented-Design-3/">Object-Oriented Design #3</a>
-          </li>
-        
-          <li>
-            <a href="/DexWebSite/2019/10/18/Object-Oriented-Design-2-4/">Object-Oriented Design #2</a>
           </li>
         
       </ul>
