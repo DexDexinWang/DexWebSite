@@ -75,6 +75,61 @@ ga('send', 'pageview');
       <div id="middlecontent" title class="global-width sidebar-left">
         <section id="main">
   
+    <article id="post-Java-String-Class" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/DexWebSite/2019/10/12/Java-String-Class/">Java String Class</a>
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/DexWebSite/2019/10/12/Java-String-Class/" class="article-date">
+  <time datetime="2019-10-12T23:49:00.000Z" itemprop="datePublished">2019-10-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/DexWebSite/categories/Java-Programming-Language/">Java Programming Language</a>
+  </div>
+
+    
+  </div>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <h3 id="JAVA-STRING-CLASS"><a href="#JAVA-STRING-CLASS" class="headerlink" title="JAVA STRING CLASS"></a>JAVA STRING CLASS</h3><p>Sting is a very special class in Java Programming language. String and all the wrapper class objects are immutable class that means if an string is created, it cannot be chagned. </p>
+<p><strong>String</strong> is not Primitive Type. String is extended from Object which has many methods such as “indexOf”</p>
+<figure class="highlight java"><figcaption><span>String Class in JAVA (Assumption)</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">String</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">char</span>[] value;</span><br><span class="line">	<span class="comment">//different String objects can reuse the same char array,</span></span><br><span class="line">	<span class="comment">//but can start with different offset index.</span></span><br><span class="line">	Private <span class="keyword">int</span> offset;</span><br><span class="line">	<span class="comment">//maintains the length of the part in the char array</span></span><br><span class="line">	<span class="comment">// represented by this String object.</span></span><br><span class="line">	Private <span class="keyword">int</span> count;</span><br><span class="line">	<span class="function">Public <span class="title">String</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		Value = <span class="keyword">new</span> <span class="keyword">char</span>[<span class="number">0</span>];</span><br><span class="line">		Offset = <span class="number">0</span>;</span><br><span class="line">		Count = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong> String Creation </strong></p>
+<p>Whenever Java encounters a string literal in your code, the compiler creates a String Object with its value. If there are mutiple string objects with the same value. It means these string objects refer to the same object that Java Created.</p>
+<figure class="highlight java"><figcaption><span>Literal String Creation (Assumption)</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String s1 = “Dex is Nice.”;</span><br><span class="line">String s2 = “Dex is Nice.”;</span><br><span class="line">System.out.println(s1 == s2); <span class="comment">// true, because it just compare whether s1 and s2 point to the same object.</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><figcaption><span>Literal String Creation 2 (Assumption)</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String s1 = “Dex is Nice.”;</span><br><span class="line">String s2 = <span class="keyword">new</span> String (“Dex is Nice.”);</span><br><span class="line">System.out.println(s1 == s2); <span class="comment">// false, because s1 and s2 point to the different object.</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><em>Conclution:</em> <br><br>There is no need for maintaining several copies of String objects with the same iteral, since String objects are immutable. <br><br>Usually compiler and JVM will optimize for the number of String objects created, it will maintain an intern area in Heap, for the same String literal it will only has one String object associated. <br></p>
+<p><strong> String Concatenation: </strong> <br></p>
+<figure class="highlight java"><figcaption><span>String Concatenation</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">String s1 = “Dex”;</span><br><span class="line">String s2 = <span class="keyword">new</span> String (“ is Nice.”);</span><br><span class="line">S1.concat(s2) <span class="comment">// This will create a new String object rather than change the value of s1 or s2.</span></span><br><span class="line">S3 = “ab” + “cd” <span class="comment">// s3 = “abcd”, compile time concatenation</span></span><br><span class="line">S4 = s3 + <span class="string">"def"</span>; <span class="comment">// s3.concat(“def”);</span></span><br><span class="line">S5 = <span class="number">1</span> + “def” <span class="comment">// String.valueOf(1), (1 -&gt; Integer(1) -&gt; Integer(1).toString()) -&gt; 1</span></span><br><span class="line">S6 = “Test ” + <span class="number">2</span> + “ Cool ” + <span class="keyword">true</span> + ‘y’;</span><br><span class="line"><span class="comment">//Could be further optimized to new StringBuilder().append(“Test”).append(2).append(“ Cool ”)….. .toString() at compiler time.</span></span><br><span class="line"><span class="comment">//Time complexity O(n * m);</span></span><br><span class="line"><span class="comment">//Space complexity O(n * m);   </span></span><br><span class="line"><span class="comment">//Where n is the number of append and m is the maximum length of string in array.</span></span><br></pre></td></tr></table></figure>
+<p><strong> String Comparation </strong> <br><br>Comparing two strings lexicographically. If two strings are different, then either they have different characters at some index that is a valid index for both strings, or their lengths are different, or both.</p>
+<figure class="highlight java"><figcaption><span>String Comparation</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">system.out.println(<span class="string">"abc"</span>.compareTo(<span class="string">"abc"</span>)); <span class="comment">//0</span></span><br><span class="line">system.out.println(<span class="string">"abc"</span>.compareTo(<span class="string">"abd"</span>)); <span class="comment">//-1</span></span><br><span class="line">system.out.println(<span class="string">"abc"</span>.compareTo(<span class="string">"abcd"</span>)); <span class="comment">//-2</span></span><br></pre></td></tr></table></figure>
+<p><strong> String Method </strong> <br><br>Any method provied by String class will always returns a new string without modifiying string objects.</p>
+<figure class="highlight java"><figcaption><span>String Comparation</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String a = <span class="string">"test-1-2"</span>; <span class="comment">//total length </span></span><br><span class="line"><span class="keyword">int</span> b = a.indexOf(<span class="string">"1"</span>); <span class="comment">// 5</span></span><br><span class="line"><span class="keyword">int</span> c = a.length(); <span class="comment">// 8</span></span><br><span class="line">String d = a.substring(b,c); <span class="comment">// 1-2  (start index is included, end index is excluded);</span></span><br></pre></td></tr></table></figure>
+<p><strong> StringBuilder and StringBUffer:</strong></p>
+<p>They are intermediate classes that are modifiable since String is Immutable.<br>Different between StringBuilder and StringBuffer<br>•    They are doing exactly the same thing<br>•    StringBuffer is “thread-safe”, each of the methods are synchronized.<br>•    StringBuilder is not thread-safe, it is intended to be used in single thread environment.</p>
+
+      
+    </div>
+    
+  </div>
+  
+  
+</article>
+
+  
     <article id="post-Algorithm-Principle-2" class="article global-container article-type-post" itemscope itemprop="blogPost">
   
     <header class="article-header">
@@ -1024,72 +1079,6 @@ ga('send', 'pageview');
 </article>
 
   
-    <article id="post-ap1" class="article global-container article-type-post" itemscope itemprop="blogPost">
-  
-    <header class="article-header">
-      
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/DexWebSite/2019/03/24/ap1/">Algorithm Principle #1</a>
-    </h1>
-  
-
-    </header>
-  
-  <div class="article-meta">
-    <a href="/DexWebSite/2019/03/24/ap1/" class="article-date">
-  <time datetime="2019-03-25T05:44:00.000Z" itemprop="datePublished">2019-03-24</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/DexWebSite/categories/Algorithm/">Algorithm</a>
-  </div>
-
-    
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/DexWebSite/tags/Principle/">Principle</a></li></ul>
-
-  </div>
-  
-
-  <div class="article-inner">
-    
-    <div class="article-content article-content-cloud" itemprop="articleBody">
-      
-        <h3 id="Data-structure"><a href="#Data-structure" class="headerlink" title="Data structure"></a>Data structure</h3><p><a href="https://en.wikipedia.org/wiki/Data_structure" target="_blank" rel="noopener">WIKI</a>: </p>
-<p>It is a data organization, management and storage format that enables efficient access and modifications.</p>
-<p><a href="https://www.geeksforgeeks.org/overview-of-data-structures-set-1-linear-data-structures/" target="_blank" rel="noopener">GG</a>:</p>
-<p>It is a particular way of organizing data in a computer so that it can be used efficiently.</p>
-<p>Both of these definations refer two key keywords: origanizaiton and efficient. Programmers will use certain methods to originize data to reduce time cost and space cost which are the most important meansures to judge algorithm solutions. </p>
-<h3 id="Time-Complexity"><a href="#Time-Complexity" class="headerlink" title="Time Complexity"></a>Time Complexity</h3><p><a href="https://en.wikipedia.org/wiki/Time_complexity" target="_blank" rel="noopener">WIKI</a><br>Time complexity describes the amount of time it takes to run an algorithm. Time complexity is commonly estimated by counts the number of elementary operations performed by the algorhm.</p>
-<p>E.g.<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">10</span>; i++) &#123; &lt;-- loop <span class="number">10</span> times</span><br><span class="line">	sum = sum + i;  &lt;-- one elementary operation</span><br><span class="line">&#125; &lt;-- total should time complexity is <span class="number">10</span>.</span><br></pre></td></tr></table></figure></p>
-<p>Normally, time compleixty is increased with increasing the number of input. All algorithm problems consider input as “n”.<br>Mostly, time compleixty of solving an algorithm problem could be random number in a range such as from n to n^2, programers commonly consider the worst-case time complity such O(n), O(nlogn), O(n^2) and so on.</p>
-<p>Theta(n): tight bound<br>Omega(n): lower bound</p>
-<h3 id="Space-Complexity"><a href="#Space-Complexity" class="headerlink" title="Space Complexity"></a>Space Complexity</h3><p><a href="https://en.wikipedia.org/wiki/Space_complexity" target="_blank" rel="noopener">WIKI</a></p>
-<p>The space compleixty of an algorithm or a computer program is the amount of momery space required to solve an instance of the computer problem as a function of the size of the input. </p>
-<p>In other words, how much memory does it need to run the problem. </p>
-<p>However, this defination is not used to answer algorithm questions during interviews. Because interviwers wants “Auxiliary Space Compleixty”. </p>
-<p><strong>Auxiliary</strong> Space complexity: how much extra space or temporary space will be used by an algorithm. </p>
-<h3 id="Common-Data-Structures"><a href="#Common-Data-Structures" class="headerlink" title="Common Data Structures"></a>Common Data Structures</h3><ol>
-<li>Array</li>
-<li>Linked List</li>
-<li>Stack</li>
-<li>Queue</li>
-<li>Tree </li>
-<li>Heap</li>
-<li>Graph</li>
-<li>Hash Table</li>
-</ol>
-<p>Only “Array” is continuous physical strucutre in memory. Others are logical structure.</p>
-
-      
-    </div>
-    
-  </div>
-  
-  
-</article>
-
-  
 
 
   <nav id="page-nav">
@@ -1139,6 +1128,10 @@ ga('send', 'pageview');
       <ul>
         
           <li>
+            <a href="/DexWebSite/2020/04/19/Algorithm-PriorityQueue-1/">Algorithm PriorityQueue</a>
+          </li>
+        
+          <li>
             <a href="/DexWebSite/2020/04/18/Java-Queue-Stack-Deque/">Algorithm Queue Stack Deque </a>
           </li>
         
@@ -1152,10 +1145,6 @@ ga('send', 'pageview');
         
           <li>
             <a href="/DexWebSite/2019/10/24/Algorithm-Linked-List/">Algorithm Linked List </a>
-          </li>
-        
-          <li>
-            <a href="/DexWebSite/2019/10/18/Object-Oriented-Design-3/">Object-Oriented Design #3</a>
           </li>
         
       </ul>

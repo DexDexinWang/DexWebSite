@@ -75,6 +75,102 @@ ga('send', 'pageview');
       <div id="middlecontent" title class="global-width sidebar-left">
         <section id="main">
   
+    <article id="post-Algorithm-PriorityQueue-1" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/DexWebSite/2020/04/19/Algorithm-PriorityQueue-1/">Algorithm PriorityQueue</a>
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/DexWebSite/2020/04/19/Algorithm-PriorityQueue-1/" class="article-date">
+  <time datetime="2020-04-19T17:04:00.000Z" itemprop="datePublished">2020-04-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/DexWebSite/categories/Algorithm/">Algorithm</a>
+  </div>
+
+    
+  </div>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <h3 id="PriorityQueue"><a href="#PriorityQueue" class="headerlink" title="PriorityQueue"></a><a href="https://docs.oracle.com/javase/7/docs/api/java/util/PriorityQueue.html" target="_blank" rel="noopener">PriorityQueue</a></h3><p>PriorityQueue is extended Queue interface with main methods: offer, peek, poll, size, isEmpty. It focuses on smallest/largest element rather than FIFO. The PriorityQueue is based on the priority heap. Internally it is implemented by using an array.  <br></p>
+<p>Time complexity:</p>
+<ul>
+<li>offer(E e), O(logn)</li>
+<li>peek(), O(1)</li>
+<li>poll(), O(logn)</li>
+<li>remove(), O(logn) is the same as poll()</li>
+<li>remove(Object), O(n) </li>
+<li>size(), O(1)</li>
+<li>isEmpty(), O(1)</li>
+</ul>
+<p>For PriorityQueue, the most important is how to define priority. In another words, how does the PriorityQueue know how to compare object?<br></p>
+<p>E.g.</p>
+<figure class="highlight java"><figcaption><span>Integer PriorityQueue</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">PriorityQueue&lt;Integer&gt; minHeap = <span class="keyword">new</span> PriorityQueue&lt;Integer&gt;();</span><br><span class="line"> 	minHeap.offer(<span class="number">3</span>);</span><br><span class="line"> 	minHeap.offer(<span class="number">1</span>);</span><br><span class="line"> 	minHeap.offer(<span class="number">2</span>);</span><br><span class="line"> 	<span class="keyword">while</span>(!minHeap.isEmpty()) &#123;</span><br><span class="line"> 		minHeap.poll();</span><br><span class="line"> 	&#125;</span><br><span class="line"> <span class="comment">/* the order is min to max. Is that defualt? </span></span><br><span class="line"><span class="comment"> 1</span></span><br><span class="line"><span class="comment"> 2</span></span><br><span class="line"><span class="comment"> 3</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure> 
+<p><span style="color:red"><strong>The element type implementing comparable interface. </strong><span></span></span></p>
+<figure class="highlight java"><figcaption><span>Integer Implements Comparable</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Interface Comparable&lt;E&gt;&#123;</span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(E ele)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line">  </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Integer</span> <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">Integer</span>&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> value;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Integer</span><span class="params">(<span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">  	<span class="keyword">this</span>.value = value;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(Integer another)</span></span>&#123;</span><br><span class="line">  	<span class="keyword">if</span>(<span class="keyword">this</span>.value == another.value) &#123;</span><br><span class="line">    	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.value &lt; another.value? -<span class="number">1</span> : <span class="number">1</span></span><br><span class="line">    <span class="comment">//return this.value - another.value </span></span><br><span class="line">    <span class="comment">//it may cause overflow</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 
+<p>The return value of compareTo() method determines the priority.</p>
+<ul>
+<li>0, same</li>
+<li>-1, higher priority </li>
+<li>1, less priority</li>
+</ul>
+<h5 id="Comparing-Priority-Implementation"><a href="#Comparing-Priority-Implementation" class="headerlink" title="Comparing Priority Implementation"></a>Comparing Priority Implementation</h5><p>The element type implementing Comparable interface. It defines <strong>Natural Order</strong>. <br></p>
+<figure class="highlight java"><figcaption><span>Implementation Comparable</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">    Interface Comparable&lt;E&gt; &#123;</span><br><span class="line">        <span class="function">Int <span class="title">compareTo</span><span class="params">(E ele)</span></span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	Class Cell implements Comparable&lt;Cell&gt; &#123;</span><br><span class="line">	Public <span class="keyword">int</span> row;</span><br><span class="line">	Public <span class="keyword">int</span> col;</span><br><span class="line">	Public <span class="keyword">int</span> value;</span><br><span class="line">	<span class="function">Public <span class="title">Cell</span><span class="params">(<span class="keyword">int</span> row, <span class="keyword">int</span> col, <span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">		This.row = row;</span><br><span class="line">		This.cell = cell;</span><br><span class="line">		This.value = value;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function">Public <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(Cell another)</span> </span>&#123;</span><br><span class="line">		If(<span class="keyword">this</span>.value == another.value) &#123;</span><br><span class="line">			<span class="keyword">if</span> (<span class="keyword">this</span>.row == another.row) &#123;</span><br><span class="line">  				<span class="keyword">if</span> (<span class="keyword">this</span>.col == another.col) &#123;</span><br><span class="line">  					<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  				&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  					<span class="keyword">return</span> <span class="keyword">this</span>.col &lt; another.col ? -<span class="number">1</span> : <span class="number">1</span>;</span><br><span class="line">  				&#125;</span><br><span class="line">  			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">this</span>.row &lt; another.row ? -<span class="number">1</span> : <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">		&#125;</span><br><span class="line">		Return <span class="keyword">this</span>.value &lt; another.value ? -<span class="number">1</span> : <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">PriorityQueue&lt;Cell&gt; minheap = <span class="keyword">new</span> PriorityQueue&lt;Cell&gt;();</span><br><span class="line">PriorityQueue&lt;Cell&gt; maxheap = <span class="keyword">new</span> PriorityQueue&lt;Cell&gt;(<span class="number">11</span>, Collections.reverseOrder());</span><br><span class="line"><span class="comment">//Collection.reverseOrder will reverse defined natrual order.</span></span><br><span class="line"></span><br></pre></td></tr></table></figure> 
+<p>Define an extra Comparator object to compare the elements. <br></p>
+<figure class="highlight java"><figcaption><span>Implementation Comparator</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Interface Comparator&lt;E&gt; &#123;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">compare</span><span class="params">(E o1, E o2)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Class Cell implements Comparable&lt;Cell&gt; &#123;</span><br><span class="line">	Public <span class="keyword">int</span> row;</span><br><span class="line">	Public <span class="keyword">int</span> col;</span><br><span class="line">	Public <span class="keyword">int</span> value;</span><br><span class="line">	<span class="function">Public <span class="title">Cell</span><span class="params">(<span class="keyword">int</span> row, <span class="keyword">int</span> col, <span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">		This.row = row;</span><br><span class="line">		This.cell = cell;</span><br><span class="line">		This.value = value;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">	<span class="function">Public <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(Cell another)</span> </span>&#123;</span><br><span class="line">		If(<span class="keyword">this</span>.value == another.value) &#123;</span><br><span class="line">			<span class="keyword">if</span> (<span class="keyword">this</span>.row == another.row) &#123;</span><br><span class="line">  				<span class="keyword">if</span> (<span class="keyword">this</span>.col == another.col) &#123;</span><br><span class="line">  					<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  				&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  					<span class="keyword">return</span> <span class="keyword">this</span>.col &lt; another.col ? -<span class="number">1</span> : <span class="number">1</span>;</span><br><span class="line">  				&#125;</span><br><span class="line">  			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">this</span>.row &lt; another.row ? -<span class="number">1</span> : <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">		&#125;</span><br><span class="line">		Return <span class="keyword">this</span>.value &lt; another.value ? -<span class="number">1</span> : <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">Class Mycomparator implements Comparactor&lt;Cell&gt; </span><br><span class="line">&#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function">Public <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Cell c1, Cell c2)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(c1.value == c2.value) &#123;</span><br><span class="line">			<span class="keyword">if</span> (c1.row == c2.row) &#123;</span><br><span class="line">  				<span class="keyword">if</span> (c1.col == c2.col) &#123;</span><br><span class="line">  					<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  				&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  					<span class="keyword">return</span> c1.col &lt; c2.col ? -<span class="number">1</span> : <span class="number">1</span>;</span><br><span class="line">  				&#125;</span><br><span class="line">  			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> c1.row &lt; c2.row ? -<span class="number">1</span> : <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">		&#125;</span><br><span class="line">		Return c1.value &lt; c2.value ? -<span class="number">1</span> : <span class="number">1</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//Use comparactor to replace comparable interface.</span></span><br><span class="line">PriorityQueue&lt;Cell&gt; minheap = <span class="keyword">new</span> PriorityQueue&lt;Cell&gt;(<span class="number">11</span>, <span class="keyword">new</span> Mycomparator());</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line"><span class="comment">//Anonymous inner class </span></span><br><span class="line"></span><br><span class="line">PriorityQueue&lt;Cell&gt; minheap = <span class="keyword">new</span> PriorityQueue&lt;&gt;(<span class="number">11</span>,<span class="keyword">new</span> 	Comparator&lt;Cell&gt;()&#123;</span><br><span class="line">  	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Cell c1, Cell c2)</span> </span>&#123;</span><br><span class="line">  		<span class="keyword">return</span> c2.compareTo(c1);</span><br><span class="line">  	&#125;</span><br><span class="line">  &#125;</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">//Java 8 </span></span><br><span class="line">PriorityQueue&lt;Cell&gt; minheap = <span class="keyword">new</span> PriorityQueue&lt;&gt;(<span class="number">11</span>, (Cell c1, Cell c2) -&gt; &#123;<span class="keyword">return</span> c2.compareTo(c1);&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure> 
+<p><a href="https://leetcode.com/problems/top-k-frequent-elements/" target="_blank" rel="noopener">Top K Frequent Elements</a></p>
+<figure class="highlight java"><figcaption><span>Top K Frequent Elements</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">topKFrequent</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; res= <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span> (nums== <span class="keyword">null</span> || nums.length == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> res;</span><br><span class="line">        &#125; </span><br><span class="line">        Map&lt;Integer, Integer&gt; counters = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> num : nums) &#123;</span><br><span class="line">            counters.put(num, counters.getOrDefault(num, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        PriorityQueue&lt;Counter&gt; maxHeap = <span class="keyword">new</span> PriorityQueue&lt;&gt;(counters.size());</span><br><span class="line">        <span class="keyword">for</span>(Map.Entry&lt;Integer,Integer&gt; set : counters.entrySet()) &#123;</span><br><span class="line">            maxHeap.offer(<span class="keyword">new</span> Counter(set.getKey(), set.getValue()));</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (maxHeap.size() != <span class="number">0</span>) &#123;</span><br><span class="line">                res.add(maxHeap.poll().val);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">//Time complexity: O(klogn), it could be O(klogk) by using minHeap with k + 1 capacity. </span></span><br><span class="line">	<span class="comment">//Space complexity: O(n)</span></span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">topKFrequent1</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; res = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">if</span> (nums== <span class="keyword">null</span> || nums.length == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> res;</span><br><span class="line">        &#125; </span><br><span class="line">        Map&lt;Integer, Integer&gt; counters = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> num : nums) &#123;</span><br><span class="line">            counters.put(num, counters.getOrDefault(num, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        res = <span class="keyword">new</span> LinkedList&lt;Integer&gt;(counters.keySet());</span><br><span class="line">        Collections.sort(res, (Integer a, Integer b) -&gt; (counters.get(b) - counters.get(a)));</span><br><span class="line">        <span class="keyword">return</span> res.subList(<span class="number">0</span>, k);</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">//Time complexity:O(nlogn)</span></span><br><span class="line">	<span class="comment">//Space complexity:O(n)</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Counter</span> <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">Counter</span>&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> Integer val = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">public</span> Integer count = <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Counter</span><span class="params">(Integer val, Integer count)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.val = val;</span><br><span class="line">        <span class="keyword">this</span>.count = count;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(Counter another)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.count == another.count) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.count &lt; another.count ? <span class="number">1</span> : -<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Priority-Heap-Implementation"><a href="#Priority-Heap-Implementation" class="headerlink" title="Priority Heap Implementation"></a>Priority Heap Implementation</h3><p>Heap is a complete binary tree based structure. The complete binary tree is binary tree in which ever level,except possibly the last level, is completely filled, and all nodes are as far left a<br>possible. <br></p>
+<p>It keeps the relationships like:<br></p>
+<ul>
+<li>Parent Node is always bigger(Max Heap) or smaller(Min Heap) than child nodes.</li>
+<li>The relation between the 2 child nodes are differ</li>
+</ul>
+<p>It can also be presented as an array since it is a complete binary tree.<br>Why? – if it is a complete binary tree, the matching between the nodes and the index of the array is determined, and the relation of parent and child nodes can be well transferred to the relation between two indices. <br></p>
+<p>Index of parent = I, what is the index of the two child nodes?<br></p>
+<ul>
+<li>Left child of index    I = 2 * I + 1</li>
+<li>Right child of index     I = 2 * I + 2</li>
+<li>Parent of index         I = (I - 1) / 2</li>
+</ul>
+<h5 id="Basic-Heap-Internal-Operations"><a href="#Basic-Heap-Internal-Operations" class="headerlink" title="Basic Heap Internal Operations"></a>Basic Heap Internal Operations</h5><p><strong>percolateUp()</strong> <br></p>
+<ul>
+<li>When? The element need to be moved up to maintain the heap`s property</li>
+<li>How? Compare the element with its parent, move it up when necessary. Do this until the element does not need to be moved. </li>
+</ul>
+<p><strong>percalateDown()</strong></p>
+<ul>
+<li>When? The element need to be moved down to maintain the heap`s property. </li>
+<li>How? Compare the element with its two children, if the smallest one of the two children is smaller than the element, swap the element with the child . do this until the element does not need to be moved.</li>
+</ul>
+<p><strong>Heapify()</strong></p>
+<ul>
+<li>Convert an array into a heap in O(n) time.</li>
+<li>For each node that has at least one child, we perform percolateDown() action, in the order of from the node on the deepest level to the root.</li>
+<li>The time complexity of heapify() is <a href="https://www.growingwiththeweb.com/data-structures/binary-heap/build-heap-proof/" target="_blank" rel="noopener">O(n)</a>. (<strong>It require to know all values before heapify.</strong>) </li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+  
+</article>
+
+  
     <article id="post-Java-Queue-Stack-Deque" class="article global-container article-type-post" itemscope itemprop="blogPost">
   
     <header class="article-header">
@@ -111,7 +207,7 @@ ga('send', 'pageview');
 <li>Peek() - look at the top without poping it out</li>
 </ul>
 <figure class="highlight java"><figcaption><span>Legacy Stack</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Stack&lt;T&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;() </span><br></pre></td></tr></table></figure> 
-<p>Stack is defined as legacy class because it has performance problem by extendeing Victor class. It is replaced as Deque Interface which extends Queue Interface. </p>
+<p>Stack is defined as a legacy class because it has performance problem by extendeing Victor class. It is replaced as Deque Interface which extends Queue Interface. </p>
 <figure class="highlight java"><figcaption><span>New Stack</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Deque&lt;T&gt; stack = <span class="keyword">new</span> LinkedList&lt;&gt;()</span><br><span class="line">   <span class="comment">//Do not support null element. The performance is better than LinkedList</span></span><br><span class="line">   Deque&lt;T&gt; stack = <span class="keyword">new</span> ArrayDeque&lt;&gt;()</span><br></pre></td></tr></table></figure> 
 <p><strong>Methods</strong></p>
 <p>Queue and Deque supply 4 pairs of methods to manipulate elements.</p>
@@ -433,7 +529,7 @@ ga('send', 'pageview');
 <tr>
 <td style="text-align:left">Get(int index) in middle</td>
 <td style="text-align:left">O(1)</td>
-<td style="text-align:left">O(n)</td>
+<td style="text-align:left"><span style="color:blue">O(n)</span></td>
 </tr>
 <tr>
 <td style="text-align:left">Set(int index) at head/tail</td>
@@ -443,7 +539,7 @@ ga('send', 'pageview');
 <tr>
 <td style="text-align:left">Set(int index) in middle</td>
 <td style="text-align:left">O(1)</td>
-<td style="text-align:left">O(n)</td>
+<td style="text-align:left"><span style="color:blue">O(n)</span></td>
 </tr>
 <tr>
 <td style="text-align:left">Add(int index, E e) in middle</td>
@@ -452,7 +548,7 @@ ga('send', 'pageview');
 </tr>
 <tr>
 <td style="text-align:left">Add(int index, E e) at head</td>
-<td style="text-align:left">O(n)</td>
+<td style="text-align:left"><span style="color:blue">O(n)</span></td>
 <td style="text-align:left">O(1)</td>
 </tr>
 <tr>
@@ -462,7 +558,7 @@ ga('send', 'pageview');
 </tr>
 <tr>
 <td style="text-align:left">Remove(int index) at head</td>
-<td style="text-align:left">O(n)</td>
+<td style="text-align:left"><span style="color:blue">O(n)</span></td>
 <td style="text-align:left">O(1)</td>
 </tr>
 <tr>
@@ -487,6 +583,7 @@ ga('send', 'pageview');
 </tr>
 </tbody>
 </table>
+<p>LinkedList is good at manipulating data in head or tail. <br><br>ArrayList is good at random search. <br></p>
 <p>However, the ArrayList may be extended if there is no enough space to save new insersted value, the time complexity is still O(1) as amortized time complexity. New extended space will be (1+n) * 2 in Java. </p>
 
       
@@ -1025,61 +1122,6 @@ ga('send', 'pageview');
 </article>
 
   
-    <article id="post-Java-String-Class" class="article global-container article-type-post" itemscope itemprop="blogPost">
-  
-    <header class="article-header">
-      
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/DexWebSite/2019/10/12/Java-String-Class/">Java String Class</a>
-    </h1>
-  
-
-    </header>
-  
-  <div class="article-meta">
-    <a href="/DexWebSite/2019/10/12/Java-String-Class/" class="article-date">
-  <time datetime="2019-10-12T23:49:00.000Z" itemprop="datePublished">2019-10-12</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/DexWebSite/categories/Java-Programming-Language/">Java Programming Language</a>
-  </div>
-
-    
-  </div>
-  
-
-  <div class="article-inner">
-    
-    <div class="article-content article-content-cloud" itemprop="articleBody">
-      
-        <h3 id="JAVA-STRING-CLASS"><a href="#JAVA-STRING-CLASS" class="headerlink" title="JAVA STRING CLASS"></a>JAVA STRING CLASS</h3><p>Sting is a very special class in Java Programming language. String and all the wrapper class objects are immutable class that means if an string is created, it cannot be chagned. </p>
-<p><strong>String</strong> is not Primitive Type. String is extended from Object which has many methods such as “indexOf”</p>
-<figure class="highlight java"><figcaption><span>String Class in JAVA (Assumption)</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">String</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">char</span>[] value;</span><br><span class="line">	<span class="comment">//different String objects can reuse the same char array,</span></span><br><span class="line">	<span class="comment">//but can start with different offset index.</span></span><br><span class="line">	Private <span class="keyword">int</span> offset;</span><br><span class="line">	<span class="comment">//maintains the length of the part in the char array</span></span><br><span class="line">	<span class="comment">// represented by this String object.</span></span><br><span class="line">	Private <span class="keyword">int</span> count;</span><br><span class="line">	<span class="function">Public <span class="title">String</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		Value = <span class="keyword">new</span> <span class="keyword">char</span>[<span class="number">0</span>];</span><br><span class="line">		Offset = <span class="number">0</span>;</span><br><span class="line">		Count = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong> String Creation </strong></p>
-<p>Whenever Java encounters a string literal in your code, the compiler creates a String Object with its value. If there are mutiple string objects with the same value. It means these string objects refer to the same object that Java Created.</p>
-<figure class="highlight java"><figcaption><span>Literal String Creation (Assumption)</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String s1 = “Dex is Nice.”;</span><br><span class="line">String s2 = “Dex is Nice.”;</span><br><span class="line">System.out.println(s1 == s2); <span class="comment">// true, because it just compare whether s1 and s2 point to the same object.</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><figcaption><span>Literal String Creation 2 (Assumption)</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String s1 = “Dex is Nice.”;</span><br><span class="line">String s2 = <span class="keyword">new</span> String (“Dex is Nice.”);</span><br><span class="line">System.out.println(s1 == s2); <span class="comment">// false, because s1 and s2 point to the different object.</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p><em>Conclution:</em> <br><br>There is no need for maintaining several copies of String objects with the same iteral, since String objects are immutable. <br><br>Usually compiler and JVM will optimize for the number of String objects created, it will maintain an intern area in Heap, for the same String literal it will only has one String object associated. <br></p>
-<p><strong> String Concatenation: </strong> <br></p>
-<figure class="highlight java"><figcaption><span>String Concatenation</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">String s1 = “Dex”;</span><br><span class="line">String s2 = <span class="keyword">new</span> String (“ is Nice.”);</span><br><span class="line">S1.concat(s2) <span class="comment">// This will create a new String object rather than change the value of s1 or s2.</span></span><br><span class="line">S3 = “ab” + “cd” <span class="comment">// s3 = “abcd”, compile time concatenation</span></span><br><span class="line">S4 = s3 + <span class="string">"def"</span>; <span class="comment">// s3.concat(“def”);</span></span><br><span class="line">S5 = <span class="number">1</span> + “def” <span class="comment">// String.valueOf(1), (1 -&gt; Integer(1) -&gt; Integer(1).toString()) -&gt; 1</span></span><br><span class="line">S6 = “Test ” + <span class="number">2</span> + “ Cool ” + <span class="keyword">true</span> + ‘y’;</span><br><span class="line"><span class="comment">//Could be further optimized to new StringBuilder().append(“Test”).append(2).append(“ Cool ”)….. .toString() at compiler time.</span></span><br><span class="line"><span class="comment">//Time complexity O(n * m);</span></span><br><span class="line"><span class="comment">//Space complexity O(n * m);   </span></span><br><span class="line"><span class="comment">//Where n is the number of append and m is the maximum length of string in array.</span></span><br></pre></td></tr></table></figure>
-<p><strong> String Comparation </strong> <br><br>Comparing two strings lexicographically. If two strings are different, then either they have different characters at some index that is a valid index for both strings, or their lengths are different, or both.</p>
-<figure class="highlight java"><figcaption><span>String Comparation</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">system.out.println(<span class="string">"abc"</span>.compareTo(<span class="string">"abc"</span>)); <span class="comment">//0</span></span><br><span class="line">system.out.println(<span class="string">"abc"</span>.compareTo(<span class="string">"abd"</span>)); <span class="comment">//-1</span></span><br><span class="line">system.out.println(<span class="string">"abc"</span>.compareTo(<span class="string">"abcd"</span>)); <span class="comment">//-2</span></span><br></pre></td></tr></table></figure>
-<p><strong> String Method </strong> <br><br>Any method provied by String class will always returns a new string without modifiying string objects.</p>
-<figure class="highlight java"><figcaption><span>String Comparation</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String a = <span class="string">"test-1-2"</span>; <span class="comment">//total length </span></span><br><span class="line"><span class="keyword">int</span> b = a.indexOf(<span class="string">"1"</span>); <span class="comment">// 5</span></span><br><span class="line"><span class="keyword">int</span> c = a.length(); <span class="comment">// 8</span></span><br><span class="line">String d = a.substring(b,c); <span class="comment">// 1-2  (start index is included, end index is excluded);</span></span><br></pre></td></tr></table></figure>
-<p><strong> StringBuilder and StringBUffer:</strong></p>
-<p>They are intermediate classes that are modifiable since String is Immutable.<br>Different between StringBuilder and StringBuffer<br>•    They are doing exactly the same thing<br>•    StringBuffer is “thread-safe”, each of the methods are synchronized.<br>•    StringBuilder is not thread-safe, it is intended to be used in single thread environment.</p>
-
-      
-    </div>
-    
-  </div>
-  
-  
-</article>
-
-  
 
 
   <nav id="page-nav">
@@ -1129,6 +1171,10 @@ ga('send', 'pageview');
       <ul>
         
           <li>
+            <a href="/DexWebSite/2020/04/19/Algorithm-PriorityQueue-1/">Algorithm PriorityQueue</a>
+          </li>
+        
+          <li>
             <a href="/DexWebSite/2020/04/18/Java-Queue-Stack-Deque/">Algorithm Queue Stack Deque </a>
           </li>
         
@@ -1142,10 +1188,6 @@ ga('send', 'pageview');
         
           <li>
             <a href="/DexWebSite/2019/10/24/Algorithm-Linked-List/">Algorithm Linked List </a>
-          </li>
-        
-          <li>
-            <a href="/DexWebSite/2019/10/18/Object-Oriented-Design-3/">Object-Oriented Design #3</a>
           </li>
         
       </ul>
