@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-113086304-2', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <title>Algorithm Binary Tree | Dex Personal Website</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <meta name="description" content="Graph Tree and ListNodeThe defination in Wiki is that “A tree structure or tree diagram is a way of representing the hierarchical nature of a structure in a graphical form”. In another wrod, the tree">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Algorithm Binary Tree">
+<meta property="og:url" content="http://dexdexinwang.github.io/DexWebSite/2020/05/13/Algorithm-PriorityQueue/index.html">
+<meta property="og:site_name" content="Dex Personal Website">
+<meta property="og:description" content="Graph Tree and ListNodeThe defination in Wiki is that “A tree structure or tree diagram is a way of representing the hierarchical nature of a structure in a graphical form”. In another wrod, the tree">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-05-16T05:16:54.422Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Algorithm Binary Tree">
+<meta name="twitter:description" content="Graph Tree and ListNodeThe defination in Wiki is that “A tree structure or tree diagram is a way of representing the hierarchical nature of a structure in a graphical form”. In another wrod, the tree">
+  
+    <link rel="alternate" href="/DexWebSite/atom.xml" title="Dex Personal Website" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/DexWebSite/images/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/DexWebSite/css/style.css">
+  <link rel="stylesheet" href="/DexWebSite/css/highlight.css">
+  <script>
+  let antiquityStorage = window.sessionStorage.getItem('antiquitySessionStorage');
+  if (antiquityStorage == '' || antiquityStorage == null) {
+    var antiquityLoader = '<div id="loaderbox"><div class="loader"><div class="load-roll"><div class="load-top"></div><div class="load-right"></div><div class="load-bottom"></div></div></div></div>';
+    document.write(antiquityLoader);
+    document.body.style.overflow = 'hidden'
+  }
+  </script>
+</head>
+</html>
+<body>
+  <div id="fullpage" class="mobile-nav-left">
+    
+      <div id="wrapper" style="background-image: url(/DexWebSite/images/bg.jpg)" title="background">
+    
+    
+      <header id="header">
+  <div id="nav-toggle" class="nav-toggle"></div>
+  <div class="head-box global-width">
+    <nav class="nav-box nav-left">
+      
+        <a class="nav-item" href="/DexWebSite/" title>Home</a>
+      
+        <a class="nav-item" href="/DexWebSite/../PersonalWebSite/" title>Background</a>
+      
+    </nav>
+  </div>
+</header>
+      <div id="middlecontent" title class="global-width sidebar-left">
+        <section id="main"><article id="post-Algorithm-PriorityQueue" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      Algorithm Binary Tree
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/DexWebSite/2020/05/13/Algorithm-PriorityQueue/" class="article-date">
+  <time datetime="2020-05-13T21:46:00.000Z" itemprop="datePublished">2020-05-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/DexWebSite/categories/Algorithm/">Algorithm</a>
+  </div>
+
+    
+  </div>
+  
+    <span id="busuanzi_container_page_pv">
+      Total Read : <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <h3 id="Graph-Tree-and-ListNode"><a href="#Graph-Tree-and-ListNode" class="headerlink" title="Graph Tree and ListNode"></a>Graph Tree and ListNode</h3><p>The defination in <a href="https://en.wikipedia.org/wiki/Tree_structure" target="_blank" rel="noopener">Wiki</a> is that “A tree structure or tree diagram is a way of representing the <strong>hierarchical</strong> nature of a structure in a graphical form”. In another wrod, the tree structure has <strong>no loop</strong> to represents each node in hierarchical level. Also, ListNode structuer is another kind graphical form. <br></p>
+<figure class="highlight java"><figcaption><span>Graph</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GraphNode</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> key;</span><br><span class="line">	List&lt;GraphNode&gt; neighbors;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">GraphNode</span><span class="params">(<span class="keyword">int</span> key)</span> </span>&#123;</span><br><span class="line">  		<span class="keyword">this</span>.key = key;</span><br><span class="line">  		neighbors = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">  	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><figcaption><span>ListNode</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ListNode</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> key;</span><br><span class="line">	ListNode next;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">ListNode</span><span class="params">(<span class="keyword">int</span> key)</span> </span>&#123;</span><br><span class="line">  		<span class="keyword">this</span>.key = key;</span><br><span class="line">  	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><figcaption><span>Tree</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> val;</span><br><span class="line">	List&lt;TreeNode&gt; children;</span><br><span class="line">    <span class="comment">//TreeNode parent;</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">TreeNode</span><span class="params">(<span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">  		<span class="keyword">this</span>.val = val;</span><br><span class="line">  		children = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">  	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://en.wikipedia.org/wiki/Binary_tree" target="_blank" rel="noopener">Binary Tree</a> is kind of tree structure in which node has at most 2 nodes representing left node and right node. In addition, it is the most popular tree structure to be used for answering algorithm problems in interviews. </p>
+<h6 id="Tree-Traverse"><a href="#Tree-Traverse" class="headerlink" title="Tree Traverse"></a>Tree Traverse</h6><p>Normally, there are 3 ways to traverse each node in a tree. <br></p>
+<ul>
+<li>Pre-order: root -&gt; left -&gt; right</li>
+<li>In-order: left -&gt; root -&gt; right</li>
+<li>Post-order: left -&gt; right -&gt; root</li>
+</ul>
+<figure class="highlight java"><figcaption><span>Binary Tree Traverse</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//If the depths is too large, it will post "stack overflow" exception</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">traverseTree</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</span><br><span class="line">    	<span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//Pre-order</span></span><br><span class="line">    System.out.print(root.val);</span><br><span class="line">    traverseTree(root.left);</span><br><span class="line">    traverseTree(root.right);</span><br><span class="line">    <span class="comment">//In-order</span></span><br><span class="line">    traverseTree(root.left);</span><br><span class="line">    System.out.print(root.val);</span><br><span class="line">    traverseTree(root.right);</span><br><span class="line">    <span class="comment">//Post-order</span></span><br><span class="line">    traverseTree(root.left);</span><br><span class="line">    traverseTree(root.right);</span><br><span class="line">    System.out.print(root.val);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>Balanced binary tree</strong>: is commonly defined as a binary tree in which the depth of the left and right subtrees of every node differ by 1 or less.<br>If a tree has n number of nodes, and it is balanced, then the height(level) of the tree = O(log_2(n)).</p>
+<p>Conclusion 1: if a tree has a number of nodes, and it is balanced, then the height(level) of the tree = O(log_2(n)). <br></p>
+<p><strong>Complete binary tree</strong>: is a binary tree is which every level, except possible the last, is completely filled, and all nodes are as far left as possible.</p>
+<p>Conclusion 2: If a tree is a complete tree, then it must be a balanced tree.<br></p>
+<p><strong>Binary Search Tree</strong>: for every single node in the tree, the values in its left subtree are all smaller than its value, and the value in its right subtree are all larger than its value. Cannot have duplicated node. If yes, a key-value pair could be used to replace key.<br>Conclusion 3: If we print the value of the nodes in BST in in-order sequence, then it must from an ascending order.</p>
+<p>Time complexity:</p>
+<ul>
+<li>Search: worst case O(n) ; average case O(logn)</li>
+<li>Insert: worst case O(n) ; average case O(logn)</li>
+<li>Delete: worst case O(n) ; average case O(logn)</li>
+</ul>
+<p>The worst case is casued by un-balance. The advantage of binary search tree is AVL tree or Red-Black tree which will maintain a balance tree. </p>
+<p><strong><a href="https://www.geeksforgeeks.org/red-black-tree-set-1-introduction-2/" target="_blank" rel="noopener">Red-Black Tree</a></strong><br>It maintains 3 points:</p>
+<ul>
+<li>Every node has a color either red or black.</li>
+<li>Root of tree is always black.</li>
+<li>There are no two adjacent red nodes (A red node cannot have a red parent or red child).</li>
+</ul>
+
+      
+    </div>
+    
+      <footer class="article-footer">
+        Done
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  <div class="article-nav-block">
+    
+  </div>
+  <div class="article-nav-block">
+    
+      <a href="/DexWebSite/2020/04/19/Algorithm-PriorityQueue-1/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">Algorithm PriorityQueue</div>
+        <strong class="article-nav-caption"></strong>
+      </a>
+    
+  </div>
+</nav>
+
+    
+<div id="gitmentContainer"></div>
+<link rel="stylesheet" href="https://wzxjayce.github.io/gitment.css">
+<script src="https://wzxjayce.github.io/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  owner: 'dexdexinwang',
+  repo: 'DexWebSite',
+  oauth: {
+    client_id: '7c44fd11f8e0d609f5ba',
+    client_secret: 'ea91b14d1a2f4aa1ff3d610c266ff8280eb5caae',
+  },
+})
+gitment.render('gitmentContainer')
+</script>
+
+  
+  
+</article>
+</section>
+        <aside id="sidebar">
+  
+    <div class="widget-box">
+  <div class="avatar-box">
+    <img class="avatar" src="/DexWebSite/images/dexphoto.jpg" title="personal image">
+    <h3 class="avatar-name">
+      
+        Dexin Wang
+      
+    </h3>
+  </div>
+</div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Algorithm/">Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Basic/">Basic</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/C-Programming-Language/">C# Programming Language</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Interview/">Interview</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Java-Programming-Language/">Java Programming Language</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Kits/">Kits</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Object-Oriented-Design/">Object-Oriented Design</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/React-Development/">React Development</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/03/">March 2019</a></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/DexWebSite/2020/05/13/Algorithm-PriorityQueue/">Algorithm Binary Tree</a>
+          </li>
+        
+          <li>
+            <a href="/DexWebSite/2020/04/19/Algorithm-PriorityQueue-1/">Algorithm PriorityQueue</a>
+          </li>
+        
+          <li>
+            <a href="/DexWebSite/2020/04/18/Java-Queue-Stack-Deque/">Algorithm Queue Stack Deque </a>
+          </li>
+        
+          <li>
+            <a href="/DexWebSite/2020/01/09/Redux-Base-Principle/">Redux Base Principle</a>
+          </li>
+        
+          <li>
+            <a href="/DexWebSite/2020/01/09/React-Base-Principle/">React Base Principle</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      </div>
+      <footer id="footer">
+  <div class="foot-box global-width">
+    &copy; 2020 Dexin Wang &nbsp;&nbsp;
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    &nbsp;|&nbsp;Theme <a href="https://github.com/DexDexinWang/hexo-dex">antiquity</a>
+    <br>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">You are the <span id="busuanzi_value_site_pv"></span> visitor</span>
+  </div>
+</footer>
+      <script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script>
+if (!window.jQuery) {
+var script = document.createElement('script');
+script.src = "/js/jquery-2.0.3.min.js";
+document.body.write(script);
+}
+</script>
+
+  <link rel="stylesheet" href="/DexWebSite/fancybox/jquery.fancybox.css">
+  <script src="/DexWebSite/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/DexWebSite/js/script.js"></script>
+
+
+
+    </div>
+    <nav id="mobile-nav" class="mobile-nav-box">
+  <div class="mobile-nav-img mobile-nav-top"></div>
+  
+    <a href="/DexWebSite/" class="mobile-nav-link">Home</a>
+  
+    <a href="/DexWebSite/../PersonalWebSite/" class="mobile-nav-link">Background</a>
+  
+  <div class="mobile-nav-img  mobile-nav-bottom"></div>
+</nav>    
+  </div>
+</body>
+</html>
