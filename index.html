@@ -75,6 +75,42 @@ ga('send', 'pageview');
       <div id="middlecontent" title class="global-width sidebar-left">
         <section id="main">
   
+    <article id="post-Algorithm-Graph" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/DexWebSite/2020/06/22/Algorithm-Graph/">Algorithm Graph</a>
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/DexWebSite/2020/06/22/Algorithm-Graph/" class="article-date">
+  <time datetime="2020-06-22T20:30:54.000Z" itemprop="datePublished">2020-06-22</time>
+</a>
+    
+    
+  </div>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <h3 id="Graph"><a href="#Graph" class="headerlink" title="Graph"></a>Graph</h3><p><img src="./public/images/AlgorithmGraph.png" alt="alt"><br> </p>
+
+      
+    </div>
+    
+  </div>
+  
+  
+</article>
+
+  
     <article id="post-Algorithm-Binary-Search-Tree" class="article global-container article-type-post" itemscope itemprop="blogPost">
   
     <header class="article-header">
@@ -884,168 +920,6 @@ ga('send', 'pageview');
 </article>
 
   
-    <article id="post-OOD-1" class="article global-container article-type-post" itemscope itemprop="blogPost">
-  
-    <header class="article-header">
-      
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/DexWebSite/2019/10/18/OOD-1/">Object-Oriented Design #1</a>
-    </h1>
-  
-
-    </header>
-  
-  <div class="article-meta">
-    <a href="/DexWebSite/2019/10/18/OOD-1/" class="article-date">
-  <time datetime="2019-10-18T08:31:00.000Z" itemprop="datePublished">2019-10-18</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/DexWebSite/categories/Object-Oriented-Design/">Object-Oriented Design</a>
-  </div>
-
-    
-  </div>
-  
-
-  <div class="article-inner">
-    
-    <div class="article-content article-content-cloud" itemprop="articleBody">
-      
-        <h3 id="Object-Oriented-Design"><a href="#Object-Oriented-Design" class="headerlink" title="Object-Oriented Design"></a>Object-Oriented Design</h3><p>In the real world, we solve the problem unlike solving algortihm problem. It will be an OOD problem. <br></p>
-<p>Practical problems -&gt; Model -&gt; APIs -&gt; Methods -&gt; Algorithms.</p>
-<p><strong> Good Design </strong></p>
-<ol>
-<li>Complete functionality</li>
-<li>Easy to use: <br><br>2.2. Clear, elegant, easy to understand, no ambiguity<br><br>2.3. Prevent users from making mistakes</li>
-<li>Easy to evolve and extendable.</li>
-</ol>
-<p><strong> Basic Concepts </strong></p>
-<ol>
-<li><p>Class and Object <br><br>Class: a blueprint for a data type, scheme <br><br>Object: a specific realization of any class, instance.</p>
-</li>
-<li><p>Encapsulation: public, private, protected</p>
-</li>
-</ol>
-<p><strong> Access Label </strong></p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Access</th>
-<th style="text-align:left">public</th>
-<th style="text-align:left">protected</th>
-<th style="text-align:left">private</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">Same class</td>
-<td style="text-align:left">yes</td>
-<td style="text-align:left">yes</td>
-<td style="text-align:left">yes</td>
-</tr>
-<tr>
-<td style="text-align:left">Derived classes</td>
-<td style="text-align:left">yes</td>
-<td style="text-align:left">yes</td>
-<td style="text-align:left">no</td>
-</tr>
-<tr>
-<td style="text-align:left">outside classes</td>
-<td style="text-align:left">yes</td>
-<td style="text-align:left">no</td>
-<td style="text-align:left">no</td>
-</tr>
-</tbody>
-</table>
-<p><strong> Access Level </strong></p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Modifier</th>
-<th style="text-align:left">Class</th>
-<th style="text-align:left">Package</th>
-<th style="text-align:left">Subclass</th>
-<th style="text-align:left">World</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">public</td>
-<td style="text-align:left">yes</td>
-<td style="text-align:left">yes</td>
-<td style="text-align:left">yes</td>
-<td style="text-align:left">yes</td>
-</tr>
-<tr>
-<td style="text-align:left">protected</td>
-<td style="text-align:left">yes</td>
-<td style="text-align:left">yes</td>
-<td style="text-align:left">yes</td>
-<td style="text-align:left">no</td>
-</tr>
-<tr>
-<td style="text-align:left">no modifier</td>
-<td style="text-align:left">yes</td>
-<td style="text-align:left">yes</td>
-<td style="text-align:left">no</td>
-<td style="text-align:left">no</td>
-</tr>
-<tr>
-<td style="text-align:left">private</td>
-<td style="text-align:left">yes</td>
-<td style="text-align:left">no</td>
-<td style="text-align:left">no</td>
-<td style="text-align:left">no</td>
-</tr>
-</tbody>
-</table>
-<p>Advantages:<br>Class Internals are protected from inadvertent user-level errors, which might corrupt the state of the object. <br><br>The class implementation may <strong><em>evolve</em></strong> over time in response to changing requirements or bug reports without requiring change in user-level code. (easier to maintain the compatibility)</p>
-<p><strong> How to select appropriate labels? </strong> </p>
-<ol>
-<li><p>API: public</p>
-</li>
-<li><p>Internal implementation: private</p>
-</li>
-<li><p>Class inheritance: do we need to use protected for methods/attributes <br><br>3.1. Protected methods: sometimes useful when we want to override an implementation in subclasses <br><br>3.2.Protected attributes: be careful, try to use private first</p>
-</li>
-<li><p>“default” in java (package-private): declare a class as public only when we define public API in it, otherwise package-private is good enough.</p>
-</li>
-</ol>
-<p><strong> Inheritance, Interface, Abstract Class: </strong> <br><br>Inheritance: <br><br>Definitions: A class that is derived from another class is called a subclass (also a derived class, extended class, or child class). The class from which subclass is derived is called a superclass (also a base class or parent class). <br></p>
-<p>Abstract: <br><br>Definitions: A class must be declared abstract when it has one or more abstract methods. A method is declared abstract when it has a method heading, but no body – which means that an abstract method has no implementation code inside like normal methods do.<br></p>
-<p>Interface: <br><br>An interface differs from an abstract class has only abstract methods.<br></p>
-<p><strong>Difference between Abstract and Interface in Java: </strong> <br></p>
-<ol>
-<li><p>Java does not allow multiple inheritance. In Java, a class can only derive from one class, whether its abstract or not. However, a class can implement multiple interfaces. </p>
-</li>
-<li><p>An abstract class may provide some methods with definitions – so an abstract class can have non-abstract methods with actual implementation details. An abstract class can also have constructors and instance variables as well. An interface, however, can not provide any method definitions – it can only provide method headings. Any class that implements the interface is responsible for providing the method definition/ implementation.</p>
-</li>
-<li><p>Abstract: is a something. Interface: has a function.</p>
-</li>
-</ol>
-<p><strong> Inheritance: </strong><br>Base class to Derived class <br><br>Interface and Abstract: Cannot instantiate abstract class and interface. <br></p>
-<p>Q: in Java, for your base class, Interface v.s. Abstract Class v.s. Concrete Class? </p>
-<ol>
-<li>An abstract class provides a common base class implementation to derived classes. Use abstract class( or even concrete class) for base class if the derived classes share common implementation. </li>
-<li>Interface helps you (or enforces you) to focus on the API signature definition.</li>
-<li>Multiple inheritance: implement multiple interfaces.</li>
-<li>The relationship between the interface itself and the class implementing the interface is not necessarily strong (capability)</li>
-</ol>
-<p><strong> Polymorphism and Overriding:</strong> <br><br>Override: a subclass o child class to provide a specific implementation of a method that is already provided by one of its superclasses or parent classes.  <br></p>
-<p>Polymorphism: A call to a member function will cause a different function to be executed depending on the type of object that invokes the function. <br></p>
-<p><strong> Override VS. Overload </strong><br>    Override is used when you redefine a method that has been defined in a parent class (using the same signature). Resolved at running time.<br>    Overload is used when you define two methods with the same name, in the same class, distinguished by their signatures (different), Resolved at compile time.</p>
-
-      
-    </div>
-    
-  </div>
-  
-  
-</article>
-
-  
 
 
   <nav id="page-nav">
@@ -1083,7 +957,7 @@ ga('send', 'pageview');
   <div class="widget-box">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/03/">March 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/03/">March 2019</a></li></ul>
     </div>
   </div>
 
@@ -1093,6 +967,10 @@ ga('send', 'pageview');
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/DexWebSite/2020/06/22/Algorithm-Graph/">Algorithm Graph</a>
+          </li>
         
           <li>
             <a href="/DexWebSite/2020/05/20/Algorithm-Binary-Search-Tree/">Algorithm Binary Search Tree</a>
@@ -1108,10 +986,6 @@ ga('send', 'pageview');
         
           <li>
             <a href="/DexWebSite/2020/04/18/Java-Queue-Stack-Deque/">Algorithm Queue Stack Deque </a>
-          </li>
-        
-          <li>
-            <a href="/DexWebSite/2020/01/09/Redux-Base-Principle/">Redux Base Principle</a>
           </li>
         
       </ul>
