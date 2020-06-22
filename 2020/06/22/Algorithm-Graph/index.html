@@ -30,13 +30,13 @@ ga('send', 'pageview');
 <meta property="og:site_name" content="Dex Personal Website">
 <meta property="og:description" content="GraphEach graph contains 3 elements:  Node/State/Victor  Edge/Action Direction/Undirected  In Java, there are 3 data structures to represent given graphs (The example images belong to Intro to Algorit">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://dexdexinwang.github.io/DexWebSite/2020/06/22/Algorithm-Graph/images/AlgorithmGraph1.png">
-<meta property="og:image" content="http://dexdexinwang.github.io/DexWebSite/2020/06/22/Algorithm-Graph/images/AlgorithmGraph2.png">
-<meta property="og:updated_time" content="2020-06-22T21:15:42.192Z">
+<meta property="og:image" content="http://dexdexinwang.github.io/DexWebSite/2020/06/22/images/AlgorithmGraph1.png">
+<meta property="og:image" content="http://dexdexinwang.github.io/DexWebSite/2020/06/22/images/AlgorithmGraph2.png">
+<meta property="og:updated_time" content="2020-06-22T22:39:34.546Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Algorithm Graph">
 <meta name="twitter:description" content="GraphEach graph contains 3 elements:  Node/State/Victor  Edge/Action Direction/Undirected  In Java, there are 3 data structures to represent given graphs (The example images belong to Intro to Algorit">
-<meta name="twitter:image" content="http://dexdexinwang.github.io/DexWebSite/2020/06/22/Algorithm-Graph/images/AlgorithmGraph1.png">
+<meta name="twitter:image" content="http://dexdexinwang.github.io/DexWebSite/2020/06/22/images/AlgorithmGraph1.png">
   
     <link rel="alternate" href="/DexWebSite/atom.xml" title="Dex Personal Website" type="application/atom+xml">
   
@@ -120,13 +120,13 @@ ga('send', 'pageview');
 <ol>
 <li>Adjacency Matrix</li>
 </ol>
-<p><img src="./images/AlgorithmGraph1.png" alt="alt"><br></p>
+<p><img src="../images/AlgorithmGraph1.png" alt="alt"><br></p>
 <p>Pros: Representation is easy to implement. Edge removal takes O(1) time. Queries like whether there is an edge from vertex ‘u’ to vertex ‘v’ are efficient and can be done O(1). <br><br>Cons: Consumes more O(V^2) Even if the graph is sparse. O(n^2) to do extension. <br></p>
 <figure class="highlight java"><figcaption><span>Adjacency Matrix</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[][] matrix = <span class="keyword">new</span> <span class="keyword">int</span>[n][n];</span><br></pre></td></tr></table></figure>
 <ol start="2">
 <li>Adjacency List</li>
 </ol>
-<p><img src="./images/AlgorithmGraph2.png" alt="alt"><br></p>
+<p><img src="../images/AlgorithmGraph2.png" alt="alt"><br></p>
 <p>Pros: Space complexity = O(|V|+|E|). Adding a vertex/node to the graph is easier<br><br>Cons: Time complexity is O(V) to check whether there is an edge from a node to the other. (Compared to O(1) adjacent matrix).<br></p>
 <figure class="highlight java"><figcaption><span>Adjacency Matrix</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Class GraphNode &#123;</span><br><span class="line">	Int key;</span><br><span class="line">	List&lt;GraphNode&gt; neighbors;</span><br><span class="line">	<span class="function">Public <span class="title">GraphNode</span><span class="params">(<span class="keyword">int</span> key)</span> </span>&#123;</span><br><span class="line">		This.key = key;</span><br><span class="line">		Neighbors = <span class="keyword">new</span> ArrayList&lt;graphNode&gt;();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">List&lt;GraphNode&gt; graph = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br></pre></td></tr></table></figure>
 <ol start="3">
@@ -134,6 +134,27 @@ ga('send', 'pageview');
 </ol>
 <p>Pros: Good for sparse graph for space time complexity. Search time complexity if O(1).<br></p>
 <figure class="highlight java"><figcaption><span>Adjacency Matrix</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Class Node &#123;</span><br><span class="line">	<span class="keyword">int</span> key;</span><br><span class="line">	<span class="function">Public <span class="title">Node</span><span class="params">(<span class="keyword">int</span> key)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.key = key;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">Map&lt;Node, Set&lt;Node&gt;&gt; graph = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br></pre></td></tr></table></figure>
+<h5 id="Algorithm-Solutions"><a href="#Algorithm-Solutions" class="headerlink" title="Algorithm Solutions"></a>Algorithm Solutions</h5><ol>
+<li>BFS1 (Breadth First Serach, is only applicable that edge weight is 1).</li>
+</ol>
+<p>Expend: Choose a node X to be expended. <br><br>Generate: Generate X neighbor node Ys; Reach out to its X all neighboring nodes.<br><br>Termination condition: do a loop until the queue is empty. <br></p>
+<p>Data Stricture: Maintain a FIFO queue, put all generated nodes in the queue.<br></p>
+<ol start="2">
+<li>BFS2 (Best First Search, speicific exmaple <a href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm" target="_blank" rel="noopener">Dijkstra Algorithm</a>, it requires non-negative eage weight.)</li>
+</ol>
+<p>Usage: Find a shortest path cost from a single node to any other nodes in a graph.<br>Expend: Choose a start node to be expend. <br><br>Generate: Expend node by following a certain gereration rule. <br><br>Termination condition: find a satisfied result or traverse all graph. <br></p>
+<p>Data Structure: Priorirty Queue</p>
+<ol start="3">
+<li>DFS (Depth First Search, back-tracking is a behavior of bfs) </li>
+</ol>
+<p>Normally, the problem will be solved in a recursion(Iteration will be also work).<br>Definiation 1: What does it stored on each level.<br><br>Definiation 2: How Many different states should be put on this level. <br><br>Termination condition: find a satisfied result or traverse all graph. <br> </p>
+<p>Data Structure: Stack, Deque.<br></p>
+<p>Typical Algorithm Questions: Permutation and Combination.<br><br>For example: </p>
+<ul>
+<li>print all subsets of a set.</li>
+<li>print all valid permutation of ‘()’</li>
+<li>print all conbination of coins which total number is 99 cents.</li>
+</ul>
 
       
     </div>
