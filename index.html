@@ -89,9 +89,13 @@ ga('send', 'pageview');
   
   <div class="article-meta">
     <a href="/DexWebSite/2020/06/22/Algorithm-Graph/" class="article-date">
-  <time datetime="2020-06-22T20:30:54.000Z" itemprop="datePublished">2020-06-22</time>
+  <time datetime="2020-06-22T20:30:00.000Z" itemprop="datePublished">2020-06-22</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/DexWebSite/categories/Algorithm/">Algorithm</a>
+  </div>
+
     
   </div>
   
@@ -100,7 +104,30 @@ ga('send', 'pageview');
     
     <div class="article-content article-content-cloud" itemprop="articleBody">
       
-        <h3 id="Graph"><a href="#Graph" class="headerlink" title="Graph"></a>Graph</h3><p><img src="./public/images/AlgorithmGraph.png" alt="alt"><br> </p>
+        <h3 id="Graph"><a href="#Graph" class="headerlink" title="Graph"></a>Graph</h3><p>Each graph contains 3 elements:</p>
+<ul>
+<li>Node/State/Victor </li>
+<li>Edge/Action</li>
+<li>Direction/Undirected</li>
+</ul>
+<p>In Java, there are 3 data structures to represent given graphs (The example images belong to Intro to <a href="http://darknessneo20000.tripod.com/chapter23.pdf" target="_blank" rel="noopener">Algorithm:Chapter 23</a>)</p>
+<ol>
+<li>Adjacency Matrix</li>
+</ol>
+<p><img src="./images/AlgorithmGraph1.png" alt="alt"><br></p>
+<p>Pros: Representation is easy to implement. Edge removal takes O(1) time. Queries like whether there is an edge from vertex ‘u’ to vertex ‘v’ are efficient and can be done O(1). <br><br>Cons: Consumes more O(V^2) Even if the graph is sparse. O(n^2) to do extension. <br></p>
+<figure class="highlight java"><figcaption><span>Adjacency Matrix</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[][] matrix = <span class="keyword">new</span> <span class="keyword">int</span>[n][n];</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>Adjacency List</li>
+</ol>
+<p><img src="./images/AlgorithmGraph2.png" alt="alt"><br></p>
+<p>Pros: Space complexity = O(|V|+|E|). Adding a vertex/node to the graph is easier<br><br>Cons: Time complexity is O(V) to check whether there is an edge from a node to the other. (Compared to O(1) adjacent matrix).<br></p>
+<figure class="highlight java"><figcaption><span>Adjacency Matrix</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Class GraphNode &#123;</span><br><span class="line">	Int key;</span><br><span class="line">	List&lt;GraphNode&gt; neighbors;</span><br><span class="line">	<span class="function">Public <span class="title">GraphNode</span><span class="params">(<span class="keyword">int</span> key)</span> </span>&#123;</span><br><span class="line">		This.key = key;</span><br><span class="line">		Neighbors = <span class="keyword">new</span> ArrayList&lt;graphNode&gt;();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">List&lt;GraphNode&gt; graph = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>HashMap</li>
+</ol>
+<p>Pros: Good for sparse graph for space time complexity. Search time complexity if O(1).<br></p>
+<figure class="highlight java"><figcaption><span>Adjacency Matrix</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Class Node &#123;</span><br><span class="line">	<span class="keyword">int</span> key;</span><br><span class="line">	<span class="function">Public <span class="title">Node</span><span class="params">(<span class="keyword">int</span> key)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.key = key;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">Map&lt;Node, Set&lt;Node&gt;&gt; graph = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br></pre></td></tr></table></figure>
 
       
     </div>
