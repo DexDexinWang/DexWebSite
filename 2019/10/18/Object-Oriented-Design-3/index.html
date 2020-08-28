@@ -23,17 +23,17 @@ ga('send', 'pageview');
   
   
   
-  <meta name="description" content="Object-Oriented Design BlackJack   Step 1  Understand/Analyze the USE CASE.  Use case: Describe the parking lot building? Vehicle monitoring? What kind of parking lot?Some other questions that may aff">
+  <meta name="description" content="Object-Oriented Design BlackJack   Step 1  Understand/Analyze the USE CASE.  Use Case : BlackJack has already define the rules as Use Case.  Stage description and Game Situation description Rules desc">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Object-Oriented Design #3">
 <meta property="og:url" content="http://dexdexinwang.github.io/DexWebSite/2019/10/18/Object-Oriented-Design-3/index.html">
 <meta property="og:site_name" content="Dex Personal Website">
-<meta property="og:description" content="Object-Oriented Design BlackJack   Step 1  Understand/Analyze the USE CASE.  Use case: Describe the parking lot building? Vehicle monitoring? What kind of parking lot?Some other questions that may aff">
+<meta property="og:description" content="Object-Oriented Design BlackJack   Step 1  Understand/Analyze the USE CASE.  Use Case : BlackJack has already define the rules as Use Case.  Stage description and Game Situation description Rules desc">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-01-09T19:15:52.190Z">
+<meta property="og:updated_time" content="2020-08-28T17:56:43.300Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Object-Oriented Design #3">
-<meta name="twitter:description" content="Object-Oriented Design BlackJack   Step 1  Understand/Analyze the USE CASE.  Use case: Describe the parking lot building? Vehicle monitoring? What kind of parking lot?Some other questions that may aff">
+<meta name="twitter:description" content="Object-Oriented Design BlackJack   Step 1  Understand/Analyze the USE CASE.  Use Case : BlackJack has already define the rules as Use Case.  Stage description and Game Situation description Rules desc">
   
     <link rel="alternate" href="/DexWebSite/atom.xml" title="Dex Personal Website" type="application/atom+xml">
   
@@ -109,37 +109,24 @@ ga('send', 'pageview');
       
         <h3 id="Object-Oriented-Design"><a href="#Object-Oriented-Design" class="headerlink" title="Object-Oriented Design"></a>Object-Oriented Design</h3><p><strong> BlackJack </strong></p>
 <p><strong> Step 1 </strong> <br><br>Understand/Analyze the USE CASE. </p>
-<p>Use case: Describe the parking lot building? Vehicle monitoring? What kind of parking lot?<br>Some other questions that may affect your design:</p>
+<p>Use Case : BlackJack has already define the rules as Use Case.</p>
 <ul>
-<li>One level or multiple levels?</li>
-<li>Parking – Spot / Vehicle sizes? </li>
-<li>Track the location of each vehicle?</li>
+<li><strong>Stage</strong> description and <strong>Game Situation</strong> description</li>
+<li><strong>Rules</strong> description and <strong>Process</strong> description</li>
 </ul>
 <p><strong> Step 2 </strong> <br><br>Design Models (class) and relationships between Models or class <br><br>Single responsibility Principle: each class should have only one job but (mutiple APIs) <br></p>
 <ul>
-<li>Vehicle</li>
-<li>Parking Spot</li>
-<li>Level</li>
-<li>ParkingLot - Time, Price attribute. </li>
+<li>Card</li>
+<li>Deck</li>
+<li>Player or Hand</li>
 </ul>
 <p>Class relationships: <br><br>Association: a general binary relationship that describes an activity between two classes. 1-1 <br></p>
 <p>Aggregation/Composition: a special form of association, which represents an ownership relationship between two classes. (has-a). <br></p>
-<p>Inheritance: <br><br>Vehicle – Parking spot, Association <br><br>Level – Parking Spot, Composition <br><br>Vehicle – Car, Truck <br></p>
-<p><strong> Step 3 </strong> <br><br>For complicated designs, first focus on public methods (APIs): how to revoke your APIs?<br>Functionality: </p>
-<ul>
-<li>Base functionality: for a given vehicle, tell whether there is available spot in the parking lot.</li>
-<li>Possible extensions: provide available spot locations, assign spot to the vehicle.<br>……  Generate Classes and APIs with comments ……</li>
-</ul>
-<figure class="highlight java"><figcaption><span>Init Classes in JAVA (Assumption)</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PrkingLots</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> List&lt;ParktingLevel&gt; levels;</span><br><span class="line">  	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasSpot</span><span class="params">(Vehicle vehicle)</span></span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ParkingLevel</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> List&lt;ParkingSpot&gt; spots;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasSpot</span><span class="params">(Vehicle vehicle)</span></span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ParkingSpot</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> Vehicle vehicle;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">fit</span><span class="params">(Vechicle vehicle)</span> </span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Vehicle</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> String plateNumber;</span><br><span class="line">    <span class="keyword">private</span> size;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>Step 4</strong> <br><br>Complete all implementation.<br></p>
-<p>Assumption: multiple levels and check vehicle size. <br></p>
-<ol>
-<li><p>APIs:<br><br>Boolean hasSpot (Vehicle v); <br><br>Boolean park (Vehicle v); <br><br>Boolean leave (Vehicle v); <br></p>
-</li>
-<li><p>Classes:<br>ParkingLog, Level, Vehicle, ParkingSpot, Car, Truck</p>
-</li>
-</ol>
-<p>OOD: Performance/Efficiency is still important! This is where you use data structures and algorithms!</p>
+<p>Deck is aggreation of Card.<br><br>Player is aggreation of Card.</p>
+<p><strong> Step 3 </strong> <br><br>For complicated designs, first focus on public methods (APIs): <br></p>
+<p>Functionality: </p>
+<figure class="highlight java"><figcaption><span>Init Classes in JAVA (Assumption)</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Card</span> </span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">char</span> value;</span><br><span class="line">  	<span class="keyword">public</span> Suit suit; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Deck</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> List&lt;Card&gt; cards;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> dealIndex;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">shuffle</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dealHead</span><span class="params">()</span></span></span><br><span class="line"><span class="function">&#125;</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">class Hand </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> List&lt;Card&gt; card;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">score</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getCard</span><span class="params">()</span></span></span><br><span class="line"><span class="function">&#125;</span></span><br></pre></td></tr></table></figure>
+<p><strong>Step 4</strong> <br><br>Complete all implementation.<br><br>Create Run Method to simulate players.<br></p>
 
       
     </div>
