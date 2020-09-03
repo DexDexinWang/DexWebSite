@@ -75,6 +75,77 @@ ga('send', 'pageview');
       <div id="middlecontent" title class="global-width sidebar-left">
         <section id="main">
   
+    <article id="post-Algorithm-Bit-Operation" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/DexWebSite/2020/09/02/Algorithm-Bit-Operation/">Algorithm Bit Operation</a>
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/DexWebSite/2020/09/02/Algorithm-Bit-Operation/" class="article-date">
+  <time datetime="2020-09-02T19:02:50.000Z" itemprop="datePublished">2020-09-02</time>
+</a>
+    
+    
+  </div>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <h3 id="Bit-Operation"><a href="#Bit-Operation" class="headerlink" title="Bit Operation"></a>Bit Operation</h3><p>The least significant bit is most right bit because number comparation is based on bits from left to right. <br></p>
+<p>The most significant bit (most left bit) is signature: <br></p>
+<ul>
+<li>0 is positive number <br></li>
+<li>1 is negative number <br></li>
+</ul>
+<p>Two`s complement is used to make calculation for negative:<br>Use two`s complement to convert positive number as negative number. <br></p>
+<p>e.g. change 1 to -1</p>
+<ul>
+<li>Get two`s complement of 1 <br></li>
+<li>Add number 1 <br><br>e.g.<br>1       ==     0000 0000 0000 0000 0000 0000 0000 0001<br>-2       == 1111 1111 1111 1111 1111 1111 1111 1110<br>-1        == 1111 1111 1111 1111 1111 1111 1111 1111</li>
+</ul>
+<p><strong>Bit Operation:</strong> <br></p>
+<ul>
+<li>&amp;, AND                 if (true1 &amp;&amp; True2)</li>
+<li>|, OR                 if (True || True2)</li>
+<li>~, Two`s complement         (1-&gt;0 and 0-&gt; for each bit)</li>
+<li>^, XOR                00-&gt;0; 11-&gt;0; 01 or 10-&gt; 1;</li>
+<li>&lt;&lt; left shift            e.g. byte a = 0b 01000001    0b means bites    </li>
+<li>>&gt; right shift    e.g. byte a = 0b 10000000    &gt;&gt;1   -&gt; 1100000  add 1 if the number is negative</li>
+<li>>&gt;&gt; right shift     e.g. byte a = 0b 10000000    &gt;&gt;&gt;1  -&gt; 0100000 and 0 .</li>
+</ul>
+<p>Note: there is no “unsigned int” in JAVA before JAVA 8, but there is unsigned right shift.</p>
+<p>Practical Use Cases:</p>
+<ul>
+<li><p>Bit Getter in kth: <br><br>  int bit = 1; <br><br>  bit = bit &lt;&lt; k ;  <br><br>  return x &amp;= bit <br></p>
+</li>
+<li><p>Big Setter int k: <br><br>  int bit = 1; <br><br>  bit = bit &lt;&lt; k; <br><br>  return x |= bit_setter; <br></p>
+</li>
+<li><p>Bit Divide by 2 <br><br>  int bit = 2; <br><br>  return bit &gt;&gt; 1; <br></p>
+</li>
+<li><p>Bit Count 1s <br><br>  int sum = 0 <br><br>  while(sum!=0) {sum++; n &amp;=(n-1);} <br> </p>
+</li>
+<li><p>Check only one 1 <br><br>  return (n&amp;(n-1)) == 0; <br></p>
+</li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+  
+</article>
+
+  
     <article id="post-Algorithm-Graph" class="article global-container article-type-post" itemscope itemprop="blogPost">
   
     <header class="article-header">
@@ -904,94 +975,6 @@ ga('send', 'pageview');
 </article>
 
   
-    <article id="post-Object-Oriented-Design-2-4" class="article global-container article-type-post" itemscope itemprop="blogPost">
-  
-    <header class="article-header">
-      
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/DexWebSite/2019/10/18/Object-Oriented-Design-2-4/">Object-Oriented Design #2</a>
-    </h1>
-  
-
-    </header>
-  
-  <div class="article-meta">
-    <a href="/DexWebSite/2019/10/18/Object-Oriented-Design-2-4/" class="article-date">
-  <time datetime="2019-10-18T09:24:00.000Z" itemprop="datePublished">2019-10-18</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/DexWebSite/categories/Object-Oriented-Design/">Object-Oriented Design</a>
-  </div>
-
-    
-  </div>
-  
-
-  <div class="article-inner">
-    
-    <div class="article-content article-content-cloud" itemprop="articleBody">
-      
-        <h3 id="Object-Oriented-Design"><a href="#Object-Oriented-Design" class="headerlink" title="Object-Oriented Design"></a>Object-Oriented Design</h3><p><strong> Paking System Design Steps: </strong></p>
-<p><strong> Step 1 </strong> <br><br>Understand/Analyze the USE CASE. </p>
-<p>Use case: Describe the parking lot building? Vehicle monitoring? What kind of parking lot?<br>Some other questions that may affect your design:</p>
-<ul>
-<li>One level or multiple levels?</li>
-<li>Parking – Spot / Vehicle sizes? </li>
-<li>Track the location of each vehicle?</li>
-</ul>
-<p><strong> Step 2 </strong> <br><br>Design Models (class) and relationships between Models or class <br><br>Single responsibility Principle: each class should have only one job but (mutiple APIs) <br></p>
-<ul>
-<li>Vehicle</li>
-<li>Parking Spot</li>
-<li>Level</li>
-<li>ParkingLot - Time, Price attribute. </li>
-</ul>
-<p>Class relationships: <br><br>Association: a general binary relationship that describes an activity between two classes. 1-1 <br></p>
-<p>Aggregation/Composition: a special form of association, which represents an ownership relationship between two classes. (has-a). <br></p>
-<p>Inheritance: <br><br>Vehicle – Parking spot, Association <br><br>Level – Parking Spot, Composition <br><br>Vehicle – Car, Truck <br></p>
-<p><strong> Step 3 </strong> <br><br>For complicated designs, first focus on public methods (APIs): how to revoke your APIs?<br>Functionality: </p>
-<ul>
-<li>Base functionality: for a given vehicle, tell whether there is available spot in the parking lot.</li>
-<li>Possible extensions: provide available spot locations, assign spot to the vehicle.<br>……  Generate Classes and APIs with comments ……</li>
-</ul>
-<figure class="highlight java"><figcaption><span>Init Classes in JAVA (Assumption)</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PrkingLots</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> List&lt;ParktingLevel&gt; levels;</span><br><span class="line">  	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasSpot</span><span class="params">(Vehicle vehicle)</span></span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ParkingLevel</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> List&lt;ParkingSpot&gt; spots;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasSpot</span><span class="params">(Vehicle vehicle)</span></span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ParkingSpot</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> Vehicle vehicle;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">fit</span><span class="params">(Vechicle vehicle)</span> </span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Vehicle</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> String plateNumber;</span><br><span class="line">    <span class="keyword">private</span> size;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>Step 4</strong> <br><br>Complete all implementation.<br></p>
-<p>Assumption: multiple levels and check vehicle size. <br></p>
-<ol>
-<li><p>APIs:<br><br>Boolean hasSpot (Vehicle v); <br><br>Boolean park (Vehicle v); <br><br>Boolean leave (Vehicle v); <br></p>
-</li>
-<li><p>Classes:<br>ParkingLog, Level, Vehicle, ParkingSpot, Car, Truck</p>
-</li>
-</ol>
-<p>OOD: Performance/Efficiency is still important! This is where you use data structures and algorithms!</p>
-<h5 id="ENUM"><a href="#ENUM" class="headerlink" title="ENUM"></a>ENUM</h5><p><strong>It is a special data type that enables for a variable to be a set of predefined constants.</strong></p>
-<ol>
-<li>The enum declaration defines a class. The enum class body can include methods and other fields. </li>
-<li>The compiler automatically adds some special methods when it creates an enum. Such as values() method.  ( for(Day day : Day.values()) {} );</li>
-<li>The constructor for an enum type must be package-private or private access. It automatically creates the constants that are defined at the beginning of the enum body. You cannot invoke an enum constructor yourself.</li>
-</ol>
-<h5 id="Design-Pattern"><a href="#Design-Pattern" class="headerlink" title="Design Pattern"></a>Design Pattern</h5><ol>
-<li><p>Builder</p>
-<figure class="highlight java"><figcaption><span>Builder</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span></span>&#123;</span><br><span class="line">		<span class="keyword">private</span> <span class="keyword">final</span> String firstName;<span class="comment">// required;</span></span><br><span class="line">		<span class="keyword">private</span> <span class="keyword">final</span> String lastName; <span class="comment">// required</span></span><br><span class="line">		<span class="keyword">private</span> <span class="keyword">int</span> age; <span class="comment">// optimal</span></span><br><span class="line">		<span class="keyword">private</span> String phone;</span><br><span class="line">		<span class="keyword">private</span> String address;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//Problem: so many constructions.</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="title">User</span><span class="params">(String firstName, String lastName)</span> </span>&#123;</span><br><span class="line">			<span class="keyword">this</span>.firstName = firstName;</span><br><span class="line">			<span class="keyword">this</span>.lastName = lastName;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="title">User</span><span class="params">(String firstName, String lastName, <span class="keyword">int</span> age, String phone, String address)</span> </span>&#123;</span><br><span class="line">			<span class="keyword">this</span>.firstName = firstName;</span><br><span class="line">			<span class="keyword">this</span>.lastName = lastName;</span><br><span class="line">			<span class="keyword">this</span>.age = age;</span><br><span class="line">			<span class="keyword">this</span>.phone = phone;</span><br><span class="line">			<span class="keyword">this</span>.address = address;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="title">User</span><span class="params">(String firstName, String lastName, <span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">			<span class="keyword">this</span>( firstName,  lastName,  age,  <span class="string">""</span>, <span class="string">""</span>);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">//Solution I, Get() Set() </span></span><br><span class="line">		<span class="comment">//However the solution could work as below steps</span></span><br><span class="line">		<span class="comment">//   User user = new Users(firstName, lastName);   --&gt; create an object that could be accessed with 0 age and empty address. </span></span><br><span class="line">		<span class="comment">//   user.setAge(99);</span></span><br><span class="line">		<span class="comment">//   user.setAddress("111111");</span></span><br><span class="line">		<span class="comment">//   ....</span></span><br><span class="line">		<span class="comment">//   </span></span><br><span class="line">		<span class="comment">//Limitation Solution I</span></span><br><span class="line">		<span class="comment">//1. It requires multiple function calls to create an object. but first init step has already created an accessible object </span></span><br><span class="line">		<span class="comment">//2. Do not want to expose setters for some data.</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			<span class="keyword">return</span> age;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(<span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">			<span class="keyword">this</span>.age = age;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">public</span> String <span class="title">getPhone</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			<span class="keyword">return</span> phone;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPhone</span><span class="params">(String phone)</span> </span>&#123;</span><br><span class="line">			<span class="keyword">this</span>.phone = phone;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">public</span> String <span class="title">getAddress</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			<span class="keyword">return</span> address;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAddress</span><span class="params">(String address)</span> </span>&#123;</span><br><span class="line">			<span class="keyword">this</span>.address = address;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">public</span> String <span class="title">getFirstName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			<span class="keyword">return</span> firstName;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">public</span> String <span class="title">getLastName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			<span class="keyword">return</span> lastName;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//Solution 2 Create a Builder</span></span><br><span class="line">		</span><br><span class="line">		<span class="function"><span class="keyword">private</span> <span class="title">User</span><span class="params">(UserBuilder builder)</span> </span>&#123;</span><br><span class="line">			<span class="keyword">this</span>.firstName = builder.firstName;</span><br><span class="line">			<span class="keyword">this</span>.lastName = builder.lastName;</span><br><span class="line">			<span class="keyword">this</span>.age = builder.age;</span><br><span class="line">			<span class="keyword">this</span>.address = builder.address;</span><br><span class="line">			<span class="keyword">this</span>.phone = builder.phone;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">UserBuilder</span> </span>&#123;</span><br><span class="line">			<span class="keyword">private</span> <span class="keyword">final</span> String firstName;<span class="comment">// required;</span></span><br><span class="line">			<span class="keyword">private</span> <span class="keyword">final</span> String lastName; <span class="comment">// required</span></span><br><span class="line">			<span class="keyword">private</span> <span class="keyword">int</span> age; <span class="comment">// optimal</span></span><br><span class="line">			<span class="keyword">private</span> String phone;</span><br><span class="line">			<span class="keyword">private</span> String address;</span><br><span class="line">			</span><br><span class="line">			<span class="function"><span class="keyword">public</span> <span class="title">UserBuilder</span><span class="params">(String firstName, String lastName)</span> </span>&#123;</span><br><span class="line">				<span class="keyword">this</span>.firstName = firstName;</span><br><span class="line">				<span class="keyword">this</span>.lastName = lastName;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			<span class="function"><span class="keyword">public</span> UserBuilder <span class="title">age</span><span class="params">(<span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">				<span class="keyword">this</span>.age = age;</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			<span class="function"><span class="keyword">public</span> UserBuilder <span class="title">address</span><span class="params">(String address)</span> </span>&#123;</span><br><span class="line">				<span class="keyword">this</span>.address = address;</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			<span class="function"><span class="keyword">public</span> UserBuilder <span class="title">phone</span><span class="params">(String phone)</span> </span>&#123;</span><br><span class="line">				<span class="keyword">this</span>.phone = phone;</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			<span class="function"><span class="keyword">public</span> User <span class="title">build</span><span class="params">()</span> </span>&#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">new</span> User(<span class="keyword">this</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">        </span><br><span class="line">	&#125;</span><br><span class="line">    <span class="comment">//Final usage</span></span><br><span class="line"> 	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		User user = <span class="keyword">new</span> User.UserBuilder(<span class="string">"Test"</span>,<span class="string">"Test"</span>).age(<span class="number">7</span>).address(<span class="string">"Test"</span>).phone(<span class="string">"Test"</span>).build();</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Factory</p>
-<figure class="highlight java"><figcaption><span>Facotry</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Shape</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Rectangle</span> <span class="keyword">implements</span> <span class="title">Shape</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Rectangle</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"Inside Ractangle::draw() method"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Square</span> <span class="keyword">implements</span> <span class="title">Shape</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Square</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"Inside Square::draw() method"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Cycle</span> <span class="keyword">implements</span> <span class="title">Shape</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Cycle</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"Inside Cycle::draw() method"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ShapeFactory</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> Shape <span class="title">getShape</span><span class="params">(String shapeType)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(shapeType == <span class="keyword">null</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span> (shapeType.equals(<span class="string">"SQUARE"</span>)) &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">new</span> Square();</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span> (shapeType.equals(<span class="string">"RECTANGLE"</span>)) &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">new</span> Rectangle();</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span> (shapeType.equals(<span class="string">"CYCLE"</span>)) &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">new</span> Cycle();</span><br><span class="line">		&#125; </span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FactoryPatternDemo</span></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> ShapeFactory shapeFactory = <span class="keyword">new</span> ShapeFactory();</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">demo</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Shape shape1 = shapeFactory.getShape(<span class="string">"CYCLE"</span>);</span><br><span class="line">		shape1.draw();</span><br><span class="line">		Shape shape2 = shapeFactory.getShape(<span class="string">"RECTANGLE"</span>);</span><br><span class="line">		shape2.draw();</span><br><span class="line">		Shape shape3 = shapeFactory.getShape(<span class="string">"SQUARE"</span>);</span><br><span class="line">		shape3.draw();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Singleton</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public static final Singleton INSTANCE = new Singleton();</span><br><span class="line">private Singleton() &#123;&#125;</span><br><span class="line">public static Singleton getInstance() &#123;</span><br><span class="line">	return INSTANCE;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ol>
-
-      
-    </div>
-    
-  </div>
-  
-  
-</article>
-
-  
 
 
   <nav id="page-nav">
@@ -1029,7 +1012,7 @@ ga('send', 'pageview');
   <div class="widget-box">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/03/">March 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/03/">March 2019</a></li></ul>
     </div>
   </div>
 
@@ -1039,6 +1022,10 @@ ga('send', 'pageview');
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/DexWebSite/2020/09/02/Algorithm-Bit-Operation/">Algorithm Bit Operation</a>
+          </li>
         
           <li>
             <a href="/DexWebSite/2020/06/22/Algorithm-Graph/">Algorithm Graph</a>
@@ -1054,10 +1041,6 @@ ga('send', 'pageview');
         
           <li>
             <a href="/DexWebSite/2020/04/19/Algorithm-PriorityQueue-1/">Algorithm PriorityQueue</a>
-          </li>
-        
-          <li>
-            <a href="/DexWebSite/2020/04/18/Java-Queue-Stack-Deque/">Algorithm Queue Stack Deque </a>
           </li>
         
       </ul>

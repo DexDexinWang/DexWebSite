@@ -75,6 +75,94 @@ ga('send', 'pageview');
       <div id="middlecontent" title class="global-width sidebar-left">
         <section id="main">
   
+    <article id="post-Object-Oriented-Design-2-4" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/DexWebSite/2019/10/18/Object-Oriented-Design-2-4/">Object-Oriented Design #2</a>
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/DexWebSite/2019/10/18/Object-Oriented-Design-2-4/" class="article-date">
+  <time datetime="2019-10-18T09:24:00.000Z" itemprop="datePublished">2019-10-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/DexWebSite/categories/Object-Oriented-Design/">Object-Oriented Design</a>
+  </div>
+
+    
+  </div>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <h3 id="Object-Oriented-Design"><a href="#Object-Oriented-Design" class="headerlink" title="Object-Oriented Design"></a>Object-Oriented Design</h3><p><strong> Paking System Design Steps: </strong></p>
+<p><strong> Step 1 </strong> <br><br>Understand/Analyze the USE CASE. </p>
+<p>Use case: Describe the parking lot building? Vehicle monitoring? What kind of parking lot?<br>Some other questions that may affect your design:</p>
+<ul>
+<li>One level or multiple levels?</li>
+<li>Parking – Spot / Vehicle sizes? </li>
+<li>Track the location of each vehicle?</li>
+</ul>
+<p><strong> Step 2 </strong> <br><br>Design Models (class) and relationships between Models or class <br><br>Single responsibility Principle: each class should have only one job but (mutiple APIs) <br></p>
+<ul>
+<li>Vehicle</li>
+<li>Parking Spot</li>
+<li>Level</li>
+<li>ParkingLot - Time, Price attribute. </li>
+</ul>
+<p>Class relationships: <br><br>Association: a general binary relationship that describes an activity between two classes. 1-1 <br></p>
+<p>Aggregation/Composition: a special form of association, which represents an ownership relationship between two classes. (has-a). <br></p>
+<p>Inheritance: <br><br>Vehicle – Parking spot, Association <br><br>Level – Parking Spot, Composition <br><br>Vehicle – Car, Truck <br></p>
+<p><strong> Step 3 </strong> <br><br>For complicated designs, first focus on public methods (APIs): how to revoke your APIs?<br>Functionality: </p>
+<ul>
+<li>Base functionality: for a given vehicle, tell whether there is available spot in the parking lot.</li>
+<li>Possible extensions: provide available spot locations, assign spot to the vehicle.<br>……  Generate Classes and APIs with comments ……</li>
+</ul>
+<figure class="highlight java"><figcaption><span>Init Classes in JAVA (Assumption)</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PrkingLots</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> List&lt;ParktingLevel&gt; levels;</span><br><span class="line">  	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasSpot</span><span class="params">(Vehicle vehicle)</span></span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ParkingLevel</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> List&lt;ParkingSpot&gt; spots;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasSpot</span><span class="params">(Vehicle vehicle)</span></span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ParkingSpot</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> Vehicle vehicle;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">fit</span><span class="params">(Vechicle vehicle)</span> </span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Vehicle</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> String plateNumber;</span><br><span class="line">    <span class="keyword">private</span> size;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>Step 4</strong> <br><br>Complete all implementation.<br></p>
+<p>Assumption: multiple levels and check vehicle size. <br></p>
+<ol>
+<li><p>APIs:<br><br>Boolean hasSpot (Vehicle v); <br><br>Boolean park (Vehicle v); <br><br>Boolean leave (Vehicle v); <br></p>
+</li>
+<li><p>Classes:<br>ParkingLog, Level, Vehicle, ParkingSpot, Car, Truck</p>
+</li>
+</ol>
+<p>OOD: Performance/Efficiency is still important! This is where you use data structures and algorithms!</p>
+<h5 id="ENUM"><a href="#ENUM" class="headerlink" title="ENUM"></a>ENUM</h5><p><strong>It is a special data type that enables for a variable to be a set of predefined constants.</strong></p>
+<ol>
+<li>The enum declaration defines a class. The enum class body can include methods and other fields. </li>
+<li>The compiler automatically adds some special methods when it creates an enum. Such as values() method.  ( for(Day day : Day.values()) {} );</li>
+<li>The constructor for an enum type must be package-private or private access. It automatically creates the constants that are defined at the beginning of the enum body. You cannot invoke an enum constructor yourself.</li>
+</ol>
+<h5 id="Design-Pattern"><a href="#Design-Pattern" class="headerlink" title="Design Pattern"></a>Design Pattern</h5><ol>
+<li><p>Builder</p>
+<figure class="highlight java"><figcaption><span>Builder</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span></span>&#123;</span><br><span class="line">		<span class="keyword">private</span> <span class="keyword">final</span> String firstName;<span class="comment">// required;</span></span><br><span class="line">		<span class="keyword">private</span> <span class="keyword">final</span> String lastName; <span class="comment">// required</span></span><br><span class="line">		<span class="keyword">private</span> <span class="keyword">int</span> age; <span class="comment">// optimal</span></span><br><span class="line">		<span class="keyword">private</span> String phone;</span><br><span class="line">		<span class="keyword">private</span> String address;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//Problem: so many constructions.</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="title">User</span><span class="params">(String firstName, String lastName)</span> </span>&#123;</span><br><span class="line">			<span class="keyword">this</span>.firstName = firstName;</span><br><span class="line">			<span class="keyword">this</span>.lastName = lastName;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="title">User</span><span class="params">(String firstName, String lastName, <span class="keyword">int</span> age, String phone, String address)</span> </span>&#123;</span><br><span class="line">			<span class="keyword">this</span>.firstName = firstName;</span><br><span class="line">			<span class="keyword">this</span>.lastName = lastName;</span><br><span class="line">			<span class="keyword">this</span>.age = age;</span><br><span class="line">			<span class="keyword">this</span>.phone = phone;</span><br><span class="line">			<span class="keyword">this</span>.address = address;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="title">User</span><span class="params">(String firstName, String lastName, <span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">			<span class="keyword">this</span>( firstName,  lastName,  age,  <span class="string">""</span>, <span class="string">""</span>);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">//Solution I, Get() Set() </span></span><br><span class="line">		<span class="comment">//However the solution could work as below steps</span></span><br><span class="line">		<span class="comment">//   User user = new Users(firstName, lastName);   --&gt; create an object that could be accessed with 0 age and empty address. </span></span><br><span class="line">		<span class="comment">//   user.setAge(99);</span></span><br><span class="line">		<span class="comment">//   user.setAddress("111111");</span></span><br><span class="line">		<span class="comment">//   ....</span></span><br><span class="line">		<span class="comment">//   </span></span><br><span class="line">		<span class="comment">//Limitation Solution I</span></span><br><span class="line">		<span class="comment">//1. It requires multiple function calls to create an object. but first init step has already created an accessible object </span></span><br><span class="line">		<span class="comment">//2. Do not want to expose setters for some data.</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			<span class="keyword">return</span> age;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(<span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">			<span class="keyword">this</span>.age = age;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">public</span> String <span class="title">getPhone</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			<span class="keyword">return</span> phone;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPhone</span><span class="params">(String phone)</span> </span>&#123;</span><br><span class="line">			<span class="keyword">this</span>.phone = phone;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">public</span> String <span class="title">getAddress</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			<span class="keyword">return</span> address;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAddress</span><span class="params">(String address)</span> </span>&#123;</span><br><span class="line">			<span class="keyword">this</span>.address = address;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">public</span> String <span class="title">getFirstName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			<span class="keyword">return</span> firstName;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">public</span> String <span class="title">getLastName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			<span class="keyword">return</span> lastName;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//Solution 2 Create a Builder</span></span><br><span class="line">		</span><br><span class="line">		<span class="function"><span class="keyword">private</span> <span class="title">User</span><span class="params">(UserBuilder builder)</span> </span>&#123;</span><br><span class="line">			<span class="keyword">this</span>.firstName = builder.firstName;</span><br><span class="line">			<span class="keyword">this</span>.lastName = builder.lastName;</span><br><span class="line">			<span class="keyword">this</span>.age = builder.age;</span><br><span class="line">			<span class="keyword">this</span>.address = builder.address;</span><br><span class="line">			<span class="keyword">this</span>.phone = builder.phone;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">UserBuilder</span> </span>&#123;</span><br><span class="line">			<span class="keyword">private</span> <span class="keyword">final</span> String firstName;<span class="comment">// required;</span></span><br><span class="line">			<span class="keyword">private</span> <span class="keyword">final</span> String lastName; <span class="comment">// required</span></span><br><span class="line">			<span class="keyword">private</span> <span class="keyword">int</span> age; <span class="comment">// optimal</span></span><br><span class="line">			<span class="keyword">private</span> String phone;</span><br><span class="line">			<span class="keyword">private</span> String address;</span><br><span class="line">			</span><br><span class="line">			<span class="function"><span class="keyword">public</span> <span class="title">UserBuilder</span><span class="params">(String firstName, String lastName)</span> </span>&#123;</span><br><span class="line">				<span class="keyword">this</span>.firstName = firstName;</span><br><span class="line">				<span class="keyword">this</span>.lastName = lastName;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			<span class="function"><span class="keyword">public</span> UserBuilder <span class="title">age</span><span class="params">(<span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">				<span class="keyword">this</span>.age = age;</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			<span class="function"><span class="keyword">public</span> UserBuilder <span class="title">address</span><span class="params">(String address)</span> </span>&#123;</span><br><span class="line">				<span class="keyword">this</span>.address = address;</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			<span class="function"><span class="keyword">public</span> UserBuilder <span class="title">phone</span><span class="params">(String phone)</span> </span>&#123;</span><br><span class="line">				<span class="keyword">this</span>.phone = phone;</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			<span class="function"><span class="keyword">public</span> User <span class="title">build</span><span class="params">()</span> </span>&#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">new</span> User(<span class="keyword">this</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">        </span><br><span class="line">	&#125;</span><br><span class="line">    <span class="comment">//Final usage</span></span><br><span class="line"> 	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		User user = <span class="keyword">new</span> User.UserBuilder(<span class="string">"Test"</span>,<span class="string">"Test"</span>).age(<span class="number">7</span>).address(<span class="string">"Test"</span>).phone(<span class="string">"Test"</span>).build();</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Factory</p>
+<figure class="highlight java"><figcaption><span>Facotry</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Shape</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Rectangle</span> <span class="keyword">implements</span> <span class="title">Shape</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Rectangle</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"Inside Ractangle::draw() method"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Square</span> <span class="keyword">implements</span> <span class="title">Shape</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Square</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"Inside Square::draw() method"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Cycle</span> <span class="keyword">implements</span> <span class="title">Shape</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Cycle</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"Inside Cycle::draw() method"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ShapeFactory</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> Shape <span class="title">getShape</span><span class="params">(String shapeType)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(shapeType == <span class="keyword">null</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span> (shapeType.equals(<span class="string">"SQUARE"</span>)) &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">new</span> Square();</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span> (shapeType.equals(<span class="string">"RECTANGLE"</span>)) &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">new</span> Rectangle();</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span> (shapeType.equals(<span class="string">"CYCLE"</span>)) &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">new</span> Cycle();</span><br><span class="line">		&#125; </span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FactoryPatternDemo</span></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> ShapeFactory shapeFactory = <span class="keyword">new</span> ShapeFactory();</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">demo</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Shape shape1 = shapeFactory.getShape(<span class="string">"CYCLE"</span>);</span><br><span class="line">		shape1.draw();</span><br><span class="line">		Shape shape2 = shapeFactory.getShape(<span class="string">"RECTANGLE"</span>);</span><br><span class="line">		shape2.draw();</span><br><span class="line">		Shape shape3 = shapeFactory.getShape(<span class="string">"SQUARE"</span>);</span><br><span class="line">		shape3.draw();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Singleton</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public static final Singleton INSTANCE = new Singleton();</span><br><span class="line">private Singleton() &#123;&#125;</span><br><span class="line">public static Singleton getInstance() &#123;</span><br><span class="line">	return INSTANCE;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+    
+  </div>
+  
+  
+</article>
+
+  
     <article id="post-OOD-1" class="article global-container article-type-post" itemscope itemprop="blogPost">
   
     <header class="article-header">
@@ -944,309 +1032,6 @@ ga('send', 'pageview');
 </article>
 
   
-    <article id="post-C-Lesson-1" class="article global-container article-type-post" itemscope itemprop="blogPost">
-  
-    <header class="article-header">
-      
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/DexWebSite/2019/09/19/C-Lesson-1/">C# Lesson 1 - Base 1</a>
-    </h1>
-  
-
-    </header>
-  
-  <div class="article-meta">
-    <a href="/DexWebSite/2019/09/19/C-Lesson-1/" class="article-date">
-  <time datetime="2019-09-19T07:15:00.000Z" itemprop="datePublished">2019-09-19</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/DexWebSite/categories/C-Programming-Language/">C# Programming Language</a>
-  </div>
-
-    
-  </div>
-  
-
-  <div class="article-inner">
-    
-    <div class="article-content article-content-cloud" itemprop="articleBody">
-      
-        <h3 id="All-C-Lessons-are-note-from-Tutorialspoint"><a href="#All-C-Lessons-are-note-from-Tutorialspoint" class="headerlink" title="All C# Lessons are note from Tutorialspoint"></a>All C# Lessons are note from <a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/access-modifiers" target="_blank" rel="noopener">Tutorialspoint</a></h3><h3 id="Powerful-Programming-Features"><a href="#Powerful-Programming-Features" class="headerlink" title="Powerful Programming Features"></a>Powerful Programming Features</h3><ul>
-<li>Boolean Condiitons</li>
-<li>Automatic Garbage Collection</li>
-<li>Standard Library</li>
-<li>Assembly Versioning</li>
-<li>Properties and Events</li>
-<li>Delegates and Events Management</li>
-<li>Generics</li>
-<li>Indexers</li>
-<li>Conditional Compilation</li>
-<li>Multi-threading</li>
-<li>LINQ and Lambda</li>
-</ul>
-<h3 id="Net-Framework"><a href="#Net-Framework" class="headerlink" title=".Net Framework"></a>.Net Framework</h3><blockquote>
-<p>.Net Framework supplies a platform to create Windows applications, Web applications, and Web Services.</p>
-</blockquote>
-<p> <strong> Components </strong></p>
-<ul>
-<li>Common Language Runtime - CRL</li>
-<li>.Net Freamwork Class Library</li>
-<li>Comment Lnaguage Specification</li>
-<li>Common Type System</li>
-<li>Metadata and Assembilies</li>
-<li>Windows Forms</li>
-<li>ASP.Net and ASP.Net AJAX</li>
-<li>ADO.NET</li>
-<li>Windows Workflow Fundation</li>
-<li>Windows Presentation Fundtion</li>
-<li>Windows COmmunication Fundation </li>
-<li>LINQ</li>
-</ul>
-<h3 id="Integrated-Development-Environment-IDE"><a href="#Integrated-Development-Environment-IDE" class="headerlink" title="Integrated Development Environment - IDE"></a>Integrated Development Environment - IDE</h3><ul>
-<li>Visual Studio, Windows</li>
-<li>Mono, Android, BSD, iOS, Linux, OS X, WIndows, Solaris, UNIX</li>
-</ul>
-<h3 id="Program-Structure"><a href="#Program-Structure" class="headerlink" title="Program Structure"></a>Program Structure</h3><p>A C# program contains below parts:</p>
-<ul>
-<li>Namespace declaration (Package Name in JAVA)</li>
-<li>A class</li>
-<li>Class methods</li>
-<li>Class Attributes</li>
-<li>A Main method </li>
-<li>Statements and Expressions</li>
-<li>Comments</li>
-</ul>
-<figure class="highlight c"><figcaption><span># Hello Word</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">using</span> System;  <span class="comment">/*imports System namespace*/</span></span><br><span class="line"><span class="keyword">namespace</span> HelloWorldApplication <span class="comment">/*declare the current class in HelloWorldApplication namespace*/</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="class"><span class="keyword">class</span> <span class="title">HelloWorld</span></span></span><br><span class="line"><span class="class">   &#123;</span></span><br><span class="line">      <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span><span class="params">(<span class="built_in">string</span>[] args)</span></span></span><br><span class="line"><span class="function">      </span>&#123;</span><br><span class="line">         <span class="comment">/* Comments */</span></span><br><span class="line">         Console.WriteLine(<span class="string">"Hello World"</span>);</span><br><span class="line">         Console.ReadKey();</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="Setup-CSC-Command"><a href="#Setup-CSC-Command" class="headerlink" title="Setup CSC Command"></a>Setup CSC Command</h3><p>CSC command is used to compile .cs files. </p>
-<p>E.g. </p>
-<p><strong> >csc helloword.cs</strong></p>
-<p>If the Command Prompt shows {‘csc’ is not recognized as an internal or external command}, you have to setup Environment Variable with “Path”.</p>
-<p><strong>&gt;C:\Windows\Microsoft.NET\Framework{version}\</strong></p>
-<h3 id="Identifier"><a href="#Identifier" class="headerlink" title="Identifier"></a>Identifier</h3><p>Identifiers are used to identify classes, variables, functions, and other user defined projects. It should be following below rules:</p>
-<ul>
-<li>Identifier starts at letter, underline, or @ sign, following by letters, numbers, underline, or @</li>
-<li>The first character should not be a number</li>
-<li>It should <strong>not</strong> contains any space and other special characters such as ?, +, #, %,^.</li>
-<li>Indentifier should be different from Keywords</li>
-<li>Indentifier is case sensitive</li>
-<li>Indentifier should not be the same as libary class names.</li>
-</ul>
-<h3 id="C-Keywords"><a href="#C-Keywords" class="headerlink" title="C# Keywords"></a>C# Keywords</h3><p><strong>Reserved Keywords:</strong></p>
-<ul>
-<li>abstract</li>
-<li>as</li>
-<li>base</li>
-<li>bool</li>
-<li>break</li>
-<li>byte</li>
-<li>case</li>
-<li>catch</li>
-<li>char</li>
-<li>checked</li>
-<li>class</li>
-<li>const</li>
-<li>continue</li>
-<li>decimal</li>
-<li>default</li>
-<li>delegate</li>
-<li>do</li>
-<li>double</li>
-<li>else</li>
-<li>enum</li>
-<li>event</li>
-<li>explicit</li>
-<li>extern</li>
-<li>false</li>
-<li>finally</li>
-<li>fixed</li>
-<li>float</li>
-<li>for</li>
-<li>foreach</li>
-<li>goto</li>
-<li>if</li>
-<li>implicit</li>
-<li>in (generic modifier)</li>
-<li>int</li>
-<li>interface</li>
-<li>internal</li>
-<li>is</li>
-<li>lock</li>
-<li>long</li>
-<li>namespace</li>
-<li>new</li>
-<li>null</li>
-<li>object</li>
-<li>operator</li>
-<li>out</li>
-<li>out(generic modifier)</li>
-<li>override</li>
-<li>params</li>
-<li>private</li>
-<li>protected</li>
-<li>public</li>
-<li>readonly</li>
-<li>ref</li>
-<li>return</li>
-<li>sbyte</li>
-<li>sealed</li>
-<li>short</li>
-<li>sizeof</li>
-<li>stackalloc</li>
-<li>static</li>
-<li>string</li>
-<li>struct</li>
-<li>switch</li>
-<li>this</li>
-<li>throw</li>
-<li>true</li>
-<li>try</li>
-<li>typeof</li>
-<li>uint</li>
-<li>ulong</li>
-<li>unchecked</li>
-<li>unsafe</li>
-<li>ushort</li>
-<li>using</li>
-<li>virtual</li>
-<li>void</li>
-<li>volatile</li>
-<li>while</li>
-</ul>
-<p><strong>Contextual Keywords:</strong></p>
-<ul>
-<li>add</li>
-<li>alias</li>
-<li>ascending</li>
-<li>descending</li>
-<li>dynamic</li>
-<li>from</li>
-<li>get</li>
-<li>global</li>
-<li>group</li>
-<li>into</li>
-<li>join</li>
-<li>let</li>
-<li>orderby</li>
-<li>partial(type)</li>
-<li>partial(method)</li>
-<li>remove</li>
-<li>select</li>
-<li>set</li>
-</ul>
-<h3 id="Value-Types"><a href="#Value-Types" class="headerlink" title="Value Types"></a>Value Types</h3><table>
-<thead>
-<tr>
-<th style="text-align:left">Types</th>
-<th style="text-align:left">Description</th>
-<th style="text-align:left">Range</th>
-<th>Deault Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">bool</td>
-<td style="text-align:left">boolean value</td>
-<td style="text-align:left">True or False</td>
-<td>False</td>
-</tr>
-<tr>
-<td style="text-align:left">byte</td>
-<td style="text-align:left">unsign 8 bits integer</td>
-<td style="text-align:left">0 to 255</td>
-<td>0</td>
-</tr>
-<tr>
-<td style="text-align:left">sbyte</td>
-<td style="text-align:left">sign 8 bits integer</td>
-<td style="text-align:left">-128 to 127</td>
-<td>0</td>
-</tr>
-<tr>
-<td style="text-align:left">char</td>
-<td style="text-align:left">16 bits Unicode</td>
-<td style="text-align:left">U +0000 to U +ffff</td>
-<td>‘\0’</td>
-</tr>
-<tr>
-<td style="text-align:left">short</td>
-<td style="text-align:left">sign 16 bits integer</td>
-<td style="text-align:left">-32,768 to 32,767</td>
-<td>0</td>
-</tr>
-<tr>
-<td style="text-align:left">ushort</td>
-<td style="text-align:left">unsign 16 bits integer</td>
-<td style="text-align:left">0 to 65,535</td>
-<td>0</td>
-</tr>
-<tr>
-<td style="text-align:left">int</td>
-<td style="text-align:left">sign 32 bits integer</td>
-<td style="text-align:left">-2,147,483,648 to 2,147,483,647</td>
-<td>0</td>
-</tr>
-<tr>
-<td style="text-align:left">uint</td>
-<td style="text-align:left">unsign 32 bits integer</td>
-<td style="text-align:left">0 to 4,294,967,295</td>
-<td>0</td>
-</tr>
-<tr>
-<td style="text-align:left">long</td>
-<td style="text-align:left">sign 64 bits integer</td>
-<td style="text-align:left">0 to 255</td>
-<td>0</td>
-</tr>
-<tr>
-<td style="text-align:left">ulong</td>
-<td style="text-align:left">unsign 64 bits integer</td>
-<td style="text-align:left">-128 to 127</td>
-<td>0</td>
-</tr>
-<tr>
-<td style="text-align:left">float</td>
-<td style="text-align:left">32 bits numbers</td>
-<td style="text-align:left">-3.4 <em> 10 ^38 to 7.9 </em> 10 ^38</td>
-<td>0.0F</td>
-</tr>
-<tr>
-<td style="text-align:left">double</td>
-<td style="text-align:left">64 bits numbers</td>
-<td style="text-align:left">-5 <em> 10 ^-324 to 1.7 </em> 10 ^308</td>
-<td>0.0D</td>
-</tr>
-<tr>
-<td style="text-align:left">decimal</td>
-<td style="text-align:left">128 bits numbers</td>
-<td style="text-align:left">-7.9 <em> 10 ^-28 to 7.9 </em> 10 ^28 / 10 ^ 0-28</td>
-<td>0.0M</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>sizeof(type) will shows the size of type with bytes.</p>
-</blockquote>
-<h3 id="Object-Type"><a href="#Object-Type" class="headerlink" title="Object Type"></a>Object Type</h3><p>Object type is the lowest basic class in Common Type System. Object is alias of System.Object. The Object variable could be used to save all other classes.<br>However, when a value is asigned to an object variable, it should do <strong>Boxing</strong>. Also, when an object variable is used transfered as another object, we call it <strong>Unboxing</strong>.</p>
-<figure class="highlight c"><figcaption><span># Boxing</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">object obj;</span><br><span class="line">obj = <span class="number">100</span>; <span class="comment">//boxing</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="Dynamic-Type"><a href="#Dynamic-Type" class="headerlink" title="Dynamic Type"></a>Dynamic Type</h3><p>Dynamic Type also supplies the similar method to define a variable that could save a value in all types.</p>
-<figure class="highlight c"><figcaption><span># Dynamic Type</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//dynamic &lt;variable = value; </span></span><br><span class="line">dynamic d = <span class="number">20</span>; </span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p><strong>Object Type will be checked when the program is  compling. Dynamic Type will be checked when the program is running. </strong></p>
-<h3 id="String-Type"><a href="#String-Type" class="headerlink" title="String Type"></a>String Type</h3><p>In C#, users could assign value to string in 2 ways such as “” or @””.</p>
-<figure class="highlight c"><figcaption><span># String Assignment</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// Assign String Value as "C:\Windows" in 2 ways.</span></span><br><span class="line"><span class="built_in">string</span> str = <span class="string">"C:\\Windows"</span>;</span><br><span class="line"><span class="built_in">string</span> str = @<span class="string">"C:\Windows"</span>; </span><br><span class="line"></span><br><span class="line"><span class="comment">// @"" could save values in mutilple lines.</span></span><br><span class="line"><span class="built_in">string</span> str = @<span class="string">"&lt;script type="</span><span class="string">"text/javascript"</span><span class="string">"&gt;</span></span><br><span class="line"><span class="string">    &lt;!--</span></span><br><span class="line"><span class="string">    --&gt;</span></span><br><span class="line"><span class="string">&lt;/script&gt;"</span>;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="Pointer-Type"><a href="#Pointer-Type" class="headerlink" title="Pointer Type"></a>Pointer Type</h3><p>The pointer will point to the memory address which is used as the same as C or C++. </p>
-<figure class="highlight c"><figcaption><span># Pointer Assignment</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// type* identifier;</span></span><br><span class="line"><span class="keyword">char</span>* cptr;</span><br><span class="line"><span class="keyword">int</span>* iptr;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    
-  </div>
-  
-  
-</article>
-
-  
 
 
   <nav id="page-nav">
@@ -1284,7 +1069,7 @@ ga('send', 'pageview');
   <div class="widget-box">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/03/">March 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/03/">March 2019</a></li></ul>
     </div>
   </div>
 
@@ -1294,6 +1079,10 @@ ga('send', 'pageview');
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/DexWebSite/2020/09/02/Algorithm-Bit-Operation/">Algorithm Bit Operation</a>
+          </li>
         
           <li>
             <a href="/DexWebSite/2020/06/22/Algorithm-Graph/">Algorithm Graph</a>
@@ -1309,10 +1098,6 @@ ga('send', 'pageview');
         
           <li>
             <a href="/DexWebSite/2020/04/19/Algorithm-PriorityQueue-1/">Algorithm PriorityQueue</a>
-          </li>
-        
-          <li>
-            <a href="/DexWebSite/2020/04/18/Java-Queue-Stack-Deque/">Algorithm Queue Stack Deque </a>
           </li>
         
       </ul>
