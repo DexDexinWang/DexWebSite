@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-113086304-2', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <title>Algorithm Interval | Dex Personal Website</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <meta name="description" content="IntervalInterval questions will consider the interval structure like below one.  Interval123456789class Interval &amp;#123;  int start;  int end;  public Interval(int start, int end) &amp;#123;    this.start">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Algorithm Interval">
+<meta property="og:url" content="http://dexdexinwang.github.io/DexWebSite/2020/09/09/Algorithm-Interval/index.html">
+<meta property="og:site_name" content="Dex Personal Website">
+<meta property="og:description" content="IntervalInterval questions will consider the interval structure like below one.  Interval123456789class Interval &amp;#123;  int start;  int end;  public Interval(int start, int end) &amp;#123;    this.start">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-09-09T22:03:59.967Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Algorithm Interval">
+<meta name="twitter:description" content="IntervalInterval questions will consider the interval structure like below one.  Interval123456789class Interval &amp;#123;  int start;  int end;  public Interval(int start, int end) &amp;#123;    this.start">
+  
+    <link rel="alternate" href="/DexWebSite/atom.xml" title="Dex Personal Website" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/DexWebSite/images/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/DexWebSite/css/style.css">
+  <link rel="stylesheet" href="/DexWebSite/css/highlight.css">
+  <script>
+  let antiquityStorage = window.sessionStorage.getItem('antiquitySessionStorage');
+  if (antiquityStorage == '' || antiquityStorage == null) {
+    var antiquityLoader = '<div id="loaderbox"><div class="loader"><div class="load-roll"><div class="load-top"></div><div class="load-right"></div><div class="load-bottom"></div></div></div></div>';
+    document.write(antiquityLoader);
+    document.body.style.overflow = 'hidden'
+  }
+  </script>
+</head>
+</html>
+<body>
+  <div id="fullpage" class="mobile-nav-left">
+    
+      <div id="wrapper" style="background-image: url(/DexWebSite/images/bg.jpg)" title="background">
+    
+    
+      <header id="header">
+  <div id="nav-toggle" class="nav-toggle"></div>
+  <div class="head-box global-width">
+    <nav class="nav-box nav-left">
+      
+        <a class="nav-item" href="/DexWebSite/" title>Home</a>
+      
+        <a class="nav-item" href="/DexWebSite/../PersonalWebSite/" title>Background</a>
+      
+    </nav>
+  </div>
+</header>
+      <div id="middlecontent" title class="global-width sidebar-left">
+        <section id="main"><article id="post-Algorithm-Interval" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      Algorithm Interval
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/DexWebSite/2020/09/09/Algorithm-Interval/" class="article-date">
+  <time datetime="2020-09-09T21:01:00.000Z" itemprop="datePublished">2020-09-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/DexWebSite/categories/Algorithm/">Algorithm</a>
+  </div>
+
+    
+  </div>
+  
+    <span id="busuanzi_container_page_pv">
+      Total Read : <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <h3 id="Interval"><a href="#Interval" class="headerlink" title="Interval"></a>Interval</h3><p>Interval questions will consider the interval structure like below one. </p>
+<figure class="highlight java"><figcaption><span>Interval</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Interval</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> start;</span><br><span class="line">  <span class="keyword">int</span> end;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Interval</span><span class="params">(<span class="keyword">int</span> start, <span class="keyword">int</span> end)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.start = start;</span><br><span class="line">    <span class="keyword">this</span>.end = end;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>Easy Question</strong><br><br>Meeting Question gives two intervals AIntervals and BIntervals for two people, returns the earliest time slot that works for both of them with duration K. <br></p>
+<p>Solution hits:</p>
+<ul>
+<li>Get overlap by start = max(AIntervals[i].start, BIntervals[i].start) and end = min(AIntervals[i].end, BIntervals[i].end)</li>
+<li>Find the K is smaller or euqal to the end - start;</li>
+</ul>
+<p><strong>Medium Question</strong> <br></p>
+<p>Most medium above interval questiosn will consider overlaps between multiple intervals (from 0 to n-1). It could be solved with PriorityQueue Pattern sorted by “Interval.End”, minHeap. It will indicates how many intervals have overlaps from index-0 to index-i. The normal time complexity will be O(nlogn), and space time complexity will be O(n). <br> </p>
+<p>E.g.<br><br><a href="https://leetcode.com/problems/meeting-rooms-ii/" target="_blank" rel="noopener">Meeting Rooms II</a>: it asks the maximum number of meeting rooms are necessary for all intervals. The solution will consider  <br></p>
+<figure class="highlight java"><figcaption><span>Meeting Rooms II</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minMeetingRooms</span><span class="params">(<span class="keyword">int</span>[][] intervals)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(intervals == <span class="keyword">null</span> || intervals.length == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    Arrays.sort(intervals, (a, b) -&gt; (a[<span class="number">0</span>] == b[<span class="number">0</span>] ? a[<span class="number">1</span>] - b[<span class="number">1</span>]: a[<span class="number">0</span>] - b[<span class="number">0</span>]));</span><br><span class="line">    PriorityQueue&lt;Integer&gt; minHeap = <span class="keyword">new</span> PriorityQueue&lt;&gt;();</span><br><span class="line">    <span class="keyword">int</span> max = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; intervals.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(minHeap.size() != <span class="number">0</span> &amp;&amp; minHeap.peek() &lt;= intervals[i][<span class="number">0</span>]) &#123;</span><br><span class="line">            minHeap.poll();</span><br><span class="line">        &#125;</span><br><span class="line">        minHeap.offer(intervals[i][<span class="number">1</span>]);</span><br><span class="line">        max = Math.max(minHeap.size(), max);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> max;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The Priority Queue pattern could also solve similar examples: “Maximum CPU Load” and “Employee Free Time”</p>
+<figure class="highlight java"><figcaption><span>Maximum CPU Load</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">Jobs: [[1,4,3], [2,5,4], [7,9,6]]</span></span><br><span class="line"><span class="comment">Output: 7</span></span><br><span class="line"><span class="comment">Explanation: Since [1,4,3] and [2,5,4] overlap</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findMaxCPULoad</span><span class="params">(List&lt;Job&gt; jobs)</span> </span>&#123;</span><br><span class="line">	    <span class="keyword">if</span>(jobs == <span class="keyword">null</span> || jobs.size() == <span class="number">0</span>) &#123;</span><br><span class="line">	      <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	    &#125;</span><br><span class="line">	    Collections.sort(jobs, (a,b)-&gt;(a.start == b.start ? a.end - b.end : a.start - b.start));</span><br><span class="line">	    <span class="keyword">int</span> currMaxLoad = <span class="number">0</span>;</span><br><span class="line">	    <span class="keyword">int</span> maxLoad = <span class="number">0</span>;</span><br><span class="line">	    PriorityQueue&lt;Job&gt; min = <span class="keyword">new</span> PriorityQueue&lt;&gt;((a,b)-&gt;(a.end - b.end));</span><br><span class="line">	    <span class="keyword">for</span>(Job j : jobs) &#123;</span><br><span class="line">	    	<span class="keyword">while</span>(!min.isEmpty() &amp;&amp; min.peek().end &lt;= j.start) &#123;</span><br><span class="line">	    		currMaxLoad -= min.poll().cpuLoad;</span><br><span class="line">	    	&#125;</span><br><span class="line">	    	min.offer(j);</span><br><span class="line">	    	currMaxLoad += j.cpuLoad;</span><br><span class="line">	    	maxLoad = Math.max(currMaxLoad, maxLoad);</span><br><span class="line">	    &#125;</span><br><span class="line">	    <span class="keyword">return</span> maxLoad;</span><br><span class="line">	  &#125;</span><br><span class="line">	</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><figcaption><span>Employee Free Time</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">Input: Employee Working Hours=[[[1,3], [5,6]], [[2,3], [6,8]]]</span></span><br><span class="line"><span class="comment">Output: [3,5]</span></span><br><span class="line"><span class="comment">Explanation: Both the employess are free between [3,5].</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> List&lt;Interval&gt; <span class="title">findEmployeeFreeTime</span><span class="params">(List&lt;List&lt;Interval&gt;&gt; schedule)</span> </span>&#123;</span><br><span class="line">    List&lt;Interval&gt; arr = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span>(List&lt;Interval&gt; l : schedule) &#123;</span><br><span class="line">      <span class="keyword">for</span>(Interval i : l)&#123;</span><br><span class="line">        arr.add(i);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    List&lt;Interval&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    Collections.sort(arr, (a,b)-&gt; (a.start - b.start));</span><br><span class="line">    <span class="keyword">int</span> currEnd = arr.get(<span class="number">0</span>).end;</span><br><span class="line">    PriorityQueue&lt;Interval&gt; min = <span class="keyword">new</span> PriorityQueue&lt;&gt;((a,b)-&gt;(a.end - b.end));</span><br><span class="line">    <span class="keyword">for</span>(Interval interval: arr)&#123;</span><br><span class="line">      <span class="keyword">while</span>(!min.isEmpty() &amp;&amp; min.peek().end &lt; interval.start) &#123;</span><br><span class="line">        currEnd = min.poll().end;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span>(min.isEmpty() &amp;&amp; currEnd &lt; interval.start) &#123;</span><br><span class="line">    	  result.add(<span class="keyword">new</span> Interval(currEnd, interval.start));</span><br><span class="line">      &#125;</span><br><span class="line">      min.offer(interval);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">  &#125;</span><br><span class="line">	</span><br></pre></td></tr></table></figure>
+<p><strong>Optimized Soltion for Time complexity</strong><br></p>
+<p>If the maximum number of ending time from all intervals is smaller enough. The question could be solved with 1D array with Max(intervals.end) value. The total time compelxity will be O(n*T) and space compelxity will be O(T) where T is Max(intervals.end) <br></p>
+<figure class="highlight java"><figcaption><span>Maximum CPU Load</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">Jobs: [[1,4,3], [2,5,4], [7,9,6]]</span></span><br><span class="line"><span class="comment">Output: 7</span></span><br><span class="line"><span class="comment">Explanation: Since [1,4,3] and [2,5,4] overlap</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findMaxCPULoad</span><span class="params">(List&lt;Job&gt; jobs)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(jobs == <span class="keyword">null</span> || jobs.size() == <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Collections.sort(jobs, (a,b)-&gt;(a.start == b.start ? a.end - b.end : a.start - b.start));</span><br><span class="line">    <span class="keyword">int</span> size = <span class="number">0</span>; </span><br><span class="line">    <span class="keyword">for</span>(Job j: jobs) &#123;</span><br><span class="line">      size = Math.max(size, j.end);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span>[] arr = <span class="keyword">new</span> <span class="keyword">int</span>[size+<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> max = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(Job j : jobs) &#123;</span><br><span class="line">      <span class="keyword">int</span> load = j.cpuLoad;</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> i = j.start ; i&lt;=j.end; i++) &#123;</span><br><span class="line">        arr[i] = arr[i] + load;</span><br><span class="line">        max = Math.max(max, arr[i]);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> max;</span><br><span class="line">  &#125;</span><br><span class="line">	</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+      <footer class="article-footer">
+        Done
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  <div class="article-nav-block">
+    
+  </div>
+  <div class="article-nav-block">
+    
+      <a href="/DexWebSite/2020/09/02/Algorithm-Bit-Operation/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">Algorithm Bit Operation</div>
+        <strong class="article-nav-caption"></strong>
+      </a>
+    
+  </div>
+</nav>
+
+    
+<div id="gitmentContainer"></div>
+<link rel="stylesheet" href="https://wzxjayce.github.io/gitment.css">
+<script src="https://wzxjayce.github.io/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  owner: 'dexdexinwang',
+  repo: 'DexWebSite',
+  oauth: {
+    client_id: '7c44fd11f8e0d609f5ba',
+    client_secret: 'ea91b14d1a2f4aa1ff3d610c266ff8280eb5caae',
+  },
+})
+gitment.render('gitmentContainer')
+</script>
+
+  
+  
+</article>
+</section>
+        <aside id="sidebar">
+  
+    <div class="widget-box">
+  <div class="avatar-box">
+    <img class="avatar" src="/DexWebSite/images/dexphoto.jpg" title="personal image">
+    <h3 class="avatar-name">
+      
+        Dexin Wang
+      
+    </h3>
+  </div>
+</div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Algorithm/">Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Basic/">Basic</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/C-Programming-Language/">C# Programming Language</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Interview/">Interview</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Java-Programming-Language/">Java Programming Language</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Kits/">Kits</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Object-Oriented-Design/">Object-Oriented Design</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/React-Development/">React Development</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/03/">March 2019</a></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/DexWebSite/2020/09/09/Algorithm-Interval/">Algorithm Interval</a>
+          </li>
+        
+          <li>
+            <a href="/DexWebSite/2020/09/02/Algorithm-Bit-Operation/">Algorithm Bit Operation</a>
+          </li>
+        
+          <li>
+            <a href="/DexWebSite/2020/06/22/Algorithm-Graph/">Algorithm Graph</a>
+          </li>
+        
+          <li>
+            <a href="/DexWebSite/2020/05/20/Algorithm-Binary-Search-Tree/">Algorithm Binary Search Tree</a>
+          </li>
+        
+          <li>
+            <a href="/DexWebSite/2020/05/13/Algorithm-PriorityQueue/">Algorithm Binary Tree</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      </div>
+      <footer id="footer">
+  <div class="foot-box global-width">
+    &copy; 2020 Dexin Wang &nbsp;&nbsp;
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    &nbsp;|&nbsp;Theme <a href="https://github.com/DexDexinWang/hexo-dex">antiquity</a>
+    <br>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">You are the <span id="busuanzi_value_site_pv"></span> visitor</span>
+  </div>
+</footer>
+      <script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script>
+if (!window.jQuery) {
+var script = document.createElement('script');
+script.src = "/js/jquery-2.0.3.min.js";
+document.body.write(script);
+}
+</script>
+
+  <link rel="stylesheet" href="/DexWebSite/fancybox/jquery.fancybox.css">
+  <script src="/DexWebSite/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/DexWebSite/js/script.js"></script>
+
+
+
+    </div>
+    <nav id="mobile-nav" class="mobile-nav-box">
+  <div class="mobile-nav-img mobile-nav-top"></div>
+  
+    <a href="/DexWebSite/" class="mobile-nav-link">Home</a>
+  
+    <a href="/DexWebSite/../PersonalWebSite/" class="mobile-nav-link">Background</a>
+  
+  <div class="mobile-nav-img  mobile-nav-bottom"></div>
+</nav>    
+  </div>
+</body>
+</html>
