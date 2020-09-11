@@ -30,7 +30,7 @@ ga('send', 'pageview');
 <meta property="og:site_name" content="Dex Personal Website">
 <meta property="og:description" content="Bit OperationThe least significant bit is most right bit because number comparation is based on bits from left to right.  The most significant bit (most left bit) is signature:   0 is positive number">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-09-09T21:01:43.854Z">
+<meta property="og:updated_time" content="2020-09-10T20:47:26.596Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Algorithm Bit Operation">
 <meta name="twitter:description" content="Bit OperationThe least significant bit is most right bit because number comparation is based on bits from left to right.  The most significant bit (most left bit) is signature:   0 is positive number">
@@ -146,7 +146,10 @@ ga('send', 'pageview');
 </li>
 <li><p>Prefix <br><br>  arr[i]^ = arr[i-1] <br></p>
 </li>
+<li><p>Get Complement <br></p>
+</li>
 </ul>
+<figure class="highlight java"><figcaption><span>Get Complement</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> len = <span class="number">0</span>;</span><br><span class="line">     <span class="keyword">int</span> temp = n;</span><br><span class="line">     <span class="keyword">while</span>(temp != <span class="number">0</span>) &#123;</span><br><span class="line">       temp &gt;&gt;=<span class="number">1</span>;</span><br><span class="line">       len++;</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">int</span> complement = (<span class="keyword">int</span>)Math.pow(<span class="number">2</span>,len) - <span class="number">1</span>;</span><br><span class="line">     <span class="keyword">return</span> n ^ complement;</span><br></pre></td></tr></table></figure>
 
       
     </div>
