@@ -75,6 +75,66 @@ ga('send', 'pageview');
       <div id="middlecontent" title class="global-width sidebar-left">
         <section id="main">
   
+    <article id="post-Java-Base-Principle-III" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/DexWebSite/2020/10/03/Java-Base-Principle-III/">Java Base Concurrency</a>
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/DexWebSite/2020/10/03/Java-Base-Principle-III/" class="article-date">
+  <time datetime="2020-10-03T21:30:00.000Z" itemprop="datePublished">2020-10-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/DexWebSite/categories/Java-Programming-Language/">Java Programming Language</a>
+  </div>
+
+    
+  </div>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <h3 id="Java-Base-Principle-II"><a href="#Java-Base-Principle-II" class="headerlink" title="Java Base Principle II"></a>Java Base Principle II</h3><h5 id="Concurrency-VS-Parallel"><a href="#Concurrency-VS-Parallel" class="headerlink" title="Concurrency VS Parallel"></a>Concurrency VS Parallel</h5><p>Concurrency: It is a semantica concpetion to allow multiple tasks run simultaneously. The time is an abstract concept. It could not guarantee which task is executed first or sencond. Norally, there are multiple programs or functions . </p>
+<p>parallel: It is an implementition level conception to allow multiple tasks <strong>phycially</strong> run simultanenously. Normally, there are multiple executors.</p>
+<h5 id="Multiprocess-VS-Multithread"><a href="#Multiprocess-VS-Multithread" class="headerlink" title="Multiprocess VS Multithread"></a>Multiprocess VS Multithread</h5><p>One computer could execute mutiple processes, and each process could contains multiple threads. </p>
+<p>In Java: <br></p>
+<p>Process is an independed execution of instructions with independed resource such as memory, stack, heap or cup. Different process could communicate through interprocess communication (IPC). <br></p>
+<p>Thread is an independed execution of instructiosn with shared memory, but individual stack, counter, and register status. Different thread could communicate through reading/writing shared memory which should take care of ‘Communication overhead’, ‘Resource Isolation’, and ‘Creation/desotry overhead’. These could be controlled by concurrency control.<br></p>
+<p>Hence, Java concurrency is focusing on multi-thread cases in real life. A Java application runs by default in one process. Within a Java application you work with several threads to achieve parallel processing or asynchronous behavior.<br></p>
+<h5 id="Multi-Threads-in-Java"><a href="#Multi-Threads-in-Java" class="headerlink" title="Multi-Threads in Java"></a>Multi-Threads in Java</h5><p>In java development environment, everything is an object even a thread. Hence, a new thread could be created by 3 steps:</p>
+<ul>
+<li>Create a thread object</li>
+<li>Assign task to the created thread object</li>
+<li>Execut the thread. </li>
+</ul>
+<figure class="highlight java"><figcaption><span>Create Threads</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ThreadTester</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">ThreadTester</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.id = id;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"inherited class : "</span> + <span class="keyword">this</span>.id);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ThreadTester2</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">ThreadTester2</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.id = id;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"runnable class : "</span> + <span class="keyword">this</span>.id);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MultiThreadsTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"------------Method 1 to create a thread------------"</span>);</span><br><span class="line">		<span class="comment">// Create Thread Method 1.</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">			Thread t = <span class="keyword">new</span> Thread(String.valueOf(i)) &#123;</span><br><span class="line">				<span class="meta">@Override</span></span><br><span class="line">				<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">					System.out.println(getName());</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;;</span><br><span class="line">			t.start(); <span class="comment">// Any thread could be started once and only once.</span></span><br><span class="line">			<span class="comment">/*</span></span><br><span class="line"><span class="comment">			 * try &#123; t.join(); &#125; catch (InterruptedException e) &#123; // TODO Auto-generated</span></span><br><span class="line"><span class="comment">			 * catch block e.printStackTrace(); &#125;</span></span><br><span class="line"><span class="comment">			 */</span></span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		System.out.println(<span class="string">"------------Method 2 to create a thread------------"</span>);</span><br><span class="line">		<span class="comment">// Create Thread Method 2 with inherited class.</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">			Thread t = <span class="keyword">new</span> Thread(<span class="keyword">new</span> ThreadTester(i));</span><br><span class="line">			t.start();</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		System.out.println(<span class="string">"------------Method 3 to create a thread------------"</span>);</span><br><span class="line">		<span class="comment">// Create Thread Method 3 with an interface because the some thread method may</span></span><br><span class="line">		<span class="comment">// be inherited another class.</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">			Thread t = <span class="keyword">new</span> Thread(<span class="keyword">new</span> ThreadTester2(i));</span><br><span class="line">			t.start();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><strong><a href="https://www.baeldung.com/java-thread-lifecycle" target="_blank" rel="noopener">A Thread’s life cycle</a>:</strong></p>
+<p>The main methos is Start() : mark a thread as “ready to run” state -&gt; put it into the ‘ready to run queue’ and wait for the scheduler to assign its time frame(quota) for running -&gt; end of quota or state change by different even:</p>
+<ul>
+<li>Sleep() : remove from the ready to run queue, and move to sleeping thread pool</li>
+<li>Object.Wait() : removed from the ready to run queue, and move to the conditions’ queue for signal to put back to the ready queue.</li>
+<li>Yield() : did not change the ready to run state, but preempt itself the current quota, put back to the ready-to-run queue again for the next quota.</li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+  
+</article>
+
+  
     <article id="post-Algorithm-Interval" class="article global-container article-type-post" itemscope itemprop="blogPost">
   
     <header class="article-header">
@@ -832,167 +892,6 @@ ga('send', 'pageview');
 </article>
 
   
-    <article id="post-Algorithm-Linked-List" class="article global-container article-type-post" itemscope itemprop="blogPost">
-  
-    <header class="article-header">
-      
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/DexWebSite/2019/10/24/Algorithm-Linked-List/">Algorithm Linked List </a>
-    </h1>
-  
-
-    </header>
-  
-  <div class="article-meta">
-    <a href="/DexWebSite/2019/10/24/Algorithm-Linked-List/" class="article-date">
-  <time datetime="2019-10-24T07:01:00.000Z" itemprop="datePublished">2019-10-24</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/DexWebSite/categories/Algorithm/">Algorithm</a>
-  </div>
-
-    
-  </div>
-  
-
-  <div class="article-inner">
-    
-    <div class="article-content article-content-cloud" itemprop="articleBody">
-      
-        <h3 id="Linked-List"><a href="#Linked-List" class="headerlink" title="Linked List"></a>Linked List</h3><p><a href="https://www.geeksforgeeks.org/data-structures/linked-list/" target="_blank" rel="noopener">GeeksforGeeks</a>: A linked list is a linear data structure, in which the elements are not stored at contiguous memory locations. The elements in a linked list are linked using pointers. <br><br>In simple words, a linked list consists of nodes where each node contains a data field and a reference(link) to the next node in the list.</p>
-<h5 id="Single-amp-Double-Linked-List-Defination"><a href="#Single-amp-Double-Linked-List-Defination" class="headerlink" title="Single &amp; Double Linked List Defination"></a>Single &amp; Double Linked List Defination</h5><p>By personal experience, the Single Linked List is used to answer algorithm questions. The double Linked List is used to generate new structure.</p>
-<figure class="highlight java"><figcaption><span>Single Linked List</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ListNode</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> val;</span><br><span class="line">    ListNode next;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ListNode</span><span class="params">(<span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">    	<span class="keyword">this</span>.val = val;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><figcaption><span>Doule Linked List</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ListNode</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> val;</span><br><span class="line">    ListNode next;</span><br><span class="line">    ListNode prev;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ListNode</span><span class="params">(<span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">    	<span class="keyword">this</span>.val = val;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="Algorithm-Problem"><a href="#Algorithm-Problem" class="headerlink" title="Algorithm Problem"></a>Algorithm Problem</h5><p>For most Linked List Algorithm problem, there are some tips will be helpful to solve the problem. <br></p>
-<ol>
-<li>The HEAD node should be saved util final output. </li>
-<li>Check NPE first before using next pointer and value.</li>
-<li>At Beginning, check corner cases will be helpful to make solution better and save time.</li>
-<li>Define an extra node to handle head will make clear logic.</li>
-</ol>
-<p><strong><a href="https://leetcode.com/problems/reverse-linked-list/" target="_blank" rel="noopener">Reverse Linked List</a></strong></p>
-<figure class="highlight java"><figcaption><span>Reverse Linked List</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">reverseList</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">if</span>(head == <span class="keyword">null</span> || head.next == <span class="keyword">null</span>) &#123;  <span class="comment">//tip3</span></span><br><span class="line">          <span class="keyword">return</span> head;</span><br><span class="line">      &#125;</span><br><span class="line">      ListNode newHead = <span class="keyword">new</span> ListNode(-<span class="number">1</span>); <span class="comment">//tip1 and tip4</span></span><br><span class="line">      ListNode curr = head;</span><br><span class="line">      </span><br><span class="line">      <span class="keyword">while</span>(curr != <span class="keyword">null</span>) &#123; <span class="comment">// tip 2</span></span><br><span class="line">          ListNode tempCurr = curr;</span><br><span class="line">          curr = curr.next;</span><br><span class="line">          ListNode tempNext = newHead.next;</span><br><span class="line">          newHead.next = tempCurr;</span><br><span class="line">          newHead.next.next = tempNext;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> newHead.next;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<ol start="5">
-<li>Defining 2 pointers {walker = walker.next and runner = runner.next.next} could find middle point which will be use multiple algorithm problems. <br><br>5.1. While (runner != null &amp;&amp; runner.next != null) will make the walker to stop at ( (n/2+1), from 1 to n). <br><br>5.2. While (runner.next != null &amp;&amp; runner.next.next != null) will make the walker to stop at ( (n+1)/2 , from 1 to n). <br></li>
-</ol>
-<p>For example: <br><br>5.1. <br><br>[1 2 3 4 5]   ===&gt; walker is 3; runner is 5 <br><br>[1 2 3 4 5 6] ===&gt; walker is 4; runner is null <br></p>
-<p>5.2. <br></p>
-<p>[1 2 3 4 5]   ===&gt; walker is 3; runner is 5 <br><br>[1 2 3 4 5 6] ===&gt; walker is 3; runner is 5 <br></p>
-<p><strong><a href="https://leetcode.com/problems/palindrome-linked-list/" target="_blank" rel="noopener">Palindrome Linked List</a></strong></p>
-<figure class="highlight java"><figcaption><span>Palindrome Linked List</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPalindrome</span><span class="params">(ListNode head)</span> </span>&#123; <span class="comment">//tip3</span></span><br><span class="line">    <span class="keyword">if</span> (head == <span class="keyword">null</span> || head.next == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (head.next.next == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> head.val == head.next.val;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    Deque&lt;ListNode&gt; stack = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">    ListNode slow = head;</span><br><span class="line">    ListNode fast = head;</span><br><span class="line">    stack.offerLast(slow);</span><br><span class="line">    <span class="keyword">while</span> (fast.next!= <span class="keyword">null</span> &amp;&amp; fast.next.next != <span class="keyword">null</span>) &#123; <span class="comment">//tip5.2 </span></span><br><span class="line">        fast = fast.next.next;</span><br><span class="line">        slow = slow.next;</span><br><span class="line">        stack.offerLast(slow);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (fast.next == <span class="keyword">null</span>) &#123; <span class="comment">//will ignore the middle point if n is odd.</span></span><br><span class="line">        stack.pollLast();</span><br><span class="line">    &#125;</span><br><span class="line">    slow = slow.next;</span><br><span class="line">    <span class="keyword">while</span> (slow != <span class="keyword">null</span>) &#123;</span><br><span class="line">        ListNode target = stack.pollLast();</span><br><span class="line">        <span class="keyword">if</span> (target.val != slow.val) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        slow = slow.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> stack.size() == <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>There is no way to know the length of the linked list before counting all nodes in a loop.<br>For example, <a href="https://leetcode.com/problems/split-linked-list-in-parts/" target="_blank" rel="noopener">725 Split Linked List in Parts</a>.</p>
-<h5 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h5><p>Normally, Double Linked List Structure is used to generate special structure. </p>
-<p>E.g. <a href="https://leetcode.com/problems/lru-cache/submissions/" target="_blank" rel="noopener">LRU</a></p>
-<figure class="highlight java"><figcaption><span>LRU</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DLinkedNode</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> key;</span><br><span class="line">    <span class="keyword">int</span> value;</span><br><span class="line">    DLinkedNode prev;</span><br><span class="line">    DLinkedNode next;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> Map&lt;Integer, DLinkedNode&gt; cache = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> size;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> capacity;</span><br><span class="line">  <span class="keyword">private</span> DLinkedNode head, tail;</span><br><span class="line">    </span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">addNode</span><span class="params">(DLinkedNode node)</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Always add the new node right after head.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    node.prev = head;</span><br><span class="line">    node.next = head.next;</span><br><span class="line">    head.next.prev = node;</span><br><span class="line">    head.next = node;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">removeNode</span><span class="params">(DLinkedNode node)</span></span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Remove an existing node from the linked list.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    DLinkedNode prev = node.prev;</span><br><span class="line">    DLinkedNode next = node.next;</span><br><span class="line">    prev.next = next;</span><br><span class="line">    next.prev = prev;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">moveToHead</span><span class="params">(DLinkedNode node)</span></span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Move certain node in between to the head.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    removeNode(node);</span><br><span class="line">    addNode(node);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">private</span> DLinkedNode <span class="title">popTail</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Pop the current tail.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    DLinkedNode res = tail.prev;</span><br><span class="line">    removeNode(res);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">LRUCache</span><span class="params">(<span class="keyword">int</span> capacity)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.size = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">this</span>.capacity = capacity;</span><br><span class="line">    head = <span class="keyword">new</span> DLinkedNode();</span><br><span class="line">    <span class="comment">// head.prev = null;</span></span><br><span class="line">    tail = <span class="keyword">new</span> DLinkedNode();</span><br><span class="line">    <span class="comment">// tail.next = null;</span></span><br><span class="line">    head.next = tail;</span><br><span class="line">    tail.prev = head;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">get</span><span class="params">(<span class="keyword">int</span> key)</span> </span>&#123;</span><br><span class="line">    DLinkedNode node = cache.get(key);</span><br><span class="line">    <span class="keyword">if</span> (node == <span class="keyword">null</span>) <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    <span class="comment">// move the accessed node to the head;</span></span><br><span class="line">    moveToHead(node);</span><br><span class="line">    <span class="keyword">return</span> node.value;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">put</span><span class="params">(<span class="keyword">int</span> key, <span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">    DLinkedNode node = cache.get(key);</span><br><span class="line">    <span class="keyword">if</span>(node == <span class="keyword">null</span>) &#123;</span><br><span class="line">      DLinkedNode newNode = <span class="keyword">new</span> DLinkedNode();</span><br><span class="line">      newNode.key = key;</span><br><span class="line">      newNode.value = value;</span><br><span class="line">      cache.put(key, newNode);</span><br><span class="line">      addNode(newNode);</span><br><span class="line">      ++size;</span><br><span class="line">      <span class="keyword">if</span>(size &gt; capacity) &#123;</span><br><span class="line">        <span class="comment">// pop the tail</span></span><br><span class="line">        DLinkedNode tail = popTail();</span><br><span class="line">        cache.remove(tail.key);</span><br><span class="line">        --size;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// update the value.</span></span><br><span class="line">      node.value = value;</span><br><span class="line">      moveToHead(node);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<h5 id="Linked-List-V-S-LinkedList-List-the-actual-defined-class-in-JAVA"><a href="#Linked-List-V-S-LinkedList-List-the-actual-defined-class-in-JAVA" class="headerlink" title="Linked List V.S. LinkedList(List, the actual defined class in JAVA)"></a>Linked List V.S. LinkedList(List, the actual defined class in JAVA)</h5><figure class="highlight java"><figcaption><span>Define LinkedList</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">List&lt;E&gt; list = <span class="keyword">new</span> LinkedList&lt;E&gt;()</span><br><span class="line"><span class="comment">// &lt;E&gt; must not be any primitive types. </span></span><br><span class="line"><span class="comment">// Declare List with implementing LinkedList: it`s polymorphism. &lt;br&gt;</span></span><br><span class="line"><span class="comment">// Eager computation: e.g size(). Something will maintain value on time.</span></span><br></pre></td></tr></table></figure>
-<h6 id="List-Implmentation"><a href="#List-Implmentation" class="headerlink" title="List Implmentation"></a>List Implmentation</h6><p><strong> Size and Capacity</strong>  <br><br>Capacity indicates actual size in memory for the list. <br><br>Size means the used size in memory for the list.<br>E.g. <br><br>array = {1,2,3,4,5,6,7,8,9,10,null,null,null,null,null} <br><br>size = 10 <br><br>capacity = 15 <br></p>
-<p>When you call add(int index, E e): <br></p>
-<ol>
-<li>Expand if necessary</li>
-<li>Move all elements after index by 1</li>
-<li>Set the element at index, size++ </li>
-</ol>
-<p>List&lt;&gt; could be impelmentated by LinkedList&lt;&gt; or ArrayList&lt;&gt;</p>
-<p><strong>ArrayList V.S. LinkedList</strong> <br></p>
-<ol>
-<li>Memory Layout <br><br>1.1. ArrayList: consecutive allocated memory space, no overhead <br><br>1.2. LinkedList: non-consecutive, overhead of multiple objects with the “next” revference.<br></li>
-<li>(Random, known index) access time <br><br>2.1. ArrayList: O(1) -&gt; calculating the offset. <br><br>2.2. LinkedList: O(n) worst case -&gt; it should be searched from head. <br></li>
-<li>(non-sorted, unknow index, but know the value) Search time  <br><br>3.1. ArrayList: O(n) <br><br>3.2. LinkedList: O(n) <br></li>
-<li>(sorted, unknow index, but know the value) Search time <br><br>4.1. ArrayList: O(logn) -&gt; binary search <br><br>4.2. LinkedList: O(n) -&gt; Search All. There is benifit from binary search.  <br></li>
-</ol>
-<p><strong> Choosing ArrayList or LinkedList</strong>  <br></p>
-<ol>
-<li>If you have a log of random access operations. ==&gt; ArrayList</li>
-<li>If you alwasy add/remove at end. ==&gt; LinkedList</li>
-<li>When the time complexity is similar for using ArrayList and LinkedList ==&gt; ArrayList (no references)</li>
-<li>Stack and Vector class not recommended. Vector =&gt; ArrayList. Stack ==&gt; LinkedList.</li>
-</ol>
-<p><strong>Operations</strong> <br></p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Operation</th>
-<th style="text-align:left">ArrayList</th>
-<th style="text-align:left">LinkedList</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">Get(int index) at head/tail</td>
-<td style="text-align:left">O(1)</td>
-<td style="text-align:left">O(1)</td>
-</tr>
-<tr>
-<td style="text-align:left">Get(int index) in middle</td>
-<td style="text-align:left">O(1)</td>
-<td style="text-align:left"><span style="color:blue">O(n)</span></td>
-</tr>
-<tr>
-<td style="text-align:left">Set(int index) at head/tail</td>
-<td style="text-align:left">O(1)</td>
-<td style="text-align:left">O(1)</td>
-</tr>
-<tr>
-<td style="text-align:left">Set(int index) in middle</td>
-<td style="text-align:left">O(1)</td>
-<td style="text-align:left"><span style="color:blue">O(n)</span></td>
-</tr>
-<tr>
-<td style="text-align:left">Add(int index, E e) in middle</td>
-<td style="text-align:left">O(n)</td>
-<td style="text-align:left">O(n)</td>
-</tr>
-<tr>
-<td style="text-align:left">Add(int index, E e) at head</td>
-<td style="text-align:left"><span style="color:blue">O(n)</span></td>
-<td style="text-align:left">O(1)</td>
-</tr>
-<tr>
-<td style="text-align:left">Add (E, e) at tail</td>
-<td style="text-align:left">O(1)</td>
-<td style="text-align:left">O(1)</td>
-</tr>
-<tr>
-<td style="text-align:left">Remove(int index) at head</td>
-<td style="text-align:left"><span style="color:blue">O(n)</span></td>
-<td style="text-align:left">O(1)</td>
-</tr>
-<tr>
-<td style="text-align:left">Remove(int index) at tail</td>
-<td style="text-align:left">O(1)</td>
-<td style="text-align:left">O(1)</td>
-</tr>
-<tr>
-<td style="text-align:left">Remove(int index) at middle</td>
-<td style="text-align:left">O(n)</td>
-<td style="text-align:left">O(n)</td>
-</tr>
-<tr>
-<td style="text-align:left">Size()</td>
-<td style="text-align:left">O(1)</td>
-<td style="text-align:left">O(1)</td>
-</tr>
-<tr>
-<td style="text-align:left">isEmpty()</td>
-<td style="text-align:left">O(1)</td>
-<td style="text-align:left">O(1)</td>
-</tr>
-</tbody>
-</table>
-<p>LinkedList is good at manipulating data in head or tail. <br><br>ArrayList is good at random search. <br></p>
-<p>However, the ArrayList may be extended if there is no enough space to save new insersted value, the time complexity is still O(1) as amortized time complexity. New extended space will be (1+n) * 2 in Java. </p>
-
-      
-    </div>
-    
-  </div>
-  
-  
-</article>
-
-  
 
 
   <nav id="page-nav">
@@ -1030,7 +929,7 @@ ga('send', 'pageview');
   <div class="widget-box">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/03/">March 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/03/">March 2019</a></li></ul>
     </div>
   </div>
 
@@ -1040,6 +939,10 @@ ga('send', 'pageview');
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/DexWebSite/2020/10/03/Java-Base-Principle-III/">Java Base Concurrency</a>
+          </li>
         
           <li>
             <a href="/DexWebSite/2020/09/09/Algorithm-Interval/">Algorithm Interval</a>
@@ -1055,10 +958,6 @@ ga('send', 'pageview');
         
           <li>
             <a href="/DexWebSite/2020/05/20/Algorithm-Binary-Search-Tree/">Algorithm Binary Search Tree</a>
-          </li>
-        
-          <li>
-            <a href="/DexWebSite/2020/05/13/Algorithm-PriorityQueue/">Algorithm Binary Tree</a>
           </li>
         
       </ul>
