@@ -75,6 +75,95 @@ ga('send', 'pageview');
       <div id="middlecontent" title class="global-width sidebar-left">
         <section id="main">
   
+    <article id="post-React-Base-Principle" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/DexWebSite/2020/01/09/React-Base-Principle/">React Base Principle</a>
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/DexWebSite/2020/01/09/React-Base-Principle/" class="article-date">
+  <time datetime="2020-01-09T19:17:00.000Z" itemprop="datePublished">2020-01-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/DexWebSite/categories/React-Development/">React Development</a>
+  </div>
+
+    
+  </div>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <h3 id="React"><a href="#React" class="headerlink" title="React"></a>React</h3><p><a href="https://reactjs.org/" target="_blank" rel="noopener">React</a> is a Javascript library for building user interfaces. It defines a new idea(Reactive Programming) to create UI, UI = render (data). </p>
+<p><a href="https://www.w3schools.com/whatis/whatis_htmldom.asp" target="_blank" rel="noopener">HTML DOM Tree</a> (Document Object Model) is constructed as a tree of Objects for HTML. Brower will refresh whole DOM tree if there is any change. Hence, Web developers prefer reducing DOM manipulation to save cost.</p>
+<p><a href="https://reactjs.org/docs/faq-internals.html" target="_blank" rel="noopener">Virtual DOM</a> is a representation of a UI is kept in memory and synced with real HTML DOM tree. It will notify which DOM is changed to reduce cost for page change.</p>
+<p>High Cohesion: React allows css, js, and html are in the same js file.</p>
+<p>Low Coupling: React define components in a easy way with standard interface. </p>
+<p>React Refresh Rule: Any change in “prop” and “state” will cause Virtual DOM Refresh.</p>
+<p>Component Lifcycle: Mounting (first render in DOM tree), Updating (refresh), Unmounting(Delete from DOM tree).</p>
+<p>Refresh: React contains “prop” and “state” data. The page will be refreshed whenever “prop” or “state” is changed. However, “prop” is used for outside of the component, and “state” is used of inside of the component becuase the component should not change value in “props”. Both of “prop” and “state” are Javascript objects.</p>
+<p><a href="https://reactjs.org/docs/react-component.html" target="_blank" rel="noopener"><em>Lifecycle</em> Updated on 01/09/2020</a> <br></p>
+<p>Mounting: constructor() –&gt; static getDerivedStateFromProps(props, state) –&gt; render() –&gt; componentDidMount() <br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">/*If there are multiple sub-components are mounting, the componentDidMount() will be called after all sub-components are rendered(). The below logs shows the mounting lifecycle.*/</span><br><span class="line"></span><br><span class="line">enter constructor: First</span><br><span class="line">enter render First</span><br><span class="line">enter constructor: Second</span><br><span class="line">enter render Second</span><br><span class="line">enter constructor: Third</span><br><span class="line">enter render Third</span><br><span class="line">enter componentDidMount First</span><br><span class="line">enter componentDidMount Second</span><br><span class="line">enter componentDidMount Third</span><br></pre></td></tr></table></figure></p>
+<p>Updating: static getDerivedStateFromProps(props, state) –&gt; shouldComponentUpdate(nextProps, nextState) –&gt; render() –&gt; getSnapshotBeforeUpdate(prevProps, prevState) –&gt; componentDidUpdate(prevProps, prevState, snapshot) <br></p>
+<p>unmounting: componentWillUnmount() <br></p>
+<p>legacy： componentWillMount() –&gt; Unsafe <br></p>
+<h5 id="Quick-Procss"><a href="#Quick-Procss" class="headerlink" title="Quick Procss:"></a>Quick Procss:</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm install --global create-react-app</span><br><span class="line">create-react-app dex_react_app</span><br><span class="line">cd dex_react_app</span><br><span class="line">npm start</span><br></pre></td></tr></table></figure>
+<p>Then a initial page will appear in <a href="http://localhost:3000/" target="_blank" rel="noopener">http://localhost:3000/</a>.</p>
+<h5 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h5><ul>
+<li><p>JSX (JavaScript eXtension) allows developers use defined components as the same as using HTML element in .js files. The different between React component and HTML element is checking whether the first character is capitalized or not.  Also, JSX will define render scope to improve efficency.<br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ReactDOM.render(&lt;App /&gt;, document.getElementById(&apos;root&apos;));</span><br><span class="line">//Different example</span><br><span class="line">React: &lt;App onClick = ...&gt;</span><br><span class="line">HTML: &lt;div onclick = ...&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>pckage.json defines some packages that will be used in current project. Runing “npm start” means running “react-scripts start” in npm package which is added by “create-react-app”. </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;start&quot;: &quot;react-scripts start&quot;,</span><br><span class="line">    &quot;build&quot;: &quot;react-scripts build&quot;,</span><br><span class="line">    &quot;test&quot;: &quot;react-scripts test --env=jsdom&quot;,</span><br><span class="line">    &quot;eject&quot;: &quot;react-scripts eject&quot; </span><br><span class="line">    //The &quot;eject&quot; command will add &quot;scripts&quot; and &quot;config&quot;. </span><br><span class="line">    //When running &quot;npm start&quot;, it will run &quot;react-scripts start&quot;</span><br><span class="line">    //with defined configuration in config\webpack.config.dev.js.</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Every react page, class, or component should import React because JSX will translate content as React expressions. <br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import React from &apos;react&apos;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>prop is used to pass parameters from outside to inside. It looks like setup attributes to HTML element. However, HTML only passes string value for each attribute. In React, it could pass any JavaScript data type. Any Non-String data should be indicated with “{}” <br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;SampleButton </span><br><span class="line"> id = &apos;sample&apos;</span><br><span class="line"> borderWidth = &#123;2&#125; </span><br><span class="line"> onClick = &#123;onButtonClick&#125;</span><br><span class="line"> style=&#123;&#123;color:&apos;red&apos;&#125;&#125; // &#123;color:&apos;red&apos;&#125; is an object.</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Render() should only return one element. For more return components, it could be covered by div.<br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">reder() &#123;</span><br><span class="line">	&lt;div&gt;</span><br><span class="line">    	....</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>If any component want to define the constructor(props), it should write super(props) in the first line. Otherwise, the instances of this component could not get props. <strong>The constructor is defined because of 2 reasons: Init State and Bind Functions</strong> <br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class Test extends Component&#123;</span><br><span class="line">	constructor(props) &#123;</span><br><span class="line">    	super(props);</span><br><span class="line">        ...</span><br><span class="line">        this.state = &#123;</span><br><span class="line">        	...</span><br><span class="line">        &#125;</span><br><span class="line">        this.func = this.func.bind(this)；</span><br><span class="line">        this.func1 = ::this.func1；</span><br><span class="line">        /*Both of them will bind functions, however the 2nd solution is not recognized in some broswers.*/</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>propTypes is used to define prop standards. However, this feature will cause more cost and it is useful only for developers. Suggestion, it could be used in testing period. Then, this part could be deleted it before deploying the program. <br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">test.propTypes = &#123;</span><br><span class="line">	key: PropTypes.string.isRequired,</span><br><span class="line">    value: PropTypes.number</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>defaultProps makes better program. <br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">constructor(props) &#123;</span><br><span class="line">    this.state= &#123;</span><br><span class="line">    	value: props.initValue || 0,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">constructor(props) &#123;</span><br><span class="line">    this.state= &#123;</span><br><span class="line">    	value: props.initValue </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">test.defaultProps = &#123;</span><br><span class="line">    initValue:0</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>access state in correct way to refresh page.<br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">constructor(props) &#123;</span><br><span class="line">    this.state= &#123;</span><br><span class="line">    	value: props.initValue ,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">\\read</span><br><span class="line">const &#123;value&#125; = this.state,</span><br><span class="line">\\write</span><br><span class="line">this.state.value = value; // it will change value, but not refresh page </span><br><span class="line">this.setState((state) =&gt; &#123; // it will change value and refresh code</span><br><span class="line">	var: var,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Showing Component priority with ‘caption’ parameter in props. <br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">componentWillMount()&#123;</span><br><span class="line">	console.log(&apos;entry componentWillMount &apos; + this.props.caption).</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Context feature is supplied by React for accessing content in whole DOM tree. It means every node in DOM Tree could access the some context without passing props. Normally, it is used for accessing store in Redux.  <br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;Provider store = &#123;store&#125;&gt;  // store passes to provider component.</span><br><span class="line">	&lt;Child /&gt;</span><br><span class="line">&lt;/Provider&gt;</span><br><span class="line"></span><br><span class="line">import &#123;Component&#125; from &apos;react&apos;;</span><br><span class="line">class Provider extends Component &#123;</span><br><span class="line">	getChildContext() &#123;  // define it as context that every children could access this context.</span><br><span class="line">    	return &#123;</span><br><span class="line">        	store: this.props.store,</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    render() &#123;</span><br><span class="line">    	this.props.children;   // current component will only render childresn</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Child extends Component &#123;</span><br><span class="line">	constructor(props, context) &#123; </span><br><span class="line">    	super(props, context);  // Could be replace as super(...arguments);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+  
+</article>
+
+  
     <article id="post-Algorithm-Linked-List" class="article global-container article-type-post" itemscope itemprop="blogPost">
   
     <header class="article-header">
@@ -997,71 +1086,6 @@ ga('send', 'pageview');
 </article>
 
   
-    <article id="post-C-Lesson-4-Function-1" class="article global-container article-type-post" itemscope itemprop="blogPost">
-  
-    <header class="article-header">
-      
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/DexWebSite/2019/09/21/C-Lesson-4-Function-1/">C# Lesson 4 - Function</a>
-    </h1>
-  
-
-    </header>
-  
-  <div class="article-meta">
-    <a href="/DexWebSite/2019/09/21/C-Lesson-4-Function-1/" class="article-date">
-  <time datetime="2019-09-21T18:17:00.000Z" itemprop="datePublished">2019-09-21</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/DexWebSite/categories/C-Programming-Language/">C# Programming Language</a>
-  </div>
-
-    
-  </div>
-  
-
-  <div class="article-inner">
-    
-    <div class="article-content article-content-cloud" itemprop="articleBody">
-      
-        <h3 id="Function"><a href="#Function" class="headerlink" title="Function"></a>Function</h3><p>Funtion is also named as “Method”.</p>
-<p>E.g.</p>
-<figure class="highlight c"><figcaption><span># Function Defination</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;Access Specifier&gt; &lt;Return Type&gt; &lt;Method Name&gt;(Parameter List)</span><br><span class="line">&#123;</span><br><span class="line">   Method Body</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<ul>
-<li>Access sepcifier: It defines accessibiliy from others.</li>
-<li>Return type: It defines return type. If there is no value to return, it should be <strong>void</strong>.</li>
-<li>Method name: A method Identifier</li>
-<li>Parameter list: It defines variables from outside. It is optional.</li>
-<li>Method body: It defines logic for method.</li>
-</ul>
-<h3 id="Passing-Parameters"><a href="#Passing-Parameters" class="headerlink" title="Passing Parameters"></a>Passing Parameters</h3><p>In C#, it defines 3 ways to pass parameters to a function.</p>
-<ul>
-<li>Pass by Value: It is a <strong>default</strong> way to pass parameters. When a method recieve parameters as “Pass by Value”, it will create new memory to copy and save these parameters. When the copid value is changed, it will not affect the value from outside.</li>
-</ul>
-<p>E.g. </p>
-<figure class="highlight c"><figcaption><span># Pass by Value</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">namespace</span> CalculatorApplication</span><br><span class="line">&#123;</span><br><span class="line">   <span class="class"><span class="keyword">class</span> <span class="title">NumberManipulator</span></span></span><br><span class="line"><span class="class">   &#123;</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function">      </span>&#123;</span><br><span class="line">         <span class="keyword">int</span> temp;</span><br><span class="line">         </span><br><span class="line">         temp = x; </span><br><span class="line">         x = y;    </span><br><span class="line">         y = temp; </span><br><span class="line">      &#125;</span><br><span class="line">      </span><br><span class="line">      <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span><span class="params">(<span class="built_in">string</span>[] args)</span></span></span><br><span class="line"><span class="function">      </span>&#123;</span><br><span class="line">         NumberManipulator n = <span class="keyword">new</span> NumberManipulator();</span><br><span class="line">         <span class="comment">/* local varaible */</span></span><br><span class="line">         <span class="keyword">int</span> a = <span class="number">100</span>;</span><br><span class="line">         <span class="keyword">int</span> b = <span class="number">200</span>;</span><br><span class="line">         </span><br><span class="line">         Console.WriteLine(<span class="string">"Before sawp，a： &#123;0&#125;"</span>, a);</span><br><span class="line">         Console.WriteLine(<span class="string">"Before sawp，b： &#123;0&#125;"</span>, b);</span><br><span class="line">         </span><br><span class="line">         <span class="comment">/* call swap method */</span></span><br><span class="line">         n.swap(a, b);</span><br><span class="line">         </span><br><span class="line">         Console.WriteLine(<span class="string">"After sawp，a： &#123;0&#125;"</span>, a);</span><br><span class="line">         Console.WriteLine(<span class="string">"After sawp，b： &#123;0&#125;"</span>, b);</span><br><span class="line">         </span><br><span class="line">         Console.ReadLine();</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<ul>
-<li>Pass by Refence: The method will get the memory address of the passed parameters. All changes in this method will be directly affected in memory. </li>
-</ul>
-<figure class="highlight c"><figcaption><span># Pass by Reference</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">namespace</span> CalculatorApplication</span><br><span class="line">&#123;</span><br><span class="line">   <span class="class"><span class="keyword">class</span> <span class="title">NumberManipulator</span></span></span><br><span class="line"><span class="class">   &#123;</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(ref <span class="keyword">int</span> x, ref <span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function">      </span>&#123;</span><br><span class="line">         <span class="keyword">int</span> temp;</span><br><span class="line">         </span><br><span class="line">         temp = x; </span><br><span class="line">         x = y;    </span><br><span class="line">         y = temp; </span><br><span class="line">      &#125;</span><br><span class="line">      </span><br><span class="line">      <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span><span class="params">(<span class="built_in">string</span>[] args)</span></span></span><br><span class="line"><span class="function">      </span>&#123;</span><br><span class="line">         NumberManipulator n = <span class="keyword">new</span> NumberManipulator();</span><br><span class="line">         <span class="comment">/* local varaible */</span></span><br><span class="line">         <span class="keyword">int</span> a = <span class="number">100</span>;</span><br><span class="line">         <span class="keyword">int</span> b = <span class="number">200</span>;</span><br><span class="line">         </span><br><span class="line">         Console.WriteLine(<span class="string">"Before sawp，a： &#123;0&#125;"</span>, a);</span><br><span class="line">         Console.WriteLine(<span class="string">"Before sawp，b： &#123;0&#125;"</span>, b);</span><br><span class="line">         </span><br><span class="line">         <span class="comment">/* call swap method */</span></span><br><span class="line">         n.swap(ref a, ref b);</span><br><span class="line">         </span><br><span class="line">         Console.WriteLine(<span class="string">"After sawp，a： &#123;0&#125;"</span>, a);</span><br><span class="line">         Console.WriteLine(<span class="string">"After sawp，b： &#123;0&#125;"</span>, b);</span><br><span class="line">         </span><br><span class="line">         Console.ReadLine();</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<ul>
-<li>Pass Out: It allows method to receive parameters that are not defined and returns parameters back. </li>
-</ul>
-<figure class="highlight c"><figcaption><span># Pass Out</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">namespace</span> CalculatorApplication</span><br><span class="line">&#123;</span><br><span class="line">   <span class="class"><span class="keyword">class</span> <span class="title">NumberManipulator</span></span></span><br><span class="line"><span class="class">   &#123;</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getValue</span><span class="params">(ref <span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function">      </span>&#123;</span><br><span class="line">         <span class="keyword">int</span> temp = <span class="number">5</span>;</span><br><span class="line">         x = temp</span><br><span class="line">      &#125;</span><br><span class="line">      </span><br><span class="line">      <span class="keyword">static</span> <span class="keyword">void</span> Main(<span class="built_in">string</span>[] args)</span><br><span class="line">      &#123;</span><br><span class="line">         NumberManipulator n = <span class="keyword">new</span> NumberManipulator();</span><br><span class="line">         <span class="comment">/* local varaible */</span></span><br><span class="line">         <span class="keyword">int</span> a = <span class="number">100</span>;</span><br><span class="line">         </span><br><span class="line">         Console.WriteLine(<span class="string">"Before，a： &#123;0&#125;"</span>, a);</span><br><span class="line">      </span><br><span class="line">         <span class="comment">/* call swap method */</span></span><br><span class="line">         n.getValue(out a);</span><br><span class="line">         </span><br><span class="line">         Console.WriteLine(<span class="string">"After，a： &#123;0&#125;"</span>, a);</span><br><span class="line">         </span><br><span class="line">         </span><br><span class="line">         Console.ReadLine();</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="Comapare-to-JAVA"><a href="#Comapare-to-JAVA" class="headerlink" title="Comapare to JAVA"></a>Comapare to JAVA</h3><p>JAVA has no principle for “Pass by Value” and “Pass by Referance” and “Pass Out”. </p>
-<p>If a method receive parameters, it will do “Pass by Value” for primitive parameters. Also, it will do “Pass by Value” for non-primitive parameters. </p>
-
-      
-    </div>
-    
-  </div>
-  
-  
-</article>
-
-  
 
 
   <nav id="page-nav">
@@ -1111,6 +1135,10 @@ ga('send', 'pageview');
       <ul>
         
           <li>
+            <a href="/DexWebSite/2020/10/10/C-Lesson-6-Array/">Java Concurrency II</a>
+          </li>
+        
+          <li>
             <a href="/DexWebSite/2020/10/03/Java-Base-Principle-III/">Java Concurrency I</a>
           </li>
         
@@ -1124,10 +1152,6 @@ ga('send', 'pageview');
         
           <li>
             <a href="/DexWebSite/2020/06/22/Algorithm-Graph/">Algorithm Graph</a>
-          </li>
-        
-          <li>
-            <a href="/DexWebSite/2020/05/20/Algorithm-Binary-Search-Tree/">Algorithm Binary Search Tree</a>
           </li>
         
       </ul>
