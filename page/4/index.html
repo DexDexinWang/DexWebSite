@@ -75,6 +75,204 @@ ga('send', 'pageview');
       <div id="middlecontent" title class="global-width sidebar-left">
         <section id="main">
   
+    <article id="post-Hexo-Guide" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/DexWebSite/2019/05/01/Hexo-Guide/">Hexo Guide</a>
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/DexWebSite/2019/05/01/Hexo-Guide/" class="article-date">
+  <time datetime="2019-05-02T05:30:00.000Z" itemprop="datePublished">2019-05-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/DexWebSite/categories/Kits/">Kits</a>
+  </div>
+
+    
+  </div>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <h1 id="Hexo-Guide"><a href="#Hexo-Guide" class="headerlink" title="Hexo Guide"></a><a href="https://hexo.io/" target="_blank" rel="noopener">Hexo Guide</a></h1><blockquote>
+<p>Hexo is a fast, simple and powerful blog framework. You write posts in Markdown (or other languages) and Hexo generates static files with a beautiful theme in seconds.</p>
+</blockquote>
+<h3 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h3><p><strong> Pre Requirements: </strong></p>
+<ul>
+<li>Node.js (at least 6.9)</li>
+<li>Git</li>
+</ul>
+<p><strong> WIndows Installation: </strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<p><strong> Linxu Installation: </strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install git-core / sudo yum install git-core</span><br><span class="line">$ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash</span><br><span class="line">$ nvm install stable</span><br><span class="line">$ install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<p><strong> Initlization: </strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ cd &lt;git folder&gt;   (optional)</span><br><span class="line">$ hexo init &lt;folder&gt;</span><br><span class="line">$ cd &lt;folder&gt;</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure>
+<h3 id="Configration"><a href="#Configration" class="headerlink" title="Configration"></a>Configration</h3><p>config file: _config.yml</p>
+<h3 id="Commands"><a href="#Commands" class="headerlink" title="Commands"></a>Commands</h3><p><strong> Init </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init [folder]</span><br></pre></td></tr></table></figure></p>
+<p><strong> New </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure></p>
+<p><strong> Generate </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new &quot;post title with whitespace&quot;</span><br></pre></td></tr></table></figure></p>
+<p><strong> PUblish </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate  </span><br><span class="line">OR</span><br><span class="line">$ hexo g</span><br></pre></td></tr></table></figure></p>
+<p><strong> Start Server </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server  </span><br><span class="line">OR</span><br><span class="line">$ hexo s</span><br></pre></td></tr></table></figure></p>
+<p><strong> Deploy </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy  </span><br><span class="line">OR</span><br><span class="line">$ hexo d</span><br></pre></td></tr></table></figure></p>
+<p><strong> Clean </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br></pre></td></tr></table></figure></p>
+<p><strong> List </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo list &lt;type&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Hexo-Admin"><a href="#Hexo-Admin" class="headerlink" title="Hexo Admin"></a><a href="https://github.com/jaredly/hexo-admin" target="_blank" rel="noopener">Hexo Admin</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ npm install --save hexo-admin</span><br><span class="line">$ hexo server -d</span><br><span class="line">$ open http://localhost:4000/admin/</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+  </div>
+  
+  
+</article>
+
+  
+    <article id="post-How-to-answer-algorithm-Questions" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/DexWebSite/2019/05/01/How-to-answer-algorithm-Questions/">What is Coding Interviews </a>
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/DexWebSite/2019/05/01/How-to-answer-algorithm-Questions/" class="article-date">
+  <time datetime="2019-05-02T05:26:00.000Z" itemprop="datePublished">2019-05-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/DexWebSite/categories/Algorithm/">Algorithm</a>
+  </div>
+
+    
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/DexWebSite/tags/Principle/">Principle</a></li></ul>
+
+  </div>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <h3 id="Interviewer-Conditions"><a href="#Interviewer-Conditions" class="headerlink" title="Interviewer Conditions"></a>Interviewer Conditions</h3><p>Coding Interview is going to select a perfect matched programer to work together. Hence, interviwers will assume that interviewees have already has coding experience and focus on communication skill and working style.</p>
+<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>Normally, interviewers will ask project related questions such as Binary Search Serialization or Deserilization, mutiple threads, timing LRU, and so on. If interviewees are not familier with these questions, interviewers will try to find advatages of these interviewees by asking open questions or hard coding questions. </p>
+<h3 id="Communication"><a href="#Communication" class="headerlink" title="Communication"></a>Communication</h3><p>Interviewers will check communication skill by ask coding questions. They want interviewees ask some questions before typing code because real tasks are not the same as coding questions. It is easier to cause mistakes by ignoring inconspicuous changes. </p>
+<p>You can follow below steps to answer algorithm questions:</p>
+<p><strong>Before</strong> </p>
+<ul>
+<li>Ask Questions to document your assumptions. (Limitation, Value Type, Focus on Space or Time)</li>
+<li>Briefly Explain your approach or solution to show how you intend to solve the problem. (2 or 3 sentences)</li>
+</ul>
+<blockquote>
+<p>When you make some assutions, the interviewers may ask you change your assumptions. They want to see your reaction to meet unknow questions.For example, if you assume time cost is higher priority, they may ask you to assume sapce cost is hither priorty. </p>
+</blockquote>
+<p><strong>Coding</strong></p>
+<ul>
+<li>Provide code comments where applicable. (the # of parameters of a method are over 3, that should write comment);</li>
+</ul>
+<blockquote>
+<p>Bug Free and complete on time.</p>
+</blockquote>
+<p><strong>After</strong></p>
+<ul>
+<li>Explain the big-O run time complexity of your solution. Justify your answer.</li>
+<li>Identify and additional data structures you used and justify why you used them. (Why do you use this structure? Is that necessary?).</li>
+<li>Only provide your best answer to each part of the question.</li>
+</ul>
+<blockquote>
+<p>Then, you could run some corner cases to check code logic. Next, interviwers will ask follow-up questions in order to check your knowledge and patience. </p>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+  
+</article>
+
+  
+    <article id="post-ap1" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/DexWebSite/2019/03/24/ap1/">Algorithm Principle #1</a>
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/DexWebSite/2019/03/24/ap1/" class="article-date">
+  <time datetime="2019-03-25T05:44:00.000Z" itemprop="datePublished">2019-03-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/DexWebSite/categories/Algorithm/">Algorithm</a>
+  </div>
+
+    
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/DexWebSite/tags/Principle/">Principle</a></li></ul>
+
+  </div>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <h3 id="Data-structure"><a href="#Data-structure" class="headerlink" title="Data structure"></a>Data structure</h3><p><a href="https://en.wikipedia.org/wiki/Data_structure" target="_blank" rel="noopener">WIKI</a>: </p>
+<p>It is a data organization, management and storage format that enables efficient access and modifications.</p>
+<p><a href="https://www.geeksforgeeks.org/overview-of-data-structures-set-1-linear-data-structures/" target="_blank" rel="noopener">GG</a>:</p>
+<p>It is a particular way of organizing data in a computer so that it can be used efficiently.</p>
+<p>Both of these definations refer two key keywords: origanizaiton and efficient. Programmers will use certain methods to originize data to reduce time cost and space cost which are the most important meansures to judge algorithm solutions. </p>
+<h3 id="Time-Complexity"><a href="#Time-Complexity" class="headerlink" title="Time Complexity"></a>Time Complexity</h3><p><a href="https://en.wikipedia.org/wiki/Time_complexity" target="_blank" rel="noopener">WIKI</a><br>Time complexity describes the amount of time it takes to run an algorithm. Time complexity is commonly estimated by counts the number of elementary operations performed by the algorhm.</p>
+<p>E.g.<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">10</span>; i++) &#123; &lt;-- loop <span class="number">10</span> times</span><br><span class="line">	sum = sum + i;  &lt;-- one elementary operation</span><br><span class="line">&#125; &lt;-- total should time complexity is <span class="number">10</span>.</span><br></pre></td></tr></table></figure></p>
+<p>Normally, time compleixty is increased with increasing the number of input. All algorithm problems consider input as “n”.<br>Mostly, time compleixty of solving an algorithm problem could be random number in a range such as from n to n^2, programers commonly consider the worst-case time complity such O(n), O(nlogn), O(n^2) and so on.</p>
+<p>Theta(n): tight bound<br>Omega(n): lower bound</p>
+<h3 id="Space-Complexity"><a href="#Space-Complexity" class="headerlink" title="Space Complexity"></a>Space Complexity</h3><p><a href="https://en.wikipedia.org/wiki/Space_complexity" target="_blank" rel="noopener">WIKI</a></p>
+<p>The space compleixty of an algorithm or a computer program is the amount of momery space required to solve an instance of the computer problem as a function of the size of the input. </p>
+<p>In other words, how much memory does it need to run the problem. </p>
+<p>However, this defination is not used to answer algorithm questions during interviews. Because interviwers wants “Auxiliary Space Compleixty”. </p>
+<p><strong>Auxiliary</strong> Space complexity: how much extra space or temporary space will be used by an algorithm. </p>
+<h3 id="Common-Data-Structures"><a href="#Common-Data-Structures" class="headerlink" title="Common Data Structures"></a>Common Data Structures</h3><ol>
+<li>Array</li>
+<li>Linked List</li>
+<li>Stack</li>
+<li>Queue</li>
+<li>Tree </li>
+<li>Heap</li>
+<li>Graph</li>
+<li>Hash Table</li>
+</ol>
+<p>Only “Array” is continuous physical strucutre in memory. Others are logical structure.</p>
+
+      
+    </div>
+    
+  </div>
+  
+  
+</article>
+
+  
     <article id="post-markdownExample" class="article global-container article-type-post" itemscope itemprop="blogPost">
   
     <header class="article-header">
@@ -189,7 +387,7 @@ ga('send', 'pageview');
 <h2 id="Credits"><a href="#Credits" class="headerlink" title="Credits"></a>Credits</h2><p><strong>Marxico</strong> was first built upon <a href="http://dillinger.io" target="_blank" rel="noopener">Dillinger</a>, and the newest version is almost based on the awesome <a href="http://stackedit.io" target="_blank" rel="noopener">StackEdit</a>. Acknowledgments to them and other incredible open source projects!</p>
 <h2 id="Feedback-amp-Bug-Report"><a href="#Feedback-amp-Bug-Report" class="headerlink" title="Feedback &amp; Bug Report"></a>Feedback &amp; Bug Report</h2><ul>
 <li>Twitter: <a href="https://twitter.com/gock2" target="_blank" rel="noopener">@gock2</a></li>
-<li>Email: <a href="mailto:&#104;&#117;&#115;&#x74;&#103;&#x6f;&#99;&#x6b;&#64;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#99;&#x6f;&#x6d;" target="_blank" rel="noopener">&#104;&#117;&#115;&#x74;&#103;&#x6f;&#99;&#x6b;&#64;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#99;&#x6f;&#x6d;</a></li>
+<li>Email: <a href="mailto:&#x68;&#117;&#115;&#116;&#103;&#x6f;&#99;&#x6b;&#64;&#x67;&#109;&#x61;&#x69;&#108;&#x2e;&#x63;&#x6f;&#109;" target="_blank" rel="noopener">&#x68;&#117;&#115;&#116;&#103;&#x6f;&#99;&#x6b;&#64;&#x67;&#109;&#x61;&#x69;&#108;&#x2e;&#x63;&#x6f;&#109;</a></li>
 </ul>
 <hr>
 <p>Thank you for reading this manual. Now please press <code>Ctrl + M</code> and click <code>Link with Evernote</code>. Enjoy your <strong>Marxico</strong> journey!</p>
@@ -253,23 +451,23 @@ ga('send', 'pageview');
       <ul>
         
           <li>
+            <a href="/DexWebSite/2020/10/11/Design-Data-Intensive-Note-5/">Design Data-Intensive Note #5</a>
+          </li>
+        
+          <li>
+            <a href="/DexWebSite/2020/10/11/Design-Data-Intensive-Note-4/">Design Data-Intensive Note #4</a>
+          </li>
+        
+          <li>
+            <a href="/DexWebSite/2020/10/11/Design-Data-Intensive-Note-3/">Design Data-Intensive Note #3</a>
+          </li>
+        
+          <li>
             <a href="/DexWebSite/2020/10/10/Design-Data-Intensive-Note-2/">Design Data-Intensive Note #2</a>
           </li>
         
           <li>
             <a href="/DexWebSite/2020/10/10/Design-Data-Intensive-Applications/">Design Data-Intensive Note #1</a>
-          </li>
-        
-          <li>
-            <a href="/DexWebSite/2020/10/10/C-Lesson-6-Array/">Java Concurrency II</a>
-          </li>
-        
-          <li>
-            <a href="/DexWebSite/2020/10/03/Java-Base-Principle-III/">Java Concurrency I</a>
-          </li>
-        
-          <li>
-            <a href="/DexWebSite/2020/09/09/Algorithm-Interval/">Algorithm Interval</a>
           </li>
         
       </ul>

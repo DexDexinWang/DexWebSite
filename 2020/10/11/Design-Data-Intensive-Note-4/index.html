@@ -18,22 +18,22 @@ ga('send', 'pageview');
 
 
   
-  <title>Redux Base Principle | Dex Personal Website</title>
+  <title>Design Data-Intensive Note #4 | Dex Personal Website</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
   
-  <meta name="description" content="ReduxThe disadvantages of using react:  Pass values from ancenstor to grandchild that parent levels will not use the vlaues. Keep consistency between component and sub-components.   Hence, MVC or Flux">
+  <meta name="description" content="Encoding and Evolution">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Redux Base Principle">
-<meta property="og:url" content="http://dexdexinwang.github.io/DexWebSite/2020/01/09/Redux-Base-Principle/index.html">
+<meta property="og:title" content="Design Data-Intensive Note #4">
+<meta property="og:url" content="http://dexdexinwang.github.io/DexWebSite/2020/10/11/Design-Data-Intensive-Note-4/index.html">
 <meta property="og:site_name" content="Dex Personal Website">
-<meta property="og:description" content="ReduxThe disadvantages of using react:  Pass values from ancenstor to grandchild that parent levels will not use the vlaues. Keep consistency between component and sub-components.   Hence, MVC or Flux">
+<meta property="og:description" content="Encoding and Evolution">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-09-21T02:56:34.561Z">
+<meta property="og:updated_time" content="2020-10-12T03:37:37.425Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Redux Base Principle">
-<meta name="twitter:description" content="ReduxThe disadvantages of using react:  Pass values from ancenstor to grandchild that parent levels will not use the vlaues. Keep consistency between component and sub-components.   Hence, MVC or Flux">
+<meta name="twitter:title" content="Design Data-Intensive Note #4">
+<meta name="twitter:description" content="Encoding and Evolution">
   
     <link rel="alternate" href="/DexWebSite/atom.xml" title="Dex Personal Website" type="application/atom+xml">
   
@@ -74,25 +74,25 @@ ga('send', 'pageview');
   </div>
 </header>
       <div id="middlecontent" title class="global-width sidebar-left">
-        <section id="main"><article id="post-Redux-Base-Principle" class="article global-container article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Design-Data-Intensive-Note-4" class="article global-container article-type-post" itemscope itemprop="blogPost">
   
     <header class="article-header">
       
   
     <h1 class="article-title" itemprop="name">
-      Redux Base Principle
+      Design Data-Intensive Note #4
     </h1>
   
 
     </header>
   
   <div class="article-meta">
-    <a href="/DexWebSite/2020/01/09/Redux-Base-Principle/" class="article-date">
-  <time datetime="2020-01-10T00:42:00.000Z" itemprop="datePublished">2020-01-09</time>
+    <a href="/DexWebSite/2020/10/11/Design-Data-Intensive-Note-4/" class="article-date">
+  <time datetime="2020-10-12T03:33:00.000Z" itemprop="datePublished">2020-10-11</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/DexWebSite/categories/React-Development/">React Development</a>
+    <a class="article-category-link" href="/DexWebSite/categories/System-Design/">System Design</a>
   </div>
 
     
@@ -107,33 +107,7 @@ ga('send', 'pageview');
     
     <div class="article-content article-content-cloud" itemprop="articleBody">
       
-        <h3 id="Redux"><a href="#Redux" class="headerlink" title="Redux"></a>Redux</h3><p>The disadvantages of using react:</p>
-<ul>
-<li>Pass values from ancenstor to grandchild that parent levels will not use the vlaues.</li>
-<li>Keep consistency between component and sub-components. </li>
-</ul>
-<p>Hence, MVC or Flux structures will be imported to solve these disadvantages.</p>
-<p><strong>MVC, Flux, Redux, Reat-Redux Development History : </strong></p>
-<p><a href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller" target="_blank" rel="noopener">MVC (Model, View, Controller)</a>:  Request -&gt; Controller -&gt; Model -&gt; View (One Direction). In some real projects, it always allows View accesses Model. Finally, the whole projects become more and more complicated.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">                       -&gt;  Model</span><br><span class="line">                            ^ |</span><br><span class="line">Request -&gt; Controller       | v	</span><br><span class="line">                       -&gt;  View</span><br></pre></td></tr></table></figure>
-<p><a href="https://facebook.github.io/flux" target="_blank" rel="noopener">Flux</a>: Action -&gt; Dispatcher(Controller) -&gt; Store(Model) -&gt; View - Action -&gt; Dispatcher (Cycle). It may have 3 bottlenecks: store dependency, server render, and store debug.</p>
-<p><strong>Compare MVC and Flux</strong></p>
-<ol>
-<li>MVC shows Controller to requester. Flux shows Dispatcher to requester.</li>
-<li>For adding a new feature, MVC need to create a new controller, and Flux will only add one Action.</li>
-</ol>
-<p><strong>Redux</strong></p>
-<p>It is an open source JavaScript library for managing application state. It has 3 characters.</p>
-<ol>
-<li>Single Scource of Truth. (Tha application could have one store to save all data).</li>
-<li>State is read-only. (State Change is to create new state and return it to Redux).</li>
-<li>Changes are made with pure functions. (Reducer is used to handle state and action to update state).</li>
-</ol>
-<p>Normmly, “Store” is defined as context that could be accessed in whole DOM Tree. Also, each component should add container to subscript event and use pure function to update value in store. Then React-React lib is created to solve this kind problem.</p>
-<p><strong>React-Redux</strong></p>
-<p>React-Redux libary defined “Provider” component that could be for passing store as context in whole DOM Tree.  Also, it reduced the code to define container for each components</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function mapStateToProps(state, ownProps) &#123;</span><br><span class="line">	return &#123;</span><br><span class="line">    	value: state[ownProps.caption]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function mapDispatchToProps(dispatch, ownProps) &#123;</span><br><span class="line">	return &#123;</span><br><span class="line">    	onAction1: () =&gt; &#123;dispatch(Actions.action1(ownProps.caption));&#125;,</span><br><span class="line">        onAction2: () =&gt; &#123;dispatch(Actions.action2(ownProps.caption));&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default connect (mapStateToProps, mapDispatchToProps)(test);</span><br></pre></td></tr></table></figure>
-
+        <h3 id="Encoding-and-Evolution"><a href="#Encoding-and-Evolution" class="headerlink" title="Encoding and Evolution"></a>Encoding and Evolution</h3>
       
     </div>
     
@@ -147,11 +121,11 @@ ga('send', 'pageview');
 <nav id="article-nav">
   <div class="article-nav-block">
     
-      <a href="/DexWebSite/2020/04/18/Java-Queue-Stack-Deque/" id="article-nav-newer" class="article-nav-link-wrap">
+      <a href="/DexWebSite/2020/10/11/Design-Data-Intensive-Note-5/" id="article-nav-newer" class="article-nav-link-wrap">
         <strong class="article-nav-caption"></strong>
         <div class="article-nav-title">
           
-            Algorithm Queue Stack Deque 
+            Design Data-Intensive Note #5
           
         </div>
       </a>
@@ -159,8 +133,8 @@ ga('send', 'pageview');
   </div>
   <div class="article-nav-block">
     
-      <a href="/DexWebSite/2020/01/09/React-Base-Principle/" id="article-nav-older" class="article-nav-link-wrap">
-        <div class="article-nav-title">React Base Principle</div>
+      <a href="/DexWebSite/2020/10/11/Design-Data-Intensive-Note-3/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">Design Data-Intensive Note #3</div>
         <strong class="article-nav-caption"></strong>
       </a>
     

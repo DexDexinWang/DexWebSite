@@ -75,6 +75,160 @@ ga('send', 'pageview');
       <div id="middlecontent" title class="global-width sidebar-left">
         <section id="main">
   
+    <article id="post-Design-Data-Intensive-Note-5" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/DexWebSite/2020/10/11/Design-Data-Intensive-Note-5/">Design Data-Intensive Note #5</a>
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/DexWebSite/2020/10/11/Design-Data-Intensive-Note-5/" class="article-date">
+  <time datetime="2020-10-12T03:33:00.000Z" itemprop="datePublished">2020-10-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/DexWebSite/categories/System-Design/">System Design</a>
+  </div>
+
+    
+  </div>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <h3 id="Replication"><a href="#Replication" class="headerlink" title="Replication"></a>Replication</h3><p>Replication means keeping a copy of the same data on multiple machines that are connected via a network by 3 reasons.</p>
+<ul>
+<li>To keep data geographically close to your users. (reduce latency)</li>
+<li>To allow the system to continue working even if some of its parts have failed (increase availability)</li>
+<li>TO scale out the number of machines that can serve read query. (increase scalability)</li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+  
+</article>
+
+  
+    <article id="post-Design-Data-Intensive-Note-4" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/DexWebSite/2020/10/11/Design-Data-Intensive-Note-4/">Design Data-Intensive Note #4</a>
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/DexWebSite/2020/10/11/Design-Data-Intensive-Note-4/" class="article-date">
+  <time datetime="2020-10-12T03:33:00.000Z" itemprop="datePublished">2020-10-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/DexWebSite/categories/System-Design/">System Design</a>
+  </div>
+
+    
+  </div>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <h3 id="Encoding-and-Evolution"><a href="#Encoding-and-Evolution" class="headerlink" title="Encoding and Evolution"></a>Encoding and Evolution</h3>
+      
+    </div>
+    
+  </div>
+  
+  
+</article>
+
+  
+    <article id="post-Design-Data-Intensive-Note-3" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/DexWebSite/2020/10/11/Design-Data-Intensive-Note-3/">Design Data-Intensive Note #3</a>
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/DexWebSite/2020/10/11/Design-Data-Intensive-Note-3/" class="article-date">
+  <time datetime="2020-10-12T02:13:00.000Z" itemprop="datePublished">2020-10-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/DexWebSite/categories/System-Design/">System Design</a>
+  </div>
+
+    
+  </div>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <h3 id="Storage-and-Retrieval"><a href="#Storage-and-Retrieval" class="headerlink" title="Storage and Retrieval"></a>Storage and Retrieval</h3><p>On the most fundamental level, a database needs to do two things: when you give it some data, it should store the data, and when you ask it again later, it should give the data back to you.</p>
+<p><strong>In order to tune a storage engine to perform well on your kind of workload, you need to have a rough idea of what the storage engine is doing under the hood.</strong> <br></p>
+<h4 id="Data-Structure"><a href="#Data-Structure" class="headerlink" title="Data Structure"></a>Data Structure</h4><p>Assume there is Get() and Set() functions to save and get values from database. <br></p>
+<h6 id="Append"><a href="#Append" class="headerlink" title="Append"></a>Append</h6><p>Each Set() only append new updated values to the end of the file that corresponding to key value. It is very efficient. Many databases internally use a <strong>log</strong>, which is an append-only data file. <br></p>
+<p><em>Log</em> is used in the more general sense: an append-only sequence of records. It doesn’t have to be human-readable; it might be binary and intended only for other programs to read. <br></p>
+<p><em>How to avoid eventually running out of dist spack?</em> <br><br>A good solution is to break the log into segments of a certain size by closing a segment file when it reaches a certain size, and make subsequent writes to a new segment file. Then, we can perform compaction on these segments.<br></p>
+<p>Compaction means throwing away duplicate keys in the log, and keeping only the most recent update for each key.<br></p>
+<p>Implementations:</p>
+<ul>
+<li>File format: Binary format will be faster</li>
+<li>Deleting records: Delete action will apeend a special delection record to the data file as <em>“tombstone”</em>. When log segments are merged, the tombstone tells the merging process to discard any previous values for the deleted key.</li>
+<li>Crash recovery: in-memory hash maps will lost if database is restarted. They system will record by reading the entire segment file. It is painful to take a long time.</li>
+<li>Partially written read: Use checksums to detecte and ignore corrupted parts</li>
+<li>Concurrentcy contry: one writing thread, multiple reading threads.</li>
+</ul>
+<h6 id="Index"><a href="#Index" class="headerlink" title="Index"></a>Index</h6><p>In general, Get() method will search a value from the start record to the end record. O(n). Index could be used to reduce the cost.</p>
+<p>An Index is an additional structure that is derived from the primary data. Index could be added or removed, it does not affect the contents of the database; it only affects the performance of queries. Well-chosen indexes speed up read queries, but every index slows down writes.<br></p>
+<p><strong>Hash Indexes</strong></p>
+<p>Key-value stores are quite similar to the dictionary type which is usually implemented as a In-Memory hash map. (key, byte offset). <br></p>
+<p>Limitations:</p>
+<ul>
+<li>Hashmap must fit in memory becuase of a lot of random access I/O.</li>
+<li>Range queries are not efficient.</li>
+</ul>
+<p><strong>B-Trees</strong></p>
+<p>The most common type of index is B-Tree which breaks the database down into fixed-size blocks or pages, traditionally 4KB in size, and read or write one page at a time. <br></p>
+<p>Each page can be identified using an address or location, which allows one page to refer to another – similar to a pointer, but on disk instead of in memory.<br></p>
+<p>Structure: <br><br>One page is designated as the root of the B-tree; whenever you want to look up a key in the index, you start here. The page contains several keys and references to child pages. Each child is responsible for a continuous range of keys, and the keys between the references indicate where the boundaries between those ranges lie. <br></p>
+<p>The number of references to child pages in one page of the B-tree is called the <em>branching factor</em>.<br></p>
+<p>The B-Tree algorighm ensure the tree remins balanced: a B-tree with n keys always has a depth of O(logn).</p>
+<p>It is very common to have secondary indexes to have multiple search keys.</p>
+
+      
+    </div>
+    
+  </div>
+  
+  
+</article>
+
+  
     <article id="post-Design-Data-Intensive-Note-2" class="article global-container article-type-post" itemscope itemprop="blogPost">
   
     <header class="article-header">
@@ -104,7 +258,87 @@ ga('send', 'pageview');
     
     <div class="article-content article-content-cloud" itemprop="articleBody">
       
-        <h5 id="Chapter-2-Data-Models"><a href="#Chapter-2-Data-Models" class="headerlink" title="Chapter 2 - Data Models"></a>Chapter 2 - Data Models</h5><p>Data models will affect “How the software is written.” and “How we think about the problem that we are solving.” </p>
+        <h3 id="Chapter-2-A-Range-of-General-Pupose-Data-Models"><a href="#Chapter-2-A-Range-of-General-Pupose-Data-Models" class="headerlink" title="Chapter 2 -  A Range of General-Pupose Data Models"></a>Chapter 2 -  A Range of General-Pupose Data Models</h3><p>Data models will affect “How the software is written.” and “How we think about the problem that we are solving.”<br></p>
+<p>Most applications are built byu layering one data model on top of another. For each layer, the key question is: <em>How is it represented in terms of the next-lower layer?</em> Each layer hides the complexity of the layers below it by providing a clean data modal. <br></p>
+<h4 id="Relational-Model-SQL"><a href="#Relational-Model-SQL" class="headerlink" title="Relational Model - SQL"></a>Relational Model - SQL</h4><p>SQL, data is origanized into relations(tables) where each relation is an unordered collection of tuples(rows). The roots of relational databases lie in business data processing such as <em>transaction processing</em> and <em>batch processing</em>.<br></p>
+<p><strong>Object-Relational Mismatch</strong></p>
+<p>An awkward translation layer is required between the objects in the applciation code and the database model of tables, rows, and columns. The disconnect between the models is sometimes called an <strong>impedance mismatch</strong>.</p>
+<p>E.g. Saving Resume Solutions:</p>
+<ol>
+<li><p>SQL requires normalization which ask more tables to save one resume such as positions or educations tables. <br></p>
+</li>
+<li><p>New SQL supports for structured dataypes and XML data, it allowed multi-valued data to be stored within a single row. <br></p>
+</li>
+<li><p>Encode jobs, education, and contact infor as a JSON or XML doument and store it on a text column in the database like documentation database.</p>
+</li>
+</ol>
+<p>The JSON representation has better <em>locality</em> than the multi-table schema which may query multiple tabels to get data because of normalization(reduced duplicated data). In JSON, all the relevant infomraiton is in one place, and one query is sufficient, but more <em>duplicated human-meaningful information</em>.</p>
+<h4 id="NoSQL"><a href="#NoSQL" class="headerlink" title="NoSQL"></a>NoSQL</h4><p>NoSQL(Not Only SQL) driving:</p>
+<ul>
+<li>A need for greater scalability than relational databases can easily achieve, including very large datasets or very high write throughput.</li>
+<li>A widespread perfermance for free and open source software over commercial database products</li>
+<li>Specialized query opertions that are not well supported by the relaional model</li>
+<li>Frustraion with the restrictiveness of relational schemas, and desire for a more dynamic and expressive data modal.</li>
+</ul>
+<h4 id="Relational-Versus-Document-Databases"><a href="#Relational-Versus-Document-Databases" class="headerlink" title="Relational Versus Document Databases"></a>Relational Versus Document Databases</h4><p><strong>Document Data Model</strong></p>
+<p>Normally, it is regarded as “schemaless” or “schema-on-read”. It is applicable for document-like structure such as a tree of One-To-Many relationships.</p>
+<p> Advantages: </p>
+<ul>
+<li>Schema flexibility</li>
+<li>Better performance due to locality </li>
+<li>For some applications it is closer to the data structures used by the application</li>
+</ul>
+<p>Disadvantages:</p>
+<ul>
+<li>Cannot refer directly to a nested item within a document. (However, as long as documents are not too deeply nested, that is not usually a problem).</li>
+<li>Poor support for joins to support Many-To-Many in document databases. (Some applications does not require join method).</li>
+</ul>
+<p><strong>Relational Data Model</strong></p>
+<p>It is regarded as “schema-on-write”.</p>
+<p>Advantages:</p>
+<ul>
+<li>Better support for joins.</li>
+<li>Many-To-One and Many-To-Many relationships</li>
+</ul>
+<p>Disadvantages:</p>
+<ul>
+<li>impedance mismatch</li>
+<li>less locality</li>
+</ul>
+<h4 id="MapReduce-Quering"><a href="#MapReduce-Quering" class="headerlink" title="MapReduce Quering"></a>MapReduce Quering</h4><p><em>MapReduce</em> is a programming model for processing large amounts of data in bulk across many machines. The logic of the query is expressed with snippets of code, which are called repeatedly by the processing framework. It is based on the map (collect) and reduce (fold or inject) functions that exists in many functional Programming languages.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//SQL</span><br><span class="line">SELECT date_trunc(&apos;month&apos;, observation_timestamp) AS observation_month,</span><br><span class="line">sum(num_animals) AS total_animals</span><br><span class="line">FROM observations</span><br><span class="line">WHERE family = &apos;Sharks&apos;</span><br><span class="line">GROUP BY observation_month;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">//MongoDB</span><br><span class="line">db.observations.mapReduce(</span><br><span class="line">	function map() &#123;</span><br><span class="line">    	var year = this.observationTimestamp.getFullYear();</span><br><span class="line">        var month = this.observationTimestamp.getMonth()+1;</span><br><span class="line">        emit(year + &quot;-&quot; + month, this.numAnimals);</span><br><span class="line">    &#125;,</span><br><span class="line">    function reduce(key, values) &#123;</span><br><span class="line">    	return Array.sum(values);</span><br><span class="line">    &#125;,</span><br><span class="line">	&#123;</span><br><span class="line">    	query: &#123;family:&quot;Sharks&quot;&#125;,</span><br><span class="line">        out: &quot;monthlySharkReport&quot;</span><br><span class="line">    &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h4 id="Graph-Like-Data-Models"><a href="#Graph-Like-Data-Models" class="headerlink" title="Graph-Like Data Models"></a>Graph-Like Data Models</h4><p>Graph Data Models are created for the case that Many-To-Many relations are very common, and the data is more complex. <br></p>
+<p>A graph consists of two kinds of objects: vertices (nodes or entities) and edges (relationships or arcs).</p>
+<p>E.g. <br> </p>
+<ul>
+<li>Social Graphs</li>
+<li>The Web Graph</li>
+<li>Road or Rail Networks</li>
+</ul>
+<p><strong>Property Graphs</strong></p>
+<p>Each vertext consists of: </p>
+<ul>
+<li>A unique identifier</li>
+<li>A set of outgoing edges</li>
+<li>A set of incoming edges</li>
+<li>A collection of properties (key-value paires)</li>
+</ul>
+<p>Each edge consists of:</p>
+<ul>
+<li>A unique identifier</li>
+<li>The vertext at which the edge starts (the tail vertex).</li>
+<li>The vertext at which the edge ends (the head vertex)</li>
+<li>A label to describe the kind of relationship between the two vertices</li>
+<li>A collection of properties (key-value pairs)</li>
+</ul>
+<h4 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h4><ol>
+<li><p>Document databases target use cases where data comes in self–contained documents and relationships between one doument and another are rare.</p>
+</li>
+<li><p>Graph databases go in the opposite direction, targeting use cases where anything is potentially related to everything (Many-To-Many).</p>
+</li>
+</ol>
+<p>Both of these are schemaless.</p>
 
       
     </div>
@@ -296,7 +530,7 @@ ga('send', 'pageview');
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/DexWebSite/categories/C-Programming-Language/">C# Programming Language</a>
+    <a class="article-category-link" href="/DexWebSite/categories/Java-Programming-Language/">Java Programming Language</a>
   </div>
 
     
@@ -730,236 +964,6 @@ ga('send', 'pageview');
 </article>
 
   
-    <article id="post-Algorithm-Binary-Search-Tree" class="article global-container article-type-post" itemscope itemprop="blogPost">
-  
-    <header class="article-header">
-      
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/DexWebSite/2020/05/20/Algorithm-Binary-Search-Tree/">Algorithm Binary Search Tree</a>
-    </h1>
-  
-
-    </header>
-  
-  <div class="article-meta">
-    <a href="/DexWebSite/2020/05/20/Algorithm-Binary-Search-Tree/" class="article-date">
-  <time datetime="2020-05-20T21:45:00.000Z" itemprop="datePublished">2020-05-20</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/DexWebSite/categories/Algorithm/">Algorithm</a>
-  </div>
-
-    
-  </div>
-  
-
-  <div class="article-inner">
-    
-    <div class="article-content article-content-cloud" itemprop="articleBody">
-      
-        <h3 id="Binary-Search-Tree"><a href="#Binary-Search-Tree" class="headerlink" title="Binary Search Tree"></a>Binary Search Tree</h3><p>For every single node in the tree, the values in its left subtree are all smaller than its value, and the value in its right subtree are all larger than its value. Cannot have duplicated node. If yes, a key-value pair could be used to replace key. However, the BST algorithm is most popular in leetcode. <br></p>
-<p><strong>BST Search</strong>:</p>
-<figure class="highlight java"><figcaption><span>BST Search Recursion</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> TreeNode <span class="title">searchBST</span><span class="params">(TreeNode root, <span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</span><br><span class="line">           <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">       &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">           <span class="keyword">if</span> (root.val == val) &#123;</span><br><span class="line">               <span class="keyword">return</span> root;</span><br><span class="line">           &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">               <span class="keyword">if</span> (root.val &gt; val) &#123;</span><br><span class="line">                   <span class="keyword">return</span> searchBST(root.left, val);</span><br><span class="line">               &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                   <span class="keyword">return</span> searchBST(root.right, val);</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><figcaption><span>BST Search Iteration</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> TreeNode <span class="title">searchBST</span><span class="params">(TreeNode root, <span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">while</span>(root!= <span class="keyword">null</span>) &#123;</span><br><span class="line">       	<span class="keyword">if</span>(root.val &gt; val) &#123;</span><br><span class="line">           	root = root.left;</span><br><span class="line">           &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">           	root = root.right;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<p><strong>BST Insert</strong>:</p>
-<figure class="highlight java"><figcaption><span>BST Insert Recursion</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> TreeNode <span class="title">insertNodeRecursion</span><span class="params">(TreeNode root, <span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">	TreeNode cur = root;</span><br><span class="line">	TreeNode prev = <span class="keyword">null</span>;</span><br><span class="line">	<span class="keyword">while</span>(cur != <span class="keyword">null</span>) &#123;</span><br><span class="line">		prev = cur;</span><br><span class="line">		<span class="keyword">if</span>(cur.val &gt; val) &#123;</span><br><span class="line">			cur = cur.left;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			cur = cur.right;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	TreeNode newNode = <span class="keyword">new</span> TreeNode(val);</span><br><span class="line">	<span class="keyword">if</span> (prev == <span class="keyword">null</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> newNode;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> (prev.val &gt; val) &#123;</span><br><span class="line">			prev.left = newNode;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			prev.right = newNode;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; </span><br><span class="line">	<span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><figcaption><span>BST Insert Iteration</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> TreeNode <span class="title">insertNodeRecursion</span><span class="params">(TreeNode root, <span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> TreeNode(val);</span><br><span class="line">	&#125; </span><br><span class="line">	<span class="keyword">if</span> (root.val &gt; val) &#123;</span><br><span class="line">		root.left = insertNodeRecursion(root.left, val);</span><br><span class="line">		<span class="keyword">return</span> root;</span><br><span class="line">	&#125; <span class="keyword">else</span>  &#123;</span><br><span class="line">		root.right = insertNodeRecursion(root.right, val);</span><br><span class="line">		<span class="keyword">return</span> root;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>BST Delete</strong>:</p>
-<figure class="highlight java"><figcaption><span>BST Delete Recursion</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> TreeNode <span class="title">BSTDelete</span><span class="params">(TreeNode root, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">	&#125; </span><br><span class="line">	<span class="keyword">if</span> (root.val &gt; target) &#123;</span><br><span class="line">		root.left = BSTDelete(root.left, target);</span><br><span class="line">		<span class="keyword">return</span> root;</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> (root.val &lt; target) &#123;</span><br><span class="line">		root.right = BSTDelete(root.right, target);</span><br><span class="line">		<span class="keyword">return</span> root;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;<span class="comment">//root.val == target</span></span><br><span class="line">		<span class="keyword">if</span> (root.left == <span class="keyword">null</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span> root.right;</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span> (root.right == <span class="keyword">null</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span> root.left;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;<span class="comment">//above conditions will consider a target has one child or no child.</span></span><br><span class="line">			<span class="comment">//Find the smallest node in the target node`s right node.  </span></span><br><span class="line">			<span class="keyword">if</span> (root.right.left == <span class="keyword">null</span>) &#123;</span><br><span class="line">				root.right.left = root.left;</span><br><span class="line">				<span class="keyword">return</span> root.right;</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				TreeNode smallest = deleteSmallest(root.right);</span><br><span class="line">				smallest.left = root.left;</span><br><span class="line">				smallest.right = root.right;</span><br><span class="line">				<span class="keyword">return</span> smallest;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> TreeNode <span class="title">deleteSmallest</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">	TreeNode leftChild = root.left;</span><br><span class="line">	<span class="keyword">while</span>(leftChild.left != <span class="keyword">null</span>) &#123;</span><br><span class="line">		root = root.left;</span><br><span class="line">		leftChild = root.left;</span><br><span class="line">	&#125;</span><br><span class="line">	root.left = leftChild.right;</span><br><span class="line">       leftChild.right = <span class="keyword">null</span>;</span><br><span class="line">	<span class="keyword">return</span> leftChild;</span><br><span class="line">&#125;</span><br><span class="line">   </span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><figcaption><span>BST Delete Recursion</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> TreeNode <span class="title">BSTDelete</span><span class="params">(TreeNode root, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">	&#125; </span><br><span class="line">	<span class="keyword">if</span> (root.val &gt; target) &#123;</span><br><span class="line">		root.left = BSTDelete(root.left, target);</span><br><span class="line">		<span class="keyword">return</span> root;</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> (root.val &lt; target) &#123;</span><br><span class="line">		root.right = BSTDelete(root.right, target);</span><br><span class="line">		<span class="keyword">return</span> root;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;<span class="comment">//root.val == target</span></span><br><span class="line">		<span class="keyword">if</span> (root.left == <span class="keyword">null</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span> root.right;</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span> (root.right == <span class="keyword">null</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span> root.left;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;<span class="comment">//above conditions will consider a target has one child or no child.</span></span><br><span class="line">			<span class="comment">//Find the smallest node in the target node`s right node.  </span></span><br><span class="line">			<span class="keyword">if</span> (root.right.left == <span class="keyword">null</span>) &#123;</span><br><span class="line">				root.right.left = root.left;</span><br><span class="line">				<span class="keyword">return</span> root.right;</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				TreeNode smallest = deleteSmallest(root.right);</span><br><span class="line">				smallest.left = root.left;</span><br><span class="line">				smallest.right = root.right;</span><br><span class="line">				<span class="keyword">return</span> smallest;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> TreeNode <span class="title">deleteSmallest</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">	TreeNode leftChild = root.left;</span><br><span class="line">	<span class="keyword">while</span>(leftChild.left != <span class="keyword">null</span>) &#123;</span><br><span class="line">		root = root.left;</span><br><span class="line">		leftChild = root.left;</span><br><span class="line">	&#125;</span><br><span class="line">	root.left = leftChild.right;</span><br><span class="line">       leftChild.right = <span class="keyword">null</span>;</span><br><span class="line">	<span class="keyword">return</span> leftChild;</span><br><span class="line">&#125;</span><br><span class="line">   </span><br></pre></td></tr></table></figure>
-<p><strong>BST Update</strong>:</p>
-<figure class="highlight java"><figcaption><span>BST Update Iteration</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> TreeNode <span class="title">updateNodeIteration</span><span class="params">(TreeNode root, <span class="keyword">int</span> target, <span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">	root = deleteNodeIteration(root,target);</span><br><span class="line">	root = insertNodeIteration(root,val);</span><br><span class="line">	<span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br><span class="line">   </span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    
-  </div>
-  
-  
-</article>
-
-  
-    <article id="post-Algorithm-PriorityQueue" class="article global-container article-type-post" itemscope itemprop="blogPost">
-  
-    <header class="article-header">
-      
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/DexWebSite/2020/05/13/Algorithm-PriorityQueue/">Algorithm Binary Tree</a>
-    </h1>
-  
-
-    </header>
-  
-  <div class="article-meta">
-    <a href="/DexWebSite/2020/05/13/Algorithm-PriorityQueue/" class="article-date">
-  <time datetime="2020-05-13T21:46:00.000Z" itemprop="datePublished">2020-05-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/DexWebSite/categories/Algorithm/">Algorithm</a>
-  </div>
-
-    
-  </div>
-  
-
-  <div class="article-inner">
-    
-    <div class="article-content article-content-cloud" itemprop="articleBody">
-      
-        <h3 id="Graph-Tree-and-ListNode"><a href="#Graph-Tree-and-ListNode" class="headerlink" title="Graph Tree and ListNode"></a>Graph Tree and ListNode</h3><p>The defination in <a href="https://en.wikipedia.org/wiki/Tree_structure" target="_blank" rel="noopener">Wiki</a> is that “A tree structure or tree diagram is a way of representing the <strong>hierarchical</strong> nature of a structure in a graphical form”. In another wrod, the tree structure has <strong>no loop</strong> to represents each node in hierarchical level. Also, ListNode structuer is another kind graphical form. <br></p>
-<figure class="highlight java"><figcaption><span>Graph</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GraphNode</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> key;</span><br><span class="line">	List&lt;GraphNode&gt; neighbors;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">GraphNode</span><span class="params">(<span class="keyword">int</span> key)</span> </span>&#123;</span><br><span class="line">  		<span class="keyword">this</span>.key = key;</span><br><span class="line">  		neighbors = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">  	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><figcaption><span>ListNode</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ListNode</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> key;</span><br><span class="line">	ListNode next;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">ListNode</span><span class="params">(<span class="keyword">int</span> key)</span> </span>&#123;</span><br><span class="line">  		<span class="keyword">this</span>.key = key;</span><br><span class="line">  	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><figcaption><span>Tree</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> val;</span><br><span class="line">	List&lt;TreeNode&gt; children;</span><br><span class="line">    <span class="comment">//TreeNode parent;</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">TreeNode</span><span class="params">(<span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">  		<span class="keyword">this</span>.val = val;</span><br><span class="line">  		children = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">  	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><a href="https://en.wikipedia.org/wiki/Binary_tree" target="_blank" rel="noopener">Binary Tree</a> is kind of tree structure in which node has at most 2 nodes representing left node and right node. </p>
-<h6 id="Tree-Traverse"><a href="#Tree-Traverse" class="headerlink" title="Tree Traverse"></a>Tree Traverse</h6><p>Normally, there are 3 ways to traverse each node in a tree. <br></p>
-<ul>
-<li>Pre-order: root -&gt; left -&gt; right</li>
-<li>In-order: left -&gt; root -&gt; right</li>
-<li>Post-order: left -&gt; right -&gt; root</li>
-</ul>
-<figure class="highlight java"><figcaption><span>Binary Tree Recursion</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">traverseTree</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</span><br><span class="line">    	<span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//Pre-order</span></span><br><span class="line">    System.out.print(root.val);</span><br><span class="line">    traverseTree(root.left);</span><br><span class="line">    traverseTree(root.right);</span><br><span class="line">    <span class="comment">//In-order</span></span><br><span class="line">    traverseTree(root.left);</span><br><span class="line">    System.out.print(root.val);</span><br><span class="line">    traverseTree(root.right);</span><br><span class="line">    <span class="comment">//Post-order</span></span><br><span class="line">    traverseTree(root.left);</span><br><span class="line">    traverseTree(root.right);</span><br><span class="line">    System.out.print(root.val);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>If the depths is too large, it will post “<strong>stack overflow</strong>“ exception. Hence, we could use iteration and stack to do Pre-order, In-order, and Post-order.</p>
-<figure class="highlight java"><figcaption><span>Binary Tree Iteration</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">traverseTree</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span>;</span><br><span class="line">    Deque&lt;TreeNode&gt; stack = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//In order</span></span><br><span class="line">    <span class="keyword">while</span>(root!= <span class="keyword">null</span> || !stack.isEmpty())&#123;</span><br><span class="line">        <span class="comment">//In-Order</span></span><br><span class="line">  		<span class="keyword">while</span>(root != <span class="keyword">null</span>) &#123;</span><br><span class="line">  			stack.offerLast(root);</span><br><span class="line">  			root = root.left;</span><br><span class="line">  		&#125;</span><br><span class="line">  		root = stack.pollLast();</span><br><span class="line">  		System.out.print(root.val);</span><br><span class="line">  		root = root.right;</span><br><span class="line">  		</span><br><span class="line">	&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//Pre order</span></span><br><span class="line">    stakc.offerLast(root);</span><br><span class="line">    <span class="keyword">while</span>(!stack.isEmpty())&#123;</span><br><span class="line">    	TreeNode root = stack.pollLast();</span><br><span class="line">        System.out.print(root.val);</span><br><span class="line">        <span class="keyword">if</span>(root.right == nul) stack.offerLast(root.right); </span><br><span class="line">        <span class="keyword">if</span>(root.left == <span class="keyword">null</span>) stack.offerLast(root.left);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//Post order, it is special one and requires checking previous node.</span></span><br><span class="line">    TreeNode prev = <span class="keyword">null</span>;</span><br><span class="line">    stack.offerLast(root);</span><br><span class="line">    <span class="keyword">while</span>(!stack.isEmpty())&#123;</span><br><span class="line">    	TreeNode current = stack.peekLast();</span><br><span class="line">        <span class="keyword">if</span>(prev == <span class="keyword">null</span> || prev.left == current || prev.right == current) &#123;</span><br><span class="line">        	<span class="keyword">if</span>(current.left != <span class="keyword">null</span>) &#123;</span><br><span class="line">            	stack.offerLast(current.left);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (current.right != <span class="keyword">null</span>) &#123;</span><br><span class="line">            	stack.offerLast(current.right);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            	stack.pollLast(); </span><br><span class="line">            	System.out.print(current.val);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (current.left == prev) &#123;</span><br><span class="line">        	<span class="keyword">if</span> (current.right != <span class="keyword">null</span>) &#123;</span><br><span class="line">            	stack.offerLst(current.right);</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            	stack.pollLast(); </span><br><span class="line">            	System.out.print(current.val);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (current.right == prev) &#123;</span><br><span class="line">        	stack.pollLast();</span><br><span class="line">            System.out.print(current.val);</span><br><span class="line">        &#125;</span><br><span class="line">        prev = current;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>Balanced binary tree</strong>: is commonly defined as a binary tree in which the depth of the left and right subtrees of every node differ by 1 or less.<br>If a tree has n number of nodes, and it is balanced, then the height(level) of the tree = O(log_2(n)).</p>
-<p>Conclusion 1: if a tree has a number of nodes, and it is balanced, then the height(level) of the tree = O(log_2(n)). <br></p>
-<p><strong>Complete binary tree</strong>: is a binary tree is which every level, except possible the last, is completely filled, and all nodes are as far left as possible.</p>
-<p>Conclusion 2: If a tree is a complete tree, then it must be a balanced tree.<br></p>
-<p><strong>Binary Search Tree</strong>: for every single node in the tree, the values in its left subtree are all smaller than its value, and the value in its right subtree are all larger than its value. Cannot have duplicated node. If yes, a key-value pair could be used to replace key.<br>Conclusion 3: If we print the value of the nodes in BST in in-order sequence, then it must from an ascending order.</p>
-<p>Time complexity:</p>
-<ul>
-<li>Search: worst case O(n) ; average case O(logn)</li>
-<li>Insert: worst case O(n) ; average case O(logn)</li>
-<li>Delete: worst case O(n) ; average case O(logn)</li>
-</ul>
-<p>The worst case is casued by un-balance. The advantage of binary search tree is AVL tree or Red-Black tree which will maintain a balance tree. </p>
-<p><strong><a href="https://www.geeksforgeeks.org/red-black-tree-set-1-introduction-2/" target="_blank" rel="noopener">Red-Black Tree</a></strong></p>
-<p>It maintains 3 points:</p>
-<ul>
-<li>Every node has a color either red or black.</li>
-<li>Root of tree is always black.</li>
-<li>There are no two adjacent red nodes (A red node cannot have a red parent or red child).</li>
-</ul>
-<p>The implementation could is more complicated. Refer to <a href="https://algs4.cs.princeton.edu/33balanced/RedBlackBST.java.html" target="_blank" rel="noopener">Princeton class</a>.</p>
-<h5 id="Binary-Tree-Algorithm-Logic"><a href="#Binary-Tree-Algorithm-Logic" class="headerlink" title="Binary Tree Algorithm Logic"></a>Binary Tree Algorithm Logic</h5><p>Binary Tree is the most popular tree structure to be used for answering algorithm problems in interviews. Typically, most solution use recusion to traverse trees to return result. The solution will will consider 3 points: </p>
-<p><strong>Tree + Recursion:</strong> Space complexity is O(height) like DFS where hight may equal n. </p>
-<ul>
-<li>What do you expect from your left child / right child? </li>
-<li>What do you want to do in the current level? </li>
-<li>What do you want to report to your parent? </li>
-</ul>
-<p>E.g. <a href="https://leetcode.com/problems/maximum-depth-of-binary-tree/" target="_blank" rel="noopener">Maximum Depth of Binary Tree</a><br><figure class="highlight java"><figcaption><span>Maximum Depth of Binary Tree</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Left and right: get max depth of left and right.</span></span><br><span class="line"><span class="comment">//Current: get larger depth from left and right.</span></span><br><span class="line"><span class="comment">//Return: the max depth + 1 </span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxDepth</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> Math.max(maxDepth(root.left), maxDepth(root.right))+<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>However, some kind questions will ask result by checking nodes level by level such as <a href="https://leetcode.com/problems/cousins-in-binary-tree/" target="_blank" rel="noopener">993. Cousins in Binary Tree</a> and <a href="https://leetcode.com/problems/binary-tree-level-order-traversal-ii/" target="_blank" rel="noopener">107. Binary Tree Level Order Traversal II</a>. Then, the solution will consider iteration with a queue to do BFS. Space complexity is O(2^height) like BFS.</p>
-<figure class="highlight java"><figcaption><span>Cousins in Binary Tree</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//BFS</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isCousins</span><span class="params">(TreeNode root, <span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">if</span> (root == <span class="keyword">null</span> || root.left == <span class="keyword">null</span> &amp;&amp; root.right == <span class="keyword">null</span>) &#123;</span><br><span class="line">           <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">       &#125; </span><br><span class="line">       Queue&lt;TreeNode&gt; que = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">       que.offer(root);</span><br><span class="line">       <span class="keyword">while</span>(que.size()!= <span class="number">0</span>) &#123;</span><br><span class="line">           <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">           <span class="keyword">int</span> size = que.size();</span><br><span class="line">           <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++) &#123;</span><br><span class="line">               TreeNode temp = que.poll();</span><br><span class="line">               <span class="keyword">boolean</span> meetInt = <span class="keyword">false</span>;</span><br><span class="line">               <span class="keyword">if</span>(temp.left != <span class="keyword">null</span>) &#123;</span><br><span class="line">                   que.offer(temp.left);</span><br><span class="line">                   meetInt = temp.left.val == x || temp.left.val == y;</span><br><span class="line">               &#125; </span><br><span class="line">               <span class="keyword">if</span>(temp.right != <span class="keyword">null</span>) &#123;</span><br><span class="line">                   que.offer(temp.right);</span><br><span class="line">                   meetInt = meetInt || temp.right.val == x || temp.right.val == y;</span><br><span class="line">               &#125; </span><br><span class="line">               <span class="keyword">if</span> (meetInt) &#123;</span><br><span class="line">               	count++;</span><br><span class="line">               	<span class="keyword">if</span> (count == <span class="number">2</span>) &#123;</span><br><span class="line">               		<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">               	&#125;</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    
-  </div>
-  
-  
-</article>
-
-  
-    <article id="post-Algorithm-PriorityQueue-1" class="article global-container article-type-post" itemscope itemprop="blogPost">
-  
-    <header class="article-header">
-      
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/DexWebSite/2020/04/19/Algorithm-PriorityQueue-1/">Algorithm PriorityQueue</a>
-    </h1>
-  
-
-    </header>
-  
-  <div class="article-meta">
-    <a href="/DexWebSite/2020/04/19/Algorithm-PriorityQueue-1/" class="article-date">
-  <time datetime="2020-04-19T17:04:00.000Z" itemprop="datePublished">2020-04-19</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/DexWebSite/categories/Algorithm/">Algorithm</a>
-  </div>
-
-    
-  </div>
-  
-
-  <div class="article-inner">
-    
-    <div class="article-content article-content-cloud" itemprop="articleBody">
-      
-        <h3 id="PriorityQueue"><a href="#PriorityQueue" class="headerlink" title="PriorityQueue"></a><a href="https://docs.oracle.com/javase/7/docs/api/java/util/PriorityQueue.html" target="_blank" rel="noopener">PriorityQueue</a></h3><p>PriorityQueue is extended Queue interface with main methods: offer, peek, poll, size, isEmpty. It focuses on smallest/largest element rather than FIFO. The PriorityQueue is based on the priority heap. Internally it is implemented by using an array.  <br></p>
-<p>Time complexity:</p>
-<ul>
-<li>offer(E e), O(logn)</li>
-<li>peek(), O(1)</li>
-<li>poll(), O(logn)</li>
-<li>remove(), O(logn) is the same as poll()</li>
-<li>remove(Object), O(n) </li>
-<li>size(), O(1)</li>
-<li>isEmpty(), O(1)</li>
-</ul>
-<p>For PriorityQueue, the most important is how to define priority. In another words, how does the PriorityQueue know how to compare object?<br></p>
-<p>E.g.</p>
-<figure class="highlight java"><figcaption><span>Integer PriorityQueue</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">PriorityQueue&lt;Integer&gt; minHeap = <span class="keyword">new</span> PriorityQueue&lt;Integer&gt;();</span><br><span class="line"> 	minHeap.offer(<span class="number">3</span>);</span><br><span class="line"> 	minHeap.offer(<span class="number">1</span>);</span><br><span class="line"> 	minHeap.offer(<span class="number">2</span>);</span><br><span class="line"> 	<span class="keyword">while</span>(!minHeap.isEmpty()) &#123;</span><br><span class="line"> 		minHeap.poll();</span><br><span class="line"> 	&#125;</span><br><span class="line"> <span class="comment">/* the order is min to max. Is that defualt? </span></span><br><span class="line"><span class="comment"> 1</span></span><br><span class="line"><span class="comment"> 2</span></span><br><span class="line"><span class="comment"> 3</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure> 
-<p><span style="color:red"><strong>The element type implementing comparable interface. </strong><span></span></span></p>
-<figure class="highlight java"><figcaption><span>Integer Implements Comparable</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Interface Comparable&lt;E&gt;&#123;</span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(E ele)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line">  </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Integer</span> <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">Integer</span>&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> value;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Integer</span><span class="params">(<span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">  	<span class="keyword">this</span>.value = value;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(Integer another)</span></span>&#123;</span><br><span class="line">  	<span class="keyword">if</span>(<span class="keyword">this</span>.value == another.value) &#123;</span><br><span class="line">    	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.value &lt; another.value? -<span class="number">1</span> : <span class="number">1</span></span><br><span class="line">    <span class="comment">//return this.value - another.value </span></span><br><span class="line">    <span class="comment">//it may cause overflow</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 
-<p>The return value of compareTo() method determines the priority.</p>
-<ul>
-<li>0, same</li>
-<li>-1, higher priority </li>
-<li>1, less priority</li>
-</ul>
-<h5 id="Comparing-Priority-Implementation"><a href="#Comparing-Priority-Implementation" class="headerlink" title="Comparing Priority Implementation"></a>Comparing Priority Implementation</h5><p>The element type implementing Comparable interface. It defines <strong>Natural Order</strong>. <br></p>
-<figure class="highlight java"><figcaption><span>Implementation Comparable</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">    Interface Comparable&lt;E&gt; &#123;</span><br><span class="line">        <span class="function">Int <span class="title">compareTo</span><span class="params">(E ele)</span></span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	Class Cell implements Comparable&lt;Cell&gt; &#123;</span><br><span class="line">	Public <span class="keyword">int</span> row;</span><br><span class="line">	Public <span class="keyword">int</span> col;</span><br><span class="line">	Public <span class="keyword">int</span> value;</span><br><span class="line">	<span class="function">Public <span class="title">Cell</span><span class="params">(<span class="keyword">int</span> row, <span class="keyword">int</span> col, <span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">		This.row = row;</span><br><span class="line">		This.cell = cell;</span><br><span class="line">		This.value = value;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function">Public <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(Cell another)</span> </span>&#123;</span><br><span class="line">		If(<span class="keyword">this</span>.value == another.value) &#123;</span><br><span class="line">			<span class="keyword">if</span> (<span class="keyword">this</span>.row == another.row) &#123;</span><br><span class="line">  				<span class="keyword">if</span> (<span class="keyword">this</span>.col == another.col) &#123;</span><br><span class="line">  					<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  				&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  					<span class="keyword">return</span> <span class="keyword">this</span>.col &lt; another.col ? -<span class="number">1</span> : <span class="number">1</span>;</span><br><span class="line">  				&#125;</span><br><span class="line">  			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">this</span>.row &lt; another.row ? -<span class="number">1</span> : <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">		&#125;</span><br><span class="line">		Return <span class="keyword">this</span>.value &lt; another.value ? -<span class="number">1</span> : <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">PriorityQueue&lt;Cell&gt; minheap = <span class="keyword">new</span> PriorityQueue&lt;Cell&gt;();</span><br><span class="line">PriorityQueue&lt;Cell&gt; maxheap = <span class="keyword">new</span> PriorityQueue&lt;Cell&gt;(<span class="number">11</span>, Collections.reverseOrder());</span><br><span class="line"><span class="comment">//Collection.reverseOrder will reverse defined natrual order.</span></span><br><span class="line"></span><br></pre></td></tr></table></figure> 
-<p>Define an extra Comparator object to compare the elements. <br></p>
-<figure class="highlight java"><figcaption><span>Implementation Comparator</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Interface Comparator&lt;E&gt; &#123;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">compare</span><span class="params">(E o1, E o2)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Class Cell implements Comparable&lt;Cell&gt; &#123;</span><br><span class="line">	Public <span class="keyword">int</span> row;</span><br><span class="line">	Public <span class="keyword">int</span> col;</span><br><span class="line">	Public <span class="keyword">int</span> value;</span><br><span class="line">	<span class="function">Public <span class="title">Cell</span><span class="params">(<span class="keyword">int</span> row, <span class="keyword">int</span> col, <span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">		This.row = row;</span><br><span class="line">		This.cell = cell;</span><br><span class="line">		This.value = value;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">	<span class="function">Public <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(Cell another)</span> </span>&#123;</span><br><span class="line">		If(<span class="keyword">this</span>.value == another.value) &#123;</span><br><span class="line">			<span class="keyword">if</span> (<span class="keyword">this</span>.row == another.row) &#123;</span><br><span class="line">  				<span class="keyword">if</span> (<span class="keyword">this</span>.col == another.col) &#123;</span><br><span class="line">  					<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  				&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  					<span class="keyword">return</span> <span class="keyword">this</span>.col &lt; another.col ? -<span class="number">1</span> : <span class="number">1</span>;</span><br><span class="line">  				&#125;</span><br><span class="line">  			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">this</span>.row &lt; another.row ? -<span class="number">1</span> : <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">		&#125;</span><br><span class="line">		Return <span class="keyword">this</span>.value &lt; another.value ? -<span class="number">1</span> : <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">Class Mycomparator implements Comparactor&lt;Cell&gt; </span><br><span class="line">&#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function">Public <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Cell c1, Cell c2)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(c1.value == c2.value) &#123;</span><br><span class="line">			<span class="keyword">if</span> (c1.row == c2.row) &#123;</span><br><span class="line">  				<span class="keyword">if</span> (c1.col == c2.col) &#123;</span><br><span class="line">  					<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  				&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  					<span class="keyword">return</span> c1.col &lt; c2.col ? -<span class="number">1</span> : <span class="number">1</span>;</span><br><span class="line">  				&#125;</span><br><span class="line">  			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> c1.row &lt; c2.row ? -<span class="number">1</span> : <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">		&#125;</span><br><span class="line">		Return c1.value &lt; c2.value ? -<span class="number">1</span> : <span class="number">1</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//Use comparactor to replace comparable interface.</span></span><br><span class="line">PriorityQueue&lt;Cell&gt; minheap = <span class="keyword">new</span> PriorityQueue&lt;Cell&gt;(<span class="number">11</span>, <span class="keyword">new</span> Mycomparator());</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line"><span class="comment">//Anonymous inner class </span></span><br><span class="line"></span><br><span class="line">PriorityQueue&lt;Cell&gt; minheap = <span class="keyword">new</span> PriorityQueue&lt;&gt;(<span class="number">11</span>,<span class="keyword">new</span> 	Comparator&lt;Cell&gt;()&#123;</span><br><span class="line">  	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Cell c1, Cell c2)</span> </span>&#123;</span><br><span class="line">  		<span class="keyword">return</span> c2.compareTo(c1);</span><br><span class="line">  	&#125;</span><br><span class="line">  &#125;</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">//Java 8 </span></span><br><span class="line">PriorityQueue&lt;Cell&gt; minheap = <span class="keyword">new</span> PriorityQueue&lt;&gt;(<span class="number">11</span>, (Cell c1, Cell c2) -&gt; &#123;<span class="keyword">return</span> c2.compareTo(c1);&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure> 
-<p><a href="https://leetcode.com/problems/top-k-frequent-elements/" target="_blank" rel="noopener">Top K Frequent Elements</a></p>
-<figure class="highlight java"><figcaption><span>Top K Frequent Elements</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">topKFrequent</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; res= <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span> (nums== <span class="keyword">null</span> || nums.length == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> res;</span><br><span class="line">        &#125; </span><br><span class="line">        Map&lt;Integer, Integer&gt; counters = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> num : nums) &#123;</span><br><span class="line">            counters.put(num, counters.getOrDefault(num, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        PriorityQueue&lt;Counter&gt; maxHeap = <span class="keyword">new</span> PriorityQueue&lt;&gt;(counters.size());</span><br><span class="line">        <span class="keyword">for</span>(Map.Entry&lt;Integer,Integer&gt; set : counters.entrySet()) &#123;</span><br><span class="line">            maxHeap.offer(<span class="keyword">new</span> Counter(set.getKey(), set.getValue()));</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (maxHeap.size() != <span class="number">0</span>) &#123;</span><br><span class="line">                res.add(maxHeap.poll().val);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">//Time complexity: O(klogn), it could be O(klogk) by using minHeap with k + 1 capacity. </span></span><br><span class="line">	<span class="comment">//Space complexity: O(n)</span></span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">topKFrequent1</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; res = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">if</span> (nums== <span class="keyword">null</span> || nums.length == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> res;</span><br><span class="line">        &#125; </span><br><span class="line">        Map&lt;Integer, Integer&gt; counters = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> num : nums) &#123;</span><br><span class="line">            counters.put(num, counters.getOrDefault(num, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        res = <span class="keyword">new</span> LinkedList&lt;Integer&gt;(counters.keySet());</span><br><span class="line">        Collections.sort(res, (Integer a, Integer b) -&gt; (counters.get(b) - counters.get(a)));</span><br><span class="line">        <span class="keyword">return</span> res.subList(<span class="number">0</span>, k);</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">//Time complexity:O(nlogn)</span></span><br><span class="line">	<span class="comment">//Space complexity:O(n)</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Counter</span> <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">Counter</span>&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> Integer val = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">public</span> Integer count = <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Counter</span><span class="params">(Integer val, Integer count)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.val = val;</span><br><span class="line">        <span class="keyword">this</span>.count = count;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(Counter another)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.count == another.count) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.count &lt; another.count ? <span class="number">1</span> : -<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Priority-Heap-Implementation"><a href="#Priority-Heap-Implementation" class="headerlink" title="Priority Heap Implementation"></a>Priority Heap Implementation</h3><p>Heap is a complete binary tree based structure. The complete binary tree is binary tree in which ever level,except possibly the last level, is completely filled, and all nodes are as far left a<br>possible. <br></p>
-<p>It keeps the relationships like:<br></p>
-<ul>
-<li>Parent Node is always bigger(Max Heap) or smaller(Min Heap) than child nodes.</li>
-<li>The relation between the 2 child nodes are differ</li>
-</ul>
-<p>It can also be presented as an array since it is a complete binary tree.<br>Why? – if it is a complete binary tree, the matching between the nodes and the index of the array is determined, and the relation of parent and child nodes can be well transferred to the relation between two indices. <br></p>
-<p>Index of parent = I, what is the index of the two child nodes?<br></p>
-<ul>
-<li>Left child of index    I = 2 * I + 1</li>
-<li>Right child of index     I = 2 * I + 2</li>
-<li>Parent of index         I = (I - 1) / 2</li>
-</ul>
-<h5 id="Basic-Heap-Internal-Operations"><a href="#Basic-Heap-Internal-Operations" class="headerlink" title="Basic Heap Internal Operations"></a>Basic Heap Internal Operations</h5><p><strong>percolateUp()</strong> <br></p>
-<ul>
-<li>When? The element need to be moved up to maintain the heap`s property</li>
-<li>How? Compare the element with its parent, move it up when necessary. Do this until the element does not need to be moved. </li>
-</ul>
-<p><strong>percalateDown()</strong></p>
-<ul>
-<li>When? The element need to be moved down to maintain the heap`s property. </li>
-<li>How? Compare the element with its two children, if the smallest one of the two children is smaller than the element, swap the element with the child . do this until the element does not need to be moved.</li>
-</ul>
-<p><strong>Heapify()</strong></p>
-<ul>
-<li>Convert an array into a heap in O(n) time.</li>
-<li>For each node that has at least one child, we perform percolateDown() action, in the order of from the node on the deepest level to the root.</li>
-<li>The time complexity of heapify() is <a href="https://www.growingwiththeweb.com/data-structures/binary-heap/build-heap-proof/" target="_blank" rel="noopener">O(n)</a>. (<strong>It require to know all values before heapify.</strong>) </li>
-</ul>
-
-      
-    </div>
-    
-  </div>
-  
-  
-</article>
-
-  
 
 
   <nav id="page-nav">
@@ -1009,23 +1013,23 @@ ga('send', 'pageview');
       <ul>
         
           <li>
+            <a href="/DexWebSite/2020/10/11/Design-Data-Intensive-Note-5/">Design Data-Intensive Note #5</a>
+          </li>
+        
+          <li>
+            <a href="/DexWebSite/2020/10/11/Design-Data-Intensive-Note-4/">Design Data-Intensive Note #4</a>
+          </li>
+        
+          <li>
+            <a href="/DexWebSite/2020/10/11/Design-Data-Intensive-Note-3/">Design Data-Intensive Note #3</a>
+          </li>
+        
+          <li>
             <a href="/DexWebSite/2020/10/10/Design-Data-Intensive-Note-2/">Design Data-Intensive Note #2</a>
           </li>
         
           <li>
             <a href="/DexWebSite/2020/10/10/Design-Data-Intensive-Applications/">Design Data-Intensive Note #1</a>
-          </li>
-        
-          <li>
-            <a href="/DexWebSite/2020/10/10/C-Lesson-6-Array/">Java Concurrency II</a>
-          </li>
-        
-          <li>
-            <a href="/DexWebSite/2020/10/03/Java-Base-Principle-III/">Java Concurrency I</a>
-          </li>
-        
-          <li>
-            <a href="/DexWebSite/2020/09/09/Algorithm-Interval/">Algorithm Interval</a>
           </li>
         
       </ul>

@@ -23,17 +23,17 @@ ga('send', 'pageview');
   
   
   
-  <meta name="description" content="Chapter 2 - Data ModelsData models will affect “How the software is written.” and “How we think about the problem that we are solving.”">
+  <meta name="description" content="Chapter 2 -  A Range of General-Pupose Data ModelsData models will affect “How the software is written.” and “How we think about the problem that we are solving.” Most applications are built byu layer">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Design Data-Intensive Note #2">
 <meta property="og:url" content="http://dexdexinwang.github.io/DexWebSite/2020/10/10/Design-Data-Intensive-Note-2/index.html">
 <meta property="og:site_name" content="Dex Personal Website">
-<meta property="og:description" content="Chapter 2 - Data ModelsData models will affect “How the software is written.” and “How we think about the problem that we are solving.”">
+<meta property="og:description" content="Chapter 2 -  A Range of General-Pupose Data ModelsData models will affect “How the software is written.” and “How we think about the problem that we are solving.” Most applications are built byu layer">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-10-11T04:24:02.884Z">
+<meta property="og:updated_time" content="2020-10-12T02:13:07.542Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Design Data-Intensive Note #2">
-<meta name="twitter:description" content="Chapter 2 - Data ModelsData models will affect “How the software is written.” and “How we think about the problem that we are solving.”">
+<meta name="twitter:description" content="Chapter 2 -  A Range of General-Pupose Data ModelsData models will affect “How the software is written.” and “How we think about the problem that we are solving.” Most applications are built byu layer">
   
     <link rel="alternate" href="/DexWebSite/atom.xml" title="Dex Personal Website" type="application/atom+xml">
   
@@ -107,7 +107,87 @@ ga('send', 'pageview');
     
     <div class="article-content article-content-cloud" itemprop="articleBody">
       
-        <h5 id="Chapter-2-Data-Models"><a href="#Chapter-2-Data-Models" class="headerlink" title="Chapter 2 - Data Models"></a>Chapter 2 - Data Models</h5><p>Data models will affect “How the software is written.” and “How we think about the problem that we are solving.” </p>
+        <h3 id="Chapter-2-A-Range-of-General-Pupose-Data-Models"><a href="#Chapter-2-A-Range-of-General-Pupose-Data-Models" class="headerlink" title="Chapter 2 -  A Range of General-Pupose Data Models"></a>Chapter 2 -  A Range of General-Pupose Data Models</h3><p>Data models will affect “How the software is written.” and “How we think about the problem that we are solving.”<br></p>
+<p>Most applications are built byu layering one data model on top of another. For each layer, the key question is: <em>How is it represented in terms of the next-lower layer?</em> Each layer hides the complexity of the layers below it by providing a clean data modal. <br></p>
+<h4 id="Relational-Model-SQL"><a href="#Relational-Model-SQL" class="headerlink" title="Relational Model - SQL"></a>Relational Model - SQL</h4><p>SQL, data is origanized into relations(tables) where each relation is an unordered collection of tuples(rows). The roots of relational databases lie in business data processing such as <em>transaction processing</em> and <em>batch processing</em>.<br></p>
+<p><strong>Object-Relational Mismatch</strong></p>
+<p>An awkward translation layer is required between the objects in the applciation code and the database model of tables, rows, and columns. The disconnect between the models is sometimes called an <strong>impedance mismatch</strong>.</p>
+<p>E.g. Saving Resume Solutions:</p>
+<ol>
+<li><p>SQL requires normalization which ask more tables to save one resume such as positions or educations tables. <br></p>
+</li>
+<li><p>New SQL supports for structured dataypes and XML data, it allowed multi-valued data to be stored within a single row. <br></p>
+</li>
+<li><p>Encode jobs, education, and contact infor as a JSON or XML doument and store it on a text column in the database like documentation database.</p>
+</li>
+</ol>
+<p>The JSON representation has better <em>locality</em> than the multi-table schema which may query multiple tabels to get data because of normalization(reduced duplicated data). In JSON, all the relevant infomraiton is in one place, and one query is sufficient, but more <em>duplicated human-meaningful information</em>.</p>
+<h4 id="NoSQL"><a href="#NoSQL" class="headerlink" title="NoSQL"></a>NoSQL</h4><p>NoSQL(Not Only SQL) driving:</p>
+<ul>
+<li>A need for greater scalability than relational databases can easily achieve, including very large datasets or very high write throughput.</li>
+<li>A widespread perfermance for free and open source software over commercial database products</li>
+<li>Specialized query opertions that are not well supported by the relaional model</li>
+<li>Frustraion with the restrictiveness of relational schemas, and desire for a more dynamic and expressive data modal.</li>
+</ul>
+<h4 id="Relational-Versus-Document-Databases"><a href="#Relational-Versus-Document-Databases" class="headerlink" title="Relational Versus Document Databases"></a>Relational Versus Document Databases</h4><p><strong>Document Data Model</strong></p>
+<p>Normally, it is regarded as “schemaless” or “schema-on-read”. It is applicable for document-like structure such as a tree of One-To-Many relationships.</p>
+<p> Advantages: </p>
+<ul>
+<li>Schema flexibility</li>
+<li>Better performance due to locality </li>
+<li>For some applications it is closer to the data structures used by the application</li>
+</ul>
+<p>Disadvantages:</p>
+<ul>
+<li>Cannot refer directly to a nested item within a document. (However, as long as documents are not too deeply nested, that is not usually a problem).</li>
+<li>Poor support for joins to support Many-To-Many in document databases. (Some applications does not require join method).</li>
+</ul>
+<p><strong>Relational Data Model</strong></p>
+<p>It is regarded as “schema-on-write”.</p>
+<p>Advantages:</p>
+<ul>
+<li>Better support for joins.</li>
+<li>Many-To-One and Many-To-Many relationships</li>
+</ul>
+<p>Disadvantages:</p>
+<ul>
+<li>impedance mismatch</li>
+<li>less locality</li>
+</ul>
+<h4 id="MapReduce-Quering"><a href="#MapReduce-Quering" class="headerlink" title="MapReduce Quering"></a>MapReduce Quering</h4><p><em>MapReduce</em> is a programming model for processing large amounts of data in bulk across many machines. The logic of the query is expressed with snippets of code, which are called repeatedly by the processing framework. It is based on the map (collect) and reduce (fold or inject) functions that exists in many functional Programming languages.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//SQL</span><br><span class="line">SELECT date_trunc(&apos;month&apos;, observation_timestamp) AS observation_month,</span><br><span class="line">sum(num_animals) AS total_animals</span><br><span class="line">FROM observations</span><br><span class="line">WHERE family = &apos;Sharks&apos;</span><br><span class="line">GROUP BY observation_month;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">//MongoDB</span><br><span class="line">db.observations.mapReduce(</span><br><span class="line">	function map() &#123;</span><br><span class="line">    	var year = this.observationTimestamp.getFullYear();</span><br><span class="line">        var month = this.observationTimestamp.getMonth()+1;</span><br><span class="line">        emit(year + &quot;-&quot; + month, this.numAnimals);</span><br><span class="line">    &#125;,</span><br><span class="line">    function reduce(key, values) &#123;</span><br><span class="line">    	return Array.sum(values);</span><br><span class="line">    &#125;,</span><br><span class="line">	&#123;</span><br><span class="line">    	query: &#123;family:&quot;Sharks&quot;&#125;,</span><br><span class="line">        out: &quot;monthlySharkReport&quot;</span><br><span class="line">    &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h4 id="Graph-Like-Data-Models"><a href="#Graph-Like-Data-Models" class="headerlink" title="Graph-Like Data Models"></a>Graph-Like Data Models</h4><p>Graph Data Models are created for the case that Many-To-Many relations are very common, and the data is more complex. <br></p>
+<p>A graph consists of two kinds of objects: vertices (nodes or entities) and edges (relationships or arcs).</p>
+<p>E.g. <br> </p>
+<ul>
+<li>Social Graphs</li>
+<li>The Web Graph</li>
+<li>Road or Rail Networks</li>
+</ul>
+<p><strong>Property Graphs</strong></p>
+<p>Each vertext consists of: </p>
+<ul>
+<li>A unique identifier</li>
+<li>A set of outgoing edges</li>
+<li>A set of incoming edges</li>
+<li>A collection of properties (key-value paires)</li>
+</ul>
+<p>Each edge consists of:</p>
+<ul>
+<li>A unique identifier</li>
+<li>The vertext at which the edge starts (the tail vertex).</li>
+<li>The vertext at which the edge ends (the head vertex)</li>
+<li>A label to describe the kind of relationship between the two vertices</li>
+<li>A collection of properties (key-value pairs)</li>
+</ul>
+<h4 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h4><ol>
+<li><p>Document databases target use cases where data comes in self–contained documents and relationships between one doument and another are rare.</p>
+</li>
+<li><p>Graph databases go in the opposite direction, targeting use cases where anything is potentially related to everything (Many-To-Many).</p>
+</li>
+</ol>
+<p>Both of these are schemaless.</p>
 
       
     </div>
@@ -121,6 +201,15 @@ ga('send', 'pageview');
     
 <nav id="article-nav">
   <div class="article-nav-block">
+    
+      <a href="/DexWebSite/2020/10/11/Design-Data-Intensive-Note-3/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption"></strong>
+        <div class="article-nav-title">
+          
+            Design Data-Intensive Note #3
+          
+        </div>
+      </a>
     
   </div>
   <div class="article-nav-block">
@@ -193,23 +282,23 @@ gitment.render('gitmentContainer')
       <ul>
         
           <li>
+            <a href="/DexWebSite/2020/10/11/Design-Data-Intensive-Note-5/">Design Data-Intensive Note #5</a>
+          </li>
+        
+          <li>
+            <a href="/DexWebSite/2020/10/11/Design-Data-Intensive-Note-4/">Design Data-Intensive Note #4</a>
+          </li>
+        
+          <li>
+            <a href="/DexWebSite/2020/10/11/Design-Data-Intensive-Note-3/">Design Data-Intensive Note #3</a>
+          </li>
+        
+          <li>
             <a href="/DexWebSite/2020/10/10/Design-Data-Intensive-Note-2/">Design Data-Intensive Note #2</a>
           </li>
         
           <li>
             <a href="/DexWebSite/2020/10/10/Design-Data-Intensive-Applications/">Design Data-Intensive Note #1</a>
-          </li>
-        
-          <li>
-            <a href="/DexWebSite/2020/10/10/C-Lesson-6-Array/">Java Concurrency II</a>
-          </li>
-        
-          <li>
-            <a href="/DexWebSite/2020/10/03/Java-Base-Principle-III/">Java Concurrency I</a>
-          </li>
-        
-          <li>
-            <a href="/DexWebSite/2020/09/09/Algorithm-Interval/">Algorithm Interval</a>
           </li>
         
       </ul>
