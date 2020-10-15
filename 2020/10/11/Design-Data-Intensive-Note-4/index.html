@@ -23,17 +23,17 @@ ga('send', 'pageview');
   
   
   
-  <meta name="description" content="Encoding and Evolution">
+  <meta name="description" content="Encoding and EvolutionEvolvability is one character of maintainability to build systems that make it easy to adapt to change. Normal Changes for Applications:  A new field or record type needs to be c">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Design Data-Intensive Note #4">
 <meta property="og:url" content="http://dexdexinwang.github.io/DexWebSite/2020/10/11/Design-Data-Intensive-Note-4/index.html">
 <meta property="og:site_name" content="Dex Personal Website">
-<meta property="og:description" content="Encoding and Evolution">
+<meta property="og:description" content="Encoding and EvolutionEvolvability is one character of maintainability to build systems that make it easy to adapt to change. Normal Changes for Applications:  A new field or record type needs to be c">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-10-12T03:37:37.425Z">
+<meta property="og:updated_time" content="2020-10-15T00:06:22.037Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Design Data-Intensive Note #4">
-<meta name="twitter:description" content="Encoding and Evolution">
+<meta name="twitter:description" content="Encoding and EvolutionEvolvability is one character of maintainability to build systems that make it easy to adapt to change. Normal Changes for Applications:  A new field or record type needs to be c">
   
     <link rel="alternate" href="/DexWebSite/atom.xml" title="Dex Personal Website" type="application/atom+xml">
   
@@ -107,7 +107,96 @@ ga('send', 'pageview');
     
     <div class="article-content article-content-cloud" itemprop="articleBody">
       
-        <h3 id="Encoding-and-Evolution"><a href="#Encoding-and-Evolution" class="headerlink" title="Encoding and Evolution"></a>Encoding and Evolution</h3>
+        <h3 id="Encoding-and-Evolution"><a href="#Encoding-and-Evolution" class="headerlink" title="Encoding and Evolution"></a>Encoding and Evolution</h3><p><em>Evolvability</em> is one character of maintainability to build systems that make it easy to adapt to change.</p>
+<p>Normal Changes for Applications:</p>
+<ul>
+<li>A new field or record type needs to be captured</li>
+<li>Existing data needs to be presented in a new way.</li>
+</ul>
+<p>The relational database assume that all data in the database conforms to one schema. There is excatly one shcema in force at any one point in time.<br> </p>
+<p>The documentation (schema-on-read) database does not enforce a schema, so the database can contain a mixture of older and newer data formats written at different time. <br></p>
+<p>Noramally, the data format or schema changes will cause change to application code, but code changes often cannot happen instantaneously. <br></p>
+<ul>
+<li>With server-side aplications you may want to perform a <strong>Rolling Upgrade (Staged rollout)</strong>, deploying the new version to a few nodes at a time, checking whether the new version is running smoothly, and gradually working your way through all the nodes. This allows new version to be deployed without service downtime, and thus encourages more frequent releases and better evolvbility.</li>
+<li>With client-side applications you are at the mercy of the users, who may not install the update for some time.</li>
+</ul>
+<p>This means that old and new versions of the code, and old and new data formats, may potentically all <em>coexist</em> in the system at the same time. In order to contianue running smoothly, we need to maintain compatibility in both directions.</p>
+<ul>
+<li>Barckward compatibility: Newer code can read data that was written by older code. Also, it could keep old code to read the old data.</li>
+<li>Forward compatibility: Older code and read data that was written by newer code. It allows old code to ignore additions made by a new version of the code.</li>
+</ul>
+<h4 id="Formats-for-Encoding-Data"><a href="#Formats-for-Encoding-Data" class="headerlink" title="Formats for Encoding Data"></a>Formats for Encoding Data</h4><p>Data Representations in two ways:</p>
+<ul>
+<li>In memory, data is kept in objects, structs, lists, ayyars, hash tabels, trees, and so on. These data structures are optimized for efficient access and manipulation by the CPU.</li>
+<li>When you want to write data to a file or send it over the network, you have to encode it as some kind of self-contianed sequence of bytes (JSON). Since a pointer wouldn’t make sense to any other process, this sequence-of-bytes representation looks quite differnt from the data structures that are noamlly used in memory.</li>
+</ul>
+<p>Thus, we need some kind of translation between the 2 representations. <br><br><strong>Encoding (Serialization)</strong>: The translation from the in-memory representation to byte sequence. <br><br><strong>Decoding</strong>: The translation from the byte sequence to in-memory representation.<br></p>
+<p>Language–Specific Formats (Build-In Serilization) is bad performance: </p>
+<ul>
+<li>The encoding is tied to particular programming language, and readding the data in another language is very diffcult.</li>
+<li>In order to restore data in the same object types, the decoding process needs to be able to instantiate arbitrary classes.</li>
+<li>Versioning data is often an afterthought.</li>
+<li>Efficiency is also often an afterthought.</li>
+</ul>
+<h4 id="JSON-XML-and-CSV"><a href="#JSON-XML-and-CSV" class="headerlink" title="JSON, XML and CSV"></a>JSON, XML and CSV</h4><p>Hence, the Encoding or Decoding process will focus on widely known and widely supported programming languages such as JSON and XML. </p>
+<p>JSON, XML, and CSV are human-readable but still have subtle problems:</p>
+<ul>
+<li>XML and CSV cannot distinguish between a number or string. JSON does not distinguishes integers and floating-point numbers.</li>
+<li>XML and JSON does not support binary strings which are sequences of bytes without a character encoding. </li>
+<li>CSV does not have any shcema, so it is up to the application to define the meaning of each row and column. </li>
+<li>JSON and XML are optimal to complicated scheme. Otherwise, it should to hardcode the appropriate encoding/decoding logic instead.</li>
+</ul>
+<p>There are multiple encoding ways:</p>
+<ul>
+<li>Binary encoding</li>
+<li>Message pack</li>
+<li>Thrift </li>
+<li>Protocal Buffers</li>
+<li>Avro</li>
+</ul>
+<p>Protocol Buffers, Thrift, and Avro are simpler to implement and simpler to use, they have grown to support a fairly wide range of programming languages. <br></p>
+<h4 id="Dataflow-Through-Services-Rest-and-RPC"><a href="#Dataflow-Through-Services-Rest-and-RPC" class="headerlink" title="Dataflow Through Services: Rest and RPC"></a>Dataflow Through Services: Rest and RPC</h4><p>The most common arrangement is to have 2 roles: clients and servers. <br> </p>
+<p>Cients (web browsers) make requests to web servers, making GET requests to download HTML, CSS, JavaScript images, etc.. and making POST requests to submit data to the server. <br></p>
+<p>The API consists of a standardized set of protocols and data formats (HTTP, URLs, SSL/TLS, HTML, etc). <br></p>
+<p><strong>Microservices Architecture (Service-Oriented Architecture)</strong>: a  server can itself be a client to another service. This approach is often used to decompose a large application into smaller services by area of functionality, such that one service makes a request to another when it requires some functionality or data from what other service. <br></p>
+<p>A key design goal of a service-oriented/microservices architecture is to make the application easier to change the maintain by making services independently deployable and evolvable. <br></p>
+<p><strong>Web Services</strong> <br><br>When HTTP is used as the underlying protocol for talking to the service, it is called a web service. However, it will cover more services. <br></p>
+<p><strong>REST</strong> <br></p>
+<p>Rest is not a protocal. It emphasizes simple data formats, using URLs for identifying resources and using HTTP features for cache control, authentication, and content type negotiation. It is often associated with microservices. <br></p>
+<p>An API designed according to principles of REST is called <em>RESTful API</em>. <br></p>
+<p><strong>SOAP</strong> <br></p>
+<p><em>SOAP</em> is an XML-based protocol for making network API requests. Although it is most commonly used over HTTP, it aims to be independent from HTTP and avoids using most HTTP features. Instead, it comes with a sprawling and complex multitude of related standards. <br></p>
+<p>The API of a SOAP web siervice is described using an XML-based language called the Web Services Description Language, or WSDL. WSDL enables code generation so that a client can access a remote service using local classes and method call. <br></p>
+<p>Even though SOAP and its various extensions are ostensibly standardized, interoperability between different vendors’ implmentation often causes problems.</p>
+<p><strong>PRC</strong></p>
+<p>Remote Procedure Call (PRC) model tries to make a request to a remote network service look the same as calling a function or method in your programming language, within the same process.</p>
+<p>Disadvantages:</p>
+<ul>
+<li>A network request is unpredictable. The request or response may be lost due to a network problem, or the remote machine may be slow or unavailable, and such problems are entirely outside of your control.</li>
+<li>A network request has another possible outcome: it may return without a result, due to a time. </li>
+<li>If it retries a failed network request without no response, the server may operate duplicated requests.</li>
+<li>It cannot handle network latency.</li>
+<li>The parameters could be objects which may be problem for larger objects.</li>
+<li>It’s hard to translate between different programming languages.</li>
+</ul>
+<h4 id="Message-Passing-Dataflow"><a href="#Message-Passing-Dataflow" class="headerlink" title="Message-Passing Dataflow"></a>Message-Passing Dataflow</h4><p>In order to handle network problem to pass messages, a message broker is design to stores the message temporarily.</p>
+<p>Advantages:</p>
+<ul>
+<li>It can act as a buffer if the recipient is unavailable or overladed, and thus improve system reliability.</li>
+<li>It can automatically redliver messages to a process that has crashed, and thus prevent messages from being lost.</li>
+<li>It avoids the sender needing to konw the IP address and port number of the recipient.</li>
+<li>It allows one message to be sent to several recipients.</li>
+<li>It logically decouples the sender from the recipient.</li>
+</ul>
+<p>A differece compared to RPC is that message-passing communication is usually one-way: a sender normally doesn’t expect to receive a reply to its messages. <br></p>
+<p><strong>Brakers Impelmentation</strong></p>
+<ul>
+<li>One process sends a message to a named queue or topic</li>
+<li>The broker ensure that message is delivered to one or more consumers of or subscribers to that queue or topic.</li>
+</ul>
+<p><em>Actor Model</em> is a programming model ofr concurrency in a single process. <br></p>
+<p><em>Distributed Actor Frameworks</em>, this programming model is used to scale an application across multiple nodes. </p>
+
       
     </div>
     
@@ -121,11 +210,11 @@ ga('send', 'pageview');
 <nav id="article-nav">
   <div class="article-nav-block">
     
-      <a href="/DexWebSite/2020/10/11/Design-Data-Intensive-Note-5/" id="article-nav-newer" class="article-nav-link-wrap">
+      <a href="/DexWebSite/2020/10/11/Design-Data-Intensive-Note-6/" id="article-nav-newer" class="article-nav-link-wrap">
         <strong class="article-nav-caption"></strong>
         <div class="article-nav-title">
           
-            Design Data-Intensive Note #5
+            Design Data-Intensive Note #6
           
         </div>
       </a>
@@ -133,8 +222,8 @@ ga('send', 'pageview');
   </div>
   <div class="article-nav-block">
     
-      <a href="/DexWebSite/2020/10/11/Design-Data-Intensive-Note-3/" id="article-nav-older" class="article-nav-link-wrap">
-        <div class="article-nav-title">Design Data-Intensive Note #3</div>
+      <a href="/DexWebSite/2020/10/11/Design-Data-Intensive-Note-5/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">Design Data-Intensive Note #5</div>
         <strong class="article-nav-caption"></strong>
       </a>
     
@@ -201,23 +290,23 @@ gitment.render('gitmentContainer')
       <ul>
         
           <li>
-            <a href="/DexWebSite/2020/10/11/Design-Data-Intensive-Note-5/">Design Data-Intensive Note #5</a>
+            <a href="/DexWebSite/2020/10/14/Design-Data-Intensive-Note-9/">Design Data-Intensive Note #9</a>
+          </li>
+        
+          <li>
+            <a href="/DexWebSite/2020/10/14/Design-Data-Intensive-Note-8/">Design Data-Intensive Note #8</a>
+          </li>
+        
+          <li>
+            <a href="/DexWebSite/2020/10/12/Untitled/">Design Data-Intensive Note #7</a>
+          </li>
+        
+          <li>
+            <a href="/DexWebSite/2020/10/11/Design-Data-Intensive-Note-6/">Design Data-Intensive Note #6</a>
           </li>
         
           <li>
             <a href="/DexWebSite/2020/10/11/Design-Data-Intensive-Note-4/">Design Data-Intensive Note #4</a>
-          </li>
-        
-          <li>
-            <a href="/DexWebSite/2020/10/11/Design-Data-Intensive-Note-3/">Design Data-Intensive Note #3</a>
-          </li>
-        
-          <li>
-            <a href="/DexWebSite/2020/10/10/Design-Data-Intensive-Note-2/">Design Data-Intensive Note #2</a>
-          </li>
-        
-          <li>
-            <a href="/DexWebSite/2020/10/10/Design-Data-Intensive-Applications/">Design Data-Intensive Note #1</a>
           </li>
         
       </ul>

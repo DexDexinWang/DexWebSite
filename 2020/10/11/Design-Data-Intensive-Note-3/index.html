@@ -30,7 +30,7 @@ ga('send', 'pageview');
 <meta property="og:site_name" content="Dex Personal Website">
 <meta property="og:description" content="Storage and RetrievalOn the most fundamental level, a database needs to do two things: when you give it some data, it should store the data, and when you ask it again later, it should give the data ba">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-10-12T03:36:55.241Z">
+<meta property="og:updated_time" content="2020-10-12T21:31:50.039Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Design Data-Intensive Note #3">
 <meta name="twitter:description" content="Storage and RetrievalOn the most fundamental level, a database needs to do two things: when you give it some data, it should store the data, and when you ask it again later, it should give the data ba">
@@ -109,8 +109,8 @@ ga('send', 'pageview');
       
         <h3 id="Storage-and-Retrieval"><a href="#Storage-and-Retrieval" class="headerlink" title="Storage and Retrieval"></a>Storage and Retrieval</h3><p>On the most fundamental level, a database needs to do two things: when you give it some data, it should store the data, and when you ask it again later, it should give the data back to you.</p>
 <p><strong>In order to tune a storage engine to perform well on your kind of workload, you need to have a rough idea of what the storage engine is doing under the hood.</strong> <br></p>
-<h4 id="Data-Structure"><a href="#Data-Structure" class="headerlink" title="Data Structure"></a>Data Structure</h4><p>Assume there is Get() and Set() functions to save and get values from database. <br></p>
-<h6 id="Append"><a href="#Append" class="headerlink" title="Append"></a>Append</h6><p>Each Set() only append new updated values to the end of the file that corresponding to key value. It is very efficient. Many databases internally use a <strong>log</strong>, which is an append-only data file. <br></p>
+<h3 id="Data-Structure"><a href="#Data-Structure" class="headerlink" title="Data Structure"></a>Data Structure</h3><p>Assume there is Get() and Set() functions to save and get values from database. <br></p>
+<h4 id="Append"><a href="#Append" class="headerlink" title="Append"></a>Append</h4><p>Each Set() only append new updated values to the end of the file that corresponding to key value. It is very efficient. Many databases internally use a <strong>log</strong>, which is an append-only data file. <br></p>
 <p><em>Log</em> is used in the more general sense: an append-only sequence of records. It doesn’t have to be human-readable; it might be binary and intended only for other programs to read. <br></p>
 <p><em>How to avoid eventually running out of dist spack?</em> <br><br>A good solution is to break the log into segments of a certain size by closing a segment file when it reaches a certain size, and make subsequent writes to a new segment file. Then, we can perform compaction on these segments.<br></p>
 <p>Compaction means throwing away duplicate keys in the log, and keeping only the most recent update for each key.<br></p>
@@ -122,14 +122,26 @@ ga('send', 'pageview');
 <li>Partially written read: Use checksums to detecte and ignore corrupted parts</li>
 <li>Concurrentcy contry: one writing thread, multiple reading threads.</li>
 </ul>
-<h6 id="Index"><a href="#Index" class="headerlink" title="Index"></a>Index</h6><p>In general, Get() method will search a value from the start record to the end record. O(n). Index could be used to reduce the cost.</p>
+<p><em>Why don’t you update the file in place, overwriting the old value with the new value?</em> <br></p>
+<ul>
+<li>Appending and segment merging are sequential write operations, which are generally much faster than random writes, especially on magnetic spinning-disk hard drives, To some extent sequential writes are also preferable on flash-based solid state drives(SSDs).</li>
+<li>Concurrency and crash recovery are much simpler if segment files are append-only or immutable. </li>
+<li>Merging old segments avoids the problem of data files getting fragmented over time.</li>
+</ul>
+<h4 id="Index"><a href="#Index" class="headerlink" title="Index"></a>Index</h4><p>In general, Get() method will search a value from the start record to the end record. O(n). Index could be used to reduce the cost.</p>
 <p>An Index is an additional structure that is derived from the primary data. Index could be added or removed, it does not affect the contents of the database; it only affects the performance of queries. Well-chosen indexes speed up read queries, but every index slows down writes.<br></p>
-<p><strong>Hash Indexes</strong></p>
+<p><strong>Hash Indexes -&gt; SSTable -&gt; LSM-Trees</strong></p>
 <p>Key-value stores are quite similar to the dictionary type which is usually implemented as a In-Memory hash map. (key, byte offset). <br></p>
 <p>Limitations:</p>
 <ul>
 <li>Hashmap must fit in memory becuase of a lot of random access I/O.</li>
 <li>Range queries are not efficient.</li>
+</ul>
+<p>The advantage of In-Memory hash map is Sorted String Table (SSTable). It sounds like SortMap in Java (red-blck trees or AVL trees). <br> </p>
+<ul>
+<li>Merging segments is simple and efficient, even if the files are bigger than available memory (it record hash range boundary).</li>
+<li>In order to find a particular key in the file, you no longer need to keep an index of all the keys in memory.</li>
+<li>Since read requests need to scan over several key-value pairs in the requested range anyway, it is possible to group thoes records into a block and compress it before writing it to disk.</li>
 </ul>
 <p><strong>B-Trees</strong></p>
 <p>The most common type of index is B-Tree which breaks the database down into fixed-size blocks or pages, traditionally 4KB in size, and read or write one page at a time. <br></p>
@@ -138,6 +150,23 @@ ga('send', 'pageview');
 <p>The number of references to child pages in one page of the B-tree is called the <em>branching factor</em>.<br></p>
 <p>The B-Tree algorighm ensure the tree remins balanced: a B-tree with n keys always has a depth of O(logn).</p>
 <p>It is very common to have secondary indexes to have multiple search keys.</p>
+<p><strong>Comparing B-Trees and LSM-Trees</strong><br>LSM-trees are typically faster for writes, whereas B-trees are ghought to be faster for reads. Reads are typically slower on LSM-trees because they have to check several different data structures and SSTables at different stages of compaction.</p>
+<h4 id="Transaction-Processing-or-Analytics"><a href="#Transaction-Processing-or-Analytics" class="headerlink" title="Transaction Processing or Analytics"></a>Transaction Processing or Analytics</h4><p>In the early days of business data processing, a write to the database typically corresponded to a commercial transaction.</p>
+<p><em>Transaction processing</em> just means allowing clients to make low-latency reads and writes as opposed to batch processing jobs, which only run periodically.</p>
+<p><em>Online Transaction Processing(OLTP)</em> refers interactive to look up a small number of records by some key, using an index.</p>
+<p>-Online Analytic Process(OLAP)_ refers business analysts to query history data into reports that help the management of a company make better decision(business intelligence).</p>
+<table><br><tr><th><center><strong>Property</strong></center></th><br>  <th><center><strong>Transaction Processing Systems (OLTP)</strong></center></th><br>  <th><center>Analytic systems (OLAP)</center></th><br></tr><br><tr><br>  <td>Main read pattern</td><br>  <td>Small number of records per query, fetched by key</td><br>  <td>Aggregate over large number of records</td><br></tr><br><tr><br>  <td>Main write pattern</td><br>  <td>Random-access, low-latency writes from user input</td><br>  <td>Bulk import (ETL) or event stream</td><br></tr><br><tr><br>  <td>Primarily used by</td><br>  <td>End user/customer, via web application</td><br>  <td>Internal analyst, for decision support</td><br></tr><br><tr><br>  <td>What data represents</td><br>  <td>Latest state of data (current point in time)</td><br>  <td>History of events that happened over time</td><br></tr><br><tr><br>  <td>Dataset size</td><br>  <td>Gigabytes to terabytes</td><br>  <td>Terabytes to petabytes</td><br></tr><br></table>
+
+<p><strong>Data Warehousing</strong><br>A data warehouse, by contrast, is a separate database that analysts can query to their hearts’ content, without affecting OLTP operations. <br></p>
+<p>The data warehouse contains a read-only copy of the data in all various OLTP system in the compnay. Data is extracted from OLTP databases, transformed into an analysis-friendly schema, cleaned up, and then loaded into the data warehouse. This process of getting data into the warehouse is known as <em>Extract-Transform-Load (ETL)</em>. <br></p>
+<p>Normally, data warehouse are used in <em>Star</em> schema or <em>Snowflakes</em> schema. The center of the schema is so-called <em>fact</em> table that contains measure columns. Others tables are called <em>dimension</em> tables which represent who, what, where, when, how, and why of the event.<br></p>
+<p><strong>Column-Oriented Storage</strong></p>
+<p>In most OLTP databases, storage is laid out in row-oriented fashion: all values from row of table are stored next to each other.<br></p>
+<p>The idea behind column-oriented storage is simple: don’t store all the values from one row together, but store all the values from each column together instead. <br></p>
+<p><em>Sort Order in Column Storage</em> is not a big porlbem because it doesn’t necessarily matter in which order the rows are stored. It depends on the inserted time. <br></p>
+<p><em>Writing to Column-Oriented Storage</em> have the downside of makeing writes more diffult becaue column-oriented will do read queries faster. A good solution is LSM-trees. All writes first go to an in-memory store, where they are added to a stored structure and prepared for writing to disk. It doesn’t matter whether the in-memory store is row-oriented or column-oriented. when enough writes have accumulated, they are merged with the column files on disk and writeen to new files in bulk. <br></p>
+<p><strong>Aggreation</strong></p>
+<p>Another aspect of data warehouse that is worth mentioning briefly is <em>materialized aggregates</em> such as: COUNT, SUM, AVG, MIN, or MAX. It can be wasteful to crunch through the raw data every time. A good solution is to cache some of the counts or cums that queries use most often : Data Cubes or Materialized Views. <br></p>
 
       
     </div>
@@ -152,11 +181,11 @@ ga('send', 'pageview');
 <nav id="article-nav">
   <div class="article-nav-block">
     
-      <a href="/DexWebSite/2020/10/11/Design-Data-Intensive-Note-4/" id="article-nav-newer" class="article-nav-link-wrap">
+      <a href="/DexWebSite/2020/10/11/Design-Data-Intensive-Note-5/" id="article-nav-newer" class="article-nav-link-wrap">
         <strong class="article-nav-caption"></strong>
         <div class="article-nav-title">
           
-            Design Data-Intensive Note #4
+            Design Data-Intensive Note #5
           
         </div>
       </a>
@@ -232,23 +261,23 @@ gitment.render('gitmentContainer')
       <ul>
         
           <li>
-            <a href="/DexWebSite/2020/10/11/Design-Data-Intensive-Note-5/">Design Data-Intensive Note #5</a>
+            <a href="/DexWebSite/2020/10/14/Design-Data-Intensive-Note-9/">Design Data-Intensive Note #9</a>
+          </li>
+        
+          <li>
+            <a href="/DexWebSite/2020/10/14/Design-Data-Intensive-Note-8/">Design Data-Intensive Note #8</a>
+          </li>
+        
+          <li>
+            <a href="/DexWebSite/2020/10/12/Untitled/">Design Data-Intensive Note #7</a>
+          </li>
+        
+          <li>
+            <a href="/DexWebSite/2020/10/11/Design-Data-Intensive-Note-6/">Design Data-Intensive Note #6</a>
           </li>
         
           <li>
             <a href="/DexWebSite/2020/10/11/Design-Data-Intensive-Note-4/">Design Data-Intensive Note #4</a>
-          </li>
-        
-          <li>
-            <a href="/DexWebSite/2020/10/11/Design-Data-Intensive-Note-3/">Design Data-Intensive Note #3</a>
-          </li>
-        
-          <li>
-            <a href="/DexWebSite/2020/10/10/Design-Data-Intensive-Note-2/">Design Data-Intensive Note #2</a>
-          </li>
-        
-          <li>
-            <a href="/DexWebSite/2020/10/10/Design-Data-Intensive-Applications/">Design Data-Intensive Note #1</a>
           </li>
         
       </ul>

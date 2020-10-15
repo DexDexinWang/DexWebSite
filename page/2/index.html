@@ -75,6 +75,339 @@ ga('send', 'pageview');
       <div id="middlecontent" title class="global-width sidebar-left">
         <section id="main">
   
+    <article id="post-Java-Base-Principle-III" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/DexWebSite/2020/10/03/Java-Base-Principle-III/">Java Concurrency I</a>
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/DexWebSite/2020/10/03/Java-Base-Principle-III/" class="article-date">
+  <time datetime="2020-10-03T21:30:00.000Z" itemprop="datePublished">2020-10-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/DexWebSite/categories/Java-Programming-Language/">Java Programming Language</a>
+  </div>
+
+    
+  </div>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <h3 id="Concurrency-Principles"><a href="#Concurrency-Principles" class="headerlink" title="Concurrency Principles"></a>Concurrency Principles</h3><h5 id="Concurrency-VS-Parallel"><a href="#Concurrency-VS-Parallel" class="headerlink" title="Concurrency VS Parallel"></a>Concurrency VS Parallel</h5><p>Concurrency: It is a semantica concpetion to allow multiple tasks run simultaneously. The time is an abstract concept. It could not guarantee which task is executed first or sencond. Norally, there are multiple programs or functions . </p>
+<p>parallel: It is an implementition level conception to allow multiple tasks <strong>phycially</strong> run simultanenously. Normally, there are multiple executors.</p>
+<h5 id="Multiprocess-VS-Multithread"><a href="#Multiprocess-VS-Multithread" class="headerlink" title="Multiprocess VS Multithread"></a>Multiprocess VS Multithread</h5><p>One computer could execute mutiple processes, and each process could contains multiple threads. </p>
+<p>In Java: <br></p>
+<p>Process is an independed execution of instructions with independed resource such as memory, stack, heap or cup. Different process could communicate through interprocess communication (IPC). <br></p>
+<p>Thread is an independed execution of instructiosn with shared memory, but individual stack, counter, and register status. Different thread could communicate through reading/writing shared memory which should take care of ‘Communication overhead’, ‘Resource Isolation’, and ‘Creation/desotry overhead’. These could be controlled by concurrency control.<br></p>
+<p>Hence, Java concurrency is focusing on multi-thread cases in real life. A Java application runs by default in one process. Within a Java application you work with several threads to achieve parallel processing or asynchronous behavior.<br></p>
+<p><a href="http://tutorials.jenkov.com/java-concurrency/index.html" target="_blank" rel="noopener">Why Multi-Threads?</a> <br></p>
+<ul>
+<li>Better utilization of a single CPU.</li>
+<li>Better utilization of multiple CPUs or CPU cores.</li>
+<li>Better user experience with regards to responsiveness.</li>
+<li>Better user experience with regards to fairness.</li>
+</ul>
+<h5 id="Multi-Threads-in-Java"><a href="#Multi-Threads-in-Java" class="headerlink" title="Multi-Threads in Java"></a>Multi-Threads in Java</h5><p>In java development environment, everything is an object even a thread. Hence, a new thread could be created by 3 steps:</p>
+<ul>
+<li>Create a thread object</li>
+<li>Assign task to the created thread object</li>
+<li>Execut the thread. </li>
+</ul>
+<figure class="highlight java"><figcaption><span>Create Threads</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ThreadTester</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">ThreadTester</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.id = id;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"inherited class : "</span> + <span class="keyword">this</span>.id);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ThreadTester2</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">ThreadTester2</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.id = id;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"runnable class : "</span> + <span class="keyword">this</span>.id);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MultiThreadsTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"------------Method 1 to create a thread------------"</span>);</span><br><span class="line">		<span class="comment">// Create Thread Method 1.</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">			Thread t = <span class="keyword">new</span> Thread(String.valueOf(i)) &#123;</span><br><span class="line">				<span class="meta">@Override</span></span><br><span class="line">				<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">					System.out.println(getName());</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;;</span><br><span class="line">			t.start(); <span class="comment">// Any thread could be started once and only once.</span></span><br><span class="line">			<span class="comment">/*</span></span><br><span class="line"><span class="comment">			 * try &#123; t.join(); &#125; catch (InterruptedException e) &#123; // TODO Auto-generated</span></span><br><span class="line"><span class="comment">			 * catch block e.printStackTrace(); &#125;</span></span><br><span class="line"><span class="comment">			 */</span></span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		System.out.println(<span class="string">"------------Method 2 to create a thread------------"</span>);</span><br><span class="line">		<span class="comment">// Create Thread Method 2 with inherited class.</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">			Thread t = <span class="keyword">new</span> Thread(<span class="keyword">new</span> ThreadTester(i));</span><br><span class="line">			t.start();</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		System.out.println(<span class="string">"------------Method 3 to create a thread------------"</span>);</span><br><span class="line">		<span class="comment">// Create Thread Method 3 with an interface because the some thread method may</span></span><br><span class="line">		<span class="comment">// be inherited another class.</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">			Thread t = <span class="keyword">new</span> Thread(<span class="keyword">new</span> ThreadTester2(i));</span><br><span class="line">			t.start();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><strong><a href="https://www.baeldung.com/java-daemon-thread" target="_blank" rel="noopener">Thread Type in Java</a>:</strong></p>
+<p>User threads, are high-priority threads. The JVM will wait for any user thread to complete its task before terminating it. All default created threads in Java are user threads.<br></p>
+<p>Daemon threads are low-priority threads whose only role is to provide services to user threads such as garbage collection. <br></p>
+<p><strong><a href="https://www.geeksforgeeks.org/daemon-thread-java/" target="_blank" rel="noopener">Property</a></strong> <br></p>
+<ul>
+<li>They can not prevent the JVM from exiting when all the user threads finish their execution.</li>
+<li>JVM terminates itself when all user threads finish their execution</li>
+<li>If JVM finds running daemon thread, it terminates the thread and after that shutdown itself. JVM does not care whether Daemon thread is running or not.</li>
+<li>It is an utmost low priority thread.</li>
+</ul>
+<figure class="highlight java"><figcaption><span>Create Daemon Threads</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DaemonThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">DaemonThread</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>(name);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(Thread.currentThread().isDaemon()) &#123;</span><br><span class="line">			System.out.println(<span class="keyword">this</span>.getName() + <span class="string">" is a daemon thread!"</span>);</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			System.out.println(<span class="keyword">this</span>.getName() + <span class="string">" is a user thread!"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		DaemonThread t1 = <span class="keyword">new</span> DaemonThread(<span class="string">"t1"</span>); </span><br><span class="line">        DaemonThread t2 = <span class="keyword">new</span> DaemonThread(<span class="string">"t2"</span>); </span><br><span class="line">        DaemonThread t3 = <span class="keyword">new</span> DaemonThread(<span class="string">"t3"</span>); </span><br><span class="line">      </span><br><span class="line">        <span class="comment">// Setting user thread t1 to Daemon </span></span><br><span class="line">        t1.setDaemon(<span class="keyword">true</span>); </span><br><span class="line">              </span><br><span class="line">        <span class="comment">// starting first 2 threads  </span></span><br><span class="line">        t1.start();  </span><br><span class="line">        <span class="comment">//setDaemon() cannot be called when the thread is started. otherwise, java.lang.IllegalThreadStateException</span></span><br><span class="line">        <span class="comment">//t1.setDaemon(true);  </span></span><br><span class="line">        t2.start(); </span><br><span class="line">  </span><br><span class="line">        <span class="comment">// Setting user thread t3 to Daemon </span></span><br><span class="line">        t3.setDaemon(<span class="keyword">true</span>);  </span><br><span class="line">        t3.start();   </span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><strong><a href="https://www.baeldung.com/java-thread-lifecycle" target="_blank" rel="noopener">A Thread’s life cycle</a>:</strong></p>
+<p>The main methos is Start() : mark a thread as “ready to run” state -&gt; put it into the ‘ready to run queue’ and wait for the scheduler to assign its time frame(quota) for running -&gt; end of quota or state change by different even:</p>
+<ul>
+<li>Sleep() : remove from the ready to run queue, and move to sleeping thread pool</li>
+<li>Object.Wait() : removed from the ready to run queue, and move to the conditions’ queue for signal to put back to the ready queue.</li>
+<li>Yield() : did not change the ready to run state, but preempt itself the current quota, put back to the ready-to-run queue again for the next quota.</li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+  
+</article>
+
+  
+    <article id="post-Algorithm-Interval" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/DexWebSite/2020/09/09/Algorithm-Interval/">Algorithm Interval</a>
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/DexWebSite/2020/09/09/Algorithm-Interval/" class="article-date">
+  <time datetime="2020-09-09T21:01:00.000Z" itemprop="datePublished">2020-09-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/DexWebSite/categories/Algorithm/">Algorithm</a>
+  </div>
+
+    
+  </div>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <h3 id="Interval"><a href="#Interval" class="headerlink" title="Interval"></a>Interval</h3><p>Interval questions will consider the interval structure like below one. </p>
+<figure class="highlight java"><figcaption><span>Interval</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Interval</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> start;</span><br><span class="line">  <span class="keyword">int</span> end;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Interval</span><span class="params">(<span class="keyword">int</span> start, <span class="keyword">int</span> end)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.start = start;</span><br><span class="line">    <span class="keyword">this</span>.end = end;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>Easy Question</strong><br><br>Meeting Question gives two intervals AIntervals and BIntervals for two people, returns the earliest time slot that works for both of them with duration K. <br></p>
+<p>Solution hits:</p>
+<ul>
+<li>Get overlap by start = max(AIntervals[i].start, BIntervals[i].start) and end = min(AIntervals[i].end, BIntervals[i].end)</li>
+<li>Find the K is smaller or euqal to the end - start;</li>
+</ul>
+<p><strong>Medium Question</strong> <br></p>
+<p>Most medium above interval questiosn will consider overlaps between multiple intervals (from 0 to n-1). It could be solved with PriorityQueue Pattern sorted by “Interval.End”, minHeap. It will indicates how many intervals have overlaps from index-0 to index-i. The normal time complexity will be O(nlogn), and space time complexity will be O(n). <br> </p>
+<p>E.g.<br><br><a href="https://leetcode.com/problems/meeting-rooms-ii/" target="_blank" rel="noopener">Meeting Rooms II</a>: it asks the maximum number of meeting rooms are necessary for all intervals. The solution will consider  <br></p>
+<figure class="highlight java"><figcaption><span>Meeting Rooms II</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minMeetingRooms</span><span class="params">(<span class="keyword">int</span>[][] intervals)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(intervals == <span class="keyword">null</span> || intervals.length == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    Arrays.sort(intervals, (a, b) -&gt; (a[<span class="number">0</span>] == b[<span class="number">0</span>] ? a[<span class="number">1</span>] - b[<span class="number">1</span>]: a[<span class="number">0</span>] - b[<span class="number">0</span>]));</span><br><span class="line">    PriorityQueue&lt;Integer&gt; minHeap = <span class="keyword">new</span> PriorityQueue&lt;&gt;();</span><br><span class="line">    <span class="keyword">int</span> max = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; intervals.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(minHeap.size() != <span class="number">0</span> &amp;&amp; minHeap.peek() &lt;= intervals[i][<span class="number">0</span>]) &#123;</span><br><span class="line">            minHeap.poll();</span><br><span class="line">        &#125;</span><br><span class="line">        minHeap.offer(intervals[i][<span class="number">1</span>]);</span><br><span class="line">        max = Math.max(minHeap.size(), max);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> max;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The Priority Queue pattern could also solve similar examples: “Maximum CPU Load” and “Employee Free Time”</p>
+<figure class="highlight java"><figcaption><span>Maximum CPU Load</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">Jobs: [[1,4,3], [2,5,4], [7,9,6]]</span></span><br><span class="line"><span class="comment">Output: 7</span></span><br><span class="line"><span class="comment">Explanation: Since [1,4,3] and [2,5,4] overlap</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findMaxCPULoad</span><span class="params">(List&lt;Job&gt; jobs)</span> </span>&#123;</span><br><span class="line">	    <span class="keyword">if</span>(jobs == <span class="keyword">null</span> || jobs.size() == <span class="number">0</span>) &#123;</span><br><span class="line">	      <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	    &#125;</span><br><span class="line">	    Collections.sort(jobs, (a,b)-&gt;(a.start == b.start ? a.end - b.end : a.start - b.start));</span><br><span class="line">	    <span class="keyword">int</span> currMaxLoad = <span class="number">0</span>;</span><br><span class="line">	    <span class="keyword">int</span> maxLoad = <span class="number">0</span>;</span><br><span class="line">	    PriorityQueue&lt;Job&gt; min = <span class="keyword">new</span> PriorityQueue&lt;&gt;((a,b)-&gt;(a.end - b.end));</span><br><span class="line">	    <span class="keyword">for</span>(Job j : jobs) &#123;</span><br><span class="line">	    	<span class="keyword">while</span>(!min.isEmpty() &amp;&amp; min.peek().end &lt;= j.start) &#123;</span><br><span class="line">	    		currMaxLoad -= min.poll().cpuLoad;</span><br><span class="line">	    	&#125;</span><br><span class="line">	    	min.offer(j);</span><br><span class="line">	    	currMaxLoad += j.cpuLoad;</span><br><span class="line">	    	maxLoad = Math.max(currMaxLoad, maxLoad);</span><br><span class="line">	    &#125;</span><br><span class="line">	    <span class="keyword">return</span> maxLoad;</span><br><span class="line">	  &#125;</span><br><span class="line">	</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><figcaption><span>Employee Free Time</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">Input: Employee Working Hours=[[[1,3], [5,6]], [[2,3], [6,8]]]</span></span><br><span class="line"><span class="comment">Output: [3,5]</span></span><br><span class="line"><span class="comment">Explanation: Both the employess are free between [3,5].</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> List&lt;Interval&gt; <span class="title">findEmployeeFreeTime</span><span class="params">(List&lt;List&lt;Interval&gt;&gt; schedule)</span> </span>&#123;</span><br><span class="line">    List&lt;Interval&gt; arr = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span>(List&lt;Interval&gt; l : schedule) &#123;</span><br><span class="line">      <span class="keyword">for</span>(Interval i : l)&#123;</span><br><span class="line">        arr.add(i);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    List&lt;Interval&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    Collections.sort(arr, (a,b)-&gt; (a.start - b.start));</span><br><span class="line">    <span class="keyword">int</span> currEnd = arr.get(<span class="number">0</span>).end;</span><br><span class="line">    PriorityQueue&lt;Interval&gt; min = <span class="keyword">new</span> PriorityQueue&lt;&gt;((a,b)-&gt;(a.end - b.end));</span><br><span class="line">    <span class="keyword">for</span>(Interval interval: arr)&#123;</span><br><span class="line">      <span class="keyword">while</span>(!min.isEmpty() &amp;&amp; min.peek().end &lt; interval.start) &#123;</span><br><span class="line">        currEnd = min.poll().end;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span>(min.isEmpty() &amp;&amp; currEnd &lt; interval.start) &#123;</span><br><span class="line">    	  result.add(<span class="keyword">new</span> Interval(currEnd, interval.start));</span><br><span class="line">      &#125;</span><br><span class="line">      min.offer(interval);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">  &#125;</span><br><span class="line">	</span><br></pre></td></tr></table></figure>
+<p><strong>Optimized Soltion for Time complexity</strong><br></p>
+<p>If the maximum number of ending time from all intervals is smaller enough. The question could be solved with 1D array with Max(intervals.end) value. The total time compelxity will be O(n*T) and space compelxity will be O(T) where T is Max(intervals.end) <br></p>
+<figure class="highlight java"><figcaption><span>Maximum CPU Load</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">Jobs: [[1,4,3], [2,5,4], [7,9,6]]</span></span><br><span class="line"><span class="comment">Output: 7</span></span><br><span class="line"><span class="comment">Explanation: Since [1,4,3] and [2,5,4] overlap</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findMaxCPULoad</span><span class="params">(List&lt;Job&gt; jobs)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(jobs == <span class="keyword">null</span> || jobs.size() == <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Collections.sort(jobs, (a,b)-&gt;(a.start == b.start ? a.end - b.end : a.start - b.start));</span><br><span class="line">    <span class="keyword">int</span> size = <span class="number">0</span>; </span><br><span class="line">    <span class="keyword">for</span>(Job j: jobs) &#123;</span><br><span class="line">      size = Math.max(size, j.end);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span>[] arr = <span class="keyword">new</span> <span class="keyword">int</span>[size+<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> max = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(Job j : jobs) &#123;</span><br><span class="line">      <span class="keyword">int</span> load = j.cpuLoad;</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> i = j.start ; i&lt;=j.end; i++) &#123;</span><br><span class="line">        arr[i] = arr[i] + load;</span><br><span class="line">        max = Math.max(max, arr[i]);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> max;</span><br><span class="line">  &#125;</span><br><span class="line">	</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+  </div>
+  
+  
+</article>
+
+  
+    <article id="post-Algorithm-Bit-Operation" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/DexWebSite/2020/09/02/Algorithm-Bit-Operation/">Algorithm Bit Operation</a>
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/DexWebSite/2020/09/02/Algorithm-Bit-Operation/" class="article-date">
+  <time datetime="2020-09-02T19:02:00.000Z" itemprop="datePublished">2020-09-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/DexWebSite/categories/Algorithm/">Algorithm</a>
+  </div>
+
+    
+  </div>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <h3 id="Bit-Operation"><a href="#Bit-Operation" class="headerlink" title="Bit Operation"></a>Bit Operation</h3><p>The least significant bit is most right bit because number comparation is based on bits from left to right. <br></p>
+<p>The most significant bit (most left bit) is signature: <br></p>
+<ul>
+<li>0 is positive number <br></li>
+<li>1 is negative number <br></li>
+</ul>
+<p>Two`s complement is used to make calculation for negative:<br>Use two`s complement to convert positive number as negative number. <br></p>
+<p>e.g. change 1 to -1</p>
+<ul>
+<li>Get two`s complement of 1 <br></li>
+<li>Add number 1 <br><br>e.g.<br>1       ==     0000 0000 0000 0000 0000 0000 0000 0001<br>-2       == 1111 1111 1111 1111 1111 1111 1111 1110<br>-1        == 1111 1111 1111 1111 1111 1111 1111 1111</li>
+</ul>
+<p><strong>Bit Operation:</strong> <br></p>
+<ul>
+<li>&amp;, AND                 if (true1 &amp;&amp; True2)</li>
+<li>|, OR                 if (True || True2)</li>
+<li>~, Two`s complement         (1-&gt;0 and 0-&gt; for each bit)</li>
+<li>^, XOR                00-&gt;0; 11-&gt;0; 01 or 10-&gt; 1;</li>
+<li>&lt;&lt; left shift            e.g. byte a = 0b 01000001    0b means bites    </li>
+<li>>&gt; right shift    e.g. byte a = 0b 10000000    &gt;&gt;1   -&gt; 1100000  add 1 if the number is negative</li>
+<li>>&gt;&gt; right shift     e.g. byte a = 0b 10000000    &gt;&gt;&gt;1  -&gt; 0100000 and 0 .</li>
+</ul>
+<p>Note: there is no “unsigned int” in JAVA before JAVA 8, but there is unsigned right shift.</p>
+<p>Practical Use Cases:</p>
+<ul>
+<li><p>Bit Getter in kth: <br><br>  int bit = 1; <br><br>  bit = bit &lt;&lt; k ;  <br><br>  return x &amp;= bit <br></p>
+</li>
+<li><p>Big Setter int k: <br><br>  int bit = 1; <br><br>  bit = bit &lt;&lt; k; <br><br>  return x |= bit_setter; <br></p>
+</li>
+<li><p>Bit Divide by 2 <br><br>  int bit = 2; <br><br>  return bit &gt;&gt; 1; <br></p>
+</li>
+<li><p>Bit Count 1s <br><br>  int sum = 0 <br><br>  while(sum!=0) {sum++; n &amp;=(n-1);} <br> </p>
+</li>
+<li><p>Check only one 1 <br><br>  return (n&amp;(n-1)) == 0; <br></p>
+</li>
+<li><p>Keep Most right 1 <br><br>  (n &amp; (-n))  =  x <br></p>
+</li>
+<li><p>Prefix <br><br>  arr[i]^ = arr[i-1] <br></p>
+</li>
+<li><p>Get Complement <br></p>
+</li>
+</ul>
+<figure class="highlight java"><figcaption><span>Get Complement</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> len = <span class="number">0</span>;</span><br><span class="line">     <span class="keyword">int</span> temp = n;</span><br><span class="line">     <span class="keyword">while</span>(temp != <span class="number">0</span>) &#123;</span><br><span class="line">       temp &gt;&gt;=<span class="number">1</span>;</span><br><span class="line">       len++;</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">int</span> complement = (<span class="keyword">int</span>)Math.pow(<span class="number">2</span>,len) - <span class="number">1</span>;</span><br><span class="line">     <span class="keyword">return</span> n ^ complement;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+  </div>
+  
+  
+</article>
+
+  
+    <article id="post-Algorithm-Graph" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/DexWebSite/2020/06/22/Algorithm-Graph/">Algorithm Graph</a>
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/DexWebSite/2020/06/22/Algorithm-Graph/" class="article-date">
+  <time datetime="2020-06-22T20:30:00.000Z" itemprop="datePublished">2020-06-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/DexWebSite/categories/Algorithm/">Algorithm</a>
+  </div>
+
+    
+  </div>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <h3 id="Graph"><a href="#Graph" class="headerlink" title="Graph"></a>Graph</h3><p>Each graph contains 3 elements:</p>
+<ul>
+<li>Node/State/Victor </li>
+<li>Edge/Action</li>
+<li>Direction/Undirected</li>
+</ul>
+<p>In Java, there are 3 data structures to represent given graphs (The example images belong to Intro to <a href="http://darknessneo20000.tripod.com/chapter23.pdf" target="_blank" rel="noopener">Algorithm:Chapter 23</a>)</p>
+<ol>
+<li>Adjacency Matrix</li>
+</ol>
+<p><img src="../images/AlgorithmGraph1.png" alt="alt"><br></p>
+<p>Pros: Representation is easy to implement. Edge removal takes O(1) time. Queries like whether there is an edge from vertex ‘u’ to vertex ‘v’ are efficient and can be done O(1). <br><br>Cons: Consumes more O(V^2) Even if the graph is sparse. O(n^2) to do extension. <br></p>
+<figure class="highlight java"><figcaption><span>Adjacency Matrix</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[][] matrix = <span class="keyword">new</span> <span class="keyword">int</span>[n][n];</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>Adjacency List</li>
+</ol>
+<p><img src="../images/AlgorithmGraph2.png" alt="alt"><br></p>
+<p>Pros: Space complexity = O(|V|+|E|). Adding a vertex/node to the graph is easier<br><br>Cons: Time complexity is O(V) to check whether there is an edge from a node to the other. (Compared to O(1) adjacent matrix).<br></p>
+<figure class="highlight java"><figcaption><span>Adjacency List</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Class GraphNode &#123;</span><br><span class="line">	Int key;</span><br><span class="line">	List&lt;GraphNode&gt; neighbors;</span><br><span class="line">	<span class="function">Public <span class="title">GraphNode</span><span class="params">(<span class="keyword">int</span> key)</span> </span>&#123;</span><br><span class="line">		This.key = key;</span><br><span class="line">		Neighbors = <span class="keyword">new</span> ArrayList&lt;graphNode&gt;();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">List&lt;GraphNode&gt; graph = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br></pre></td></tr></table></figure>
+<p><strong>The better structure of Adjacency List is going to use HashMap</strong></p>
+<p>Pros: Good for sparse graph for space time complexity. Search time complexity if O(1).<br></p>
+<figure class="highlight java"><figcaption><span>HashMap</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Class Node &#123;</span><br><span class="line">	<span class="keyword">int</span> key;</span><br><span class="line">	<span class="function">Public <span class="title">Node</span><span class="params">(<span class="keyword">int</span> key)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.key = key;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">Map&lt;Node, Set&lt;Node&gt;&gt; graph = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br></pre></td></tr></table></figure>
+<h5 id="Algorithm-Solutions"><a href="#Algorithm-Solutions" class="headerlink" title="Algorithm Solutions"></a>Algorithm Solutions</h5><ol>
+<li>BFS1 (Breadth First Serach, is only applicable that edge weight is 1).</li>
+</ol>
+<p>Expend: Choose a node X to be expended. <br><br>Generate: Generate X neighbor node Ys; Reach out to its X all neighboring nodes.<br><br>Termination condition: do a loop until the queue is empty. <br><br>Data Stricture: Maintain a FIFO Queue, put all generated nodes in the queue.<br><br>Priorities:<br>-Each node could be expended one and only once.<br><br>-Each node can be generated once.(it allows to generate more then once, but it will have more cost).<br></p>
+<ul>
+<li>The time complexity of Queue will be O(n). <br></li>
+</ul>
+<p>E.g. <a href="https://leetcode.com/problems/clone-graph/" target="_blank" rel="noopener">Leetcode 133. Clone Graph</a></p>
+<figure class="highlight java"><figcaption><span>Clone Graph</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Node <span class="title">cloneGraph</span><span class="params">(Node node)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (node == <span class="keyword">null</span>) <span class="keyword">return</span> node;</span><br><span class="line">    Map&lt;Node, Node&gt; visited = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    Deque&lt;Node&gt; que = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">    que.offerLast(node);</span><br><span class="line">    visited.put(node, <span class="keyword">new</span> Node(node.val, <span class="keyword">new</span> ArrayList()));</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span>(!que.isEmpty()) &#123;</span><br><span class="line">        Node target = que.pollFirst();    </span><br><span class="line">        <span class="keyword">for</span>(Node nei: target.neighbors) &#123;</span><br><span class="line">            <span class="keyword">if</span>(!visited.containsKey(nei)) &#123;</span><br><span class="line">                visited.put(nei, <span class="keyword">new</span> Node(nei.val, <span class="keyword">new</span> ArrayList&lt;&gt;()));</span><br><span class="line">                que.offerLast(nei);</span><br><span class="line">            &#125;</span><br><span class="line">            visited.get(target).neighbors.add(visited.get(nei));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> visited.get(node);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>BFS2 (Best First Search, speicific exmaple <a href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm" target="_blank" rel="noopener">Dijkstra Algorithm</a>, it requires non-negative eage weight.)</li>
+</ol>
+<p>Usage: Find a shortest path cost from a single node to any other nodes in a graph.<br>Expend: Choose a start node to be expend. <br><br>Generate: Expend node by following a certain gereration rule. <br><br>Termination condition: find a satisfied result or traverse all graph. <br><br>Data Structure: Priorirty Queue<br><br>Properties: </p>
+<ul>
+<li>Each node could be expended one and only once. <br></li>
+<li>Each node could be generated more then once which may reduce cost over time. <br></li>
+<li>All the cost of elements in Priority Queue are expended by incresing or decresing order. <br></li>
+<li>Each popped element from Priority Queue will the best status. <br></li>
+<li>The time complexity of Priority Queue to process n nodes will be O(nlogn) </li>
+</ul>
+<p>E.g. <a href="https://leetcode.com/problems/network-delay-time/" target="_blank" rel="noopener">Leetcode 743. Network Delay Time</a></p>
+<figure class="highlight java"><figcaption><span>Network Delay Time</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Edge</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> target;</span><br><span class="line">    <span class="keyword">int</span> distance;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Edge</span><span class="params">(<span class="keyword">int</span> target, <span class="keyword">int</span> distance)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.target = target;</span><br><span class="line">        <span class="keyword">this</span>.distance = distance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//BFS2 </span></span><br><span class="line"><span class="comment">//Init a node to be expanded: K</span></span><br><span class="line"><span class="comment">//Generate neighbors to each node with updated distance.</span></span><br><span class="line"><span class="comment">//Terminate will all nodes have been visited.</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">networkDelayTime</span><span class="params">(<span class="keyword">int</span>[][] times, <span class="keyword">int</span> N, <span class="keyword">int</span> K)</span> </span>&#123;</span><br><span class="line">    Map&lt;Integer, List&lt;Edge&gt;&gt; graph = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span>[] time: times) &#123;</span><br><span class="line">        <span class="keyword">int</span> start = time[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">int</span> end = time[<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">int</span> distance = time[<span class="number">2</span>];</span><br><span class="line">        graph.putIfAbsent(start, <span class="keyword">new</span> ArrayList&lt;&gt;());</span><br><span class="line">        graph.get(start).add(<span class="keyword">new</span> Edge(end, distance));</span><br><span class="line">    &#125;</span><br><span class="line">    HashMap&lt;Integer, Integer&gt; seen = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    PriorityQueue&lt;<span class="keyword">int</span>[]&gt; que = <span class="keyword">new</span> PriorityQueue&lt;<span class="keyword">int</span>[]&gt;((info1, info2)-&gt;(info1[<span class="number">0</span>] - info2[<span class="number">0</span>]));</span><br><span class="line">    que.offer(<span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">0</span>, K&#125;);</span><br><span class="line">    <span class="keyword">while</span>(!que.isEmpty()) &#123;</span><br><span class="line">        <span class="keyword">int</span>[] info = que.poll();</span><br><span class="line">        <span class="keyword">int</span> target = info[<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">int</span> distance = info[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">if</span>(seen.containsKey(target)) <span class="keyword">continue</span>;</span><br><span class="line">        seen.put(target, distance);</span><br><span class="line">        <span class="keyword">if</span>(graph.containsKey(target)) &#123;</span><br><span class="line">            <span class="keyword">for</span>(Edge nei: graph.get(target)) &#123;</span><br><span class="line">                que.offer(<span class="keyword">new</span> <span class="keyword">int</span>[]&#123;nei.distance + distance, nei.target&#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> res = Integer.MIN_VALUE;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> distance: seen.values())&#123;</span><br><span class="line">        res = Math.max(res,distance);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> seen.size() == N ? res : -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>DFS (Depth First Search, back-tracking is a behavior of bfs) </li>
+</ol>
+<p>Normally, the problem will be solved in a recursion(Iteration will be also work).<br>Definiation 1: What does it stored on each level.<br><br>Definiation 2: How Many different states should be put on this level. <br><br>Termination condition: find a satisfied result or traverse all graph. <br><br>Data Structure: Stack, Deque.<br><br>Typical Algorithm Questions: Permutation and Combination.<br><br>For example: </p>
+<ul>
+<li>print all subsets of a set.</li>
+<li>print all valid permutation of ‘()’</li>
+<li>print all conbination of coins which total number is 99 cents.</li>
+</ul>
+<p>E.g. <a href="https://leetcode.com/problems/course-schedule/" target="_blank" rel="noopener">Leetcode 207. Course Schedule</a></p>
+<figure class="highlight java"><figcaption><span>Course Schedule</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">canFinish</span><span class="params">(<span class="keyword">int</span> numCourses, <span class="keyword">int</span>[][] prerequisites)</span> </span>&#123;</span><br><span class="line">    Map&lt;Integer,Set&lt;Integer&gt;&gt; graph = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span>[] relation: prerequisites) &#123;</span><br><span class="line">        <span class="keyword">int</span> start = relation[<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">int</span> end = relation[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">if</span>(!graph.containsKey(start)) &#123;</span><br><span class="line">            graph.put(start, <span class="keyword">new</span> HashSet&lt;&gt;());</span><br><span class="line">        &#125;</span><br><span class="line">        graph.get(start).add(end);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">boolean</span>[] path = <span class="keyword">new</span> <span class="keyword">boolean</span>[numCourses];</span><br><span class="line">    <span class="keyword">boolean</span>[] visited = <span class="keyword">new</span> <span class="keyword">boolean</span>[numCourses];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numCourses; i++) &#123;</span><br><span class="line">        <span class="keyword">boolean</span> res = isCycle(graph, path, visited, i);</span><br><span class="line">        <span class="keyword">if</span>(res) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isCycle</span><span class="params">(Map&lt;Integer,Set&lt;Integer&gt;&gt; graph, <span class="keyword">boolean</span>[] path, <span class="keyword">boolean</span>[] visited, <span class="keyword">int</span> curr)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(visited[curr]) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">if</span>(path[curr]) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    path[curr] = <span class="keyword">true</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">boolean</span> res = <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">if</span>(graph.containsKey(curr)) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> nei: graph.get(curr)) &#123;</span><br><span class="line">            res = isCycle(graph, path, visited, nei);</span><br><span class="line">            <span class="keyword">if</span> (res) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    path[curr] = <span class="keyword">false</span>;</span><br><span class="line">    visited[curr] = <span class="keyword">true</span>;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="More-Algorith-Solutions"><a href="#More-Algorith-Solutions" class="headerlink" title="More Algorith Solutions"></a>More Algorith Solutions</h3><ol start="4">
+<li><a href="https://en.wikipedia.org/wiki/Topological_sorting" target="_blank" rel="noopener">Topological Ordering</a></li>
+</ol>
+<p>The Topological Ordering of a graph is a linear ordering of its vertices such that for every directed edge uv from vertex u to vertex v, u comes before v in the ordering.</p>
+<p>Normally, it could solve node relationships problems. The core idea is to count how many in-dgree and out-degree for each node. </p>
+<p>E.g. <a href="https://leetcode.com/problems/course-schedule-ii/" target="_blank" rel="noopener">Leetcode 210. Course Schedule II</a></p>
+<figure class="highlight java"><figcaption><span>Course Schedule II</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">public</span> <span class="keyword">int</span>[] findOrder(<span class="keyword">int</span> numCourses, <span class="keyword">int</span>[][] prerequisites) &#123;</span><br><span class="line">    Map&lt;Integer,Set&lt;Integer&gt;&gt; graph = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="keyword">int</span>[] countIn = <span class="keyword">new</span> <span class="keyword">int</span>[numCourses];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span>[] relation: prerequisites) &#123;</span><br><span class="line">        <span class="keyword">int</span> start = relation[<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">int</span> end = relation[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">if</span>(!graph.containsKey(start)) &#123;</span><br><span class="line">            graph.put(start, <span class="keyword">new</span> HashSet&lt;&gt;());</span><br><span class="line">        &#125;</span><br><span class="line">        graph.get(start).add(end);</span><br><span class="line">        countIn[end]++;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    Deque&lt;Integer&gt; que = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">    <span class="keyword">int</span>[] res = <span class="keyword">new</span> <span class="keyword">int</span>[numCourses];</span><br><span class="line">    <span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; numCourses; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(countIn[i] == <span class="number">0</span>) &#123;</span><br><span class="line">            que.offerLast(i);</span><br><span class="line">            res[index++] = i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span>(!que.isEmpty()) &#123;</span><br><span class="line">        <span class="keyword">int</span> curr = que.pollFirst();</span><br><span class="line">        <span class="keyword">if</span>(graph.containsKey(curr))&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> nei: graph.get(curr)) &#123;</span><br><span class="line">                countIn[nei] --;</span><br><span class="line">                <span class="keyword">if</span>(countIn[nei] == <span class="number">0</span>) &#123;</span><br><span class="line">                    que.offerLast(nei);</span><br><span class="line">                    res[index++] = nei;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (index == numCourses) &#123;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>If the graph is undirected graph, we could assume that one edge could be 2 directed edges.One is in, one is out. </p>
+<p>E.g. <a href="https://leetcode.com/problems/minimum-height-trees/" target="_blank" rel="noopener">Leetcode 310. Minimum Height Trees</a></p>
+<figure class="highlight java"><figcaption><span>Minimum Height Trees</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">findMinHeightTrees</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span>[][] edges)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">if</span>(n == <span class="number">1</span>)&#123;</span><br><span class="line">           List&lt;Integer&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">           res.add(<span class="number">0</span>); </span><br><span class="line">           <span class="keyword">return</span> res;</span><br><span class="line">       &#125;</span><br><span class="line">       Map&lt;Integer, Set&lt;Integer&gt;&gt; graph = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">       <span class="keyword">int</span>[] countEdge = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">       <span class="keyword">for</span>(<span class="keyword">int</span>[] edge : edges) &#123;</span><br><span class="line">           <span class="keyword">int</span> a = edge[<span class="number">0</span>];</span><br><span class="line">           <span class="keyword">int</span> b = edge[<span class="number">1</span>];</span><br><span class="line">           <span class="keyword">if</span>(!graph.containsKey(a)) &#123;</span><br><span class="line">               graph.put(a, <span class="keyword">new</span> HashSet&lt;&gt;());</span><br><span class="line">           &#125;</span><br><span class="line">           graph.get(a).add(b);</span><br><span class="line">           </span><br><span class="line">           <span class="keyword">if</span>(!graph.containsKey(b)) &#123;</span><br><span class="line">               graph.put(b, <span class="keyword">new</span> HashSet&lt;&gt;());</span><br><span class="line">           &#125;</span><br><span class="line">           graph.get(b).add(a);</span><br><span class="line">           countEdge[a]++;</span><br><span class="line">           countEdge[b]++;</span><br><span class="line">       &#125;</span><br><span class="line">       </span><br><span class="line">       Deque&lt;Integer&gt; que = <span class="keyword">new</span> LinkedList();</span><br><span class="line">       List&lt;Integer&gt; res = <span class="keyword">new</span> ArrayList();</span><br><span class="line">       <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">           <span class="keyword">if</span>(countEdge[i] == <span class="number">1</span>) &#123;</span><br><span class="line">               que.offerLast(i);</span><br><span class="line">               res.add(i);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       </span><br><span class="line">       <span class="keyword">while</span>(!que.isEmpty()) &#123;</span><br><span class="line">           <span class="keyword">int</span> size = que.size();</span><br><span class="line">           List&lt;Integer&gt; tempRes = <span class="keyword">new</span> ArrayList();</span><br><span class="line">           <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++) &#123;</span><br><span class="line">               <span class="keyword">int</span> curr = que.pollFirst();</span><br><span class="line">               <span class="keyword">for</span>(<span class="keyword">int</span> nei: graph.get(curr)) &#123;</span><br><span class="line">                   countEdge[nei]--;</span><br><span class="line">                   <span class="keyword">if</span>(countEdge[nei] == <span class="number">1</span>) &#123;</span><br><span class="line">                       que.offerLast(nei);</span><br><span class="line">                       tempRes.add(nei);</span><br><span class="line">                   &#125;</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="keyword">if</span>(tempRes.size() != <span class="number">0</span>) res= tempRes;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> res;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li><a href="https://en.wikipedia.org/wiki/Kruskal%27s_algorithm" target="_blank" rel="noopener">Kruskal</a></li>
+</ol>
+<p>Kruskal is a minimum-spanning-tree algorithm which finds an edge of the least possible weight that connects any two trees in the forest.<br> In general, it is also used to check whether all nodes are connected.</p>
+<p>E.g. <a href="https://leetcode.com/problems/satisfiability-of-equality-equations/" target="_blank" rel="noopener">Leetcode 990. Satisfiability of Equality Equations</a></p>
+<figure class="highlight java"><figcaption><span>Satisfiability of Equality Equations</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equationsPossible</span><span class="params">(String[] equations)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[] groups = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">26</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">26</span>; i++) &#123;</span><br><span class="line">        groups[i] = i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(String equ: equations) &#123;</span><br><span class="line">     <span class="keyword">int</span> a = equ.charAt(<span class="number">0</span>) - <span class="string">'a'</span>;</span><br><span class="line">     <span class="keyword">int</span> b = equ.charAt(<span class="number">3</span>) - <span class="string">'a'</span>;</span><br><span class="line">     <span class="keyword">boolean</span> isEqual = equ.charAt(<span class="number">1</span>) == <span class="string">'='</span>;</span><br><span class="line">        <span class="keyword">if</span>(isEqual)&#123;</span><br><span class="line">            <span class="keyword">int</span> groupA = find(a, groups);</span><br><span class="line">            <span class="keyword">int</span> groupB = find(b, groups);</span><br><span class="line">            <span class="keyword">if</span>(groupA != groupB) &#123;</span><br><span class="line">                groups[groupA] = groupB;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(String equ: equations) &#123;</span><br><span class="line">     <span class="keyword">int</span> a = equ.charAt(<span class="number">0</span>) - <span class="string">'a'</span>;</span><br><span class="line">     <span class="keyword">int</span> b = equ.charAt(<span class="number">3</span>) - <span class="string">'a'</span>;</span><br><span class="line">     <span class="keyword">boolean</span> isEqual = equ.charAt(<span class="number">1</span>) == <span class="string">'='</span>;</span><br><span class="line">        <span class="keyword">if</span>(!isEqual)&#123;</span><br><span class="line">            <span class="keyword">int</span> groupA = find(a, groups);</span><br><span class="line">            <span class="keyword">int</span> groupB = find(b, groups);</span><br><span class="line">            <span class="keyword">if</span>(groupA == groupB) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span>[] groups)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(a != groups[a]) &#123;</span><br><span class="line">        groups[a] = find(groups[a], groups);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> groups[a];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li><a href="https://en.wikipedia.org/wiki/Dynamic_programming" target="_blank" rel="noopener">Dynamic Programming</a></li>
+</ol>
+<p>Some algorithm questions will reuqire to check node relations multiple times.DP algorithm could memorize all relationships each time. It will reduce cost.</p>
+<p>E.g. <a href="https://leetcode.com/problems/find-the-city-with-the-smallest-number-of-neighbors-at-a-threshold-distance/" target="_blank" rel="noopener">Leetcode 1334. Find the City With the Smallest Number of Neighbors at a Threshold Distance</a></p>
+<figure class="highlight java"><figcaption><span>Find the City With the Smallest Number of Neighbors</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//DP</span></span><br><span class="line"><span class="comment">//DP[0][0] = Max_VALUE; </span></span><br><span class="line"><span class="comment">//DP[i][j] = min(DP[i][k] + DP[k][j]) where 0&lt;=k&lt;=n-1</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findTheCity</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span>[][] edges, <span class="keyword">int</span> distanceThreshold)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[][] conns = <span class="keyword">new</span> <span class="keyword">int</span>[n][n];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++) &#123;</span><br><span class="line">            conns[i][j] = <span class="number">9999999</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span>[] edge: edges)&#123;</span><br><span class="line">        conns[edge[<span class="number">0</span>]][edge[<span class="number">1</span>]] = edge[<span class="number">2</span>];</span><br><span class="line">        conns[edge[<span class="number">1</span>]][edge[<span class="number">0</span>]] = edge[<span class="number">2</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; n; k++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++) &#123;</span><br><span class="line">                conns[i][j] = Math.min(conns[i][j], conns[i][k] + conns[k][j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> resCity = -<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> resMinNeis = Integer.MAX_VALUE;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="keyword">int</span> totalNeis  = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i == j) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">if</span> (conns[i][j] &lt;= distanceThreshold) &#123;</span><br><span class="line">                totalNeis++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(totalNeis &lt;= resMinNeis) &#123;</span><br><span class="line">            resMinNeis = totalNeis;</span><br><span class="line">            resCity = i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> resCity;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+  </div>
+  
+  
+</article>
+
+  
     <article id="post-Algorithm-Binary-Search-Tree" class="article global-container article-type-post" itemscope itemprop="blogPost">
   
     <header class="article-header">
@@ -577,476 +910,6 @@ ga('send', 'pageview');
 </article>
 
   
-    <article id="post-Algorithm-Linked-List" class="article global-container article-type-post" itemscope itemprop="blogPost">
-  
-    <header class="article-header">
-      
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/DexWebSite/2019/10/24/Algorithm-Linked-List/">Algorithm Linked List </a>
-    </h1>
-  
-
-    </header>
-  
-  <div class="article-meta">
-    <a href="/DexWebSite/2019/10/24/Algorithm-Linked-List/" class="article-date">
-  <time datetime="2019-10-24T07:01:00.000Z" itemprop="datePublished">2019-10-24</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/DexWebSite/categories/Algorithm/">Algorithm</a>
-  </div>
-
-    
-  </div>
-  
-
-  <div class="article-inner">
-    
-    <div class="article-content article-content-cloud" itemprop="articleBody">
-      
-        <h3 id="Linked-List"><a href="#Linked-List" class="headerlink" title="Linked List"></a>Linked List</h3><p><a href="https://www.geeksforgeeks.org/data-structures/linked-list/" target="_blank" rel="noopener">GeeksforGeeks</a>: A linked list is a linear data structure, in which the elements are not stored at contiguous memory locations. The elements in a linked list are linked using pointers. <br><br>In simple words, a linked list consists of nodes where each node contains a data field and a reference(link) to the next node in the list.</p>
-<h5 id="Single-amp-Double-Linked-List-Defination"><a href="#Single-amp-Double-Linked-List-Defination" class="headerlink" title="Single &amp; Double Linked List Defination"></a>Single &amp; Double Linked List Defination</h5><p>By personal experience, the Single Linked List is used to answer algorithm questions. The double Linked List is used to generate new structure.</p>
-<figure class="highlight java"><figcaption><span>Single Linked List</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ListNode</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> val;</span><br><span class="line">    ListNode next;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ListNode</span><span class="params">(<span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">    	<span class="keyword">this</span>.val = val;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><figcaption><span>Doule Linked List</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ListNode</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> val;</span><br><span class="line">    ListNode next;</span><br><span class="line">    ListNode prev;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ListNode</span><span class="params">(<span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">    	<span class="keyword">this</span>.val = val;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="Algorithm-Problem"><a href="#Algorithm-Problem" class="headerlink" title="Algorithm Problem"></a>Algorithm Problem</h5><p>For most Linked List Algorithm problem, there are some tips will be helpful to solve the problem. <br></p>
-<ol>
-<li>The HEAD node should be saved util final output. </li>
-<li>Check NPE first before using next pointer and value.</li>
-<li>At Beginning, check corner cases will be helpful to make solution better and save time.</li>
-<li>Define an extra node to handle head will make clear logic.</li>
-</ol>
-<p><strong><a href="https://leetcode.com/problems/reverse-linked-list/" target="_blank" rel="noopener">Reverse Linked List</a></strong></p>
-<figure class="highlight java"><figcaption><span>Reverse Linked List</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">reverseList</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">if</span>(head == <span class="keyword">null</span> || head.next == <span class="keyword">null</span>) &#123;  <span class="comment">//tip3</span></span><br><span class="line">          <span class="keyword">return</span> head;</span><br><span class="line">      &#125;</span><br><span class="line">      ListNode newHead = <span class="keyword">new</span> ListNode(-<span class="number">1</span>); <span class="comment">//tip1 and tip4</span></span><br><span class="line">      ListNode curr = head;</span><br><span class="line">      </span><br><span class="line">      <span class="keyword">while</span>(curr != <span class="keyword">null</span>) &#123; <span class="comment">// tip 2</span></span><br><span class="line">          ListNode tempCurr = curr;</span><br><span class="line">          curr = curr.next;</span><br><span class="line">          ListNode tempNext = newHead.next;</span><br><span class="line">          newHead.next = tempCurr;</span><br><span class="line">          newHead.next.next = tempNext;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> newHead.next;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<ol start="5">
-<li>Defining 2 pointers {walker = walker.next and runner = runner.next.next} could find middle point which will be use multiple algorithm problems. <br><br>5.1. While (runner != null &amp;&amp; runner.next != null) will make the walker to stop at ( (n/2+1), from 1 to n). <br><br>5.2. While (runner.next != null &amp;&amp; runner.next.next != null) will make the walker to stop at ( (n+1)/2 , from 1 to n). <br></li>
-</ol>
-<p>For example: <br><br>5.1. <br><br>[1 2 3 4 5]   ===&gt; walker is 3; runner is 5 <br><br>[1 2 3 4 5 6] ===&gt; walker is 4; runner is null <br></p>
-<p>5.2. <br></p>
-<p>[1 2 3 4 5]   ===&gt; walker is 3; runner is 5 <br><br>[1 2 3 4 5 6] ===&gt; walker is 3; runner is 5 <br></p>
-<p><strong><a href="https://leetcode.com/problems/palindrome-linked-list/" target="_blank" rel="noopener">Palindrome Linked List</a></strong></p>
-<figure class="highlight java"><figcaption><span>Palindrome Linked List</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPalindrome</span><span class="params">(ListNode head)</span> </span>&#123; <span class="comment">//tip3</span></span><br><span class="line">    <span class="keyword">if</span> (head == <span class="keyword">null</span> || head.next == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (head.next.next == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> head.val == head.next.val;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    Deque&lt;ListNode&gt; stack = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">    ListNode slow = head;</span><br><span class="line">    ListNode fast = head;</span><br><span class="line">    stack.offerLast(slow);</span><br><span class="line">    <span class="keyword">while</span> (fast.next!= <span class="keyword">null</span> &amp;&amp; fast.next.next != <span class="keyword">null</span>) &#123; <span class="comment">//tip5.2 </span></span><br><span class="line">        fast = fast.next.next;</span><br><span class="line">        slow = slow.next;</span><br><span class="line">        stack.offerLast(slow);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (fast.next == <span class="keyword">null</span>) &#123; <span class="comment">//will ignore the middle point if n is odd.</span></span><br><span class="line">        stack.pollLast();</span><br><span class="line">    &#125;</span><br><span class="line">    slow = slow.next;</span><br><span class="line">    <span class="keyword">while</span> (slow != <span class="keyword">null</span>) &#123;</span><br><span class="line">        ListNode target = stack.pollLast();</span><br><span class="line">        <span class="keyword">if</span> (target.val != slow.val) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        slow = slow.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> stack.size() == <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>There is no way to know the length of the linked list before counting all nodes in a loop.<br>For example, <a href="https://leetcode.com/problems/split-linked-list-in-parts/" target="_blank" rel="noopener">725 Split Linked List in Parts</a>.</p>
-<h5 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h5><p>Normally, Double Linked List Structure is used to generate special structure. </p>
-<p>E.g. <a href="https://leetcode.com/problems/lru-cache/submissions/" target="_blank" rel="noopener">LRU</a></p>
-<figure class="highlight java"><figcaption><span>LRU</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DLinkedNode</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> key;</span><br><span class="line">    <span class="keyword">int</span> value;</span><br><span class="line">    DLinkedNode prev;</span><br><span class="line">    DLinkedNode next;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> Map&lt;Integer, DLinkedNode&gt; cache = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> size;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> capacity;</span><br><span class="line">  <span class="keyword">private</span> DLinkedNode head, tail;</span><br><span class="line">    </span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">addNode</span><span class="params">(DLinkedNode node)</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Always add the new node right after head.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    node.prev = head;</span><br><span class="line">    node.next = head.next;</span><br><span class="line">    head.next.prev = node;</span><br><span class="line">    head.next = node;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">removeNode</span><span class="params">(DLinkedNode node)</span></span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Remove an existing node from the linked list.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    DLinkedNode prev = node.prev;</span><br><span class="line">    DLinkedNode next = node.next;</span><br><span class="line">    prev.next = next;</span><br><span class="line">    next.prev = prev;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">moveToHead</span><span class="params">(DLinkedNode node)</span></span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Move certain node in between to the head.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    removeNode(node);</span><br><span class="line">    addNode(node);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">private</span> DLinkedNode <span class="title">popTail</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Pop the current tail.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    DLinkedNode res = tail.prev;</span><br><span class="line">    removeNode(res);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">LRUCache</span><span class="params">(<span class="keyword">int</span> capacity)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.size = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">this</span>.capacity = capacity;</span><br><span class="line">    head = <span class="keyword">new</span> DLinkedNode();</span><br><span class="line">    <span class="comment">// head.prev = null;</span></span><br><span class="line">    tail = <span class="keyword">new</span> DLinkedNode();</span><br><span class="line">    <span class="comment">// tail.next = null;</span></span><br><span class="line">    head.next = tail;</span><br><span class="line">    tail.prev = head;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">get</span><span class="params">(<span class="keyword">int</span> key)</span> </span>&#123;</span><br><span class="line">    DLinkedNode node = cache.get(key);</span><br><span class="line">    <span class="keyword">if</span> (node == <span class="keyword">null</span>) <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    <span class="comment">// move the accessed node to the head;</span></span><br><span class="line">    moveToHead(node);</span><br><span class="line">    <span class="keyword">return</span> node.value;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">put</span><span class="params">(<span class="keyword">int</span> key, <span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">    DLinkedNode node = cache.get(key);</span><br><span class="line">    <span class="keyword">if</span>(node == <span class="keyword">null</span>) &#123;</span><br><span class="line">      DLinkedNode newNode = <span class="keyword">new</span> DLinkedNode();</span><br><span class="line">      newNode.key = key;</span><br><span class="line">      newNode.value = value;</span><br><span class="line">      cache.put(key, newNode);</span><br><span class="line">      addNode(newNode);</span><br><span class="line">      ++size;</span><br><span class="line">      <span class="keyword">if</span>(size &gt; capacity) &#123;</span><br><span class="line">        <span class="comment">// pop the tail</span></span><br><span class="line">        DLinkedNode tail = popTail();</span><br><span class="line">        cache.remove(tail.key);</span><br><span class="line">        --size;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// update the value.</span></span><br><span class="line">      node.value = value;</span><br><span class="line">      moveToHead(node);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<h5 id="Linked-List-V-S-LinkedList-List-the-actual-defined-class-in-JAVA"><a href="#Linked-List-V-S-LinkedList-List-the-actual-defined-class-in-JAVA" class="headerlink" title="Linked List V.S. LinkedList(List, the actual defined class in JAVA)"></a>Linked List V.S. LinkedList(List, the actual defined class in JAVA)</h5><figure class="highlight java"><figcaption><span>Define LinkedList</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">List&lt;E&gt; list = <span class="keyword">new</span> LinkedList&lt;E&gt;()</span><br><span class="line"><span class="comment">// &lt;E&gt; must not be any primitive types. </span></span><br><span class="line"><span class="comment">// Declare List with implementing LinkedList: it`s polymorphism. &lt;br&gt;</span></span><br><span class="line"><span class="comment">// Eager computation: e.g size(). Something will maintain value on time.</span></span><br></pre></td></tr></table></figure>
-<h6 id="List-Implmentation"><a href="#List-Implmentation" class="headerlink" title="List Implmentation"></a>List Implmentation</h6><p><strong> Size and Capacity</strong>  <br><br>Capacity indicates actual size in memory for the list. <br><br>Size means the used size in memory for the list.<br>E.g. <br><br>array = {1,2,3,4,5,6,7,8,9,10,null,null,null,null,null} <br><br>size = 10 <br><br>capacity = 15 <br></p>
-<p>When you call add(int index, E e): <br></p>
-<ol>
-<li>Expand if necessary</li>
-<li>Move all elements after index by 1</li>
-<li>Set the element at index, size++ </li>
-</ol>
-<p>List&lt;&gt; could be impelmentated by LinkedList&lt;&gt; or ArrayList&lt;&gt;</p>
-<p><strong>ArrayList V.S. LinkedList</strong> <br></p>
-<ol>
-<li>Memory Layout <br><br>1.1. ArrayList: consecutive allocated memory space, no overhead <br><br>1.2. LinkedList: non-consecutive, overhead of multiple objects with the “next” revference.<br></li>
-<li>(Random, known index) access time <br><br>2.1. ArrayList: O(1) -&gt; calculating the offset. <br><br>2.2. LinkedList: O(n) worst case -&gt; it should be searched from head. <br></li>
-<li>(non-sorted, unknow index, but know the value) Search time  <br><br>3.1. ArrayList: O(n) <br><br>3.2. LinkedList: O(n) <br></li>
-<li>(sorted, unknow index, but know the value) Search time <br><br>4.1. ArrayList: O(logn) -&gt; binary search <br><br>4.2. LinkedList: O(n) -&gt; Search All. There is benifit from binary search.  <br></li>
-</ol>
-<p><strong> Choosing ArrayList or LinkedList</strong>  <br></p>
-<ol>
-<li>If you have a log of random access operations. ==&gt; ArrayList</li>
-<li>If you alwasy add/remove at end. ==&gt; LinkedList</li>
-<li>When the time complexity is similar for using ArrayList and LinkedList ==&gt; ArrayList (no references)</li>
-<li>Stack and Vector class not recommended. Vector =&gt; ArrayList. Stack ==&gt; LinkedList.</li>
-</ol>
-<p><strong>Operations</strong> <br></p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Operation</th>
-<th style="text-align:left">ArrayList</th>
-<th style="text-align:left">LinkedList</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">Get(int index) at head/tail</td>
-<td style="text-align:left">O(1)</td>
-<td style="text-align:left">O(1)</td>
-</tr>
-<tr>
-<td style="text-align:left">Get(int index) in middle</td>
-<td style="text-align:left">O(1)</td>
-<td style="text-align:left"><span style="color:blue">O(n)</span></td>
-</tr>
-<tr>
-<td style="text-align:left">Set(int index) at head/tail</td>
-<td style="text-align:left">O(1)</td>
-<td style="text-align:left">O(1)</td>
-</tr>
-<tr>
-<td style="text-align:left">Set(int index) in middle</td>
-<td style="text-align:left">O(1)</td>
-<td style="text-align:left"><span style="color:blue">O(n)</span></td>
-</tr>
-<tr>
-<td style="text-align:left">Add(int index, E e) in middle</td>
-<td style="text-align:left">O(n)</td>
-<td style="text-align:left">O(n)</td>
-</tr>
-<tr>
-<td style="text-align:left">Add(int index, E e) at head</td>
-<td style="text-align:left"><span style="color:blue">O(n)</span></td>
-<td style="text-align:left">O(1)</td>
-</tr>
-<tr>
-<td style="text-align:left">Add (E, e) at tail</td>
-<td style="text-align:left">O(1)</td>
-<td style="text-align:left">O(1)</td>
-</tr>
-<tr>
-<td style="text-align:left">Remove(int index) at head</td>
-<td style="text-align:left"><span style="color:blue">O(n)</span></td>
-<td style="text-align:left">O(1)</td>
-</tr>
-<tr>
-<td style="text-align:left">Remove(int index) at tail</td>
-<td style="text-align:left">O(1)</td>
-<td style="text-align:left">O(1)</td>
-</tr>
-<tr>
-<td style="text-align:left">Remove(int index) at middle</td>
-<td style="text-align:left">O(n)</td>
-<td style="text-align:left">O(n)</td>
-</tr>
-<tr>
-<td style="text-align:left">Size()</td>
-<td style="text-align:left">O(1)</td>
-<td style="text-align:left">O(1)</td>
-</tr>
-<tr>
-<td style="text-align:left">isEmpty()</td>
-<td style="text-align:left">O(1)</td>
-<td style="text-align:left">O(1)</td>
-</tr>
-</tbody>
-</table>
-<p>LinkedList is good at manipulating data in head or tail. <br><br>ArrayList is good at random search. <br></p>
-<p>However, the ArrayList may be extended if there is no enough space to save new insersted value, the time complexity is still O(1) as amortized time complexity. New extended space will be (1+n) * 2 in Java. </p>
-
-      
-    </div>
-    
-  </div>
-  
-  
-</article>
-
-  
-    <article id="post-Object-Oriented-Design-3" class="article global-container article-type-post" itemscope itemprop="blogPost">
-  
-    <header class="article-header">
-      
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/DexWebSite/2019/10/18/Object-Oriented-Design-3/">Object-Oriented Design #3</a>
-    </h1>
-  
-
-    </header>
-  
-  <div class="article-meta">
-    <a href="/DexWebSite/2019/10/18/Object-Oriented-Design-3/" class="article-date">
-  <time datetime="2019-10-18T10:38:00.000Z" itemprop="datePublished">2019-10-18</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/DexWebSite/categories/Object-Oriented-Design/">Object-Oriented Design</a>
-  </div>
-
-    
-  </div>
-  
-
-  <div class="article-inner">
-    
-    <div class="article-content article-content-cloud" itemprop="articleBody">
-      
-        <h3 id="Object-Oriented-Design"><a href="#Object-Oriented-Design" class="headerlink" title="Object-Oriented Design"></a>Object-Oriented Design</h3><p><strong> BlackJack </strong></p>
-<p><strong> Step 1 </strong> <br><br>Understand/Analyze the USE CASE. </p>
-<p>Use Case : BlackJack has already define the rules as Use Case.</p>
-<ul>
-<li><strong>Stage</strong> description and <strong>Game Situation</strong> description</li>
-<li><strong>Rules</strong> description and <strong>Process</strong> description</li>
-</ul>
-<p><strong> Step 2 </strong> <br><br>Design Models (class) and relationships between Models or class <br><br>Single responsibility Principle: each class should have only one job but (mutiple APIs) <br></p>
-<ul>
-<li>Card</li>
-<li>Deck</li>
-<li>Player or Hand</li>
-</ul>
-<p>Class relationships: <br><br>Association: a general binary relationship that describes an activity between two classes. 1-1 <br></p>
-<p>Aggregation/Composition: a special form of association, which represents an ownership relationship between two classes. (has-a). <br></p>
-<p>Deck is aggreation of Card.<br><br>Player is aggreation of Card.</p>
-<p><strong> Step 3 </strong> <br><br>For complicated designs, first focus on public methods (APIs): <br></p>
-<p>Functionality: </p>
-<figure class="highlight java"><figcaption><span>Init Classes in JAVA (Assumption)</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Card</span> </span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">char</span> value;</span><br><span class="line">  	<span class="keyword">public</span> Suit suit; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Deck</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> List&lt;Card&gt; cards;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> dealIndex;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">shuffle</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dealHead</span><span class="params">()</span></span></span><br><span class="line"><span class="function">&#125;</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">class Hand </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> List&lt;Card&gt; card;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">score</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getCard</span><span class="params">()</span></span></span><br><span class="line"><span class="function">&#125;</span></span><br></pre></td></tr></table></figure>
-<p><strong>Step 4</strong> <br><br>Complete all implementation.<br><br>Create Run Method to simulate players.<br></p>
-
-      
-    </div>
-    
-  </div>
-  
-  
-</article>
-
-  
-    <article id="post-Object-Oriented-Design-2-4" class="article global-container article-type-post" itemscope itemprop="blogPost">
-  
-    <header class="article-header">
-      
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/DexWebSite/2019/10/18/Object-Oriented-Design-2-4/">Object-Oriented Design #2</a>
-    </h1>
-  
-
-    </header>
-  
-  <div class="article-meta">
-    <a href="/DexWebSite/2019/10/18/Object-Oriented-Design-2-4/" class="article-date">
-  <time datetime="2019-10-18T09:24:00.000Z" itemprop="datePublished">2019-10-18</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/DexWebSite/categories/Object-Oriented-Design/">Object-Oriented Design</a>
-  </div>
-
-    
-  </div>
-  
-
-  <div class="article-inner">
-    
-    <div class="article-content article-content-cloud" itemprop="articleBody">
-      
-        <h3 id="Object-Oriented-Design"><a href="#Object-Oriented-Design" class="headerlink" title="Object-Oriented Design"></a>Object-Oriented Design</h3><p><strong> Paking System Design Steps: </strong></p>
-<p><strong> Step 1 </strong> <br><br>Understand/Analyze the USE CASE. </p>
-<p>Use case: Describe the parking lot building? Vehicle monitoring? What kind of parking lot?<br>Some other questions that may affect your design:</p>
-<ul>
-<li>One level or multiple levels?</li>
-<li>Parking – Spot / Vehicle sizes? </li>
-<li>Track the location of each vehicle?</li>
-</ul>
-<p><strong> Step 2 </strong> <br><br>Design Models (class) and relationships between Models or class <br><br>Single responsibility Principle: each class should have only one job but (mutiple APIs) <br></p>
-<ul>
-<li>Vehicle</li>
-<li>Parking Spot</li>
-<li>Level</li>
-<li>ParkingLot - Time, Price attribute. </li>
-</ul>
-<p>Class relationships: <br><br>Association: a general binary relationship that describes an activity between two classes. 1-1 <br></p>
-<p>Aggregation/Composition: a special form of association, which represents an ownership relationship between two classes. (has-a). <br></p>
-<p>Inheritance: <br><br>Vehicle – Parking spot, Association <br><br>Level – Parking Spot, Composition <br><br>Vehicle – Car, Truck <br></p>
-<p><strong> Step 3 </strong> <br><br>For complicated designs, first focus on public methods (APIs): how to revoke your APIs?<br>Functionality: </p>
-<ul>
-<li>Base functionality: for a given vehicle, tell whether there is available spot in the parking lot.</li>
-<li>Possible extensions: provide available spot locations, assign spot to the vehicle.<br>……  Generate Classes and APIs with comments ……</li>
-</ul>
-<figure class="highlight java"><figcaption><span>Init Classes in JAVA (Assumption)</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PrkingLots</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> List&lt;ParktingLevel&gt; levels;</span><br><span class="line">  	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasSpot</span><span class="params">(Vehicle vehicle)</span></span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ParkingLevel</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> List&lt;ParkingSpot&gt; spots;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasSpot</span><span class="params">(Vehicle vehicle)</span></span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ParkingSpot</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> Vehicle vehicle;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">fit</span><span class="params">(Vechicle vehicle)</span> </span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Vehicle</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> String plateNumber;</span><br><span class="line">    <span class="keyword">private</span> size;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>Step 4</strong> <br><br>Complete all implementation.<br></p>
-<p>Assumption: multiple levels and check vehicle size. <br></p>
-<ol>
-<li><p>APIs:<br><br>Boolean hasSpot (Vehicle v); <br><br>Boolean park (Vehicle v); <br><br>Boolean leave (Vehicle v); <br></p>
-</li>
-<li><p>Classes:<br>ParkingLog, Level, Vehicle, ParkingSpot, Car, Truck</p>
-</li>
-</ol>
-<p>OOD: Performance/Efficiency is still important! This is where you use data structures and algorithms!</p>
-<h5 id="ENUM"><a href="#ENUM" class="headerlink" title="ENUM"></a>ENUM</h5><p><strong>It is a special data type that enables for a variable to be a set of predefined constants.</strong></p>
-<ol>
-<li>The enum declaration defines a class. The enum class body can include methods and other fields. </li>
-<li>The compiler automatically adds some special methods when it creates an enum. Such as values() method.  ( for(Day day : Day.values()) {} );</li>
-<li>The constructor for an enum type must be package-private or private access. It automatically creates the constants that are defined at the beginning of the enum body. You cannot invoke an enum constructor yourself.</li>
-</ol>
-<h5 id="Design-Pattern"><a href="#Design-Pattern" class="headerlink" title="Design Pattern"></a>Design Pattern</h5><ol>
-<li><p>Builder</p>
-<figure class="highlight java"><figcaption><span>Builder</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span></span>&#123;</span><br><span class="line">		<span class="keyword">private</span> <span class="keyword">final</span> String firstName;<span class="comment">// required;</span></span><br><span class="line">		<span class="keyword">private</span> <span class="keyword">final</span> String lastName; <span class="comment">// required</span></span><br><span class="line">		<span class="keyword">private</span> <span class="keyword">int</span> age; <span class="comment">// optimal</span></span><br><span class="line">		<span class="keyword">private</span> String phone;</span><br><span class="line">		<span class="keyword">private</span> String address;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//Problem: so many constructions.</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="title">User</span><span class="params">(String firstName, String lastName)</span> </span>&#123;</span><br><span class="line">			<span class="keyword">this</span>.firstName = firstName;</span><br><span class="line">			<span class="keyword">this</span>.lastName = lastName;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="title">User</span><span class="params">(String firstName, String lastName, <span class="keyword">int</span> age, String phone, String address)</span> </span>&#123;</span><br><span class="line">			<span class="keyword">this</span>.firstName = firstName;</span><br><span class="line">			<span class="keyword">this</span>.lastName = lastName;</span><br><span class="line">			<span class="keyword">this</span>.age = age;</span><br><span class="line">			<span class="keyword">this</span>.phone = phone;</span><br><span class="line">			<span class="keyword">this</span>.address = address;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="title">User</span><span class="params">(String firstName, String lastName, <span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">			<span class="keyword">this</span>( firstName,  lastName,  age,  <span class="string">""</span>, <span class="string">""</span>);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">//Solution I, Get() Set() </span></span><br><span class="line">		<span class="comment">//However the solution could work as below steps</span></span><br><span class="line">		<span class="comment">//   User user = new Users(firstName, lastName);   --&gt; create an object that could be accessed with 0 age and empty address. </span></span><br><span class="line">		<span class="comment">//   user.setAge(99);</span></span><br><span class="line">		<span class="comment">//   user.setAddress("111111");</span></span><br><span class="line">		<span class="comment">//   ....</span></span><br><span class="line">		<span class="comment">//   </span></span><br><span class="line">		<span class="comment">//Limitation Solution I</span></span><br><span class="line">		<span class="comment">//1. It requires multiple function calls to create an object. but first init step has already created an accessible object </span></span><br><span class="line">		<span class="comment">//2. Do not want to expose setters for some data.</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			<span class="keyword">return</span> age;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(<span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">			<span class="keyword">this</span>.age = age;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">public</span> String <span class="title">getPhone</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			<span class="keyword">return</span> phone;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPhone</span><span class="params">(String phone)</span> </span>&#123;</span><br><span class="line">			<span class="keyword">this</span>.phone = phone;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">public</span> String <span class="title">getAddress</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			<span class="keyword">return</span> address;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAddress</span><span class="params">(String address)</span> </span>&#123;</span><br><span class="line">			<span class="keyword">this</span>.address = address;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">public</span> String <span class="title">getFirstName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			<span class="keyword">return</span> firstName;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">public</span> String <span class="title">getLastName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			<span class="keyword">return</span> lastName;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//Solution 2 Create a Builder</span></span><br><span class="line">		</span><br><span class="line">		<span class="function"><span class="keyword">private</span> <span class="title">User</span><span class="params">(UserBuilder builder)</span> </span>&#123;</span><br><span class="line">			<span class="keyword">this</span>.firstName = builder.firstName;</span><br><span class="line">			<span class="keyword">this</span>.lastName = builder.lastName;</span><br><span class="line">			<span class="keyword">this</span>.age = builder.age;</span><br><span class="line">			<span class="keyword">this</span>.address = builder.address;</span><br><span class="line">			<span class="keyword">this</span>.phone = builder.phone;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">UserBuilder</span> </span>&#123;</span><br><span class="line">			<span class="keyword">private</span> <span class="keyword">final</span> String firstName;<span class="comment">// required;</span></span><br><span class="line">			<span class="keyword">private</span> <span class="keyword">final</span> String lastName; <span class="comment">// required</span></span><br><span class="line">			<span class="keyword">private</span> <span class="keyword">int</span> age; <span class="comment">// optimal</span></span><br><span class="line">			<span class="keyword">private</span> String phone;</span><br><span class="line">			<span class="keyword">private</span> String address;</span><br><span class="line">			</span><br><span class="line">			<span class="function"><span class="keyword">public</span> <span class="title">UserBuilder</span><span class="params">(String firstName, String lastName)</span> </span>&#123;</span><br><span class="line">				<span class="keyword">this</span>.firstName = firstName;</span><br><span class="line">				<span class="keyword">this</span>.lastName = lastName;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			<span class="function"><span class="keyword">public</span> UserBuilder <span class="title">age</span><span class="params">(<span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">				<span class="keyword">this</span>.age = age;</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			<span class="function"><span class="keyword">public</span> UserBuilder <span class="title">address</span><span class="params">(String address)</span> </span>&#123;</span><br><span class="line">				<span class="keyword">this</span>.address = address;</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			<span class="function"><span class="keyword">public</span> UserBuilder <span class="title">phone</span><span class="params">(String phone)</span> </span>&#123;</span><br><span class="line">				<span class="keyword">this</span>.phone = phone;</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			<span class="function"><span class="keyword">public</span> User <span class="title">build</span><span class="params">()</span> </span>&#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">new</span> User(<span class="keyword">this</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">        </span><br><span class="line">	&#125;</span><br><span class="line">    <span class="comment">//Final usage</span></span><br><span class="line"> 	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		User user = <span class="keyword">new</span> User.UserBuilder(<span class="string">"Test"</span>,<span class="string">"Test"</span>).age(<span class="number">7</span>).address(<span class="string">"Test"</span>).phone(<span class="string">"Test"</span>).build();</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Factory</p>
-<figure class="highlight java"><figcaption><span>Facotry</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Shape</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Rectangle</span> <span class="keyword">implements</span> <span class="title">Shape</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Rectangle</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"Inside Ractangle::draw() method"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Square</span> <span class="keyword">implements</span> <span class="title">Shape</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Square</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"Inside Square::draw() method"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Cycle</span> <span class="keyword">implements</span> <span class="title">Shape</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Cycle</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"Inside Cycle::draw() method"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ShapeFactory</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> Shape <span class="title">getShape</span><span class="params">(String shapeType)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(shapeType == <span class="keyword">null</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span> (shapeType.equals(<span class="string">"SQUARE"</span>)) &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">new</span> Square();</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span> (shapeType.equals(<span class="string">"RECTANGLE"</span>)) &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">new</span> Rectangle();</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span> (shapeType.equals(<span class="string">"CYCLE"</span>)) &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">new</span> Cycle();</span><br><span class="line">		&#125; </span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FactoryPatternDemo</span></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> ShapeFactory shapeFactory = <span class="keyword">new</span> ShapeFactory();</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">demo</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Shape shape1 = shapeFactory.getShape(<span class="string">"CYCLE"</span>);</span><br><span class="line">		shape1.draw();</span><br><span class="line">		Shape shape2 = shapeFactory.getShape(<span class="string">"RECTANGLE"</span>);</span><br><span class="line">		shape2.draw();</span><br><span class="line">		Shape shape3 = shapeFactory.getShape(<span class="string">"SQUARE"</span>);</span><br><span class="line">		shape3.draw();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Singleton</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public static final Singleton INSTANCE = new Singleton();</span><br><span class="line">private Singleton() &#123;&#125;</span><br><span class="line">public static Singleton getInstance() &#123;</span><br><span class="line">	return INSTANCE;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ol>
-
-      
-    </div>
-    
-  </div>
-  
-  
-</article>
-
-  
-    <article id="post-OOD-1" class="article global-container article-type-post" itemscope itemprop="blogPost">
-  
-    <header class="article-header">
-      
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/DexWebSite/2019/10/18/OOD-1/">Object-Oriented Design #1</a>
-    </h1>
-  
-
-    </header>
-  
-  <div class="article-meta">
-    <a href="/DexWebSite/2019/10/18/OOD-1/" class="article-date">
-  <time datetime="2019-10-18T08:31:00.000Z" itemprop="datePublished">2019-10-18</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/DexWebSite/categories/Object-Oriented-Design/">Object-Oriented Design</a>
-  </div>
-
-    
-  </div>
-  
-
-  <div class="article-inner">
-    
-    <div class="article-content article-content-cloud" itemprop="articleBody">
-      
-        <h3 id="Object-Oriented-Design"><a href="#Object-Oriented-Design" class="headerlink" title="Object-Oriented Design"></a>Object-Oriented Design</h3><p>In the real world, we solve the problem unlike solving algortihm problem. It will be an OOD problem. <br></p>
-<p>Practical problems -&gt; Model -&gt; APIs -&gt; Methods -&gt; Algorithms.</p>
-<p><strong> Good Design </strong></p>
-<ol>
-<li>Complete functionality</li>
-<li>Easy to use: <br><br>2.2. Clear, elegant, easy to understand, no ambiguity<br><br>2.3. Prevent users from making mistakes</li>
-<li>Easy to evolve and extendable.</li>
-</ol>
-<p><strong> Basic Concepts </strong></p>
-<ol>
-<li><p>Class and Object <br><br>Class: a blueprint for a data type, scheme <br><br>Object: a specific realization of any class, instance.</p>
-</li>
-<li><p>Encapsulation: public, private, protected</p>
-</li>
-</ol>
-<p><strong> Access Label </strong></p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Access</th>
-<th style="text-align:left">public</th>
-<th style="text-align:left">protected</th>
-<th style="text-align:left">private</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">Same class</td>
-<td style="text-align:left">yes</td>
-<td style="text-align:left">yes</td>
-<td style="text-align:left">yes</td>
-</tr>
-<tr>
-<td style="text-align:left">Derived classes</td>
-<td style="text-align:left">yes</td>
-<td style="text-align:left">yes</td>
-<td style="text-align:left">no</td>
-</tr>
-<tr>
-<td style="text-align:left">outside classes</td>
-<td style="text-align:left">yes</td>
-<td style="text-align:left">no</td>
-<td style="text-align:left">no</td>
-</tr>
-</tbody>
-</table>
-<p><strong> Access Level </strong></p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Modifier</th>
-<th style="text-align:left">Class</th>
-<th style="text-align:left">Package</th>
-<th style="text-align:left">Subclass</th>
-<th style="text-align:left">World</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">public</td>
-<td style="text-align:left">yes</td>
-<td style="text-align:left">yes</td>
-<td style="text-align:left">yes</td>
-<td style="text-align:left">yes</td>
-</tr>
-<tr>
-<td style="text-align:left">protected</td>
-<td style="text-align:left">yes</td>
-<td style="text-align:left">yes</td>
-<td style="text-align:left">yes</td>
-<td style="text-align:left">no</td>
-</tr>
-<tr>
-<td style="text-align:left">no modifier</td>
-<td style="text-align:left">yes</td>
-<td style="text-align:left">yes</td>
-<td style="text-align:left">no</td>
-<td style="text-align:left">no</td>
-</tr>
-<tr>
-<td style="text-align:left">private</td>
-<td style="text-align:left">yes</td>
-<td style="text-align:left">no</td>
-<td style="text-align:left">no</td>
-<td style="text-align:left">no</td>
-</tr>
-</tbody>
-</table>
-<p>Advantages:<br>Class Internals are protected from inadvertent user-level errors, which might corrupt the state of the object. <br><br>The class implementation may <strong><em>evolve</em></strong> over time in response to changing requirements or bug reports without requiring change in user-level code. (easier to maintain the compatibility)</p>
-<p><strong> How to select appropriate labels? </strong> </p>
-<ol>
-<li><p>API: public</p>
-</li>
-<li><p>Internal implementation: private</p>
-</li>
-<li><p>Class inheritance: do we need to use protected for methods/attributes <br><br>3.1. Protected methods: sometimes useful when we want to override an implementation in subclasses <br><br>3.2.Protected attributes: be careful, try to use private first</p>
-</li>
-<li><p>“default” in java (package-private): declare a class as public only when we define public API in it, otherwise package-private is good enough.</p>
-</li>
-</ol>
-<p><strong> Inheritance, Interface, Abstract Class: </strong> <br><br>Inheritance: <br><br>Definitions: A class that is derived from another class is called a subclass (also a derived class, extended class, or child class). The class from which subclass is derived is called a superclass (also a base class or parent class). <br></p>
-<p>Abstract: <br><br>Definitions: A class must be declared abstract when it has one or more abstract methods. A method is declared abstract when it has a method heading, but no body – which means that an abstract method has no implementation code inside like normal methods do.<br></p>
-<p>Interface: <br><br>An interface differs from an abstract class has only abstract methods.<br></p>
-<p><strong>Difference between Abstract and Interface in Java: </strong> <br></p>
-<ol>
-<li><p>Java does not allow multiple inheritance. In Java, a class can only derive from one class, whether its abstract or not. However, a class can implement multiple interfaces. </p>
-</li>
-<li><p>An abstract class may provide some methods with definitions – so an abstract class can have non-abstract methods with actual implementation details. An abstract class can also have constructors and instance variables as well. An interface, however, can not provide any method definitions – it can only provide method headings. Any class that implements the interface is responsible for providing the method definition/ implementation.</p>
-</li>
-<li><p>Abstract: is a something. Interface: has a function.</p>
-</li>
-</ol>
-<p><strong> Inheritance: </strong><br>Base class to Derived class <br><br>Interface and Abstract: Cannot instantiate abstract class and interface. <br></p>
-<p>Q: in Java, for your base class, Interface v.s. Abstract Class v.s. Concrete Class? </p>
-<ol>
-<li>An abstract class provides a common base class implementation to derived classes. Use abstract class( or even concrete class) for base class if the derived classes share common implementation. </li>
-<li>Interface helps you (or enforces you) to focus on the API signature definition.</li>
-<li>Multiple inheritance: implement multiple interfaces.</li>
-<li>The relationship between the interface itself and the class implementing the interface is not necessarily strong (capability)</li>
-</ol>
-<p><strong> Polymorphism and Overriding:</strong> <br><br>Override: a subclass o child class to provide a specific implementation of a method that is already provided by one of its superclasses or parent classes.  <br></p>
-<p>Polymorphism: A call to a member function will cause a different function to be executed depending on the type of object that invokes the function. <br></p>
-<p><strong> Override VS. Overload </strong><br>    Override is used when you redefine a method that has been defined in a parent class (using the same signature). Resolved at running time.<br>    Overload is used when you define two methods with the same name, in the same class, distinguished by their signatures (different), Resolved at compile time.</p>
-
-      
-    </div>
-    
-  </div>
-  
-  
-</article>
-
-  
 
 
   <nav id="page-nav">
@@ -1096,23 +959,23 @@ ga('send', 'pageview');
       <ul>
         
           <li>
-            <a href="/DexWebSite/2020/10/11/Design-Data-Intensive-Note-5/">Design Data-Intensive Note #5</a>
+            <a href="/DexWebSite/2020/10/14/Design-Data-Intensive-Note-9/">Design Data-Intensive Note #9</a>
+          </li>
+        
+          <li>
+            <a href="/DexWebSite/2020/10/14/Design-Data-Intensive-Note-8/">Design Data-Intensive Note #8</a>
+          </li>
+        
+          <li>
+            <a href="/DexWebSite/2020/10/12/Untitled/">Design Data-Intensive Note #7</a>
+          </li>
+        
+          <li>
+            <a href="/DexWebSite/2020/10/11/Design-Data-Intensive-Note-6/">Design Data-Intensive Note #6</a>
           </li>
         
           <li>
             <a href="/DexWebSite/2020/10/11/Design-Data-Intensive-Note-4/">Design Data-Intensive Note #4</a>
-          </li>
-        
-          <li>
-            <a href="/DexWebSite/2020/10/11/Design-Data-Intensive-Note-3/">Design Data-Intensive Note #3</a>
-          </li>
-        
-          <li>
-            <a href="/DexWebSite/2020/10/10/Design-Data-Intensive-Note-2/">Design Data-Intensive Note #2</a>
-          </li>
-        
-          <li>
-            <a href="/DexWebSite/2020/10/10/Design-Data-Intensive-Applications/">Design Data-Intensive Note #1</a>
           </li>
         
       </ul>

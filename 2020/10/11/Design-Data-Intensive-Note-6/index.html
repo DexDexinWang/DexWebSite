@@ -18,21 +18,22 @@ ga('send', 'pageview');
 
 
   
-  <title>Category: React Development | Dex Personal Website</title>
+  <title>Design Data-Intensive Note #6 | Dex Personal Website</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
   
-  <meta name="description" content="Programming, Technology, Algorithm">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Dex Personal Website">
-<meta property="og:url" content="http://dexdexinwang.github.io/DexWebSite/categories/React-Development/index.html">
+  <meta name="description" content="PartitioningParitions(sharding) are defined in such a way that each piece of data belongs to exactly one partition. Thus, a large dataset can be distributed across many disks, and the query load can b">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Design Data-Intensive Note #6">
+<meta property="og:url" content="http://dexdexinwang.github.io/DexWebSite/2020/10/11/Design-Data-Intensive-Note-6/index.html">
 <meta property="og:site_name" content="Dex Personal Website">
-<meta property="og:description" content="Programming, Technology, Algorithm">
+<meta property="og:description" content="PartitioningParitions(sharding) are defined in such a way that each piece of data belongs to exactly one partition. Thus, a large dataset can be distributed across many disks, and the query load can b">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-10-15T03:08:09.004Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Dex Personal Website">
-<meta name="twitter:description" content="Programming, Technology, Algorithm">
+<meta name="twitter:title" content="Design Data-Intensive Note #6">
+<meta name="twitter:description" content="PartitioningParitions(sharding) are defined in such a way that each piece of data belongs to exactly one partition. Thus, a large dataset can be distributed across many disks, and the query load can b">
   
     <link rel="alternate" href="/DexWebSite/atom.xml" title="Dex Personal Website" type="application/atom+xml">
   
@@ -73,76 +74,106 @@ ga('send', 'pageview');
   </div>
 </header>
       <div id="middlecontent" title class="global-width sidebar-left">
-        <section id="main">
+        <section id="main"><article id="post-Design-Data-Intensive-Note-6" class="article global-container article-type-post" itemscope itemprop="blogPost">
   
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      Design Data-Intensive Note #6
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/DexWebSite/2020/10/11/Design-Data-Intensive-Note-6/" class="article-date">
+  <time datetime="2020-10-12T03:37:00.000Z" itemprop="datePublished">2020-10-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/DexWebSite/categories/System-Design/">System Design</a>
+  </div>
+
+    
+  </div>
+  
+    <span id="busuanzi_container_page_pv">
+      Total Read : <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <h3 id="Partitioning"><a href="#Partitioning" class="headerlink" title="Partitioning"></a>Partitioning</h3><p><em>Paritions(sharding)</em> are defined in such a way that each piece of data belongs to exactly one partition. Thus, a large dataset can be distributed across many disks, and the query load can be distributed across many processors. The main reason for wanting to partition data is <strong>scalability</strong>. <br></p>
+<p><strong>Paritioning Goal</strong>: <br><br>The goal with paritiioning is to spread the data and the query load evenly across nodes. If the paritioning is unfair, so that some partitions have more data or queries than others, it is called <strong>skewed</strong>. A parition with dispropotionately high load is called a <strong>hot spot</strong>. <br></p>
+<h6 id="Even-Parition-Randomly"><a href="#Even-Parition-Randomly" class="headerlink" title="Even Parition Randomly"></a>Even Parition Randomly</h6><p>No, it has no idea to read a particular item that the system has no way of knowing which node it is on, so the system will query all nodes in parallel. <br></p>
+<h6 id="Partitioning-by-Key-Range"><a href="#Partitioning-by-Key-Range" class="headerlink" title="Partitioning by Key Range"></a>Partitioning by Key Range</h6><p>It assign a continuous range of keys to each partition. WIthin each parition, the system can keep keys in sorted order. <br></p>
+<p>Advantage <br></p>
+<ul>
+<li>That range scans are easy <br><br>Disadvantage <br></li>
+<li>It is hard to distributed data evenly which cause risk of skew  or hot spot <br></li>
+</ul>
+<h6 id="Partitioning-by-Hash-Key"><a href="#Partitioning-by-Hash-Key" class="headerlink" title="Partitioning by Hash Key"></a>Partitioning by Hash Key</h6><p>Advantage <br></p>
+<ul>
+<li>No skew and hot spot <br><br>Disadvantage <br></li>
+<li>It is hard to do range search <br></li>
+</ul>
+
+      
+    </div>
+    
+      <footer class="article-footer">
+        Done
+      </footer>
+    
+  </div>
   
     
+<nav id="article-nav">
+  <div class="article-nav-block">
     
-      
-      
-      <section class="global-container archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/DexWebSite/archives/2020" class="archive-year">2020</a>
+      <a href="/DexWebSite/2020/10/12/Untitled/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption"></strong>
+        <div class="article-nav-title">
+          
+            Design Data-Intensive Note #7
+          
         </div>
-        <div class="archives">
+      </a>
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/DexWebSite/2020/01/09/Redux-Base-Principle/">Redux Base Principle</a>
-    </h1>
-  
-      
-    </header>
-    <div class="article-meta archive-article-meta">
-      <a href="/DexWebSite/2020/01/09/Redux-Base-Principle/" class="article-date">
-  <time datetime="2020-01-10T00:42:00.000Z" itemprop="datePublished">2020-01-09</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/DexWebSite/categories/React-Development/">React Development</a>
   </div>
+  <div class="article-nav-block">
+    
+      <a href="/DexWebSite/2020/10/11/Design-Data-Intensive-Note-4/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">Design Data-Intensive Note #4</div>
+        <strong class="article-nav-caption"></strong>
+      </a>
+    
+  </div>
+</nav>
 
-      
-    </div>
-  </div>
+    
+<div id="gitmentContainer"></div>
+<link rel="stylesheet" href="https://wzxjayce.github.io/gitment.css">
+<script src="https://wzxjayce.github.io/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  owner: 'dexdexinwang',
+  repo: 'DexWebSite',
+  oauth: {
+    client_id: '7c44fd11f8e0d609f5ba',
+    client_secret: 'ea91b14d1a2f4aa1ff3d610c266ff8280eb5caae',
+  },
+})
+gitment.render('gitmentContainer')
+</script>
+
+  
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/DexWebSite/2020/01/09/React-Base-Principle/">React Base Principle</a>
-    </h1>
-  
-      
-    </header>
-    <div class="article-meta archive-article-meta">
-      <a href="/DexWebSite/2020/01/09/React-Base-Principle/" class="article-date">
-  <time datetime="2020-01-09T19:17:00.000Z" itemprop="datePublished">2020-01-09</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/DexWebSite/categories/React-Development/">React Development</a>
-  </div>
-
-      
-    </div>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
 </section>
         <aside id="sidebar">
   
