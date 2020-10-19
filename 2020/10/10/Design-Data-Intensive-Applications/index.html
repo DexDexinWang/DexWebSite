@@ -30,7 +30,7 @@ ga('send', 'pageview');
 <meta property="og:site_name" content="Dex Personal Website">
 <meta property="og:description" content="Design Data-Intensive AapplicationsBook Goals Learn how to make data systems scalable to support web or mobile apps with millions of users. Make applications higly available and operationally robust.">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-10-11T04:27:13.651Z">
+<meta property="og:updated_time" content="2020-10-17T00:56:22.070Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Design Data-Intensive Note #1">
 <meta name="twitter:description" content="Design Data-Intensive AapplicationsBook Goals Learn how to make data systems scalable to support web or mobile apps with millions of users. Make applications higly available and operationally robust.">
@@ -113,8 +113,7 @@ ga('send', 'pageview');
 <li>Find ways of making systems easier to maintina in the long run, enven as they grow and as requirements and technologies change.</li>
 <li>Know what goes on inside major websites and online services.</li>
 </ul>
-<h5 id="Chapter-1"><a href="#Chapter-1" class="headerlink" title="Chapter 1"></a>Chapter 1</h5><p>Chapter explors the Fundamentals: Reliable, Scalable, and Maintainable.</p>
-<p>Many applications today are dat-intensive, as opposed to compute-intensive. Raw CPU power is rarely a limiting factor for these applications- bigger problems are usually the amount of data, the complexity of data, and the speed at which it is changing.</p>
+<h4 id="Reliable-Scalable-and-Maintainable"><a href="#Reliable-Scalable-and-Maintainable" class="headerlink" title="Reliable, Scalable, and Maintainable"></a>Reliable, Scalable, and Maintainable</h4><p>Many applications today are dat-intensive, as opposed to compute-intensive. Raw CPU power is rarely a limiting factor for these applications- bigger problems are usually the amount of data, the complexity of data, and the speed at which it is changing.</p>
 <p>Data Intensive funcationality:</p>
 <ul>
 <li>Database: Store data so that they, or another application, can find it again later.</li>
@@ -123,7 +122,7 @@ ga('send', 'pageview');
 <li>Stream Processing: Send a message to another process, to be handled asynchronously</li>
 <li>Batch Processing: Periodically crunch a large amount of accumulated data.</li>
 </ul>
-<h6 id="Reliability"><a href="#Reliability" class="headerlink" title="Reliability"></a>Reliability</h6><p>The System should continue to work correctly (performing the correct fucntion at the desired level of performance) even in the face of adversity （hardware or software faults, and even human error). <br></p>
+<h5 id="Reliability"><a href="#Reliability" class="headerlink" title="Reliability"></a>Reliability</h5><p>The System should continue to work correctly (performing the correct fucntion at the desired level of performance) even in the face of adversity （hardware or software faults, and even human error). <br></p>
 <p><strong>Software Expections (working correctly, continueing to work correctly, even when things go wrong.)</strong> <br></p>
 <ul>
 <li>The application performs the function that the user expected.</li>
@@ -165,7 +164,7 @@ ga('send', 'pageview');
 <li>Set up detailed and clear monitoring, such as performance metrices and error rates. In other engineering disciplines this is referred to as <strong>telemetry</strong>. </li>
 <li>Implement good management practices and training</li>
 </ul>
-<h6 id="Scalability"><a href="#Scalability" class="headerlink" title="Scalability"></a>Scalability</h6><p>As the system grows (in data volume, traffice volume, or complexity), these should be reasonable ways of dealing with that growth.<br></p>
+<h5 id="Scalability"><a href="#Scalability" class="headerlink" title="Scalability"></a>Scalability</h5><p>As the system grows (in data volume, traffice volume, or complexity), these should be reasonable ways of dealing with that growth.<br></p>
 <p>Scalability is the term we use to describe a system’s ability to cope with increased load. Consider questions: “If the system grows in a particular way, what are our options for coping with the growth?” and “How can we add computing resources to handle the additional load?”</p>
 <p><strong>Describing Load</strong> <br><br>Load can be described with a few numbers which we call load parameters: <br> </p>
 <ul>
@@ -191,7 +190,7 @@ ga('send', 'pageview');
 </ul>
 <p>In sum, several fairly powerful machines can still be simpler and cheaper than a large number of small Virtual machines. There is no such thing as a generic, one-size-fits-all scalable architecture. <br> </p>
 <p>Some systems are elastic, meaning that they can automatically add computing<br>resources when they detect a load increase, whereas other systems are scaled manually.<br></p>
-<h6 id="Maintainability"><a href="#Maintainability" class="headerlink" title="Maintainability"></a>Maintainability</h6><p>Over time, many different people will work on the system (engineering and operations, both maintaining current behavior and adapting the system to new use cases), and they should all be able to work on it _productively.<br></p>
+<h5 id="Maintainability"><a href="#Maintainability" class="headerlink" title="Maintainability"></a>Maintainability</h5><p>Over time, many different people will work on the system (engineering and operations, both maintaining current behavior and adapting the system to new use cases), and they should all be able to work on it _productively.<br></p>
 <p>It is well known that the majority of the cost of software is not in its initial development, but in its ongoing maintenance. <br></p>
 <ul>
 <li>fix bugs</li>
@@ -325,6 +324,10 @@ gitment.render('gitmentContainer')
       <ul>
         
           <li>
+            <a href="/DexWebSite/2020/10/18/Algorithm-String/">Algorithm String</a>
+          </li>
+        
+          <li>
             <a href="/DexWebSite/2020/10/14/Design-Data-Intensive-Note-9/">Design Data-Intensive Note #9</a>
           </li>
         
@@ -338,10 +341,6 @@ gitment.render('gitmentContainer')
         
           <li>
             <a href="/DexWebSite/2020/10/11/Design-Data-Intensive-Note-6/">Design Data-Intensive Note #6</a>
-          </li>
-        
-          <li>
-            <a href="/DexWebSite/2020/10/11/Design-Data-Intensive-Note-4/">Design Data-Intensive Note #4</a>
           </li>
         
       </ul>

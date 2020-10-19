@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-113086304-2', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <title>Algorithm String | Dex Personal Website</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <meta name="description" content="StringIt’s a note from chapter 14 in the book “Guide to String From Book Guid to Compettive Programming Learning and Improving Algorithms Trough Contests”.   Substring is a sequence of consecutive cha">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Algorithm String">
+<meta property="og:url" content="http://dexdexinwang.github.io/DexWebSite/2020/10/18/Algorithm-String/index.html">
+<meta property="og:site_name" content="Dex Personal Website">
+<meta property="og:description" content="StringIt’s a note from chapter 14 in the book “Guide to String From Book Guid to Compettive Programming Learning and Improving Algorithms Trough Contests”.   Substring is a sequence of consecutive cha">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-10-19T03:10:08.972Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Algorithm String">
+<meta name="twitter:description" content="StringIt’s a note from chapter 14 in the book “Guide to String From Book Guid to Compettive Programming Learning and Improving Algorithms Trough Contests”.   Substring is a sequence of consecutive cha">
+  
+    <link rel="alternate" href="/DexWebSite/atom.xml" title="Dex Personal Website" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/DexWebSite/images/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/DexWebSite/css/style.css">
+  <link rel="stylesheet" href="/DexWebSite/css/highlight.css">
+  <script>
+  let antiquityStorage = window.sessionStorage.getItem('antiquitySessionStorage');
+  if (antiquityStorage == '' || antiquityStorage == null) {
+    var antiquityLoader = '<div id="loaderbox"><div class="loader"><div class="load-roll"><div class="load-top"></div><div class="load-right"></div><div class="load-bottom"></div></div></div></div>';
+    document.write(antiquityLoader);
+    document.body.style.overflow = 'hidden'
+  }
+  </script>
+</head>
+</html>
+<body>
+  <div id="fullpage" class="mobile-nav-left">
+    
+      <div id="wrapper" style="background-image: url(/DexWebSite/images/bg.jpg)" title="background">
+    
+    
+      <header id="header">
+  <div id="nav-toggle" class="nav-toggle"></div>
+  <div class="head-box global-width">
+    <nav class="nav-box nav-left">
+      
+        <a class="nav-item" href="/DexWebSite/" title>Home</a>
+      
+        <a class="nav-item" href="/DexWebSite/../PersonalWebSite/" title>Background</a>
+      
+    </nav>
+  </div>
+</header>
+      <div id="middlecontent" title class="global-width sidebar-left">
+        <section id="main"><article id="post-Algorithm-String" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      Algorithm String
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/DexWebSite/2020/10/18/Algorithm-String/" class="article-date">
+  <time datetime="2020-10-19T01:11:00.000Z" itemprop="datePublished">2020-10-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/DexWebSite/categories/Algorithm/">Algorithm</a>
+  </div>
+
+    
+  </div>
+  
+    <span id="busuanzi_container_page_pv">
+      Total Read : <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <h3 id="String"><a href="#String" class="headerlink" title="String"></a>String</h3><p>It’s a note from chapter 14 in the book “Guide to String From Book Guid to Compettive Programming Learning and Improving Algorithms Trough Contests”. <br> </p>
+<p><strong>Substring</strong> is a sequence of consecutive characters in a string. <br><br><strong>Subsequence</strong> is any sequence of character in a string in their original order. <br></p>
+<p>All substrings are subsequences, but the converse is not ture. A substring or subsequence is claled proper if it is not the entire string. <br></p>
+<h4 id="Tire-Structure"><a href="#Tire-Structure" class="headerlink" title="Tire Structure"></a>Tire Structure</h4><p><strong>A trie is a rooted tree that maintians a set of strings</strong>.<br>Each string in the set is stored as a character chain that starts at the root node. If 2 strings have a common prefix, they also have a common chain in the tree. <br></p>
+<figure class="highlight java"><figcaption><span>Tire Tree for character from a to z</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Trie</span> </span>&#123;</span><br><span class="line">	<span class="keyword">boolean</span> isWord = <span class="keyword">false</span>;</span><br><span class="line">	Trie[] next = <span class="keyword">new</span> Trie[<span class="number">26</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Practice: </p>
+<ul>
+<li><a href="https://leetcode.com/problems/design-add-and-search-words-data-structure/" target="_blank" rel="noopener">211. Design Add and Search Words Data Structure</a></li>
+<li><a href="https://leetcode.com/problems/stream-of-characters/" target="_blank" rel="noopener">1032. Stream of Characters</a></li>
+</ul>
+<h4 id="Dynamic-Programming"><a href="#Dynamic-Programming" class="headerlink" title="Dynamic Programming"></a>Dynamic Programming</h4><p><strong>Longest Common Subsequence</strong>: The Longest Common Subsequence of two strings is the longest string that appears as a sbusequence in both strings. </p>
+<p>E.g. TOUR and OPERA is OR</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Define i and j from 0 to n where n is the length of string X and string Y;</span><br><span class="line">Base Case : DP[0][j] or DP[i][0] = 0;</span><br><span class="line">Induction Rule : </span><br><span class="line">case 1 if X.charAt(i-1) == Y.charAt(j-1): DP[i][j] = DP[i - 1][j - 1] + 1;</span><br><span class="line">case 2 otherwise: DP[i][j] = Math.max(DP[i-1][j], DP[i][j-1]);</span><br></pre></td></tr></table></figure>
+<p><strong>Edit Distance</strong>: The edit distance between two strings denotes the minimum number of editing operations that transform the first string into the second string. </p>
+<p>E.g. TOUR and OPERA  is 2 With Delet, Update, Insert </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Define i and j from 0 to n where n is the length of string X and string Y;</span><br><span class="line">Base Case : DP[0][j] or DP[i][0] = 0;</span><br><span class="line">Induction Rule : </span><br><span class="line">case 1 if X.charAt(i-1) == Y.charAt(j-1): DP[i][j] = DP[i - 1][j - 1];</span><br><span class="line">case 2 otherwise: DP[i][j] = Math.min(DP[i-1][j], DP[i][j-1], DP[i-1][j-1]) + 1;</span><br></pre></td></tr></table></figure>
+<h4 id="String-Hashing"><a href="#String-Hashing" class="headerlink" title="String Hashing"></a>String Hashing</h4><p><strong>String Hashing</strong> is a mthoed to efficiently check whether 2 strings are qeual by comparing their hash values. <br> </p>
+<p><strong>Hash Value</strong> is an integer that is calculated from the characters of the string. <br></p>
+<p><strong>Polynomial Hashing</strong> is a popular way to implement string hashing<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Polynomial Hashing Format from String S with n length:</span><br><span class="line">(S[0]*X^(n-1) + S[1]*X^(n-2) + ... + S[n-1]X^(n-n)) mod Y</span><br><span class="line"></span><br><span class="line">E.g. Example String &quot;ABACB&quot; with given X = 3 and Y = 97</span><br><span class="line"></span><br><span class="line">(65 * 3^(4) + 66 * 3^(3) + 65 * 3^(2) + 66 * 3^(1) + 67 * 3^(0)) mod 97 = 40;</span><br></pre></td></tr></table></figure></p>
+<p>In addition, some questions will ask to compare multiple substings. <br><br>The general way is to create 2 arrays for preprocessing within O(n) times, and each compare will cost O(1) time complexity.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">1st Array: H</span><br><span class="line"></span><br><span class="line">Base Case: H[0] = S[0];</span><br><span class="line">Induction Rule: H[k] = (H[k-1] * X + S[k]) mod Y</span><br><span class="line"></span><br><span class="line">2nd Array: P</span><br><span class="line"></span><br><span class="line">Base Case: P[0] = 1;</span><br><span class="line">Induction Rule: P[k] = (P[k-1]*X) mod Y </span><br><span class="line"></span><br><span class="line">Any Hash Value of SubString (S[a...b]) could be: (H[b] - H[a-1] * P[b-a+1]) mod Y</span><br><span class="line"></span><br><span class="line">E.g. Example String &quot;ABACBA&quot; with given X = 3 and Y = 97</span><br><span class="line">H[0] = S[0] = 65;</span><br><span class="line">H[1] = (H[0] * 3 + 66 = 65 * 3 + 66) mod 97 = 261 mod 97 = 67;</span><br><span class="line">H[2] = (H[1] * 3 + 65 = 67 * 3 + 65) mod 97 = 266 mod 97 = 72;</span><br><span class="line">H[3] = (H[2] * 3 + 67 = 72 * 3 + 67) mod 97 = 283 mod 97 = 89;</span><br><span class="line">H[4] = (H[3] * 3 + 66 = 89 * 3 + 66) mod 97 = 333 mod 97 = 42;</span><br><span class="line">H[5] = (H[4] * 3 + 65 = 42 * 3 + 65) mod 97 = 197 mod 97 = 94;</span><br><span class="line"></span><br><span class="line">P[0] = 1;</span><br><span class="line">P[1] = P[0] * 3 mod 97 = 3;</span><br><span class="line">P[2] = P[1] * 3 mod 97 = 9;</span><br><span class="line">P[3] = P[2] * 3 mod 97 = 27;</span><br><span class="line">P[4] = P[3] * 3 mod 97 = 81;</span><br><span class="line">P[5] = P[4] * 3 mod 97 = 49;</span><br><span class="line"></span><br><span class="line">S[1,2]: (H[2] - H[1-1] * P[2-1+1]) mod 97 = (72 - 65 * 9) mod 97 = -513 mod 97 = 69</span><br><span class="line">S[4,5]: (H[5] - H[4-1] * P[5-4+1]) mod 97 = (94 - 89 * 9) mod 97 = -707 mode 97 = 69</span><br><span class="line">===&gt; AB = AB</span><br></pre></td></tr></table></figure>
+<p>Solved Problems with O(n) preprocess and O(1) each compare:</p>
+<ul>
+<li>Pattern Matching (e.g. ABCABABCA, ABC ==&gt; 2) </li>
+<li>Distinct Substrings (elg. ABABAB, distinct substring of length 3 ==&gt; ABA BAB) </li>
+</ul>
+<p><strong>Hash Value Risk</strong>:</p>
+<p>An evident risk when comparing hash values is a collision which means that two strings have different contents but equal hash values. <br></p>
+<p>Collisions are always possible because the number of different strings is larger then the number of different hash values. However, the probability of a collision is small if the contents X and Y are carefully chosen. <br><br><em>A usual way is to choose random constants near 10 ^ 9.</em> <br></p>
+
+      
+    </div>
+    
+      <footer class="article-footer">
+        Done
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  <div class="article-nav-block">
+    
+  </div>
+  <div class="article-nav-block">
+    
+      <a href="/DexWebSite/2020/10/14/Design-Data-Intensive-Note-9/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">Design Data-Intensive Note #9</div>
+        <strong class="article-nav-caption"></strong>
+      </a>
+    
+  </div>
+</nav>
+
+    
+<div id="gitmentContainer"></div>
+<link rel="stylesheet" href="https://wzxjayce.github.io/gitment.css">
+<script src="https://wzxjayce.github.io/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  owner: 'dexdexinwang',
+  repo: 'DexWebSite',
+  oauth: {
+    client_id: '7c44fd11f8e0d609f5ba',
+    client_secret: 'ea91b14d1a2f4aa1ff3d610c266ff8280eb5caae',
+  },
+})
+gitment.render('gitmentContainer')
+</script>
+
+  
+  
+</article>
+</section>
+        <aside id="sidebar">
+  
+    <div class="widget-box">
+  <div class="avatar-box">
+    <img class="avatar" src="/DexWebSite/images/dexphoto.jpg" title="personal image">
+    <h3 class="avatar-name">
+      
+        Dexin Wang
+      
+    </h3>
+  </div>
+</div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Algorithm/">Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Basic/">Basic</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/C-Programming-Language/">C# Programming Language</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Interview/">Interview</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Java-Programming-Language/">Java Programming Language</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Kits/">Kits</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/Object-Oriented-Design/">Object-Oriented Design</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/React-Development/">React Development</a></li><li class="category-list-item"><a class="category-list-link" href="/DexWebSite/categories/System-Design/">System Design</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/DexWebSite/archives/2019/03/">March 2019</a></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/DexWebSite/2020/10/18/Algorithm-String/">Algorithm String</a>
+          </li>
+        
+          <li>
+            <a href="/DexWebSite/2020/10/14/Design-Data-Intensive-Note-9/">Design Data-Intensive Note #9</a>
+          </li>
+        
+          <li>
+            <a href="/DexWebSite/2020/10/14/Design-Data-Intensive-Note-8/">Design Data-Intensive Note #8</a>
+          </li>
+        
+          <li>
+            <a href="/DexWebSite/2020/10/12/Untitled/">Design Data-Intensive Note #7</a>
+          </li>
+        
+          <li>
+            <a href="/DexWebSite/2020/10/11/Design-Data-Intensive-Note-6/">Design Data-Intensive Note #6</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      </div>
+      <footer id="footer">
+  <div class="foot-box global-width">
+    &copy; 2020 Dexin Wang &nbsp;&nbsp;
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    &nbsp;|&nbsp;Theme <a href="https://github.com/DexDexinWang/hexo-dex">antiquity</a>
+    <br>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">You are the <span id="busuanzi_value_site_pv"></span> visitor</span>
+  </div>
+</footer>
+      <script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script>
+if (!window.jQuery) {
+var script = document.createElement('script');
+script.src = "/js/jquery-2.0.3.min.js";
+document.body.write(script);
+}
+</script>
+
+  <link rel="stylesheet" href="/DexWebSite/fancybox/jquery.fancybox.css">
+  <script src="/DexWebSite/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/DexWebSite/js/script.js"></script>
+
+
+
+    </div>
+    <nav id="mobile-nav" class="mobile-nav-box">
+  <div class="mobile-nav-img mobile-nav-top"></div>
+  
+    <a href="/DexWebSite/" class="mobile-nav-link">Home</a>
+  
+    <a href="/DexWebSite/../PersonalWebSite/" class="mobile-nav-link">Background</a>
+  
+  <div class="mobile-nav-img  mobile-nav-bottom"></div>
+</nav>    
+  </div>
+</body>
+</html>

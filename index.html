@@ -75,6 +75,74 @@ ga('send', 'pageview');
       <div id="middlecontent" title class="global-width sidebar-left">
         <section id="main">
   
+    <article id="post-Algorithm-String" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/DexWebSite/2020/10/18/Algorithm-String/">Algorithm String</a>
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/DexWebSite/2020/10/18/Algorithm-String/" class="article-date">
+  <time datetime="2020-10-19T01:11:00.000Z" itemprop="datePublished">2020-10-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/DexWebSite/categories/Algorithm/">Algorithm</a>
+  </div>
+
+    
+  </div>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <h3 id="String"><a href="#String" class="headerlink" title="String"></a>String</h3><p>It’s a note from chapter 14 in the book “Guide to String From Book Guid to Compettive Programming Learning and Improving Algorithms Trough Contests”. <br> </p>
+<p><strong>Substring</strong> is a sequence of consecutive characters in a string. <br><br><strong>Subsequence</strong> is any sequence of character in a string in their original order. <br></p>
+<p>All substrings are subsequences, but the converse is not ture. A substring or subsequence is claled proper if it is not the entire string. <br></p>
+<h4 id="Tire-Structure"><a href="#Tire-Structure" class="headerlink" title="Tire Structure"></a>Tire Structure</h4><p><strong>A trie is a rooted tree that maintians a set of strings</strong>.<br>Each string in the set is stored as a character chain that starts at the root node. If 2 strings have a common prefix, they also have a common chain in the tree. <br></p>
+<figure class="highlight java"><figcaption><span>Tire Tree for character from a to z</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Trie</span> </span>&#123;</span><br><span class="line">	<span class="keyword">boolean</span> isWord = <span class="keyword">false</span>;</span><br><span class="line">	Trie[] next = <span class="keyword">new</span> Trie[<span class="number">26</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Practice: </p>
+<ul>
+<li><a href="https://leetcode.com/problems/design-add-and-search-words-data-structure/" target="_blank" rel="noopener">211. Design Add and Search Words Data Structure</a></li>
+<li><a href="https://leetcode.com/problems/stream-of-characters/" target="_blank" rel="noopener">1032. Stream of Characters</a></li>
+</ul>
+<h4 id="Dynamic-Programming"><a href="#Dynamic-Programming" class="headerlink" title="Dynamic Programming"></a>Dynamic Programming</h4><p><strong>Longest Common Subsequence</strong>: The Longest Common Subsequence of two strings is the longest string that appears as a sbusequence in both strings. </p>
+<p>E.g. TOUR and OPERA is OR</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Define i and j from 0 to n where n is the length of string X and string Y;</span><br><span class="line">Base Case : DP[0][j] or DP[i][0] = 0;</span><br><span class="line">Induction Rule : </span><br><span class="line">case 1 if X.charAt(i-1) == Y.charAt(j-1): DP[i][j] = DP[i - 1][j - 1] + 1;</span><br><span class="line">case 2 otherwise: DP[i][j] = Math.max(DP[i-1][j], DP[i][j-1]);</span><br></pre></td></tr></table></figure>
+<p><strong>Edit Distance</strong>: The edit distance between two strings denotes the minimum number of editing operations that transform the first string into the second string. </p>
+<p>E.g. TOUR and OPERA  is 2 With Delet, Update, Insert </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Define i and j from 0 to n where n is the length of string X and string Y;</span><br><span class="line">Base Case : DP[0][j] or DP[i][0] = 0;</span><br><span class="line">Induction Rule : </span><br><span class="line">case 1 if X.charAt(i-1) == Y.charAt(j-1): DP[i][j] = DP[i - 1][j - 1];</span><br><span class="line">case 2 otherwise: DP[i][j] = Math.min(DP[i-1][j], DP[i][j-1], DP[i-1][j-1]) + 1;</span><br></pre></td></tr></table></figure>
+<h4 id="String-Hashing"><a href="#String-Hashing" class="headerlink" title="String Hashing"></a>String Hashing</h4><p><strong>String Hashing</strong> is a mthoed to efficiently check whether 2 strings are qeual by comparing their hash values. <br> </p>
+<p><strong>Hash Value</strong> is an integer that is calculated from the characters of the string. <br></p>
+<p><strong>Polynomial Hashing</strong> is a popular way to implement string hashing<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Polynomial Hashing Format from String S with n length:</span><br><span class="line">(S[0]*X^(n-1) + S[1]*X^(n-2) + ... + S[n-1]X^(n-n)) mod Y</span><br><span class="line"></span><br><span class="line">E.g. Example String &quot;ABACB&quot; with given X = 3 and Y = 97</span><br><span class="line"></span><br><span class="line">(65 * 3^(4) + 66 * 3^(3) + 65 * 3^(2) + 66 * 3^(1) + 67 * 3^(0)) mod 97 = 40;</span><br></pre></td></tr></table></figure></p>
+<p>In addition, some questions will ask to compare multiple substings. <br><br>The general way is to create 2 arrays for preprocessing within O(n) times, and each compare will cost O(1) time complexity.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">1st Array: H</span><br><span class="line"></span><br><span class="line">Base Case: H[0] = S[0];</span><br><span class="line">Induction Rule: H[k] = (H[k-1] * X + S[k]) mod Y</span><br><span class="line"></span><br><span class="line">2nd Array: P</span><br><span class="line"></span><br><span class="line">Base Case: P[0] = 1;</span><br><span class="line">Induction Rule: P[k] = (P[k-1]*X) mod Y </span><br><span class="line"></span><br><span class="line">Any Hash Value of SubString (S[a...b]) could be: (H[b] - H[a-1] * P[b-a+1]) mod Y</span><br><span class="line"></span><br><span class="line">E.g. Example String &quot;ABACBA&quot; with given X = 3 and Y = 97</span><br><span class="line">H[0] = S[0] = 65;</span><br><span class="line">H[1] = (H[0] * 3 + 66 = 65 * 3 + 66) mod 97 = 261 mod 97 = 67;</span><br><span class="line">H[2] = (H[1] * 3 + 65 = 67 * 3 + 65) mod 97 = 266 mod 97 = 72;</span><br><span class="line">H[3] = (H[2] * 3 + 67 = 72 * 3 + 67) mod 97 = 283 mod 97 = 89;</span><br><span class="line">H[4] = (H[3] * 3 + 66 = 89 * 3 + 66) mod 97 = 333 mod 97 = 42;</span><br><span class="line">H[5] = (H[4] * 3 + 65 = 42 * 3 + 65) mod 97 = 197 mod 97 = 94;</span><br><span class="line"></span><br><span class="line">P[0] = 1;</span><br><span class="line">P[1] = P[0] * 3 mod 97 = 3;</span><br><span class="line">P[2] = P[1] * 3 mod 97 = 9;</span><br><span class="line">P[3] = P[2] * 3 mod 97 = 27;</span><br><span class="line">P[4] = P[3] * 3 mod 97 = 81;</span><br><span class="line">P[5] = P[4] * 3 mod 97 = 49;</span><br><span class="line"></span><br><span class="line">S[1,2]: (H[2] - H[1-1] * P[2-1+1]) mod 97 = (72 - 65 * 9) mod 97 = -513 mod 97 = 69</span><br><span class="line">S[4,5]: (H[5] - H[4-1] * P[5-4+1]) mod 97 = (94 - 89 * 9) mod 97 = -707 mode 97 = 69</span><br><span class="line">===&gt; AB = AB</span><br></pre></td></tr></table></figure>
+<p>Solved Problems with O(n) preprocess and O(1) each compare:</p>
+<ul>
+<li>Pattern Matching (e.g. ABCABABCA, ABC ==&gt; 2) </li>
+<li>Distinct Substrings (elg. ABABAB, distinct substring of length 3 ==&gt; ABA BAB) </li>
+</ul>
+<p><strong>Hash Value Risk</strong>:</p>
+<p>An evident risk when comparing hash values is a collision which means that two strings have different contents but equal hash values. <br></p>
+<p>Collisions are always possible because the number of different strings is larger then the number of different hash values. However, the probability of a collision is small if the contents X and Y are carefully chosen. <br><br><em>A usual way is to choose random constants near 10 ^ 9.</em> <br></p>
+
+      
+    </div>
+    
+  </div>
+  
+  
+</article>
+
+  
     <article id="post-Design-Data-Intensive-Note-9" class="article global-container article-type-post" itemscope itemprop="blogPost">
   
     <header class="article-header">
@@ -245,6 +313,109 @@ ga('send', 'pageview');
 </article>
 
   
+    <article id="post-Design-Data-Intensive-Note-5" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/DexWebSite/2020/10/11/Design-Data-Intensive-Note-5/">Design Data-Intensive Note #5</a>
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/DexWebSite/2020/10/11/Design-Data-Intensive-Note-5/" class="article-date">
+  <time datetime="2020-10-12T03:33:00.000Z" itemprop="datePublished">2020-10-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/DexWebSite/categories/System-Design/">System Design</a>
+  </div>
+
+    
+  </div>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <h3 id="Distributrion"><a href="#Distributrion" class="headerlink" title="Distributrion"></a>Distributrion</h3><p><strong>Why Distribution?</strong></p>
+<ul>
+<li>Scalability</li>
+<li>Fault tolerance / high availability </li>
+<li>Latency</li>
+</ul>
+<p><strong>Replication</strong><br>Keeping a copy of the same data on several different nodes, potentically in different locations.  Replication provides redundancy: if some nodes are unavailable, the data can still be served from the remaining nodes. Replication can also help improve performance.<br></p>
+<p><strong>Partitioning</strong><br>Splitting a big database into smaller subsets call partitions so that different partitions can be assign to different nodes. <br></p>
+<h3 id="Replication"><a href="#Replication" class="headerlink" title="Replication"></a>Replication</h3><p>Replication means keeping a copy of the same data on multiple machines that are connected via a network by 3 reasons: <br></p>
+<ul>
+<li>To keep data geographically close to your users. (reduce latency)</li>
+<li>To allow the system to continue working even if some of its parts have failed (increase availability)</li>
+<li>To scale out the number of machines that can serve read query. (increase scalability)</li>
+</ul>
+<p>The most difficulty in replication lies in handling changes to replicated data: <br></p>
+<ul>
+<li>Whether to use synchronous or asynchronous replication.</li>
+<li>How to handle failed replicas.</li>
+</ul>
+<h3 id="Leaders-and-Followers"><a href="#Leaders-and-Followers" class="headerlink" title="Leaders and Followers"></a>Leaders and Followers</h3><p><strong>Leader-Based Replication</strong>:</p>
+<ul>
+<li>One of the replicas is desigated the <strong>leader</strong>. When clients want to write to the database, they must send their requests to the leader, which first writes the new data to its local storage.</li>
+<li>The other replicas as known as <strong>followers</strong>. Whenever the leader writes new data to its local storage, it also sends the data change to all of its followers as part of a <strong>replication log</strong> or <strong>change stream</strong>. Each follower takes the log from the leader and updates its local copy of the database accordingly, by applying all writes in the same order as they were processed on the leader.</li>
+<li>When a client wants to read from database, it can query either the leader or any of the followers. However, writes are only accepted on the leader.</li>
+</ul>
+<p><strong>Synchronous VS Asynchronous</strong>:</p>
+<p><em>Synchronous</em>: the leader waits until follower has confirmed that it received the write before reporting success to the use, and before making the wirte visible to other clients. It guaranteed to have an up-to-date copy of the data that is consistent with the leader.<br></p>
+<p><em>Asynchronous</em>: the leader sends the message, but doesn’t wait for a response from the follower. It has higher performance. <br></p>
+<p><strong>Setting Up New Followers</strong></p>
+<ul>
+<li>Take a consistent snapshot of the leader’s database at some point in time.</li>
+<li>Copy the snapshot to the new follower node.</li>
+<li>The follower connects to the leader and requests all the data changes that have happened since the snapshot was taken.</li>
+<li>When the follower has processed the backlog of data changes since the snapshot, we say it has caught up.</li>
+</ul>
+<p><strong>Handling Node Outages</strong></p>
+<p><em>Follower Failure Process</em></p>
+<ul>
+<li>Each follower keeps a log of the data changes it has received from the leader.</li>
+<li>If follower is failure, it could be stored by following its log.</li>
+</ul>
+<p><em>Leader failure Prcoess</em></p>
+<ul>
+<li>Detemining that the leader has failed.</li>
+<li>Choosing a new leader.</li>
+<li>Reconfiguring the system to use the new leader.</li>
+</ul>
+<p><em>Leader failure problems</em></p>
+<ul>
+<li>The new leader may receive conflict writes in the meantime. The most common solution is for the old leader’s unreplicated writes to simply be discarded.</li>
+<li>Discarding writes is especailly dangerous if other storage systems outside of the database need to be coordinated with the database contents.</li>
+<li>It could happen that 2 nodes both believe that they are the leader. This situation is called split brain and it is dangerous. </li>
+<li>What is the right timeout before the leader is declared dead? </li>
+</ul>
+<h4 id="Implementation-of-Replication-Logs"><a href="#Implementation-of-Replication-Logs" class="headerlink" title="Implementation of Replication Logs"></a>Implementation of Replication Logs</h4><p><strong>Statement-Based Replication</strong>, the leader logs every write request that it executes and sends the statment log to its followers for every INSERT, UPDATE, OR DELETE statement.</p>
+<p><em>Log Problem</em>:</p>
+<ul>
+<li>Nondeterministic functions (NOW() or RAND()) does not work well.</li>
+<li>Statements use an autoincrementing column depends on existing data, it will affect different result in multiple concurrently executing transactions.</li>
+<li>Statements that have side effects may result in different side effects occuring on each replica, unless the side effects are absolutely deterministic. </li>
+</ul>
+<p><strong>Write-Ahead Log Shipping</strong></p>
+<p><strong>Logical (row-based) Log Replication</strong></p>
+<p><strong>Trigger-based Replication</strong></p>
+
+      
+    </div>
+    
+  </div>
+  
+  
+</article>
+
+  
     <article id="post-Design-Data-Intensive-Note-4" class="article global-container article-type-post" itemscope itemprop="blogPost">
   
     <header class="article-header">
@@ -363,109 +534,6 @@ ga('send', 'pageview');
 </ul>
 <p><em>Actor Model</em> is a programming model ofr concurrency in a single process. <br></p>
 <p><em>Distributed Actor Frameworks</em>, this programming model is used to scale an application across multiple nodes. </p>
-
-      
-    </div>
-    
-  </div>
-  
-  
-</article>
-
-  
-    <article id="post-Design-Data-Intensive-Note-5" class="article global-container article-type-post" itemscope itemprop="blogPost">
-  
-    <header class="article-header">
-      
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/DexWebSite/2020/10/11/Design-Data-Intensive-Note-5/">Design Data-Intensive Note #5</a>
-    </h1>
-  
-
-    </header>
-  
-  <div class="article-meta">
-    <a href="/DexWebSite/2020/10/11/Design-Data-Intensive-Note-5/" class="article-date">
-  <time datetime="2020-10-12T03:33:00.000Z" itemprop="datePublished">2020-10-11</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/DexWebSite/categories/System-Design/">System Design</a>
-  </div>
-
-    
-  </div>
-  
-
-  <div class="article-inner">
-    
-    <div class="article-content article-content-cloud" itemprop="articleBody">
-      
-        <h3 id="Distributrion"><a href="#Distributrion" class="headerlink" title="Distributrion"></a>Distributrion</h3><p><strong>Why Distribution?</strong></p>
-<ul>
-<li>Scalability</li>
-<li>Fault tolerance / high availability </li>
-<li>Latency</li>
-</ul>
-<p><strong>Replication</strong><br>Keeping a copy of the same data on several different nodes, potentically in different locations.  Replication provides redundancy: if some nodes are unavailable, the data can still be served from the remaining nodes. Replication can also help improve performance.<br></p>
-<p><strong>Partitioning</strong><br>Splitting a big database into smaller subsets call partitions so that different partitions can be assign to different nodes. <br></p>
-<h3 id="Replication"><a href="#Replication" class="headerlink" title="Replication"></a>Replication</h3><p>Replication means keeping a copy of the same data on multiple machines that are connected via a network by 3 reasons: <br></p>
-<ul>
-<li>To keep data geographically close to your users. (reduce latency)</li>
-<li>To allow the system to continue working even if some of its parts have failed (increase availability)</li>
-<li>To scale out the number of machines that can serve read query. (increase scalability)</li>
-</ul>
-<p>The most difficulty in replication lies in handling changes to replicated data: <br></p>
-<ul>
-<li>Whether to use synchronous or asynchronous replication.</li>
-<li>How to handle failed replicas.</li>
-</ul>
-<h3 id="Leaders-and-Followers"><a href="#Leaders-and-Followers" class="headerlink" title="Leaders and Followers"></a>Leaders and Followers</h3><p><strong>Leader-Based Replication</strong>:</p>
-<ul>
-<li>One of the replicas is desigated the <strong>leader</strong>. When clients want to write to the database, they must send their requests to the leader, which first writes the new data to its local storage.</li>
-<li>The other replicas as known as <strong>followers</strong>. Whenever the leader writes new data to its local storage, it also sends the data change to all of its followers as part of a <strong>replication log</strong> or <strong>change stream</strong>. Each follower takes the log from the leader and updates its local copy of the database accordingly, by applying all writes in the same order as they were processed on the leader.</li>
-<li>When a client wants to read from database, it can query either the leader or any of the followers. However, writes are only accepted on the leader.</li>
-</ul>
-<p><strong>Synchronous VS Asynchronous</strong>:</p>
-<p><em>Synchronous</em>: the leader waits until follower has confirmed that it received the write before reporting success to the use, and before making the wirte visible to other clients. It guaranteed to have an up-to-date copy of the data that is consistent with the leader.<br></p>
-<p><em>Asynchronous</em>: the leader sends the message, but doesn’t wait for a response from the follower. It has higher performance. <br></p>
-<p><strong>Setting Up New Followers</strong></p>
-<ul>
-<li>Take a consistent snapshot of the leader’s database at some point in time.</li>
-<li>Copy the snapshot to the new follower node.</li>
-<li>The follower connects to the leader and requests all the data changes that have happened since the snapshot was taken.</li>
-<li>When the follower has processed the backlog of data changes since the snapshot, we say it has caught up.</li>
-</ul>
-<p><strong>Handling Node Outages</strong></p>
-<p><em>Follower Failure Process</em></p>
-<ul>
-<li>Each follower keeps a log of the data changes it has received from the leader.</li>
-<li>If follower is failure, it could be stored by following its log.</li>
-</ul>
-<p><em>Leader failure Prcoess</em></p>
-<ul>
-<li>Detemining that the leader has failed.</li>
-<li>Choosing a new leader.</li>
-<li>Reconfiguring the system to use the new leader.</li>
-</ul>
-<p><em>Leader failure problems</em></p>
-<ul>
-<li>The new leader may receive conflict writes in the meantime. The most common solution is for the old leader’s unreplicated writes to simply be discarded.</li>
-<li>Discarding writes is especailly dangerous if other storage systems outside of the database need to be coordinated with the database contents.</li>
-<li>It could happen that 2 nodes both believe that they are the leader. This situation is called split brain and it is dangerous. </li>
-<li>What is the right timeout before the leader is declared dead? </li>
-</ul>
-<h4 id="Implementation-of-Replication-Logs"><a href="#Implementation-of-Replication-Logs" class="headerlink" title="Implementation of Replication Logs"></a>Implementation of Replication Logs</h4><p><strong>Statement-Based Replication</strong>, the leader logs every write request that it executes and sends the statment log to its followers for every INSERT, UPDATE, OR DELETE statement.</p>
-<p><em>Log Problem</em>:</p>
-<ul>
-<li>Nondeterministic functions (NOW() or RAND()) does not work well.</li>
-<li>Statements use an autoincrementing column depends on existing data, it will affect different result in multiple concurrently executing transactions.</li>
-<li>Statements that have side effects may result in different side effects occuring on each replica, unless the side effects are absolutely deterministic. </li>
-</ul>
-<p><strong>Write-Ahead Log Shipping</strong></p>
-<p><strong>Logical (row-based) Log Replication</strong></p>
-<p><strong>Trigger-based Replication</strong></p>
 
       
     </div>
@@ -730,8 +798,7 @@ ga('send', 'pageview');
 <li>Find ways of making systems easier to maintina in the long run, enven as they grow and as requirements and technologies change.</li>
 <li>Know what goes on inside major websites and online services.</li>
 </ul>
-<h5 id="Chapter-1"><a href="#Chapter-1" class="headerlink" title="Chapter 1"></a>Chapter 1</h5><p>Chapter explors the Fundamentals: Reliable, Scalable, and Maintainable.</p>
-<p>Many applications today are dat-intensive, as opposed to compute-intensive. Raw CPU power is rarely a limiting factor for these applications- bigger problems are usually the amount of data, the complexity of data, and the speed at which it is changing.</p>
+<h4 id="Reliable-Scalable-and-Maintainable"><a href="#Reliable-Scalable-and-Maintainable" class="headerlink" title="Reliable, Scalable, and Maintainable"></a>Reliable, Scalable, and Maintainable</h4><p>Many applications today are dat-intensive, as opposed to compute-intensive. Raw CPU power is rarely a limiting factor for these applications- bigger problems are usually the amount of data, the complexity of data, and the speed at which it is changing.</p>
 <p>Data Intensive funcationality:</p>
 <ul>
 <li>Database: Store data so that they, or another application, can find it again later.</li>
@@ -740,7 +807,7 @@ ga('send', 'pageview');
 <li>Stream Processing: Send a message to another process, to be handled asynchronously</li>
 <li>Batch Processing: Periodically crunch a large amount of accumulated data.</li>
 </ul>
-<h6 id="Reliability"><a href="#Reliability" class="headerlink" title="Reliability"></a>Reliability</h6><p>The System should continue to work correctly (performing the correct fucntion at the desired level of performance) even in the face of adversity （hardware or software faults, and even human error). <br></p>
+<h5 id="Reliability"><a href="#Reliability" class="headerlink" title="Reliability"></a>Reliability</h5><p>The System should continue to work correctly (performing the correct fucntion at the desired level of performance) even in the face of adversity （hardware or software faults, and even human error). <br></p>
 <p><strong>Software Expections (working correctly, continueing to work correctly, even when things go wrong.)</strong> <br></p>
 <ul>
 <li>The application performs the function that the user expected.</li>
@@ -782,7 +849,7 @@ ga('send', 'pageview');
 <li>Set up detailed and clear monitoring, such as performance metrices and error rates. In other engineering disciplines this is referred to as <strong>telemetry</strong>. </li>
 <li>Implement good management practices and training</li>
 </ul>
-<h6 id="Scalability"><a href="#Scalability" class="headerlink" title="Scalability"></a>Scalability</h6><p>As the system grows (in data volume, traffice volume, or complexity), these should be reasonable ways of dealing with that growth.<br></p>
+<h5 id="Scalability"><a href="#Scalability" class="headerlink" title="Scalability"></a>Scalability</h5><p>As the system grows (in data volume, traffice volume, or complexity), these should be reasonable ways of dealing with that growth.<br></p>
 <p>Scalability is the term we use to describe a system’s ability to cope with increased load. Consider questions: “If the system grows in a particular way, what are our options for coping with the growth?” and “How can we add computing resources to handle the additional load?”</p>
 <p><strong>Describing Load</strong> <br><br>Load can be described with a few numbers which we call load parameters: <br> </p>
 <ul>
@@ -808,7 +875,7 @@ ga('send', 'pageview');
 </ul>
 <p>In sum, several fairly powerful machines can still be simpler and cheaper than a large number of small Virtual machines. There is no such thing as a generic, one-size-fits-all scalable architecture. <br> </p>
 <p>Some systems are elastic, meaning that they can automatically add computing<br>resources when they detect a load increase, whereas other systems are scaled manually.<br></p>
-<h6 id="Maintainability"><a href="#Maintainability" class="headerlink" title="Maintainability"></a>Maintainability</h6><p>Over time, many different people will work on the system (engineering and operations, both maintaining current behavior and adapting the system to new use cases), and they should all be able to work on it _productively.<br></p>
+<h5 id="Maintainability"><a href="#Maintainability" class="headerlink" title="Maintainability"></a>Maintainability</h5><p>Over time, many different people will work on the system (engineering and operations, both maintaining current behavior and adapting the system to new use cases), and they should all be able to work on it _productively.<br></p>
 <p>It is well known that the majority of the cost of software is not in its initial development, but in its ongoing maintenance. <br></p>
 <ul>
 <li>fix bugs</li>
@@ -848,125 +915,6 @@ ga('send', 'pageview');
 <p><strong>Evolvability (extensibility, modifiability, plasticity)</strong><br><br>Make it easy for engineers to make changes to the system in the feature, adapting it for unanticipated use cases as requirements changes. <br></p>
 <p>Agile working patterns provide a framework for adapting to change. The Agile community has also developed technical tools and patterns that are helpful when developing software in frequently changing environment, such as test-driven development (TDD) and refactoring.</p>
 <h6 id="In-Sum"><a href="#In-Sum" class="headerlink" title="In Sum"></a>In Sum</h6><p>Reliability means making systems work correctly, even when faults occur. <br><br>Scalability means having strategies for keeping performance good, even when load<br>increases.<br><br>Maintainability has many facets, but in essence it’s about making life better for the engineering and operations teams who need to work with the system. <br></p>
-
-      
-    </div>
-    
-  </div>
-  
-  
-</article>
-
-  
-    <article id="post-C-Lesson-6-Array" class="article global-container article-type-post" itemscope itemprop="blogPost">
-  
-    <header class="article-header">
-      
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/DexWebSite/2020/10/10/C-Lesson-6-Array/">Java Concurrency II</a>
-    </h1>
-  
-
-    </header>
-  
-  <div class="article-meta">
-    <a href="/DexWebSite/2020/10/10/C-Lesson-6-Array/" class="article-date">
-  <time datetime="2020-10-10T18:33:00.000Z" itemprop="datePublished">2020-10-10</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/DexWebSite/categories/Java-Programming-Language/">Java Programming Language</a>
-  </div>
-
-    
-  </div>
-  
-
-  <div class="article-inner">
-    
-    <div class="article-content article-content-cloud" itemprop="articleBody">
-      
-        <h3 id="Concurrency-Control-Base"><a href="#Concurrency-Control-Base" class="headerlink" title="Concurrency Control Base"></a>Concurrency Control Base</h3><h5 id="Data-Races"><a href="#Data-Races" class="headerlink" title="Data Races"></a>Data Races</h5><p>Data Races occure when two operations confilict with each other if they operate on the same memory location, and at least one of them is a write. Races are mostly treated as bugs in Java programs.</p>
-<p>Data Race 3 Factors:</p>
-<ul>
-<li>More then one operations work on the same memory.</li>
-<li>At lest one operation is a write </li>
-<li>At lest two operations are concurrent.</li>
-</ul>
-<p>E.g.<br><figure class="highlight java"><figcaption><span>Data Race</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> sharedInt = <span class="number">1</span>;</span><br><span class="line"><span class="comment">//Thread1:</span></span><br><span class="line">sharedInt = <span class="number">3</span></span><br><span class="line"><span class="comment">//Thread2: </span></span><br><span class="line">sharedInt += <span class="number">1</span></span><br><span class="line"><span class="comment">//Cannot predit the value of sharedInt. </span></span><br></pre></td></tr></table></figure></p>
-<h5 id="Synchronization-for-Concurrency-in-Java"><a href="#Synchronization-for-Concurrency-in-Java" class="headerlink" title="Synchronization for Concurrency in Java"></a>Synchronization for Concurrency in Java</h5><p><a href="https://en.wikipedia.org/wiki/Synchronization" target="_blank" rel="noopener">Synchronization</a> is defined as a coordination of events to operate a system in unison in Wiki. <br></p>
-<p>In Java, Synchronization is used to impose orders on concurrent events by 4 normal ways. <br></p>
-<ul>
-<li>Locks (synchronized)</li>
-<li>Wait/Notify (condition synchronization)</li>
-<li>Volatile</li>
-<li>Concurrent Data Structure</li>
-</ul>
-<h5 id="Locks"><a href="#Locks" class="headerlink" title="Locks"></a>Locks</h5><p>Before introducing locks, two principles should be shown to understand locks.</p>
-<p><strong>Critical section</strong>, a part of a multi-process program / threads that could not be concurrently executed by more than one of the procecesses / threads.</p>
-<p><strong>Mutual exclusion</strong> defines a scenario that no more than one concurrent process in their critical section at the same time.</p>
-<p>E.g. A toilet (Shared Memory, Critical Section) that could accessed by one and only one person (process/thread) in below steps:<br></p>
-<ol>
-<li>Person In <br></li>
-<li>Lock Door <br></li>
-<li>Do Something<br></li>
-<li>Unlock Door<br></li>
-<li>Person Out<br></li>
-</ol>
-<h5 id="Lock-Implementation-1-Synchronized"><a href="#Lock-Implementation-1-Synchronized" class="headerlink" title="Lock Implementation 1 - Synchronized"></a>Lock Implementation 1 - Synchronized</h5><p>In Java, one way to implement the mutual exclusion is using ‘Synchronized’ keyword. <br><br>Synchronized on static/non-static methods: <br></p>
-<ul>
-<li>synchronized on non-static mehtod = synchronized(this)</li>
-<li>static synchronized = synchronized(Counter.calss) </li>
-<li>synchronized(this)!= synchronized(Counter.calss)</li>
-</ul>
-<figure class="highlight java"><figcaption><span>Mutal Exclusion Implementation</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MutualExclusionClass</span> </span>&#123;</span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">Counter</span></span>&#123;</span><br><span class="line">		<span class="keyword">private</span> <span class="keyword">int</span> value;</span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="title">Counter</span><span class="params">(<span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">			<span class="keyword">this</span>.value = value;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">increase</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			<span class="comment">//Mutual exclusion for critical section. </span></span><br><span class="line">			<span class="keyword">synchronized</span>(<span class="keyword">this</span>) &#123; <span class="comment">//synchronized should be work for object.</span></span><br><span class="line">				value++;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">//...</span></span><br><span class="line">			<span class="comment">//others are not locked.</span></span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//Mutual exclusion for method. </span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">decrease</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			value--;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">int</span> <span class="title">getCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			<span class="keyword">return</span> value;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">StaticCounter</span></span>&#123;</span><br><span class="line">		<span class="keyword">private</span>  <span class="keyword">static</span> <span class="keyword">int</span> value;</span><br><span class="line">		</span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">increase</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			<span class="comment">//Mutual exclusion for critical section. </span></span><br><span class="line">			<span class="keyword">synchronized</span>(Counter.class) &#123; <span class="comment">//synchronized should be work for static class.</span></span><br><span class="line">				value++;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">//...</span></span><br><span class="line">			<span class="comment">//others are not locked.</span></span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//synchronize method means synchronize class</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">static</span>  <span class="keyword">void</span> <span class="title">decrease</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			<span class="keyword">synchronized</span>(Counter.class) &#123;</span><br><span class="line">				value--;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			<span class="keyword">synchronized</span>(Counter.class) &#123;</span><br><span class="line">				<span class="keyword">return</span> value;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>However, the critical section could be a class, a function, or a section of code. It could describe the critical section as Coarse Granularity Lock (CGL) or Fine Granularity Lock (FGL). <br></p>
-<p><strong>Conditions for Deadlock</strong>: <br></p>
-<ul>
-<li>Mutal Exclusion：At least one resource must be held in a non-shareable mode. Only one process can use the resource at any given instance of time. </li>
-<li>Hold and Wait or Resource Holding: A process is currently holding at least one resource and requesting additional resources which are being held by another processes.</li>
-<li>No Preemption: a resource can be released only voluntarily by the process holding it. </li>
-<li>Circular Wait.</li>
-</ul>
-<p>E.g. </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">P1: 				P2:</span><br><span class="line">lock1.lock();		lock2.lock();</span><br><span class="line">lock2.lock()		lock1.lock();</span><br><span class="line">lock2.unlock();		lock1.unlock();</span><br><span class="line">lock1.unlock();		lock2.unlock();</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><figcaption><span>Create Lock</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Lock lock = <span class="keyword">new</span> ReentrantLock(); <span class="comment">// Default lock in all objects.</span></span><br><span class="line">   lock.lock();</span><br><span class="line">   <span class="keyword">try</span>&#123;</span><br><span class="line">   	<span class="comment">//access the resource protected by this lock.</span></span><br><span class="line">   &#125; <span class="keyword">finally</span>&#123;</span><br><span class="line">   	lock.unlock();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<p><strong>Live Lock</strong> will happen if each side is actively resolving the problem (back off and retry). <br></p>
-<h5 id="Lock-Implementation-2-Atomicity-（Volatile）"><a href="#Lock-Implementation-2-Atomicity-（Volatile）" class="headerlink" title="Lock Implementation 2 - Atomicity （Volatile）"></a>Lock Implementation 2 - Atomicity （Volatile）</h5><p>The volatile keyword guarantees visibility (semantically, happens-before), much like acquiring and releasing a lock. </p>
-<figure class="highlight java"><figcaption><span>Volatile Key</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">VolatileExample</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">volatile</span> <span class="keyword">boolean</span> flag = <span class="keyword">false</span>; <span class="comment">// volatile will avoid infinity loop for Java compile to do</span></span><br><span class="line">													<span class="comment">// optimization.</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">MyRunnable</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			<span class="keyword">while</span> (!flag) &#123;</span><br><span class="line">				System.out.println(<span class="string">"The thread is running."</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			System.out.println(<span class="string">"The thread is finished."</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Thread t = <span class="keyword">new</span> Thread(<span class="keyword">new</span> MyRunnable());</span><br><span class="line">		t.start();</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			t.sleep(<span class="number">3000</span>);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">			<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		flag = <span class="keyword">true</span>; <span class="comment">// Will pass signal between threads and that will create alive locks.</span></span><br><span class="line">		System.out.println(<span class="string">"Main thread is finished."</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	 * Atomicity of value++ is not preserved! volatile int value = 0; thread 1:</span></span><br><span class="line"><span class="comment">	 * value++; // read * 10x slower, write * 70x slower</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * thread 2: value++;</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * value ==2 ?</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * Because volatile can only guarantee single read/write operation is atomic.</span></span><br><span class="line"><span class="comment">	 * Bottom line: read only or write only use cases are fine. if there a</span></span><br><span class="line"><span class="comment">	 * read-then-update case, if you really need atomicity for value++, check</span></span><br><span class="line"><span class="comment">	 * AtomicInteger/AtomicLong classes. However, they are expensive. Use it only if</span></span><br><span class="line"><span class="comment">	 * you really know why you need it.</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="Lock-Implementation-3-Condition-Synchronization"><a href="#Lock-Implementation-3-Condition-Synchronization" class="headerlink" title="Lock Implementation 3 - Condition Synchronization"></a>Lock Implementation 3 - Condition Synchronization</h5><p>Sometime, a thread locked a resource and require I/O from other processes or threads. Hence, the are 3 ways to handle locked resource.</p>
-<ul>
-<li>Keep wait (very low efficiency)</li>
-<li>Periodic check and go ( better efficiency, but may delay, it depends on period)</li>
-<li>Use a service and notification, it will send message when the required I/O comes. (high efficency, almost no delay)</li>
-</ul>
-<p>For notification mechanism:</p>
-<ul>
-<li>Allow threads to wait on a condition</li>
-<li>Allow a thread satisfieds the condition to notify all waiting threads</li>
-</ul>
-<p>A condition variable basically is a container of threads that are waiting on a certain condition with 3 operations: </p>
-<ul>
-<li>wait()</li>
-<li>notify()</li>
-<li>notifyAll()</li>
-</ul>
-<p>E.g. Producer Consumer Problem with Queue<br></p>
-<p>As a consumer, if the queue is empty, <em>Wait</em> for it to be not empty, then poll one element from resource queue. <br><br>As a Producer, if the queue is full, <em>Wait</em> for it to be not full, then offer one element to it. <br></p>
-<p>Build a blocking queue, such that</p>
-<ul>
-<li>When the queue is empety, consumer() will wait until produce() provide one element.</li>
-<li>When the queue is full, producer() will wait until consumer() release one element. </li>
-</ul>
-<p>Blocking Queue:<br>Mutual exclusive -&gt; use locks<br>Wait -&gt; condition syunchronization</p>
-<p>Each Java Object is a Monitor.<br>Each Java Object provides two concurrency permises: one lock -&gt; synchnoized, one condition -&gt; wait()</p>
-<p><em>Monitor</em>:<br>In short, there are two queues controlling the access to enter the room:</p>
-<ol>
-<li>lock queue, there is only one thread at a time from the queue can enter</li>
-<li>wait queue, there is a queue for the condition provided, all the threads wait(), is in the queue, and wait for the notify() call to remove from the wait queue.</li>
-</ol>
-<figure class="highlight java"><figcaption><span>Condition Synchronization</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Producer</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">	Q q;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Producer</span><span class="params">(Q q)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>();</span><br><span class="line">		<span class="keyword">this</span>.q = q;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		q.put(<span class="number">0</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Consumer</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">	Q q;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Consumer</span><span class="params">(Q q)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>();</span><br><span class="line">		<span class="keyword">this</span>.q = q;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(q.take());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Q</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> Queue&lt;Integer&gt; q;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> limit;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Q</span><span class="params">(<span class="keyword">int</span> limit)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.q = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">		<span class="keyword">this</span>.limit = limit;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">put</span><span class="params">(Integer ele)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">while</span> (q.size() == limit) &#123;</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				wait();</span><br><span class="line">			&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (q.size() == <span class="number">0</span>) &#123;</span><br><span class="line">			notifyAll();</span><br><span class="line">		&#125;</span><br><span class="line">		q.offer(ele);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> Integer <span class="title">take</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">while</span> (q.size() == <span class="number">0</span>) &#123;</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				wait();</span><br><span class="line">			&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (q.size() == limit) &#123;</span><br><span class="line">			notifyAll();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> q.poll();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ProducerAndConsumerExample</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Q q = <span class="keyword">new</span> Q(<span class="number">20</span>);</span><br><span class="line">		List&lt;Thread&gt; threads = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">			threads.add(<span class="keyword">new</span> Thread(<span class="keyword">new</span> Producer(q)));</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">			threads.add(<span class="keyword">new</span> Thread(<span class="keyword">new</span> Consumer(q)));</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (Thread t : threads) &#123;</span><br><span class="line">			t.start();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -1026,6 +974,10 @@ ga('send', 'pageview');
       <ul>
         
           <li>
+            <a href="/DexWebSite/2020/10/18/Algorithm-String/">Algorithm String</a>
+          </li>
+        
+          <li>
             <a href="/DexWebSite/2020/10/14/Design-Data-Intensive-Note-9/">Design Data-Intensive Note #9</a>
           </li>
         
@@ -1039,10 +991,6 @@ ga('send', 'pageview');
         
           <li>
             <a href="/DexWebSite/2020/10/11/Design-Data-Intensive-Note-6/">Design Data-Intensive Note #6</a>
-          </li>
-        
-          <li>
-            <a href="/DexWebSite/2020/10/11/Design-Data-Intensive-Note-4/">Design Data-Intensive Note #4</a>
           </li>
         
       </ul>
